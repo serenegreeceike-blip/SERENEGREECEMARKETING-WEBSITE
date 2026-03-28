@@ -274,6 +274,7 @@ body.edit-on .page { top:40px; }
   flex:1;
   overflow-y:auto;
   overflow-x:hidden;
+  min-height:0;
 }
 .page-scroll::-webkit-scrollbar{width:3px;}
 .page-scroll::-webkit-scrollbar-thumb{background:rgba(184,149,90,.25);}
@@ -1546,6 +1547,7 @@ body.edit-on .page { top:40px; }
   align-items: stretch;
   border-bottom: 1px solid rgba(184,149,90,.12);
   position: relative; overflow: hidden;
+  max-height: 220px; flex-shrink: 0;
 }
 .ex-hero-bg {
   position: absolute; inset: 0;
@@ -3353,7 +3355,9 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <div class="ex-hero-bg"></div>
         <div class="ex-hero-content">
           <span class="tag" style="color:var(--gold-lt);">Proof of Concept</span>
-          <h2 class="ht" style="color:#fff;font-size:clamp(1.8rem,2.8vw,2.6rem);margin:10px 0 14px;">The Serene brand<br>already works.</h2>
+          <h2 class="ht" style="color:#fff;font-size:clamp(1.3rem,2vw,1.8rem);margin:8px 0 10px;">The Serene brand<br>already works.</h2>
+          <p style="font-size:.75rem;line-height:1.8;color:rgba(244,239,230,.55);max-width:420px;">Before you invest, see the proof. Our existing properties demonstrate exactly what your future investment will look, feel, and perform like.</p>
+        </div>x 0 14px;">The Serene brand<br>already works.</h2>
           <p style="font-size:.82rem;line-height:1.8;color:rgba(244,239,230,.55);max-width:480px;">Before you invest, see the proof. Our existing properties demonstrate exactly what your future investment will look, feel, and perform like.</p>
         </div>
         <div class="ex-hero-stats">
