@@ -1053,6 +1053,11 @@ body.edit-on .page { top:40px; }
   background: #000;
   aspect-ratio: 16/9;
   max-height: 240px;
+  overflow: hidden;
+}
+.vid-frame-wrap .yt-wrap {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
 }
 .vid-frame {
   position: absolute; inset: 0;
@@ -1337,6 +1342,12 @@ body.edit-on .page { top:40px; }
   border: 1px solid var(--panel3);
   overflow: hidden;
   background: var(--ink);
+  min-height: 220px;
+}
+.loc-vid-wrap .yt-wrap {
+  position: relative;
+  min-height: 220px;
+  width: 100%; height: 100%;
 }
 .loc-vid-caption {
   padding: 24px 20px;
@@ -2028,9 +2039,16 @@ body.edit-on .page { top:40px; }
 /* type badge below unit */
 .unit-type-badge{font-size:.42rem;letter-spacing:1px;text-transform:uppercase;color:rgba(184,149,90,.55);line-height:1;text-align:center;font-family:'DM Sans',sans-serif;}
 /* type selector — shown in edit mode */
-.unit-type-sel{display:none;font-size:.42rem;letter-spacing:1px;text-transform:uppercase;background:rgba(184,149,90,.15);border:1px solid rgba(184,149,90,.3);color:var(--gold-dk);padding:1px 4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s;}
-.unit-type-sel:hover{background:rgba(184,149,90,.3);}
-body.av-edit .unit-type-sel{display:block;}
+/* always show type badge on units */
+.unit-type-sel {
+  display: block !important;
+  font-size: .42rem; letter-spacing: 1px; text-transform: uppercase;
+  background: rgba(184,149,90,.15); border: 1px solid rgba(184,149,90,.3);
+  color: var(--gold-dk); padding: 1px 4px; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; transition: background .15s;
+}
+.unit-type-sel:hover { background: rgba(184,149,90,.3); }
+body.av-edit .unit-type-sel { background: rgba(184,149,90,.35); border-color: var(--gold); }
 body.av-edit .unit-type-badge{display:none;}
 .unit-x{
   display:none;position:absolute;top:-5px;right:-5px;
@@ -2753,7 +2771,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
                 src="https://www.youtube.com/embed/WXbve7d_EYI?autoplay=1&mute=1&loop=1&playlist=WXbve7d_EYI&rel=0&modestbranding=1&controls=1"
                 title="Serene Dunes — Location & Sahara Beach Club"
                 frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
                 style="position:absolute;inset:0;width:100%;height:100%;border:none;">
               </iframe>
@@ -3040,10 +3058,19 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <div class="vid-frame-wrap">
           <div class="yt-wrap">
               <iframe
-                src="https://www.youtube.com/embed/bALKpPbgzDU?autoplay=1&mute=1&loop=1&playlist=bALKpPbgzDU&rel=0&modestbranding=1&controls=1"
+                src="https://www.youtube.com/embed/bALKpPbgzDU?autoplay=1&mute=1&loop=1&playlist=bALKpPbgzDU&rel=0&modestbranding=1&controls=1&playsinline=1"
                 title="Serene Villas Halkidiki — Guest Experience"
                 frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                style="position:absolute;inset:0;width:100%;height:100%;border:none;">
+              </iframe>
+            </div>
+        </div>
+      </div>KpPbgzDU&rel=0&modestbranding=1&controls=1"
+                title="Serene Villas Halkidiki — Guest Experience"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
                 style="position:absolute;inset:0;width:100%;height:100%;border:none;">
               </iframe>
