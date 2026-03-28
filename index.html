@@ -1636,7 +1636,7 @@ body.edit-on .page { top:40px; }
 .ex-video-strip {
   display: grid; grid-template-columns: 200px 1fr;
   margin: 0 24px 24px; border: 1px solid var(--panel3);
-  overflow: hidden; background: var(--ink); max-height: 240px;
+  overflow: hidden; background: var(--ink); height: 240px;
 }
 .ex-video-label {
   padding: 28px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px;
@@ -3406,8 +3406,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <p class="ex-video-title">See it through<br>their eyes</p>
           <p class="ex-video-sub">Real guests · Real stay<br>Serene Villas Halkidiki</p>
         </div>
-        <div class="ig-reel-wrap">
-          <div class="ig-reel-card">
+        <div class="ig-reel-wrap" style="position:relative;width:100%;height:240px;overflow:hidden;background:#000;">
+          <div class="ig-reel-card" style="position:absolute;inset:0;">
             <img src="https://img.youtube.com/vi/bALKpPbgzDU/hqdefault.jpg" alt="Guest Experience" class="ig-reel-bg">
             <div class="ig-reel-overlay">
               <div class="ig-reel-play">
