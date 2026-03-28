@@ -1133,16 +1133,48 @@ body.edit-on .page { top:40px; }
 
 .ig-reel-wrap {
   position: relative;
-  width: 100%;
-  height: 280px;
   overflow: hidden;
   background: #000;
 }
-.ig-reel-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
+.ig-reel-card {
+  display: block; position: relative;
+  width: 100%; height: 240px;
+  text-decoration: none; overflow: hidden;
+}
+.ig-reel-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(.45);
+  transition: transform .4s, filter .3s;
+}
+.ig-reel-card:hover .ig-reel-bg { transform: scale(1.04); filter: brightness(.35); }
+.ig-reel-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 14px;
+}
+.ig-reel-play {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: 2px solid rgba(255,255,255,.4);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s, background .2s;
+  backdrop-filter: blur(4px);
+}
+.ig-reel-card:hover .ig-reel-play { transform: scale(1.1); background: rgba(255,255,255,.25); }
+.ig-reel-info { text-align: center; }
+.ig-reel-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .52rem; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,.6); font-family: 'DM Sans', sans-serif;
+}
+.ig-reel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; color: #fff; margin: 6px 0 4px;
+}
+.ig-reel-sub {
+  font-size: .58rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold-lt); font-family: 'DM Sans', sans-serif;
 }
 
 /* ── LIFESTYLE INVESTMENT BLOCK ── */
@@ -3097,14 +3129,21 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <p class="vid-sub">Real guests. Real stay. Serene Villas Halkidiki.</p>
         </div>
         <div class="ig-reel-wrap">
-          <iframe
-            src="https://www.instagram.com/reel/C9ML2aXoevF/embed/"
-            class="ig-reel-frame"
-            frameborder="0"
-            scrolling="no"
-            allowtransparency="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-          </iframe>
+          <div class="ig-reel-card">
+            <img src="https://img.youtube.com/vi/bALKpPbgzDU/hqdefault.jpg" alt="Guest Experience" class="ig-reel-bg">
+            <div class="ig-reel-overlay">
+              <div class="ig-reel-play">
+                <svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div class="ig-reel-info">
+                <span class="ig-reel-tag">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                  Instagram Reel
+                </span>
+                <p class="ig-reel-title">Guest Experience — Serene Villas Halkidiki</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
