@@ -3864,14 +3864,25 @@ const lbImages = [
 let lbIdx = 0;
 
 function openLightbox(i) {
+  // Get src directly from the gallery image at position i
+  const galImgs = document.querySelectorAll('.gal-big img, .gal-half img, .gal-quarter img');
+  const caps    = ['Exterior · Serene Dunes','Private Pool','Living Area','Kitchen'];
   lbIdx = i;
-  renderLb();
+  const img = document.getElementById('lb-img');
+  if (galImgs[i]) img.src = galImgs[i].src;
+  document.getElementById('lb-caption').textContent = caps[i] || '';
+  document.getElementById('lb-counter').textContent = (i+1) + ' / ' + galImgs.length;
   document.getElementById('lightbox').classList.add('open');
 }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
 function lbNav(dir) {
-  lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
-  renderLb();
+  const galImgs = document.querySelectorAll('.gal-big img, .gal-half img, .gal-quarter img');
+  const caps    = ['Exterior · Serene Dunes','Private Pool','Living Area','Kitchen'];
+  lbIdx = (lbIdx + dir + galImgs.length) % galImgs.length;
+  const img = document.getElementById('lb-img');
+  if (galImgs[lbIdx]) img.src = galImgs[lbIdx].src;
+  document.getElementById('lb-caption').textContent = caps[lbIdx] || '';
+  document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + galImgs.length;
 }
 function renderLb() {
   document.getElementById('lb-img').src = lbImages[lbIdx].src;
