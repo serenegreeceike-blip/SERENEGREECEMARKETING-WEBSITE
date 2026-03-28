@@ -2644,7 +2644,44 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
         <!-- PAYMENT PLAN -->
         <div class="sub-panel" id="sub-pp">
-          <p style="font-size:.8rem;color:var(--muted);margin-bottom:24px;">Structured around construction milestones, protecting your investment at every stage.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <p style="font-size:.8rem;color:var(--muted);margin:0;">Structured around construction milestones, protecting your investment at every stage.</p>
+            <button id="pp-edit-btn" onclick="ppToggleEdit()" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--panel3);background:none;color:var(--muted);padding:6px 14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;">✏ Edit</button>
+          </div>
+
+          <div id="pp-view">
+            <table class="pt-table" id="pp-table">
+              <tr data-pct="10">
+                <td class="pt-phase pp-label" contenteditable="false">Reservation</td>
+                <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:10%"></div></div></td>
+                <td class="pt-pct pp-pct" contenteditable="false">10%</td>
+              </tr>
+              <tr data-pct="20">
+                <td class="pt-phase pp-label" contenteditable="false">Contract Signing</td>
+                <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:20%"></div></div></td>
+                <td class="pt-pct pp-pct" contenteditable="false">20%</td>
+              </tr>
+              <tr data-pct="20">
+                <td class="pt-phase pp-label" contenteditable="false">Foundation Done</td>
+                <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:20%"></div></div></td>
+                <td class="pt-pct pp-pct" contenteditable="false">20%</td>
+              </tr>
+              <tr data-pct="20">
+                <td class="pt-phase pp-label" contenteditable="false">Structure Done</td>
+                <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:20%"></div></div></td>
+                <td class="pt-pct pp-pct" contenteditable="false">20%</td>
+              </tr>
+              <tr data-pct="30">
+                <td class="pt-phase pp-label" contenteditable="false">Keys Handover</td>
+                <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:30%"></div></div></td>
+                <td class="pt-pct pp-pct" contenteditable="false">30%</td>
+              </tr>
+            </table>
+            <div id="pp-total" style="text-align:right;font-size:.7rem;color:var(--muted);margin-top:8px;">Total: <strong style="color:var(--ink);">100%</strong></div>
+          </div>
+
+          <div class="note-box">🏦 <strong>Bank financing available — up to 50% of purchase price</strong> through our preferred Greek banking partners. EU and non-EU residents eligible. <a href="#" onclick="goTo('contact',null);return false;" style="color:var(--gold-dk);">Speak to our finance team →</a></div>
+        </div>uction milestones, protecting your investment at every stage.</p>
           <table class="pt-table">
             <tr>
               <td class="pt-phase">Reservation</td>
@@ -5163,6 +5200,63 @@ function ytLoad(el) {
   wrap.innerHTML = '';
   wrap.appendChild(iframe);
 }
+
+// ── PAYMENT PLAN EDIT ──
+let ppEditMode = false;
+function ppToggleEdit() {
+  ppEditMode = !ppEditMode;
+  const btn = document.getElementById('pp-edit-btn');
+  const labels = document.querySelectorAll('.pp-label');
+  const pcts   = document.querySelectorAll('.pp-pct');
+
+  if (ppEditMode) {
+    btn.textContent = '✓ Done';
+    btn.style.borderColor = 'var(--gold)';
+    btn.style.color = 'var(--gold-dk)';
+
+    // Make labels editable
+    labels.forEach(l => { l.contentEditable = 'true'; l.style.outline = '1px dashed rgba(184,149,90,.4)'; l.style.padding = '2px 4px'; });
+
+    // Replace % text with number input
+    pcts.forEach(td => {
+      const cur = parseInt(td.textContent) || 0;
+      td.innerHTML = '<input type="number" min="0" max="100" value="' + cur + '" style="width:52px;border:1px solid var(--gold);background:var(--panel);color:var(--ink);text-align:right;font-size:.8rem;padding:2px 4px;font-family:\'DM Sans\',sans-serif;" oninput="ppUpdateBar(this)">';
+    });
+  } else {
+    btn.textContent = '✏ Edit';
+    btn.style.borderColor = 'var(--panel3)';
+    btn.style.color = 'var(--muted)';
+
+    // Lock labels
+    labels.forEach(l => { l.contentEditable = 'false'; l.style.outline = ''; l.style.padding = ''; });
+
+    // Save inputs back to text
+    let total = 0;
+    pcts.forEach(td => {
+      const val = parseInt(td.querySelector('input')?.value) || 0;
+      total += val;
+      td.textContent = val + '%';
+      // update bar
+      const bar = td.closest('tr')?.querySelector('.pt-bar-fill');
+      if (bar) bar.style.width = val + '%';
+    });
+
+    // Show total
+    const totalEl = document.getElementById('pp-total');
+    if (totalEl) {
+      const color = total === 100 ? 'var(--ink)' : '#c04040';
+      totalEl.innerHTML = 'Total: <strong style="color:' + color + ';">' + total + '%</strong>' + (total !== 100 ? ' ⚠️ Should be 100%' : ' ✓');
+    }
+  }
+}
+
+function ppUpdateBar(input) {
+  const val = parseInt(input.value) || 0;
+  const bar = input.closest('tr')?.querySelector('.pt-bar-fill');
+  if (bar) bar.style.width = Math.min(val, 100) + '%';
+}
+
+// ── PAYMENT PLAN EDIT ── END
 
 // helper for urgency bar CTA
 function switchSubByName(name) {
