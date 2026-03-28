@@ -3134,13 +3134,58 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       </div>
 
       <!-- Thessaloniki Booking Reviews -->
-      <div style="background:#fff;margin:0 20px 20px;padding:20px 22px;border:1px solid #E5DFCF;border-top:none;">
+      <div style="background:#fff;margin:0 20px 0;padding:20px 22px;border:1px solid #E5DFCF;border-top:none;">
         <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;">Booking.com Reviews</p>
         <div class="rv-carousel" id="rv-thess">
           <div class="rv-slide active"><p class="review-text">"The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped."</p><p class="review-author">— George, Greece · Booking.com Verified ⭐ 9.1</p></div>
           <div class="rv-slide"><p class="review-text">"The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again."</p><p class="review-author">— Verified Guest · Booking.com · New Year stay</p></div>
           <div class="rv-slide"><p class="review-text">"Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center."</p><p class="review-author">— Verified Guest · Booking.com · Family stay</p></div>
           <div class="rv-nav"><span class="rv-dot active" onclick="rvGo('rv-thess',0)"></span><span class="rv-dot" onclick="rvGo('rv-thess',1)"></span><span class="rv-dot" onclick="rvGo('rv-thess',2)"></span></div>
+        </div>
+      </div>
+
+      <!-- Thessaloniki Google Reviews -->
+      <div style="background:#F7F4EE;margin:0 20px 20px;padding:20px 22px;border:1px solid #E5DFCF;border-top:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <span style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;">Google Reviews · ★★★★★</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+
+          <div style="background:#fff;padding:14px;border:1px solid #E5DFCF;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <div style="width:26px;height:26px;border-radius:50%;background:#4285F4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">W</div>
+              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;">Walter H. Liberali</p><p style="font-size:.5rem;color:#8B7355;margin:0;">a month ago · 5/5</p></div>
+            </div>
+            <div style="position:relative;">
+              <p id="rev-wal" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"A very complete, tidy, spacious, safe, and new apartment. The kitchen is fully equipped. The bed is very comfortable, and there is excellent natural and artificial lighting. The shower is spacious. There are three elevators to access the apartment. It's conveniently located near the charming Ignatia Avenue. A well-stocked supermarket is no more than 500 meters away. The management is very helpful and accommodating. I wholeheartedly recommend this place. I wouldn't hesitate for a second to return."</p>
+              <button onclick="toggleRev('rev-wal',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button>
+            </div>
+          </div>
+
+          <div style="background:#fff;padding:14px;border:1px solid #E5DFCF;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <div style="width:26px;height:26px;border-radius:50%;background:#34A853;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">N</div>
+              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;">Nena Trajkovska</p><p style="font-size:.5rem;color:#8B7355;margin:0;">a month ago · 5/5</p></div>
+            </div>
+            <div style="position:relative;">
+              <p id="rev-nena" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"The stay was perfect, you have everything you can wish for in the apartment, the host was amazing, close to city centre, we will definitely come again!"</p>
+              <button onclick="toggleRev('rev-nena',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button>
+            </div>
+          </div>
+
+          <div style="background:#120E08;padding:14px;border:1px solid rgba(184,149,90,.15);grid-column:1/-1;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <div style="width:26px;height:26px;border-radius:50%;background:#EA4335;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">A</div>
+              <div><p style="font-size:.65rem;color:#F4EFE6;font-weight:500;margin:0;">Anja Karali</p><p style="font-size:.5rem;color:rgba(244,239,230,.4);margin:0;">a month ago · 5/5 · Couple · Vacation</p></div>
+              <span style="margin-left:auto;font-size:.65rem;color:#f4b400;">★★★★★</span>
+            </div>
+            <div style="position:relative;">
+              <p id="rev-anja" style="font-family:'Cormorant Garamond',serif;font-size:.88rem;color:rgba(244,239,230,.7);line-height:1.75;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"Excellent rooms ✨ Everything was spotless, beautifully set up, and exceeded our expectations. The service was excellent, and we were genuinely very satisfied. Highly recommend!"</p>
+              <button onclick="toggleRev('rev-anja',this)" style="background:none;border:none;color:rgba(184,149,90,.7);font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button>
+            </div>
+          </div>
+
         </div>
       </div>
 
