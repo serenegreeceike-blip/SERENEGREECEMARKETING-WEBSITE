@@ -1995,13 +1995,14 @@ body.edit-on .page { top:40px; }
 /* always show type badge on units */
 .unit-type-sel {
   display: block !important;
-  font-size: .42rem; letter-spacing: 1px; text-transform: uppercase;
-  background: rgba(184,149,90,.15); border: 1px solid rgba(184,149,90,.3);
-  color: var(--gold-dk); padding: 1px 4px; cursor: pointer;
+  font-size: .42rem; letter-spacing: .5px;
+  background: rgba(184,149,90,.2); border: 1px solid rgba(184,149,90,.4);
+  color: var(--gold-dk); padding: 2px 5px; cursor: pointer;
   font-family: 'DM Sans', sans-serif; transition: background .15s;
+  border-radius: 2px;
 }
-.unit-type-sel:hover { background: rgba(184,149,90,.3); }
-body.av-edit .unit-type-sel { background: rgba(184,149,90,.35); border-color: var(--gold); }
+.unit-type-sel:hover { background: var(--gold); color: var(--ink); }
+body.av-edit .unit-type-sel { background: var(--gold); color: var(--ink); font-weight: 600; }
 body.av-edit .unit-type-badge{display:none;}
 .unit-x{
   display:none;position:absolute;top:-5px;right:-5px;
@@ -2568,7 +2569,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
               <div class="floor-block" id="av-floor-0">
                 <div class="av-floor-header">
-                  <h5 class="av-floor-title" contenteditable="false">Floor 3 — Premium Sea View</h5>
+                  <h5 class="av-floor-title" contenteditable="false">Zone 3 — Premium Sea View</h5>
                   <button class="av-floor-del-btn" onclick="avDeleteFloor(this)">🗑</button>
                 </div>
                 <div class="unit-row" id="av-row-0">
@@ -2589,7 +2590,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
               <div class="floor-block" id="av-floor-1">
                 <div class="av-floor-header">
-                  <h5 class="av-floor-title" contenteditable="false">Floor 2 — Garden View</h5>
+                  <h5 class="av-floor-title" contenteditable="false">Zone 2 — Garden View</h5>
                   <button class="av-floor-del-btn" onclick="avDeleteFloor(this)">🗑</button>
                 </div>
                 <div class="unit-row" id="av-row-1">
@@ -2610,7 +2611,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
               <div class="floor-block" id="av-floor-2">
                 <div class="av-floor-header">
-                  <h5 class="av-floor-title" contenteditable="false">Floor 1 — Entry Level</h5>
+                  <h5 class="av-floor-title" contenteditable="false">Zone 1 — Entry Level</h5>
                   <button class="av-floor-del-btn" onclick="avDeleteFloor(this)">🗑</button>
                 </div>
                 <div class="unit-row" id="av-row-2">
@@ -3503,7 +3504,7 @@ function avToggleEdit() {
   document.querySelectorAll('.av-floor-title').forEach(t => { t.contentEditable = avEditMode ? 'true' : 'false'; });
   const hint = document.getElementById('av-hint');
   if (hint) hint.textContent = avEditMode
-    ? 'Edit mode: × to delete · rename floors · add units'
+    ? 'Edit mode: × to delete · rename zones · add units'
     : 'Click unit to open floor plan & enquire';
 }
 
@@ -3613,17 +3614,50 @@ function avUnitClick(unitEl, name) {
 }
 
 function avCycleType(btn) {
+  // Show a small popup with A/B/C options
+  const existing = document.getElementById('type-popup');
+  if (existing) existing.remove();
+  if (btn._popupOpen) { btn._popupOpen = false; return; }
+
   const wrap = btn.closest('.unit-wrap');
   const unitEl = wrap?.querySelector('.unit');
   if (!unitEl) return;
-  const typeCycle = ['A','B','C'];
-  const cur = unitEl.dataset.type || 'A';
-  const next = typeCycle[(typeCycle.indexOf(cur)+1) % typeCycle.length];
-  unitEl.dataset.type = next;
-  // update badge and selector text
-  const badge = wrap.querySelector('.unit-type-badge');
-  if (badge) badge.textContent = 'Type ' + next;
-  btn.textContent = 'Type ' + next;
+
+  const popup = document.createElement('div');
+  popup.id = 'type-popup';
+  popup.style.cssText = 'position:absolute;z-index:999;background:#fff;border:1px solid #B8955A;box-shadow:0 4px 12px rgba(0,0,0,.15);display:flex;flex-direction:column;min-width:80px;';
+  ['A — Studio Suite','B — Garden','C — Dune Villa'].forEach((label,i) => {
+    const t = ['A','B','C'][i];
+    const opt = document.createElement('button');
+    opt.textContent = label;
+    opt.style.cssText = 'padding:6px 10px;border:none;background:none;text-align:left;font-size:.6rem;cursor:pointer;font-family:\'DM Sans\',sans-serif;color:#120E08;';
+    opt.onmouseover = () => opt.style.background = '#F4EFE6';
+    opt.onmouseout  = () => opt.style.background = 'none';
+    opt.onclick = (e) => {
+      e.stopPropagation();
+      unitEl.dataset.type = t;
+      const badge = wrap.querySelector('.unit-type-badge');
+      if (badge) badge.textContent = t;
+      btn.textContent = t;
+      popup.remove();
+      btn._popupOpen = false;
+    };
+    popup.appendChild(opt);
+  });
+
+  btn._popupOpen = true;
+  const rect = btn.getBoundingClientRect();
+  popup.style.top  = (rect.bottom + window.scrollY + 2) + 'px';
+  popup.style.left = (rect.left  + window.scrollX)      + 'px';
+  document.body.appendChild(popup);
+
+  setTimeout(() => {
+    document.addEventListener('click', function close() {
+      popup.remove();
+      btn._popupOpen = false;
+      document.removeEventListener('click', close);
+    }, { once: true });
+  }, 10);
 }
 
 function _avCycle(unitEl) {
@@ -3721,7 +3755,7 @@ function avAddFloor() {
   fb.className = 'floor-block';
   fb.innerHTML = `
     <div class="av-floor-header">
-      <h5 class="av-floor-title" contenteditable="true">New Floor</h5>
+      <h5 class="av-floor-title" contenteditable="true">New Zone</h5>
       <button class="av-floor-del-btn" onclick="avDeleteFloor(this)">🗑 Delete Floor</button>
     </div>
     <div class="unit-row"></div>
@@ -4582,7 +4616,7 @@ function epAddFloor() {
   const legend = avSection.querySelector('.map-legend');
   const fb = document.createElement('div');
   fb.className = 'floor-block';
-  fb.innerHTML = `<h5>New Floor</h5><div class="unit-row"></div>`;
+  fb.innerHTML = `<h5>New Zone</h5><div class="unit-row"></div>`;
   avSection.insertBefore(fb, legend || null);
   epRenderAvailEditor();
   // Focus the new floor's title input
