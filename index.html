@@ -1537,7 +1537,131 @@ body.edit-on .page { top:40px; }
 /* ════════════════════════════════
    PAGE: EXISTING / RENTALS — Redesigned
 ════════════════════════════════ */
-#pg-existing .page-scroll { background: var(--panel); }
+#pg-existing .page-scroll { background: var(--panel); overflow-y: auto; }
+
+/* Hero Banner */
+.ex-hero {
+  background: var(--ink);
+  display: grid; grid-template-columns: 1fr 180px;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(184,149,90,.12);
+  position: relative; overflow: hidden;
+}
+.ex-hero-bg {
+  position: absolute; inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><rect width="60" height="60" fill="none" stroke="rgba(184,149,90,.04)" stroke-width="1"/></svg>');
+}
+.ex-hero-content { padding: 28px 36px; position: relative; }
+.ex-hero-content h2 { font-size: clamp(1.3rem,2vw,1.8rem) !important; margin: 8px 0 10px !important; }
+.ex-hero-content p { font-size: .75rem !important; }
+.ex-hero-stats {
+  display: flex; flex-direction: column; justify-content: center;
+  border-left: 1px solid rgba(184,149,90,.12);
+  position: relative; background: rgba(184,149,90,.03);
+}
+.ex-stat {
+  padding: 12px 20px; display: flex; flex-direction: column; gap: 2px;
+  flex: 1; justify-content: center;
+}
+.ex-stat strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; color: var(--gold-lt); line-height: 1;
+}
+.ex-stat span { font-size: .48rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(244,239,230,.35); }
+.ex-stat-divider { height: 1px; background: rgba(184,149,90,.08); }
+
+/* Property Cards */
+.ex-props {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--panel3);
+  margin: 20px;
+}
+.ex-prop-card {
+  background: var(--white); display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.ex-prop-img-wrap {
+  position: relative; height: 200px; overflow: hidden; flex-shrink: 0;
+}
+.ex-prop-img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.ex-prop-card:hover .ex-prop-img { transform: scale(1.03); }
+.ex-prop-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(12,10,6,.75) 0%, transparent 50%);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 12px 16px;
+}
+.ex-prop-badge {
+  align-self: flex-start;
+  font-size: .45rem; letter-spacing: 2px; text-transform: uppercase;
+  background: rgba(184,149,90,.25); backdrop-filter: blur(4px);
+  border: 1px solid rgba(184,149,90,.3); color: var(--gold-lt);
+  padding: 3px 8px;
+}
+.ex-prop-score { display: flex; align-items: center; gap: 8px; align-self: flex-end; }
+.ex-prop-score-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: var(--gold-lt); font-weight: 600; line-height: 1;
+}
+.booking-blue { color: #7ec8e3 !important; }
+.ex-prop-score-label { font-size: .5rem; color: rgba(255,255,255,.7); margin: 0; letter-spacing: 1px; text-transform: uppercase; }
+.ex-prop-score-sub { font-size: .48rem; color: rgba(255,255,255,.4); margin: 0; }
+
+.ex-prop-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.ex-prop-top { display: flex; flex-direction: column; gap: 4px; }
+.ex-prop-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--ink); margin: 0; }
+.ex-prop-loc { font-size: .6rem; color: var(--muted); margin: 0; }
+.ex-prop-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.ex-tag {
+  font-size: .46rem; letter-spacing: 1px; text-transform: uppercase;
+  border: 1px solid var(--panel3); color: var(--muted);
+  padding: 2px 6px;
+}
+
+.ex-prop-footer {
+  margin-top: auto; padding-top: 12px;
+  border-top: 1px solid var(--panel3);
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.ex-prop-price { display: flex; align-items: baseline; gap: 3px; }
+.ex-price-from { font-size: .52rem; color: var(--muted); }
+.ex-prop-price strong { font-size: 1.1rem; color: var(--ink); font-family: 'Cormorant Garamond', serif; }
+.ex-price-unit { font-size: .55rem; color: var(--muted); }
+.ex-book-btn {
+  margin-left: auto;
+  font-size: .52rem; letter-spacing: 1.5px; text-transform: uppercase;
+  border: 1px solid var(--ink); color: var(--ink);
+  padding: 7px 12px; text-decoration: none;
+  transition: all .2s; white-space: nowrap;
+}
+.ex-book-btn:hover { background: var(--ink); color: var(--cream); }
+
+/* Video Strip */
+.ex-video-strip {
+  display: grid; grid-template-columns: 180px 1fr;
+  margin: 0 20px 20px; border: 1px solid var(--panel3);
+  overflow: hidden; background: var(--ink); height: 180px;
+}
+.ex-video-label {
+  padding: 20px 18px; display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  border-right: 1px solid rgba(184,149,90,.12); flex-shrink: 0;
+}
+.ex-video-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; color: var(--cream); margin: 0; line-height: 1.3;
+}
+.ex-video-sub { font-size: .55rem; color: rgba(244,239,230,.4); margin: 0; line-height: 1.5; }
+
+@media (max-width: 768px) {
+  .ex-hero { grid-template-columns: 1fr; }
+  .ex-hero-stats { flex-direction: row; border-left: none; border-top: 1px solid rgba(184,149,90,.12); overflow-x: auto; }
+  .ex-stat { padding: 10px 14px; }
+  .ex-stat-divider { width: 1px; height: auto; margin: 8px 0; }
+  .ex-props { grid-template-columns: 1fr; margin: 12px; }
+  .ex-video-strip { grid-template-columns: 1fr; margin: 0 12px 12px; height: auto; }
+  .ex-video-label { border-right: none; border-bottom: 1px solid rgba(184,149,90,.12); }
+}
+
 
 /* Hero Banner */
 .ex-hero {
@@ -3299,9 +3423,6 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
                 <p class="review-text">"Even though we visited during the off-season, the swimming pool and jacuzzi were a huge hit. We highly recommend this villa for a memorable family getaway."</p>
                 <p class="review-author">— Verified Guest · Booking.com · Superior Villa</p>
               </div>
-              <div class="rv-nav">
-                <span class="rv-dot active" onclick="rvGo('rv-halk',0)"></span>
-
               <div class="rv-nav">
                 <span class="rv-dot active" onclick="rvGo('rv-halk',0)"></span>
                 <span class="rv-dot" onclick="rvGo('rv-halk',1)"></span>
