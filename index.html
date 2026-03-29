@@ -962,12 +962,15 @@ body.edit-on .page { top:40px; }
 .unit{
   width:46px;height:36px;display:flex;align-items:center;justify-content:center;
   font-size:.6rem;font-weight:500;cursor:pointer;border:1px solid;
-  transition:opacity .15s;letter-spacing:.5px;
+  transition:all .15s;letter-spacing:.5px;position:relative;flex-direction:column;gap:1px;
 }
-.unit:hover{opacity:.75;}
+.unit:hover{opacity:.85;transform:scale(1.05);}
 .unit.av{background:rgba(184,149,90,.12);color:var(--gold-dk);border-color:rgba(184,149,90,.3);cursor:pointer;}
-.unit.so{background:rgba(220,60,60,.07);color:#b83232;border-color:rgba(220,60,60,.2);cursor:pointer;}
+.unit.av:hover{background:rgba(184,149,90,.25);border-color:var(--gold);}
+.unit.so{background:rgba(200,40,40,.12);color:#c04040;border-color:rgba(200,40,40,.3);cursor:pointer;text-decoration:line-through;opacity:.7;}
+.unit.so::after{content:'SOLD';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);font-size:.32rem;letter-spacing:1px;color:#c04040;white-space:nowrap;}
 .unit.re{background:rgba(220,160,0,.08);color:#8B6800;border-color:rgba(220,160,0,.2);cursor:pointer;}
+.unit-pool{font-size:.45rem;line-height:1;}
 .map-legend{display:flex;gap:16px;margin-top:12px;}
 .leg{display:flex;align-items:center;gap:6px;font-size:.65rem;color:var(--muted);}
 .leg-dot{width:7px;height:7px;border-radius:50%;}
@@ -3315,16 +3318,48 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       </div>
     </div>
     <!-- Form -->
+    <!-- Form -->
     <div style="padding:22px 28px 26px;background:var(--white);">
-      <p style="color:var(--muted);font-size:.8rem;margin-bottom:16px;" id="unitModalDesc">Our sales team will contact you within 24 hours with full specifications and pricing.</p>
-      <form style="display:flex;flex-direction:column;gap:10px;" onsubmit="closeUnit();return false;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name"></div>
-          <div class="fg"><label>WhatsApp</label><input type="tel" placeholder="+1 ..."></div>
+      <p style="color:var(--muted);font-size:.75rem;margin-bottom:16px;line-height:1.6;" id="unitModalDesc">Our sales team will contact you within 24 hours.</p>
+
+      <!-- Available CTA -->
+      <div id="unit-cta-available">
+        <div style="background:rgba(184,149,90,.06);border:1px solid rgba(184,149,90,.2);padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1rem;">🏊</span>
+          <div>
+            <p style="font-size:.62rem;font-weight:600;color:var(--ink);margin:0 0 1px;">Private plunge pool included</p>
+            <p style="font-size:.58rem;color:var(--muted);margin:0;">Fully fitted, heated, exclusive to your unit</p>
+          </div>
         </div>
-        <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-        <button type="submit" class="btn-gold" style="margin-top:4px;width:100%;text-align:center;">Enquire About This Unit →</button>
-      </form>
+        <form style="display:flex;flex-direction:column;gap:10px;" onsubmit="closeUnit();return false;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+            <div class="fg"><label>WhatsApp</label><input type="tel" placeholder="+1 ..."></div>
+          </div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+          <button type="submit" class="btn-gold" style="margin-top:4px;width:100%;text-align:center;padding:12px;font-size:.62rem;letter-spacing:2px;">Reserve This Unit →</button>
+          <p style="font-size:.55rem;color:var(--muted);text-align:center;margin:0;">Fully refundable deposit · No commitment</p>
+        </form>
+      </div>
+
+      <!-- Sold CTA -->
+      <div id="unit-cta-sold" style="display:none;">
+        <div style="background:rgba(200,40,40,.05);border:1px solid rgba(200,40,40,.15);padding:14px 16px;margin-bottom:14px;">
+          <p style="font-size:.7rem;font-weight:600;color:#c04040;margin:0 0 4px;">This unit has been sold</p>
+          <p style="font-size:.65rem;color:var(--muted);margin:0;line-height:1.6;">Others have already chosen Serene. Similar units may still be available.</p>
+        </div>
+        <button onclick="closeUnit();goTo('contact',null);" class="btn-gold" style="width:100%;text-align:center;padding:12px;font-size:.62rem;letter-spacing:2px;">Find Available Units →</button>
+      </div>
+
+      <!-- Reserved CTA -->
+      <div id="unit-cta-reserved" style="display:none;">
+        <div style="background:rgba(220,160,0,.06);border:1px solid rgba(220,160,0,.2);padding:14px 16px;margin-bottom:14px;">
+          <p style="font-size:.7rem;font-weight:600;color:#8B6800;margin:0 0 4px;">This unit is reserved</p>
+          <p style="font-size:.65rem;color:var(--muted);margin:0;line-height:1.6;">Join the waiting list — if this reservation falls through, you'll be first to know.</p>
+        </div>
+        <button onclick="closeUnit();goTo('contact',null);" class="btn-gold" style="width:100%;text-align:center;padding:12px;font-size:.62rem;letter-spacing:2px;">Join Waiting List →</button>
+      </div>
+
     </div>
   </div>
 </div>
@@ -3637,6 +3672,11 @@ function avUnitClick(unitEl, name) {
 
   const modal = document.getElementById('unitModal');
   if (modal) modal.classList.add('open');
+
+  // Show correct CTA panel
+  document.getElementById('unit-cta-available').style.display = status === 'available' ? 'block' : 'none';
+  document.getElementById('unit-cta-sold').style.display      = status === 'sold'      ? 'block' : 'none';
+  document.getElementById('unit-cta-reserved').style.display  = status === 'reserved'  ? 'block' : 'none';
 }
 
 function avCycleType(btn) {
