@@ -8,7 +8,7 @@
     const d=document,s=d.createElement("script");s.type="module";
     s.src="https://w.behold.so/widget.js";d.head.append(s);
   })();
-</script><script type="module" src="https://w.behold.so/widget.js"></script>
+</script><script type="module" src="https://w.behold.so/widget.js"></script><script type="module" src="https://w.behold.so/widget.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ── */
@@ -2061,6 +2061,19 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     from { transform: translateY(100%); }
     to   { transform: translateY(0); }
   }
+</style><style>
+  body.site-edit-on [contenteditable="true"] {
+    cursor: text !important;
+    transition: outline .15s, background .15s;
+  }
+  body.site-edit-on [contenteditable="true"]:hover {
+    outline: 1px dashed rgba(184,149,90,.35) !important;
+    border-radius: 2px;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
 </style></head>
 <body class="site-edit-on">
 
@@ -2429,20 +2442,20 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
       <!-- SUBTABS -->
       <div class="proj-subtabs">
-        <button class="proj-subtab active" onclick="switchSub('ov',this)">Overview</button>
+        <button class="proj-subtab" onclick="switchSub('ov',this)">Overview</button>
         <button class="proj-subtab" onclick="switchSub('fp',this)">Plans &amp; Availability</button>
         <button class="proj-subtab" onclick="switchSub('pp',this)">Payment Plan</button>
         <button class="proj-subtab" onclick="switchSub('tl',this)">Timeline</button>
         <button class="proj-subtab" onclick="switchSub('loc',this)">Location</button>
         <button class="proj-subtab" onclick="switchSub('spec',this)">Specification</button>
-        <button class="proj-subtab roi-tab-btn" onclick="switchSub('roi',this)">💰 ROI Calculator</button>
+        <button class="proj-subtab roi-tab-btn active" onclick="switchSub('roi',this)">💰 ROI Calculator</button>
       </div>
 
       <!-- SUB CONTENT -->
       <div class="proj-sub">
 
         <!-- OVERVIEW -->
-        <div class="sub-panel active" id="sub-ov">
+        <div class="sub-panel" id="sub-ov">
 
           <!-- ① PRICE + PRE-SALE URGENCY -->
           <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--panel2);">
@@ -2845,7 +2858,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         </div>
 
         <!-- ROI CALCULATOR -->
-        <div class="sub-panel" id="sub-roi">
+        <div class="sub-panel active" id="sub-roi">
           <div class="roi-wrap">
 
             <div class="roi-header">
@@ -2991,9 +3004,9 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;" contenteditable="true" data-orig-text="Booking.com Reviews">Booking.com Reviews</p>
         <div class="rv-carousel" id="rv-halk">
           <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday.&quot;">"Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com">— Verified Guest · Booking.com</p></div>
-          <div class="rv-slide active"><p class="review-text" contenteditable="true" data-orig-text="&quot;Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!&quot;">"Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!"</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Deluxe Villa">— Verified Guest · Booking.com · Deluxe Villa</p></div>
-          <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location.&quot;">"Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Superior Villa">— Verified Guest · Booking.com · Superior Villa</p></div>
-          <div class="rv-nav"><span class="rv-dot" onclick="rvGo('rv-halk',0)"></span><span class="rv-dot active" onclick="rvGo('rv-halk',1)"></span><span class="rv-dot" onclick="rvGo('rv-halk',2)"></span></div>
+          <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!&quot;">"Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!"</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Deluxe Villa">— Verified Guest · Booking.com · Deluxe Villa</p></div>
+          <div class="rv-slide active"><p class="review-text" contenteditable="true" data-orig-text="&quot;Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location.&quot;">"Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Superior Villa">— Verified Guest · Booking.com · Superior Villa</p></div>
+          <div class="rv-nav"><span class="rv-dot" onclick="rvGo('rv-halk',0)"></span><span class="rv-dot" onclick="rvGo('rv-halk',1)"></span><span class="rv-dot active" onclick="rvGo('rv-halk',2)"></span></div>
         </div>
       </div>
 
@@ -3091,9 +3104,9 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;" contenteditable="true" data-orig-text="Booking.com Reviews">Booking.com Reviews</p>
         <div class="rv-carousel" id="rv-thess">
           <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped.&quot;">"The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped."</p><p class="review-author" contenteditable="true" data-orig-text="— George, Greece · Booking.com Verified ⭐ 9.1">— George, Greece · Booking.com Verified ⭐ 9.1</p></div>
-          <div class="rv-slide active"><p class="review-text" contenteditable="true" data-orig-text="&quot;The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again.&quot;">"The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · New Year stay">— Verified Guest · Booking.com · New Year stay</p></div>
-          <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center.&quot;">"Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Family stay">— Verified Guest · Booking.com · Family stay</p></div>
-          <div class="rv-nav"><span class="rv-dot" onclick="rvGo('rv-thess',0)"></span><span class="rv-dot active" onclick="rvGo('rv-thess',1)"></span><span class="rv-dot" onclick="rvGo('rv-thess',2)"></span></div>
+          <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again.&quot;">"The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · New Year stay">— Verified Guest · Booking.com · New Year stay</p></div>
+          <div class="rv-slide active"><p class="review-text" contenteditable="true" data-orig-text="&quot;Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center.&quot;">"Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Family stay">— Verified Guest · Booking.com · Family stay</p></div>
+          <div class="rv-nav"><span class="rv-dot" onclick="rvGo('rv-thess',0)"></span><span class="rv-dot" onclick="rvGo('rv-thess',1)"></span><span class="rv-dot active" onclick="rvGo('rv-thess',2)"></span></div>
         </div>
       </div>
 
@@ -5810,4 +5823,5 @@ function _pickImg() {}
       <div style="display:flex;gap:8px;align-items:center;">
         <button onclick="epDownload()" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:var(--gold);color:#120E08;border:none;padding:7px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;">⬇ Save &amp; Download</button>
         <button onclick="siteEditDeactivate();epClose();" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:none;color:rgba(244,239,230,.4);border:1px solid rgba(244,239,230,.15);padding:7px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">✕ Cancel</button>
-      </div></div></body></html>
+      </div></div>
+</body></html>
