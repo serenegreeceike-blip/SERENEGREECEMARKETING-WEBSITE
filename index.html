@@ -2417,6 +2417,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <button class="proj-subtab" onclick="switchSub('fp',this)">Plans &amp; Availability</button>
         <button class="proj-subtab" onclick="switchSub('pp',this)">Payment Plan</button>
         <button class="proj-subtab" onclick="switchSub('tl',this)">Timeline</button>
+        <button class="proj-subtab" onclick="switchSub('loc',this)">Location</button>
         <button class="proj-subtab" onclick="switchSub('spec',this)">Specification</button>
         <button class="proj-subtab roi-tab-btn" onclick="switchSub('roi',this)">💰 ROI Calculator</button>
       </div>
@@ -2747,6 +2748,64 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         </div>
 
         <!-- LOCATION -->
+        <!-- LOCATION -->
+        <div class="sub-panel" id="sub-loc">
+          <div style="padding:12px 0 24px;">
+            <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 6px;">Serene Dunes · Nea Iraklia, Halkidiki</p>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);margin:0 0 4px;font-weight:400;">A location that cannot be replicated.</h3>
+            <p style="font-size:.75rem;color:var(--muted);margin:0;">Steps from Sahara Beach Club · 30 min from Thessaloniki</p>
+          </div>
+
+          <!-- Distance grid -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--panel3);margin-bottom:20px;">
+            <div style="background:var(--ink);padding:16px 14px;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);line-height:1;">&lt;100m</span>
+              <span style="font-size:.62rem;color:var(--cream);font-weight:500;">Beach</span>
+              <span style="font-size:.55rem;color:rgba(244,239,230,.4);">Walk out the door</span>
+            </div>
+            <div style="background:var(--white);padding:16px 14px;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);line-height:1;">Adjacent</span>
+              <span style="font-size:.62rem;color:var(--ink);font-weight:500;">Sahara Beach Club</span>
+              <span style="font-size:.55rem;color:var(--muted);">Halkidiki's top beach resort</span>
+            </div>
+            <div style="background:var(--white);padding:16px 14px;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);line-height:1;">30 min</span>
+              <span style="font-size:.62rem;color:var(--ink);font-weight:500;">Thessaloniki</span>
+              <span style="font-size:.55rem;color:var(--muted);">Culture, dining, nightlife</span>
+            </div>
+            <div style="background:var(--white);padding:16px 14px;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);line-height:1;">25 min</span>
+              <span style="font-size:.62rem;color:var(--ink);font-weight:500;">Airport</span>
+              <span style="font-size:.55rem;color:var(--muted);">Macedonia International</span>
+            </div>
+            <div style="background:var(--white);padding:16px 14px;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);line-height:1;">15 min</span>
+              <span style="font-size:.62rem;color:var(--ink);font-weight:500;">Waterpark</span>
+              <span style="font-size:.55rem;color:var(--muted);">Perfect for families</span>
+            </div>
+            <div style="background:var(--white);padding:16px 14px;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);line-height:1;">5 min</span>
+              <span style="font-size:.62rem;color:var(--ink);font-weight:500;">Kallikratia Town</span>
+              <span style="font-size:.55rem;color:var(--muted);">Greek tavernas at night</span>
+            </div>
+            <div style="background:var(--white);padding:16px 14px;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);line-height:1;">1 hr</span>
+              <span style="font-size:.62rem;color:var(--ink);font-weight:500;">The Fingers</span>
+              <span style="font-size:.55rem;color:var(--muted);">Sithonia & Kassandra</span>
+            </div>
+            <div style="background:var(--white);padding:16px 14px;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);line-height:1;">∞</span>
+              <span style="font-size:.62rem;color:var(--ink);font-weight:500;">Thermaic Gulf Views</span>
+              <span style="font-size:.55rem;color:var(--muted);">A horizon you won't forget</span>
+            </div>
+          </div>
+
+          <!-- Map button -->
+          <a href="https://maps.app.goo.gl/tkQGEMSuiUe9SrHt8" target="_blank" class="btn-gold" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:.6rem;padding:10px 20px;">
+            🗺️ Open Exact Location in Google Maps →
+          </a>
+        </div>
+
         <!-- SPECIFICATION -->
         <div class="sub-panel" id="sub-spec">
           <div class="spec-tab-wrap">
