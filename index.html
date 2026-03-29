@@ -260,14 +260,15 @@ body:not(.sb-collapsed) #sb-toggle{
 }
 
 .page{
-  display:none;
+  display:none !important;
   position:absolute;
   inset:0;
   overflow:hidden;
   flex-direction:column;
+  visibility:hidden;
 }
 body.edit-on .page { top:40px; }
-.page.active{display:flex;}
+.page.active{display:flex !important; visibility:visible;}
 
 /* Scrollable inner */
 .page-scroll{
@@ -3498,19 +3499,44 @@ function sbToggle() {
 // Auto-collapse on page switch (desktop only)
 
 function goTo(id, navEl) {
-  Object.values(pageIds).forEach(p => document.getElementById(p).classList.remove('active'));
-  document.getElementById(pageIds[id]).classList.add('active');
+  // Hide ALL pages first
+  Object.values(pageIds).forEach(p => {
+    const el = document.getElementById(p);
+    if (el) el.classList.remove('active');
+  });
+  // Show target page
+  const target = document.getElementById(pageIds[id]);
+  if (target) target.classList.add('active');
+
+  // Sync desktop nav
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   if (navEl) navEl.classList.add('active');
   if (id === 'projects') {
-    document.getElementById('nav-projects').classList.add('active');
-    document.getElementById('projects-sub').classList.add('open');
+    const navP = document.getElementById('nav-projects');
+    if (navP) navP.classList.add('active');
+    const sub = document.getElementById('projects-sub');
+    if (sub) sub.classList.add('open');
   }
-  // sync mobile nav
+  // Sync mobile nav
   document.querySelectorAll('.mn-btn').forEach(b => b.classList.remove('active'));
   const mob = document.getElementById('mn-' + id);
   if (mob) mob.classList.add('active');
 }
+
+// ── INIT: ensure home is shown first ──
+document.addEventListener('DOMContentLoaded', function() {
+  // Make sure only home is active on load
+  Object.values(pageIds).forEach(p => {
+    const el = document.getElementById(p);
+    if (el) el.classList.remove('active');
+  });
+  const home = document.getElementById('pg-home');
+  if (home) home.classList.add('active');
+  const mnHome = document.getElementById('mn-home');
+  if (mnHome) mnHome.classList.add('active');
+  const navHome = document.querySelector('.nav-item[onclick*="home"]');
+  if (navHome) navHome.classList.add('active');
+});
 
 function mnGo(id, btn) {
   document.querySelectorAll('.mn-btn').forEach(b => b.classList.remove('active'));
