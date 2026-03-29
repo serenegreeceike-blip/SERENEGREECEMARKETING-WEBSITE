@@ -1659,7 +1659,7 @@ body.edit-on .page { top:40px; }
 #mobile-header {
   display: none;
   position: fixed; top: 0; left: 0; right: 0;
-  height: 52px; z-index: 700;
+  height: 52px; z-index: 800;
   background: var(--ink2);
   border-bottom: 1px solid rgba(184,149,90,.12);
   align-items: center;
@@ -2097,6 +2097,49 @@ body.av-edit .av-hint{color:var(--gold-dk);}
 body.av-edit .unit{cursor:pointer;}
 body.av-edit .unit:hover{opacity:.75;}
 body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
+
+/* ══ MOBILE: Inline grid fixes ══ */
+@media (max-width: 768px) {
+  #sb-toggle { display: none !important; }
+  .pdp-hero { position: relative !important; }
+
+  #pg-method div[style*="1fr 1fr"],
+  #sub-ov div[style*="1fr 1fr"],
+  #pg-existing div[style*="1fr 1fr"],
+  #sub-loc div[style*="1fr 1fr"],
+  #sub-pp div[style*="1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  #pg-method div[style*="repeat(4,1fr)"],
+  #sub-ov div[style*="repeat(4,1fr)"],
+  #sub-loc div[style*="repeat(4,1fr)"],
+  #pg-home div[style*="repeat(4,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  #pg-method div[style*="repeat(3,1fr)"],
+  #sub-ov div[style*="repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  #pg-method div[style*="padding:32px 44px"],
+  #pg-method div[style*="padding:36px 44px"] {
+    padding: 20px 16px !important;
+  }
+  .gal-editorial { grid-template-columns: 1fr !important; height: auto !important; }
+  .gal-big { height: 220px !important; }
+  .gal-stack { flex-direction: column !important; height: auto !important; }
+  .gal-half { height: 150px !important; }
+  #pg-existing [style*="height:240px"],
+  #pg-existing [style*="height:260px"] { height: 180px !important; }
+  .modal { width: 95vw !important; max-width: 95vw !important; }
+  #site-edit-bar { bottom: 60px !important; }
+  #urgency-bar { bottom: 60px !important; }
+}
+@media (max-width: 480px) {
+  #pg-method div[style*="repeat(4,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 </style>
 
 </head>
@@ -3455,7 +3498,6 @@ function sbToggle() {
 // Auto-collapse on page switch (desktop only)
 
 function goTo(id, navEl) {
-  // Close mobile sidebar
   Object.values(pageIds).forEach(p => document.getElementById(p).classList.remove('active'));
   document.getElementById(pageIds[id]).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -4327,7 +4369,7 @@ function showEditBar() {
         <button onclick="epDownload()" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:var(--gold);color:#120E08;border:none;padding:7px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;">⬇ Save & Download</button>
         <button onclick="siteEditDeactivate();epClose();" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:none;color:rgba(244,239,230,.4);border:1px solid rgba(244,239,230,.15);padding:7px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">✕ Cancel</button>
       </div>`;
-    bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a1610;border-top:1px solid rgba(184,149,90,.2);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;z-index:1000;font-family:"DM Sans",sans-serif;';
+    bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a1610;border-top:1px solid rgba(184,149,90,.2);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;z-index:1000;font-family:"DM Sans",sans-serif;'; if(window.innerWidth<=768){bar.style.bottom='60px';};
     document.body.appendChild(bar);
   }
   bar.style.display = 'flex';
