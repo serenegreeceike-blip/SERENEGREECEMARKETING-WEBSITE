@@ -8,7 +8,7 @@
     const d=document,s=d.createElement("script");s.type="module";
     s.src="https://w.behold.so/widget.js";d.head.append(s);
   })();
-</script><script type="module" src="https://w.behold.so/widget.js"></script>
+</script><script type="module" src="https://w.behold.so/widget.js"></script><script type="module" src="https://w.behold.so/widget.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ── */
@@ -2060,6 +2060,19 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     from { transform: translateY(100%); }
     to   { transform: translateY(0); }
   }
+</style><style>
+  body.site-edit-on [contenteditable="true"] {
+    cursor: text !important;
+    transition: outline .15s, background .15s;
+  }
+  body.site-edit-on [contenteditable="true"]:hover {
+    outline: 1px dashed rgba(184,149,90,.35) !important;
+    border-radius: 2px;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
 </style></head>
 <body class="site-edit-on">
 
@@ -2236,9 +2249,9 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     <div class="home-hero">
       <div class="home-hero-bg"></div>
       <div class="home-content">
-        <p class="home-eyebrow" contenteditable="true" data-orig-text="Greek Developer · Premium Managed Residences · Chalkidiki">Greek Developer · Premium Managed Residences · Chalkidiki</p>
+        <p class="home-eyebrow" contenteditable="true" data-orig-text="Greek Developer · Premium Managed Residences · Chalkidiki">&nbsp;</p>
         <h1 class="home-h1" contenteditable="true" data-orig-text="Choose Greece.We make itwork for you." style="">Own.Relax.Earn.</h1>
-        <p class="home-desc" contenteditable="true" data-orig-text="We develop, build, and fully manage premium residences across Greece's finest destinations — delivering a lifestyle asset and high-yield investment under one brand." style="">A new way to own property in Greece : premium residences ,fully managed, beautifully designed , and build to deliver both enjoyment and returns</p>
+        <p class="home-desc" contenteditable="true" data-orig-text="We develop, build, and fully manage premium residences across Greece's finest destinations — delivering a lifestyle asset and high-yield investment under one brand." style=""><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: rgb(255, 255, 255);">Beautifully designed Greek residences, fully managed to deliver effortless ownership, lifestyle enjoyment, and investment value.</span></p>
         <div class="home-btns">
           <button class="btn-gold" onclick="showProjects()">Explore Projects</button>
           <button class="btn-outline" style="border-color:rgba(184,149,90,.5);color:rgba(244,239,230,.7);" onclick="goTo('method',null)">The Serene Method</button>
@@ -2895,10 +2908,10 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <div style="background:#fff;margin:0 20px 0;padding:20px 22px;border:1px solid #E5DFCF;">
         <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;" contenteditable="true" data-orig-text="Booking.com Reviews">Booking.com Reviews</p>
         <div class="rv-carousel" id="rv-halk">
-          <div class="rv-slide active"><p class="review-text" contenteditable="true" data-orig-text="&quot;Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday.&quot;">"Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com">— Verified Guest · Booking.com</p></div>
-          <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!&quot;">"Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!"</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Deluxe Villa">— Verified Guest · Booking.com · Deluxe Villa</p></div>
+          <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday.&quot;">"Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com">— Verified Guest · Booking.com</p></div>
+          <div class="rv-slide active"><p class="review-text" contenteditable="true" data-orig-text="&quot;Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!&quot;">"Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!"</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Deluxe Villa">— Verified Guest · Booking.com · Deluxe Villa</p></div>
           <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location.&quot;">"Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Superior Villa">— Verified Guest · Booking.com · Superior Villa</p></div>
-          <div class="rv-nav"><span class="rv-dot active" onclick="rvGo('rv-halk',0)"></span><span class="rv-dot" onclick="rvGo('rv-halk',1)"></span><span class="rv-dot" onclick="rvGo('rv-halk',2)"></span></div>
+          <div class="rv-nav"><span class="rv-dot" onclick="rvGo('rv-halk',0)"></span><span class="rv-dot active" onclick="rvGo('rv-halk',1)"></span><span class="rv-dot" onclick="rvGo('rv-halk',2)"></span></div>
         </div>
       </div>
 
@@ -2995,10 +3008,10 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <div style="background:#fff;margin:0 20px 0;padding:20px 22px;border:1px solid #E5DFCF;border-top:none;">
         <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;" contenteditable="true" data-orig-text="Booking.com Reviews">Booking.com Reviews</p>
         <div class="rv-carousel" id="rv-thess">
-          <div class="rv-slide active"><p class="review-text" contenteditable="true" data-orig-text="&quot;The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped.&quot;">"The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped."</p><p class="review-author" contenteditable="true" data-orig-text="— George, Greece · Booking.com Verified ⭐ 9.1">— George, Greece · Booking.com Verified ⭐ 9.1</p></div>
-          <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again.&quot;">"The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · New Year stay">— Verified Guest · Booking.com · New Year stay</p></div>
+          <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped.&quot;">"The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped."</p><p class="review-author" contenteditable="true" data-orig-text="— George, Greece · Booking.com Verified ⭐ 9.1">— George, Greece · Booking.com Verified ⭐ 9.1</p></div>
+          <div class="rv-slide active"><p class="review-text" contenteditable="true" data-orig-text="&quot;The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again.&quot;">"The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · New Year stay">— Verified Guest · Booking.com · New Year stay</p></div>
           <div class="rv-slide"><p class="review-text" contenteditable="true" data-orig-text="&quot;Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center.&quot;">"Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center."</p><p class="review-author" contenteditable="true" data-orig-text="— Verified Guest · Booking.com · Family stay">— Verified Guest · Booking.com · Family stay</p></div>
-          <div class="rv-nav"><span class="rv-dot active" onclick="rvGo('rv-thess',0)"></span><span class="rv-dot" onclick="rvGo('rv-thess',1)"></span><span class="rv-dot" onclick="rvGo('rv-thess',2)"></span></div>
+          <div class="rv-nav"><span class="rv-dot" onclick="rvGo('rv-thess',0)"></span><span class="rv-dot active" onclick="rvGo('rv-thess',1)"></span><span class="rv-dot" onclick="rvGo('rv-thess',2)"></span></div>
         </div>
       </div>
 
@@ -5705,4 +5718,5 @@ function _pickImg() {}
       <div style="display:flex;gap:8px;align-items:center;">
         <button onclick="epDownload()" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:var(--gold);color:#120E08;border:none;padding:7px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;">⬇ Save &amp; Download</button>
         <button onclick="siteEditDeactivate();epClose();" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:none;color:rgba(244,239,230,.4);border:1px solid rgba(244,239,230,.15);padding:7px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">✕ Cancel</button>
-      </div></div></body></html>
+      </div></div>
+</body></html>
