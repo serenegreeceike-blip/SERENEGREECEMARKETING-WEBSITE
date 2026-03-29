@@ -2922,6 +2922,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     <div class="topbar">
       <span class="topbar-title">The Serene Experience</span>
       <div class="topbar-right">
+        <button id="exp-edit-btn" onclick="expToggleEdit()" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(184,149,90,.3);background:none;color:rgba(244,239,230,.5);padding:6px 14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-right:10px;">✏ Edit</button>
         <a href="https://www.instagram.com/serene.villas.halkidiki" target="_blank" class="btn-gold" style="padding:9px 20px;font-size:.6rem;text-decoration:none;">Follow on Instagram →</a>
       </div>
     </div>
@@ -5229,6 +5230,52 @@ function ytLoad(el) {
   iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
   wrap.innerHTML = '';
   wrap.appendChild(iframe);
+}
+
+// ── THE SERENE EXPERIENCE — INLINE EDIT ──
+let expEditMode = false;
+const EXP_SELECTORS = [
+  '#pg-existing h2','#pg-existing h3',
+  '#pg-existing p',
+  '#pg-existing .rv-slide p.review-text',
+];
+function expToggleEdit() {
+  expEditMode = !expEditMode;
+  const btn = document.getElementById('exp-edit-btn');
+  EXP_SELECTORS.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.contentEditable = expEditMode ? 'true' : 'false';
+      el.style.outline   = expEditMode ? '1px dashed rgba(184,149,90,.4)' : '';
+    });
+  });
+  if (expEditMode) {
+    btn.textContent = '✓ Done & Download';
+    btn.style.borderColor = 'var(--gold)';
+    btn.style.color = 'var(--gold-lt)';
+    btn.onclick = expSaveDone;
+  } else {
+    btn.textContent = '✏ Edit';
+    btn.style.borderColor = 'rgba(184,149,90,.3)';
+    btn.style.color = 'rgba(244,239,230,.5)';
+    btn.onclick = expToggleEdit;
+  }
+}
+function expSaveDone() {
+  expEditMode = false;
+  EXP_SELECTORS.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.contentEditable = 'false';
+      el.style.outline = '';
+    });
+  });
+  const btn = document.getElementById('exp-edit-btn');
+  btn.textContent = '✏ Edit';
+  btn.style.borderColor = 'rgba(184,149,90,.3)';
+  btn.style.color = 'rgba(244,239,230,.5)';
+  btn.onclick = expToggleEdit;
+  const blob = new Blob([document.documentElement.outerHTML], {type:'text/html'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'serene-v5.html'; a.click();
 }
 
 // ── PAYMENT PLAN EDIT ──
