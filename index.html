@@ -4206,18 +4206,126 @@ document.addEventListener('keydown', e => {
 
 <script>
 // ══════════════════════════════════════════════
-//  SERENE EDIT PANEL v5
-//  No file input — URL paste + live text inputs
+//  CLICK-TO-EDIT ENGINE
+// ══════════════════════════════════════════════
+
+const EDIT_SELECTORS = [
+  'h1','h2','h3','h4','h5','h6','p','li',
+  '.home-eyebrow','.home-desc',
+  '.hs strong','.hs span',
+  '.proj-card-name','.proj-card-loc',
+  '.tl-date','.tl-label','.tl-note',
+  '.pt-phase','.note-box',
+  '.ov-pillar-body h5','.ov-pillar-body p',
+  '.ov-desc-col h4','.ov-desc-col p',
+  '.loc-dist-num','.loc-dist-label','.loc-dist-note',
+  '.review-text','.review-author',
+  '#pg-existing h2','#pg-existing h3',
+  '#pg-existing p',
+].join(',');
+
+let siteEditOn = false;
+
+function siteEditActivate() {
+  siteEditOn = true;
+  document.body.classList.add('site-edit-on');
+
+  document.querySelectorAll(EDIT_SELECTORS).forEach(el => {
+    // skip buttons, inputs, scripts
+    if (['BUTTON','INPUT','TEXTAREA','SELECT','SCRIPT','STYLE'].includes(el.tagName)) return;
+    el.contentEditable = 'true';
+    el.dataset.origText = el.textContent;
+    el.addEventListener('focus', onEditFocus);
+    el.addEventListener('blur', onEditBlur);
+  });
+
+  // Show floating save bar
+  showEditBar();
+}
+
+function siteEditDeactivate() {
+  siteEditOn = false;
+  document.body.classList.remove('site-edit-on');
+
+  document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+    el.contentEditable = 'false';
+    el.removeEventListener('focus', onEditFocus);
+    el.removeEventListener('blur', onEditBlur);
+    el.style.outline = '';
+  });
+
+  hideEditBar();
+}
+
+function onEditFocus(e) {
+  e.target.style.outline = '2px solid rgba(184,149,90,.6)';
+  e.target.style.borderRadius = '2px';
+  e.target.style.backgroundColor = 'rgba(184,149,90,.05)';
+  // Show tooltip
+  const tip = document.getElementById('edit-tip');
+  if (tip) { tip.textContent = '✏ Click anywhere to edit · Enter to confirm'; tip.style.opacity='1'; }
+}
+
+function onEditBlur(e) {
+  e.target.style.outline = '';
+  e.target.style.borderRadius = '';
+  e.target.style.backgroundColor = '';
+}
+
+function showEditBar() {
+  let bar = document.getElementById('site-edit-bar');
+  if (!bar) {
+    bar = document.createElement('div');
+    bar.id = 'site-edit-bar';
+    bar.innerHTML = `
+      <span id="edit-tip" style="font-size:.55rem;color:rgba(244,239,230,.5);letter-spacing:1px;transition:opacity .3s;">✏ Click any text to edit it directly</span>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button onclick="epDownload()" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:var(--gold);color:#120E08;border:none;padding:7px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;">⬇ Save & Download</button>
+        <button onclick="siteEditDeactivate();epClose();" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:none;color:rgba(244,239,230,.4);border:1px solid rgba(244,239,230,.15);padding:7px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">✕ Cancel</button>
+      </div>`;
+    bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a1610;border-top:1px solid rgba(184,149,90,.2);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;z-index:1000;font-family:"DM Sans",sans-serif;';
+    document.body.appendChild(bar);
+  }
+  bar.style.display = 'flex';
+  bar.style.animation = 'slideUp .25s ease';
+}
+
+function hideEditBar() {
+  const bar = document.getElementById('site-edit-bar');
+  if (bar) bar.style.display = 'none';
+}
+
+// CSS for edit mode
+const editStyle = document.createElement('style');
+editStyle.textContent = `
+  body.site-edit-on [contenteditable="true"] {
+    cursor: text !important;
+    transition: outline .15s, background .15s;
+  }
+  body.site-edit-on [contenteditable="true"]:hover {
+    outline: 1px dashed rgba(184,149,90,.35) !important;
+    border-radius: 2px;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+`;
+document.head.appendChild(editStyle);
+
 // ══════════════════════════════════════════════
 
 function epOpen() {
   document.getElementById('ep-panel').classList.add('open');
   document.getElementById('editBtn').classList.add('ep-active');
-  epInit();
+  epInitFields();
+  // also activate click-to-edit
+  siteEditActivate();
 }
 function epClose() {
   document.getElementById('ep-panel').classList.remove('open');
   document.getElementById('editBtn').classList.remove('ep-active');
+  siteEditDeactivate();
 }
 function toggleEdit() {
   const panel = document.getElementById('ep-panel');
