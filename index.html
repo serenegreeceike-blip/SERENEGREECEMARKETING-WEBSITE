@@ -260,15 +260,14 @@ body:not(.sb-collapsed) #sb-toggle{
 }
 
 .page{
-  display:none !important;
+  display:none;
   position:absolute;
   inset:0;
   overflow:hidden;
   flex-direction:column;
-  visibility:hidden;
 }
 body.edit-on .page { top:40px; }
-.page.active{display:flex !important; visibility:visible;}
+.page.active{display:flex;}
 
 /* Scrollable inner */
 .page-scroll{
