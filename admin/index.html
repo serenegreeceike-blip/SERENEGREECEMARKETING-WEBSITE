@@ -1,12 +1,319 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serene Greece - Content Manager</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serene Greece — Content Manager</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f5f3ef; color: #1a1612; }
+  .login { max-width: 400px; margin: 120px auto; text-align: center; }
+  .login h1 { font-size: 1.4rem; margin-bottom: 8px; }
+  .login p { color: #888; font-size: .85rem; margin-bottom: 20px; }
+  .login input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: .9rem; margin-bottom: 12px; }
+  .login button { width: 100%; padding: 12px; background: #B8955A; color: #fff; border: none; border-radius: 6px; font-size: .9rem; cursor: pointer; }
+  .login button:hover { background: #9a7a48; }
+
+  .app { display: none; }
+  .topbar { background: #1a1612; color: #B8955A; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
+  .topbar h1 { font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; }
+  .topbar button { background: #B8955A; color: #fff; border: none; padding: 8px 18px; border-radius: 4px; cursor: pointer; font-size: .8rem; }
+  .topbar .logout { background: transparent; color: #B8955A; border: 1px solid #B8955A; margin-left: 10px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .section { background: #fff; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e8e4dd; }
+  .section-header { padding: 16px 20px; border-bottom: 1px solid #e8e4dd; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .section-header h2 { font-size: .95rem; font-weight: 600; }
+  .section-header span { color: #B8955A; font-size: 1.2rem; transition: transform .2s; }
+  .section-header.open span { transform: rotate(180deg); }
+  .section-body { padding: 20px; display: none; }
+  .section-body.open { display: block; }
+
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 6px; }
+  .field input, .field textarea { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: .9rem; font-family: inherit; }
+  .field textarea { min-height: 80px; resize: vertical; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: #B8955A; box-shadow: 0 0 0 2px rgba(184,149,90,.15); }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  .status { padding: 10px 20px; background: #e8f5e9; color: #2e7d32; border-radius: 6px; margin-bottom: 16px; display: none; }
+  .status.error { background: #ffebee; color: #c62828; }
+  .loading { opacity: .5; pointer-events: none; }
+</style>
 </head>
 <body>
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+
+<div class="login" id="loginPanel">
+  <h1>Serene Greece CMS</h1>
+  <p>Enter your GitHub Personal Access Token to manage content</p>
+  <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx">
+  <button onclick="doLogin()">Sign In</button>
+  <p style="margin-top:12px;font-size:.75rem;color:#aaa;">Token is stored in your browser only</p>
+</div>
+
+<div class="app" id="appPanel">
+  <div class="topbar">
+    <h1>Serene Greece CMS</h1>
+    <div>
+      <button onclick="saveContent()">💾 Save & Publish</button>
+      <button class="logout" onclick="doLogout()">Logout</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="status" id="status"></div>
+    <div id="editor"></div>
+  </div>
+</div>
+
+<script>
+const REPO = 'serenegreeceike-blip/SERENEGREECEMARKETING-WEBSITE';
+const FILE = 'content.json';
+const BRANCH = 'main';
+let content = {};
+let fileSha = '';
+
+function doLogin() {
+  const token = document.getElementById('tokenInput').value.trim();
+  if (!token) return;
+  localStorage.setItem('sg_token', token);
+  init();
+}
+function doLogout() {
+  localStorage.removeItem('sg_token');
+  location.reload();
+}
+
+async function ghFetch(path, opts = {}) {
+  const token = localStorage.getItem('sg_token');
+  const res = await fetch('https://api.github.com' + path, {
+    ...opts,
+    headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json', ...(opts.headers||{}) }
+  });
+  return res;
+}
+
+async function init() {
+  const token = localStorage.getItem('sg_token');
+  if (!token) { document.getElementById('loginPanel').style.display='block'; document.getElementById('appPanel').style.display='none'; return; }
+
+  document.getElementById('loginPanel').style.display = 'none';
+  document.getElementById('appPanel').style.display = 'block';
+
+  try {
+    const res = await ghFetch('/repos/' + REPO + '/contents/' + FILE + '?ref=' + BRANCH);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message);
+    fileSha = data.sha;
+    content = JSON.parse(atob(data.content.replace(/\n/g, '')));
+    renderEditor();
+    showStatus('Content loaded successfully', false);
+  } catch (e) {
+    showStatus('Error loading content: ' + e.message, true);
+  }
+}
+
+function showStatus(msg, isError) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status' + (isError ? ' error' : '');
+  el.style.display = 'block';
+  if (!isError) setTimeout(() => el.style.display = 'none', 3000);
+}
+
+async function saveContent() {
+  try {
+    document.getElementById('appPanel').classList.add('loading');
+    const body = JSON.stringify({
+      message: 'Update content via CMS',
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
+      sha: fileSha,
+      branch: BRANCH
+    });
+    const res = await ghFetch('/repos/' + REPO + '/contents/' + FILE, { method: 'PUT', body });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message);
+    fileSha = data.content.sha;
+    showStatus('Published successfully! Site will update in ~1 minute.', false);
+  } catch (e) {
+    showStatus('Error saving: ' + e.message, true);
+  } finally {
+    document.getElementById('appPanel').classList.remove('loading');
+  }
+}
+
+function renderEditor() {
+  const ed = document.getElementById('editor');
+  ed.innerHTML = '';
+
+  const sections = [
+    { key: 'hero', title: 'Hero Section', fields: [
+      { k: 'eyebrow', l: 'Eyebrow Text', t: 'input' },
+      { k: 'heading', l: 'Heading', t: 'input' },
+      { k: 'headingItalic', l: 'Heading (italic part)', t: 'input' },
+      { k: 'description', l: 'Description', t: 'textarea' },
+      { k: 'cta1', l: 'CTA Button 1', t: 'input' },
+      { k: 'cta2', l: 'CTA Button 2', t: 'input' },
+    ]},
+    { key: 'projects.dunes', title: 'Project — Serene Dunes', fields: [
+      { k: 'name', l: 'Name', t: 'input' },
+      { k: 'location', l: 'Location', t: 'input' },
+      { k: 'status', l: 'Status', t: 'input' },
+      { k: 'tagline', l: 'Tagline', t: 'input' },
+      { k: 'heroImage', l: 'Hero Image URL', t: 'input' },
+      { k: 'thumbImage', l: 'Thumbnail URL', t: 'input' },
+    ]},
+    { key: 'projects.olea', title: 'Project — Serene Olea', fields: [
+      { k: 'name', l: 'Name', t: 'input' },
+      { k: 'location', l: 'Location', t: 'input' },
+      { k: 'status', l: 'Status', t: 'input' },
+      { k: 'heroImage', l: 'Hero Image URL', t: 'input' },
+      { k: 'thumbImage', l: 'Thumbnail URL', t: 'input' },
+    ]},
+    { key: 'unitTypes.A', title: 'Unit Type A — Studio Suite', fields: [
+      { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
+      { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
+      { k: 'image', l: 'Image URL', t: 'input' },
+    ]},
+    { key: 'unitTypes.B', title: 'Unit Type B — Garden Residence', fields: [
+      { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
+      { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
+      { k: 'image', l: 'Image URL', t: 'input' },
+    ]},
+    { key: 'unitTypes.C', title: 'Unit Type C — Dune Villa', fields: [
+      { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
+      { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
+      { k: 'image', l: 'Image URL', t: 'input' },
+    ]},
+    { key: 'location', title: 'Location Section', fields: [
+      { k: 'tag', l: 'Tag', t: 'input' }, { k: 'title', l: 'Title', t: 'input' },
+      { k: 'description', l: 'Description', t: 'textarea' },
+    ]},
+    { key: 'investment', title: 'Investment Section', fields: [
+      { k: 'tag', l: 'Tag', t: 'input' }, { k: 'title', l: 'Title', t: 'input' },
+      { k: 'description', l: 'Description', t: 'textarea' },
+    ]},
+    { key: 'urgencyBar', title: 'Urgency Bar', fields: [
+      { k: 'message', l: 'Message', t: 'input' },
+      { k: 'availability', l: 'Availability Text', t: 'input' },
+      { k: 'available', l: 'Units Available', t: 'input' },
+      { k: 'total', l: 'Total Units', t: 'input' },
+      { k: 'cta', l: 'CTA Button Text', t: 'input' },
+    ]},
+    { key: 'contact', title: 'Contact Info', fields: [
+      { k: 'heading', l: 'Heading', t: 'input' },
+      { k: 'headingItalic', l: 'Heading (italic)', t: 'input' },
+      { k: 'description', l: 'Description', t: 'textarea' },
+      { k: 'phone', l: 'Phone', t: 'input' },
+      { k: 'phoneHours', l: 'Hours', t: 'input' },
+      { k: 'office1', l: 'Office 1', t: 'input' },
+      { k: 'office2', l: 'Office 2', t: 'input' },
+      { k: 'whatsapp', l: 'WhatsApp Number', t: 'input' },
+    ]},
+    { key: 'images', title: 'Images (URLs)', fields: [
+      { k: 'heroBg', l: 'Hero Background', t: 'input' },
+      { k: 'contactBg', l: 'Contact Background', t: 'input' },
+      { k: 'galleryMain', l: 'Gallery — Main', t: 'input' },
+      { k: 'galleryTopRight', l: 'Gallery — Top Right', t: 'input' },
+      { k: 'galleryMidRight', l: 'Gallery — Mid Right', t: 'input' },
+      { k: 'galleryBotRight', l: 'Gallery — Bottom Right', t: 'input' },
+      { k: 'floorPlanGround', l: 'Floor Plan — Ground', t: 'input' },
+      { k: 'floorPlan1st', l: 'Floor Plan — 1st Floor', t: 'input' },
+      { k: 'locationHalkidiki', l: 'Location — Halkidiki', t: 'input' },
+      { k: 'locationThess1', l: 'Location — Thessaloniki 1', t: 'input' },
+      { k: 'locationThess2', l: 'Location — Thessaloniki 2', t: 'input' },
+    ]},
+  ];
+
+  sections.forEach((sec, si) => {
+    const obj = getNestedObj(content, sec.key);
+    if (!obj) return;
+
+    const div = document.createElement('div');
+    div.className = 'section';
+    const header = document.createElement('div');
+    header.className = 'section-header' + (si === 0 ? ' open' : '');
+    header.innerHTML = '<h2>' + sec.title + '</h2><span>▼</span>';
+    header.onclick = function() {
+      this.classList.toggle('open');
+      this.nextElementSibling.classList.toggle('open');
+    };
+    div.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'section-body' + (si === 0 ? ' open' : '');
+
+    sec.fields.forEach(f => {
+      const fd = document.createElement('div');
+      fd.className = 'field';
+      const lbl = document.createElement('label');
+      lbl.textContent = f.l;
+      fd.appendChild(lbl);
+
+      const el = document.createElement(f.t === 'textarea' ? 'textarea' : 'input');
+      el.value = obj[f.k] !== undefined ? obj[f.k] : '';
+      el.oninput = function() { setNestedVal(content, sec.key + '.' + f.k, this.value); };
+      fd.appendChild(el);
+      body.appendChild(fd);
+    });
+
+    div.appendChild(body);
+    ed.appendChild(div);
+  });
+
+  // Advantages (list)
+  renderAdvantages(ed);
+}
+
+function renderAdvantages(ed) {
+  if (!content.advantages) return;
+  const div = document.createElement('div');
+  div.className = 'section';
+  const header = document.createElement('div');
+  header.className = 'section-header';
+  header.innerHTML = '<h2>Advantages (4 items)</h2><span>▼</span>';
+  header.onclick = function() { this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open'); };
+  div.appendChild(header);
+
+  const body = document.createElement('div');
+  body.className = 'section-body';
+
+  content.advantages.forEach((adv, i) => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'margin-bottom:16px;padding:12px;background:#faf9f7;border-radius:6px;';
+    wrap.innerHTML = '<div style="font-weight:600;margin-bottom:8px;font-size:.8rem;">Advantage ' + (i+1) + '</div>';
+
+    ['emoji', 'title', 'description'].forEach(k => {
+      const fd = document.createElement('div');
+      fd.className = 'field';
+      const lbl = document.createElement('label');
+      lbl.textContent = k.charAt(0).toUpperCase() + k.slice(1);
+      fd.appendChild(lbl);
+      const inp = document.createElement('input');
+      inp.value = adv[k] || '';
+      inp.oninput = function() { content.advantages[i][k] = this.value; };
+      fd.appendChild(inp);
+      wrap.appendChild(fd);
+    });
+    body.appendChild(wrap);
+  });
+  div.appendChild(body);
+  ed.appendChild(div);
+}
+
+function getNestedObj(obj, path) {
+  return path.split('.').reduce((o, k) => o && o[k], obj);
+}
+function setNestedVal(obj, path, val) {
+  const keys = path.split('.');
+  const last = keys.pop();
+  const target = keys.reduce((o, k) => o[k] = o[k] || {}, obj);
+  target[last] = val;
+}
+
+// Auto-login if token saved
+init();
+</script>
 </body>
 </html>
