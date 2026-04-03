@@ -59,6 +59,11 @@
   .unit-card.status-reserved { border-left-color: #f39c12; }
   .unit-card .unit-id { font-weight: 700; font-size: .8rem; margin-bottom: 6px; }
 
+  .tabs { display: flex; background: #2a2520; border-bottom: 2px solid #B8955A; position: sticky; top: 52px; z-index: 9; }
+  .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; color: #888; font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border: none; background: transparent; }
+  .tab.active { color: #B8955A; background: rgba(184,149,90,.1); }
+  .tab:hover { color: #B8955A; }
+
   .status { padding: 10px 20px; background: #e8f5e9; color: #2e7d32; border-radius: 6px; margin-bottom: 16px; display: none; }
   .status.error { background: #ffebee; color: #c62828; }
   .loading { opacity: .5; pointer-events: none; }
@@ -81,6 +86,11 @@
       <button onclick="saveContent()">💾 Save & Publish</button>
       <button class="logout" onclick="doLogout()">Logout</button>
     </div>
+  </div>
+  <div class="tabs" id="tabs">
+    <button class="tab active" onclick="switchTab('sitewide')">Sitewide</button>
+    <button class="tab" onclick="switchTab('dunes')">Serene Dunes</button>
+    <button class="tab" onclick="switchTab('olea')">Serene Olea</button>
   </div>
   <div class="container">
     <div class="status" id="status"></div>
@@ -164,88 +174,93 @@ async function saveContent() {
   }
 }
 
-function renderEditor() {
-  const ed = document.getElementById('editor');
-  ed.innerHTML = '';
+var currentTab = 'sitewide';
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  event.target.classList.add('active');
+  renderEditor();
+}
 
-  const sections = [
-    { key: 'hero', title: 'Hero Section', fields: [
-      { k: 'eyebrow', l: 'Eyebrow Text', t: 'input' },
-      { k: 'heading', l: 'Heading', t: 'input' },
-      { k: 'headingItalic', l: 'Heading (italic part)', t: 'input' },
-      { k: 'description', l: 'Description', t: 'textarea' },
-      { k: 'cta1', l: 'CTA Button 1', t: 'input' },
-      { k: 'cta2', l: 'CTA Button 2', t: 'input' },
-    ]},
-    { key: 'projects.dunes', title: 'Project — Serene Dunes', fields: [
-      { k: 'name', l: 'Name', t: 'input' },
-      { k: 'location', l: 'Location', t: 'input' },
-      { k: 'status', l: 'Status', t: 'input' },
-      { k: 'tagline', l: 'Tagline', t: 'input' },
-      { k: 'heroImage', l: 'Hero Image URL', t: 'input' },
-      { k: 'thumbImage', l: 'Thumbnail URL', t: 'input' },
-    ]},
-    { key: 'projects.olea', title: 'Project — Serene Olea', fields: [
-      { k: 'name', l: 'Name', t: 'input' },
-      { k: 'location', l: 'Location', t: 'input' },
-      { k: 'status', l: 'Status', t: 'input' },
-      { k: 'heroImage', l: 'Hero Image URL', t: 'input' },
-      { k: 'thumbImage', l: 'Thumbnail URL', t: 'input' },
-    ]},
-    { key: 'unitTypes.A', title: 'Unit Type A — Studio Suite', fields: [
-      { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
-      { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
-      { k: 'image', l: 'Image URL', t: 'input' },
-    ]},
-    { key: 'unitTypes.B', title: 'Unit Type B — Garden Residence', fields: [
-      { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
-      { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
-      { k: 'image', l: 'Image URL', t: 'input' },
-    ]},
-    { key: 'unitTypes.C', title: 'Unit Type C — Dune Villa', fields: [
-      { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
-      { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
-      { k: 'image', l: 'Image URL', t: 'input' },
-    ]},
-    { key: 'location', title: 'Location Section', fields: [
-      { k: 'tag', l: 'Tag', t: 'input' }, { k: 'title', l: 'Title', t: 'input' },
-      { k: 'description', l: 'Description', t: 'textarea' },
-    ]},
-    { key: 'investment', title: 'Investment Section', fields: [
-      { k: 'tag', l: 'Tag', t: 'input' }, { k: 'title', l: 'Title', t: 'input' },
-      { k: 'description', l: 'Description', t: 'textarea' },
-    ]},
-    { key: 'urgencyBar', title: 'Urgency Bar', fields: [
-      { k: 'message', l: 'Message', t: 'input' },
-      { k: 'availability', l: 'Availability Text', t: 'input' },
-      { k: 'available', l: 'Units Available', t: 'input' },
-      { k: 'total', l: 'Total Units', t: 'input' },
-      { k: 'cta', l: 'CTA Button Text', t: 'input' },
-    ]},
-    { key: 'contact', title: 'Contact Info', fields: [
-      { k: 'heading', l: 'Heading', t: 'input' },
-      { k: 'headingItalic', l: 'Heading (italic)', t: 'input' },
-      { k: 'description', l: 'Description', t: 'textarea' },
-      { k: 'phone', l: 'Phone', t: 'input' },
-      { k: 'phoneHours', l: 'Hours', t: 'input' },
-      { k: 'office1', l: 'Office 1', t: 'input' },
-      { k: 'office2', l: 'Office 2', t: 'input' },
-      { k: 'whatsapp', l: 'WhatsApp Number', t: 'input' },
-    ]},
-    { key: 'images', title: 'Images (URLs)', fields: [
-      { k: 'heroBg', l: 'Hero Background', t: 'input' },
-      { k: 'contactBg', l: 'Contact Background', t: 'input' },
-      { k: 'galleryMain', l: 'Gallery — Main', t: 'input' },
-      { k: 'galleryTopRight', l: 'Gallery — Top Right', t: 'input' },
-      { k: 'galleryMidRight', l: 'Gallery — Mid Right', t: 'input' },
-      { k: 'galleryBotRight', l: 'Gallery — Bottom Right', t: 'input' },
-      { k: 'floorPlanGround', l: 'Floor Plan — Ground', t: 'input' },
-      { k: 'floorPlan1st', l: 'Floor Plan — 1st Floor', t: 'input' },
-      { k: 'locationHalkidiki', l: 'Location — Halkidiki', t: 'input' },
-      { k: 'locationThess1', l: 'Location — Thessaloniki 1', t: 'input' },
-      { k: 'locationThess2', l: 'Location — Thessaloniki 2', t: 'input' },
-    ]},
-  ];
+function renderEditor() {
+  var ed = document.getElementById('editor');
+  ed.innerHTML = '';
+  var sections = [];
+
+  if (currentTab === 'sitewide') {
+    sections = [
+      { key: 'sitewide.hero', title: 'Hero Section', fields: [
+        { k: 'eyebrow', l: 'Eyebrow Text', t: 'input' },
+        { k: 'heading', l: 'Heading', t: 'input' },
+        { k: 'headingItalic', l: 'Heading (italic)', t: 'input' },
+        { k: 'description', l: 'Description', t: 'textarea' },
+        { k: 'cta1', l: 'CTA Button 1', t: 'input' },
+        { k: 'cta2', l: 'CTA Button 2', t: 'input' },
+      ]},
+      { key: 'sitewide.urgencyBar', title: 'Urgency Bar', fields: [
+        { k: 'message', l: 'Message', t: 'input' },
+        { k: 'availability', l: 'Availability Text', t: 'input' },
+        { k: 'available', l: 'Units Available', t: 'input' },
+        { k: 'total', l: 'Total Units', t: 'input' },
+        { k: 'cta', l: 'CTA Button Text', t: 'input' },
+      ]},
+      { key: 'sitewide.contact', title: 'Contact Info', fields: [
+        { k: 'heading', l: 'Heading', t: 'input' },
+        { k: 'headingItalic', l: 'Heading (italic)', t: 'input' },
+        { k: 'description', l: 'Description', t: 'textarea' },
+        { k: 'phone', l: 'Phone', t: 'input' },
+        { k: 'phoneHours', l: 'Hours', t: 'input' },
+        { k: 'office1', l: 'Office 1', t: 'input' },
+        { k: 'office2', l: 'Office 2', t: 'input' },
+        { k: 'whatsapp', l: 'WhatsApp Number', t: 'input' },
+      ]},
+      { key: 'sitewide.images', title: 'Site Images', fields: [
+        { k: 'heroBg', l: 'Hero Background', t: 'input' },
+        { k: 'contactBg', l: 'Contact Background', t: 'input' },
+      ]},
+    ];
+  } else {
+    var p = 'projects.' + currentTab;
+    sections = [
+      { key: p, title: 'Project Info', fields: [
+        { k: 'name', l: 'Name', t: 'input' }, { k: 'location', l: 'Location', t: 'input' },
+        { k: 'status', l: 'Status', t: 'input' }, { k: 'tagline', l: 'Tagline', t: 'input' },
+        { k: 'heroImage', l: 'Hero Image URL', t: 'input' }, { k: 'thumbImage', l: 'Thumbnail URL', t: 'input' },
+      ]},
+      { key: p+'.unitTypes.A', title: 'Unit Type A', fields: [
+        { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
+        { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
+        { k: 'image', l: 'Image URL', t: 'input' },
+      ]},
+      { key: p+'.unitTypes.B', title: 'Unit Type B', fields: [
+        { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
+        { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
+        { k: 'image', l: 'Image URL', t: 'input' },
+      ]},
+      { key: p+'.unitTypes.C', title: 'Unit Type C', fields: [
+        { k: 'label', l: 'Label', t: 'input' }, { k: 'name', l: 'Name', t: 'input' },
+        { k: 'specs', l: 'Specs', t: 'input' }, { k: 'price', l: 'Price', t: 'input' },
+        { k: 'image', l: 'Image URL', t: 'input' },
+      ]},
+      { key: p+'.locationSection', title: 'Location Section', fields: [
+        { k: 'tag', l: 'Tag', t: 'input' }, { k: 'title', l: 'Title', t: 'input' },
+        { k: 'description', l: 'Description', t: 'textarea' },
+      ]},
+      { key: p+'.investmentSection', title: 'Investment Section', fields: [
+        { k: 'tag', l: 'Tag', t: 'input' }, { k: 'title', l: 'Title', t: 'input' },
+        { k: 'description', l: 'Description', t: 'textarea' },
+      ]},
+      { key: p+'.images', title: 'Project Images', fields: [
+        { k: 'galleryMain', l: 'Gallery — Main', t: 'input' },
+        { k: 'galleryTopRight', l: 'Gallery — Top Right', t: 'input' },
+        { k: 'galleryMidRight', l: 'Gallery — Mid Right', t: 'input' },
+        { k: 'galleryBotRight', l: 'Gallery — Bottom Right', t: 'input' },
+        { k: 'floorPlanGround', l: 'Floor Plan — Ground', t: 'input' },
+        { k: 'floorPlan1st', l: 'Floor Plan — 1st Floor', t: 'input' },
+        { k: 'locationHalkidiki', l: 'Location — Halkidiki', t: 'input' },
+      ]},
+    ];
+  };
 
   sections.forEach((sec, si) => {
     const obj = getNestedObj(content, sec.key);
@@ -283,16 +298,19 @@ function renderEditor() {
     ed.appendChild(div);
   });
 
-  // Advantages (list)
-  renderAdvantages(ed);
-
-  // New list-based sections
-  renderUnits(ed);
-  renderPaymentPlan(ed);
-  renderTimeline(ed);
-  renderSpecifications(ed);
-  renderMethod(ed);
-  renderBooking(ed);
+  if (currentTab === 'sitewide') {
+    renderMethod(ed);
+    renderBooking(ed);
+  } else {
+    var pKey = 'projects.' + currentTab;
+    renderListSection(ed, pKey+'.advantages', 'Advantages', ['emoji','title','description']);
+    renderUnits(ed, pKey);
+    renderListSection(ed, pKey+'.paymentPlan.milestones', 'Payment Milestones', ['phase','percentage']);
+    renderListSection(ed, pKey+'.timeline.milestones', 'Timeline Milestones', ['date','label','status']);
+    renderListSection(ed, pKey+'.specifications.specs', 'Specifications', ['label','value']);
+    renderListSection(ed, pKey+'.specifications.inclusions', 'Inclusions', ['text','included']);
+    renderListSection(ed, pKey+'.locationDetail.distances', 'Location Distances', ['value','label','desc']);
+  }
 }
 
 function renderAdvantages(ed) {
@@ -383,25 +401,75 @@ function addSelect(container, label, value, options, onChange) {
 }
 
 /* ── 1. Units ── */
-function renderUnits(ed) {
-  if (!content.units) return;
-  var body = createSection(ed, 'Units (' + content.units.length + ' units)');
+function renderListSection(ed, path, title, fieldKeys) {
+  var arr = getNestedObj(content, path);
+  if (!arr || !Array.isArray(arr)) return;
+  var div = document.createElement('div'); div.className = 'section';
+  var header = document.createElement('div'); header.className = 'section-header';
+  header.innerHTML = '<h2>'+title+' ('+arr.length+')</h2><span>▼</span>';
+  header.onclick = function(){ this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open'); };
+  div.appendChild(header);
+  var body = document.createElement('div'); body.className = 'section-body';
+  function rebuildList() {
+    body.innerHTML = '';
+    var arr2 = getNestedObj(content, path);
+    arr2.forEach(function(item, i){
+      var card = document.createElement('div'); card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">'+title+' #'+(i+1)+'</div>';
+      fieldKeys.forEach(function(k){
+        var fd = document.createElement('div'); fd.className = 'field';
+        var lbl = document.createElement('label'); lbl.textContent = k;
+        fd.appendChild(lbl);
+        if (k === 'included') {
+          var sel = document.createElement('select');
+          sel.innerHTML = '<option value="true"'+(item[k]===true?' selected':'')+'>Yes</option><option value="false"'+(item[k]===false?' selected':'')+'>No</option>';
+          sel.onchange = function(){ item[k] = this.value === 'true'; };
+          fd.appendChild(sel);
+        } else {
+          var inp = document.createElement('input'); inp.value = item[k]||'';
+          inp.oninput = function(){ item[k] = this.value; };
+          fd.appendChild(inp);
+        }
+        card.appendChild(fd);
+      });
+      var rm = document.createElement('button'); rm.className = 'remove-btn'; rm.textContent = 'Remove';
+      rm.onclick = function(){ arr2.splice(i, 1); header.querySelector('h2').textContent = title+' ('+arr2.length+')'; rebuildList(); };
+      card.appendChild(rm);
+      body.appendChild(card);
+    });
+    var addBtn = document.createElement('button'); addBtn.className = 'add-btn'; addBtn.textContent = '+ Add';
+    addBtn.onclick = function(){
+      var newItem = {}; fieldKeys.forEach(function(k){ newItem[k] = k==='included'?true:''; });
+      arr2.push(newItem); header.querySelector('h2').textContent = title+' ('+arr2.length+')'; rebuildList();
+    };
+    body.appendChild(addBtn);
+  }
+  rebuildList();
+  div.appendChild(body);
+  ed.appendChild(div);
+}
+
+function renderUnits(ed, pKey) {
+  var units = getNestedObj(content, pKey+'.units');
+  if (!units) return;
+  var body = createSection(ed, 'Units (' + units.length + ' units)');
 
   function rebuild() {
     body.innerHTML = '';
     var grid = document.createElement('div');
     grid.className = 'unit-grid';
+    var units2 = getNestedObj(content, pKey+'.units');
 
-    content.units.forEach(function(unit, i) {
+    units2.forEach(function(unit, i) {
       var card = document.createElement('div');
       card.className = 'unit-card status-' + (unit.status || 'available');
       card.innerHTML = '<div class="unit-id">#' + (i + 1) + ' — ' + (unit.name || 'Unit') + '</div>';
 
-      addField(card, 'Zone', unit.zone, function(v) { content.units[i].zone = v; });
-      addField(card, 'Name', unit.name, function(v) { content.units[i].name = v; card.querySelector('.unit-id').textContent = '#' + (i+1) + ' — ' + v; });
-      addSelect(card, 'Type', unit.type, ['A', 'B', 'C'], function(v) { content.units[i].type = v; });
+      addField(card, 'Zone', unit.zone, function(v) { units2[i].zone = v; });
+      addField(card, 'Name', unit.name, function(v) { units2[i].name = v; card.querySelector('.unit-id').textContent = '#' + (i+1) + ' — ' + v; });
+      addSelect(card, 'Type', unit.type, ['A', 'B', 'C'], function(v) { units2[i].type = v; });
       addSelect(card, 'Status', unit.status, ['available', 'sold', 'reserved'], function(v) {
-        content.units[i].status = v;
+        units2[i].status = v;
         card.className = 'unit-card status-' + v;
       });
       grid.appendChild(card);
@@ -413,7 +481,7 @@ function renderUnits(ed) {
     addBtn.className = 'add-btn';
     addBtn.textContent = '+ Add Unit';
     addBtn.onclick = function() {
-      content.units.push({ zone: '', name: '', type: 'A', status: 'available' });
+      units2.push({ zone: '', name: '', type: 'A', status: 'available' });
       rebuild();
     };
     body.appendChild(addBtn);
