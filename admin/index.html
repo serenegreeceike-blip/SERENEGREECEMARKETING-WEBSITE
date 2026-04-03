@@ -331,6 +331,420 @@ function renderAdvantages(ed) {
   ed.appendChild(div);
 }
 
+/* ── Helper: create a collapsible section shell ── */
+function createSection(ed, title) {
+  const div = document.createElement('div');
+  div.className = 'section';
+  const header = document.createElement('div');
+  header.className = 'section-header';
+  header.innerHTML = '<h2>' + title + '</h2><span>▼</span>';
+  header.onclick = function() { this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open'); };
+  div.appendChild(header);
+  const body = document.createElement('div');
+  body.className = 'section-body';
+  div.appendChild(body);
+  ed.appendChild(div);
+  return body;
+}
+
+/* ── Helper: create a labelled input/textarea/select inside a container ── */
+function addField(container, label, value, onChange, type) {
+  type = type || 'input';
+  const fd = document.createElement('div');
+  fd.className = 'field';
+  const lbl = document.createElement('label');
+  lbl.textContent = label;
+  fd.appendChild(lbl);
+  const el = document.createElement(type === 'textarea' ? 'textarea' : 'input');
+  el.value = value || '';
+  el.oninput = function() { onChange(this.value); };
+  fd.appendChild(el);
+  container.appendChild(fd);
+  return fd;
+}
+
+function addSelect(container, label, value, options, onChange) {
+  const fd = document.createElement('div');
+  fd.className = 'field';
+  const lbl = document.createElement('label');
+  lbl.textContent = label;
+  fd.appendChild(lbl);
+  const sel = document.createElement('select');
+  options.forEach(function(opt) {
+    const o = document.createElement('option');
+    o.value = opt; o.textContent = opt.charAt(0).toUpperCase() + opt.slice(1);
+    if (opt === value) o.selected = true;
+    sel.appendChild(o);
+  });
+  sel.onchange = function() { onChange(this.value); };
+  fd.appendChild(sel);
+  container.appendChild(fd);
+  return fd;
+}
+
+/* ── 1. Units ── */
+function renderUnits(ed) {
+  if (!content.units) return;
+  var body = createSection(ed, 'Units (' + content.units.length + ' units)');
+
+  function rebuild() {
+    body.innerHTML = '';
+    var grid = document.createElement('div');
+    grid.className = 'unit-grid';
+
+    content.units.forEach(function(unit, i) {
+      var card = document.createElement('div');
+      card.className = 'unit-card status-' + (unit.status || 'available');
+      card.innerHTML = '<div class="unit-id">#' + (i + 1) + ' — ' + (unit.name || 'Unit') + '</div>';
+
+      addField(card, 'Zone', unit.zone, function(v) { content.units[i].zone = v; });
+      addField(card, 'Name', unit.name, function(v) { content.units[i].name = v; card.querySelector('.unit-id').textContent = '#' + (i+1) + ' — ' + v; });
+      addSelect(card, 'Type', unit.type, ['A', 'B', 'C'], function(v) { content.units[i].type = v; });
+      addSelect(card, 'Status', unit.status, ['available', 'sold', 'reserved'], function(v) {
+        content.units[i].status = v;
+        card.className = 'unit-card status-' + v;
+      });
+      grid.appendChild(card);
+    });
+
+    body.appendChild(grid);
+
+    var addBtn = document.createElement('button');
+    addBtn.className = 'add-btn';
+    addBtn.textContent = '+ Add Unit';
+    addBtn.onclick = function() {
+      content.units.push({ zone: '', name: '', type: 'A', status: 'available' });
+      rebuild();
+    };
+    body.appendChild(addBtn);
+  }
+  rebuild();
+}
+
+/* ── 2. Payment Plan ── */
+function renderPaymentPlan(ed) {
+  if (!content.paymentPlan) return;
+  var body = createSection(ed, 'Payment Plan');
+
+  function rebuild() {
+    body.innerHTML = '';
+    addField(body, 'Description', content.paymentPlan.description, function(v) { content.paymentPlan.description = v; }, 'textarea');
+    addField(body, 'Note', content.paymentPlan.note, function(v) { content.paymentPlan.note = v; }, 'textarea');
+
+    var title = document.createElement('div');
+    title.className = 'list-section-title';
+    title.textContent = 'Milestones';
+    body.appendChild(title);
+
+    var milestones = content.paymentPlan.milestones || [];
+    milestones.forEach(function(m, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Milestone ' + (i + 1) + '</div>';
+      addField(card, 'Phase', m.phase, function(v) { content.paymentPlan.milestones[i].phase = v; });
+      addField(card, 'Percentage', m.percentage, function(v) { content.paymentPlan.milestones[i].percentage = v; });
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.paymentPlan.milestones.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+
+    var addBtn = document.createElement('button');
+    addBtn.className = 'add-btn'; addBtn.textContent = '+ Add Milestone';
+    addBtn.onclick = function() {
+      if (!content.paymentPlan.milestones) content.paymentPlan.milestones = [];
+      content.paymentPlan.milestones.push({ phase: '', percentage: '' });
+      rebuild();
+    };
+    body.appendChild(addBtn);
+  }
+  rebuild();
+}
+
+/* ── 3. Timeline ── */
+function renderTimeline(ed) {
+  if (!content.timeline) return;
+  var body = createSection(ed, 'Timeline');
+
+  function rebuild() {
+    body.innerHTML = '';
+    addField(body, 'Description', content.timeline.description, function(v) { content.timeline.description = v; }, 'textarea');
+
+    var title = document.createElement('div');
+    title.className = 'list-section-title';
+    title.textContent = 'Milestones';
+    body.appendChild(title);
+
+    var milestones = content.timeline.milestones || [];
+    milestones.forEach(function(m, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Milestone ' + (i + 1) + '</div>';
+      addField(card, 'Date', m.date, function(v) { content.timeline.milestones[i].date = v; });
+      addField(card, 'Label', m.label, function(v) { content.timeline.milestones[i].label = v; });
+      addField(card, 'Status', m.status, function(v) { content.timeline.milestones[i].status = v; });
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.timeline.milestones.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+
+    var addBtn = document.createElement('button');
+    addBtn.className = 'add-btn'; addBtn.textContent = '+ Add Milestone';
+    addBtn.onclick = function() {
+      if (!content.timeline.milestones) content.timeline.milestones = [];
+      content.timeline.milestones.push({ date: '', label: '', status: '' });
+      rebuild();
+    };
+    body.appendChild(addBtn);
+  }
+  rebuild();
+}
+
+/* ── 4. Specifications ── */
+function renderSpecifications(ed) {
+  if (!content.specifications) return;
+  var body = createSection(ed, 'Specifications');
+
+  function rebuild() {
+    body.innerHTML = '';
+
+    /* --- Specs list --- */
+    var specTitle = document.createElement('div');
+    specTitle.className = 'list-section-title';
+    specTitle.textContent = 'Specs';
+    body.appendChild(specTitle);
+
+    var specs = content.specifications.specs || [];
+    specs.forEach(function(s, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Spec ' + (i + 1) + '</div>';
+      addField(card, 'Label', s.label, function(v) { content.specifications.specs[i].label = v; });
+      addField(card, 'Value', s.value, function(v) { content.specifications.specs[i].value = v; });
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.specifications.specs.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+
+    var addSpecBtn = document.createElement('button');
+    addSpecBtn.className = 'add-btn'; addSpecBtn.textContent = '+ Add Spec';
+    addSpecBtn.onclick = function() {
+      if (!content.specifications.specs) content.specifications.specs = [];
+      content.specifications.specs.push({ label: '', value: '' });
+      rebuild();
+    };
+    body.appendChild(addSpecBtn);
+
+    /* --- Inclusions list --- */
+    var inclTitle = document.createElement('div');
+    inclTitle.className = 'list-section-title';
+    inclTitle.textContent = 'Inclusions';
+    body.appendChild(inclTitle);
+
+    var inclusions = content.specifications.inclusions || [];
+    inclusions.forEach(function(inc, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Inclusion ' + (i + 1) + '</div>';
+      addField(card, 'Text', inc.text, function(v) { content.specifications.inclusions[i].text = v; });
+      addSelect(card, 'Included', inc.included ? 'yes' : 'no', ['yes', 'no'], function(v) { content.specifications.inclusions[i].included = (v === 'yes'); });
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.specifications.inclusions.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+
+    var addInclBtn = document.createElement('button');
+    addInclBtn.className = 'add-btn'; addInclBtn.textContent = '+ Add Inclusion';
+    addInclBtn.onclick = function() {
+      if (!content.specifications.inclusions) content.specifications.inclusions = [];
+      content.specifications.inclusions.push({ text: '', included: true });
+      rebuild();
+    };
+    body.appendChild(addInclBtn);
+  }
+  rebuild();
+}
+
+/* ── 5. Method Page ── */
+function renderMethod(ed) {
+  if (!content.method) return;
+  var body = createSection(ed, 'Method Page');
+
+  function rebuild() {
+    body.innerHTML = '';
+    addField(body, 'Hero Heading', content.method.heroHeading, function(v) { content.method.heroHeading = v; });
+    addField(body, 'Hero Description', content.method.heroDesc, function(v) { content.method.heroDesc = v; }, 'textarea');
+    addField(body, 'Old Way', content.method.oldWay, function(v) { content.method.oldWay = v; }, 'textarea');
+    addField(body, 'Serene Way', content.method.sereneWay, function(v) { content.method.sereneWay = v; }, 'textarea');
+
+    /* --- Pillars --- */
+    var pTitle = document.createElement('div');
+    pTitle.className = 'list-section-title';
+    pTitle.textContent = 'Pillars';
+    body.appendChild(pTitle);
+
+    var pillars = content.method.pillars || [];
+    pillars.forEach(function(p, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Pillar ' + (i + 1) + '</div>';
+      addField(card, 'Emoji', p.emoji, function(v) { content.method.pillars[i].emoji = v; });
+      addField(card, 'Title', p.title, function(v) { content.method.pillars[i].title = v; });
+      addField(card, 'Description', p.desc, function(v) { content.method.pillars[i].desc = v; }, 'textarea');
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.method.pillars.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+    var addPillarBtn = document.createElement('button');
+    addPillarBtn.className = 'add-btn'; addPillarBtn.textContent = '+ Add Pillar';
+    addPillarBtn.onclick = function() {
+      if (!content.method.pillars) content.method.pillars = [];
+      content.method.pillars.push({ emoji: '', title: '', desc: '' });
+      rebuild();
+    };
+    body.appendChild(addPillarBtn);
+
+    /* --- Benefits --- */
+    var bTitle = document.createElement('div');
+    bTitle.className = 'list-section-title';
+    bTitle.textContent = 'Benefits';
+    body.appendChild(bTitle);
+
+    var benefits = content.method.benefits || [];
+    benefits.forEach(function(b, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Benefit ' + (i + 1) + '</div>';
+      addField(card, 'Title', b.title, function(v) { content.method.benefits[i].title = v; });
+      addField(card, 'Description', b.desc, function(v) { content.method.benefits[i].desc = v; }, 'textarea');
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.method.benefits.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+    var addBenBtn = document.createElement('button');
+    addBenBtn.className = 'add-btn'; addBenBtn.textContent = '+ Add Benefit';
+    addBenBtn.onclick = function() {
+      if (!content.method.benefits) content.method.benefits = [];
+      content.method.benefits.push({ title: '', desc: '' });
+      rebuild();
+    };
+    body.appendChild(addBenBtn);
+
+    /* --- Steps --- */
+    var sTitle = document.createElement('div');
+    sTitle.className = 'list-section-title';
+    sTitle.textContent = 'Steps';
+    body.appendChild(sTitle);
+
+    var steps = content.method.steps || [];
+    steps.forEach(function(s, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Step ' + (i + 1) + '</div>';
+      addField(card, 'Number', s.num, function(v) { content.method.steps[i].num = v; });
+      addField(card, 'Title', s.title, function(v) { content.method.steps[i].title = v; });
+      addField(card, 'Description', s.desc, function(v) { content.method.steps[i].desc = v; }, 'textarea');
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.method.steps.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+    var addStepBtn = document.createElement('button');
+    addStepBtn.className = 'add-btn'; addStepBtn.textContent = '+ Add Step';
+    addStepBtn.onclick = function() {
+      if (!content.method.steps) content.method.steps = [];
+      content.method.steps.push({ num: '', title: '', desc: '' });
+      rebuild();
+    };
+    body.appendChild(addStepBtn);
+  }
+  rebuild();
+}
+
+/* ── 6. Booking Page ── */
+function renderBooking(ed) {
+  if (!content.booking) return;
+  var body = createSection(ed, 'Booking Page');
+
+  function rebuild() {
+    body.innerHTML = '';
+    addField(body, 'Heading', content.booking.heading, function(v) { content.booking.heading = v; });
+    addField(body, 'Description', content.booking.description, function(v) { content.booking.description = v; }, 'textarea');
+
+    /* --- Stay Options --- */
+    var soTitle = document.createElement('div');
+    soTitle.className = 'list-section-title';
+    soTitle.textContent = 'Stay Options';
+    body.appendChild(soTitle);
+
+    var stayOptions = content.booking.stayOptions || [];
+    stayOptions.forEach(function(opt, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Stay Option ' + (i + 1) + '</div>';
+      addField(card, 'Label', opt.label, function(v) { content.booking.stayOptions[i].label = v; });
+      addField(card, 'Duration', opt.duration, function(v) { content.booking.stayOptions[i].duration = v; });
+      addField(card, 'Description', opt.desc, function(v) { content.booking.stayOptions[i].desc = v; }, 'textarea');
+      addField(card, 'Price', opt.price, function(v) { content.booking.stayOptions[i].price = v; });
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.booking.stayOptions.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+    var addOptBtn = document.createElement('button');
+    addOptBtn.className = 'add-btn'; addOptBtn.textContent = '+ Add Stay Option';
+    addOptBtn.onclick = function() {
+      if (!content.booking.stayOptions) content.booking.stayOptions = [];
+      content.booking.stayOptions.push({ label: '', duration: '', desc: '', price: '' });
+      rebuild();
+    };
+    body.appendChild(addOptBtn);
+
+    /* --- Amenities --- */
+    var amTitle = document.createElement('div');
+    amTitle.className = 'list-section-title';
+    amTitle.textContent = 'Amenities';
+    body.appendChild(amTitle);
+
+    var amenities = content.booking.amenities || [];
+    amenities.forEach(function(a, i) {
+      var card = document.createElement('div');
+      card.className = 'list-card';
+      card.innerHTML = '<div class="list-card-title">Amenity ' + (i + 1) + '</div>';
+      addField(card, 'Emoji', a.emoji, function(v) { content.booking.amenities[i].emoji = v; });
+      addField(card, 'Title', a.title, function(v) { content.booking.amenities[i].title = v; });
+      addField(card, 'Description', a.desc, function(v) { content.booking.amenities[i].desc = v; }, 'textarea');
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
+      rmBtn.onclick = function() { content.booking.amenities.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
+      body.appendChild(card);
+    });
+    var addAmBtn = document.createElement('button');
+    addAmBtn.className = 'add-btn'; addAmBtn.textContent = '+ Add Amenity';
+    addAmBtn.onclick = function() {
+      if (!content.booking.amenities) content.booking.amenities = [];
+      content.booking.amenities.push({ emoji: '', title: '', desc: '' });
+      rebuild();
+    };
+    body.appendChild(addAmBtn);
+  }
+  rebuild();
+}
+
 function getNestedObj(obj, path) {
   return path.split('.').reduce((o, k) => o && o[k], obj);
 }
