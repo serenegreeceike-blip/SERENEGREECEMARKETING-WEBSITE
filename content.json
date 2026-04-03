@@ -1,71 +1,150 @@
 {
   "sitewide": {
     "hero": {
-      "eyebrow": "Greek Developer \u00b7 Premium Managed Residences \u00b7 Chalkidiki",
+      "eyebrow": "Greek Developer · Premium Managed Residences · Chalkidiki",
       "heading": "Xhoose Greece.",
       "headingItalic": "We make it work for you.",
-      "description": "We develop, build, and fully manage premium residences across Greece\u2019s finest destinations \u2014 delivering a lifestyle asset and high-yield investment under one brand.",
+      "description": "We develop, build, and fully manage premium residences across Greece’s finest destinations — delivering a lifestyle asset and high-yield investment under one brand.",
       "cta1": "Explore Projects",
       "cta2": "The Serene Method"
     },
     "contact": {
-      "heading": "Let\u2019s start",
+      "heading": "Let’s start",
       "headingItalic": "the conversation",
       "description": "Our investment team will respond within one business day with a tailored presentation.",
       "phone": "+30 210 000 0000",
-      "phoneHours": "7 days \u00b7 9am\u20138pm EET",
-      "office1": "Athens HQ \u00b7 Kolonaki",
+      "phoneHours": "7 days · 9am–8pm EET",
+      "office1": "Athens HQ · Kolonaki",
       "office2": "Chalkidiki Sales Office",
       "social1": "@serene.villas.halkidiki",
-      "social2": "@serenevillas \u00b7 Airbnb",
+      "social2": "@serenevillas · Airbnb",
       "whatsapp": "+302100000000"
     },
     "method": {
       "heroHeading": "Own. Stay. Earn.",
-      "heroDesc": "Most holiday properties either work for you or you enjoy them. Serene is built to do both \u2014 at the same time.",
+      "heroDesc": "Most holiday properties either work for you or you enjoy them. Serene is built to do both — at the same time.",
       "oldWay": "Buy a holiday property. Deal with multiple contractors, interior designers, management companies, rental agencies. Coordinate everything yourself. Hope it works out.",
-      "sereneWay": "One company. Developer, builder, interior designer, and manager \u2014 all under one roof. You choose your unit. We handle everything else, forever.",
+      "sereneWay": "One company. Developer, builder, interior designer, and manager — all under one roof. You choose your unit. We handle everything else, forever.",
       "pillars": [
-        {"emoji": "\ud83c\udfd7\ufe0f", "title": "Developer & Builder", "desc": "We design, permit, and build the entire compound to one unified standard. No subcontractors passing the blame."},
-        {"emoji": "\ud83c\udfa8", "title": "Interior & Fit-Out", "desc": "Designed by leading Greek architects and interior designers. Every unit finished and furnished to hotel specification \u2014 down to the last detail."},
-        {"emoji": "\ud83c\udfe8", "title": "Hotel-Grade Management", "desc": "Check-in, housekeeping, maintenance, guest services, rental marketing \u2014 managed by Serene, to Serene standards, permanently."}
+        {
+          "emoji": "🏗️",
+          "title": "Developer & Builder",
+          "desc": "We design, permit, and build the entire compound to one unified standard. No subcontractors passing the blame."
+        },
+        {
+          "emoji": "🎨",
+          "title": "Interior & Fit-Out",
+          "desc": "Designed by leading Greek architects and interior designers. Every unit finished and furnished to hotel specification — down to the last detail."
+        },
+        {
+          "emoji": "🏨",
+          "title": "Hotel-Grade Management",
+          "desc": "Check-in, housekeeping, maintenance, guest services, rental marketing — managed by Serene, to Serene standards, permanently."
+        }
       ],
       "benefits": [
-        {"title": "Full legal ownership", "desc": "Title deed in your name. Freehold property under Greek law."},
-        {"title": "Personal use rights", "desc": "Book your unit as an owner anytime through our dedicated owner portal."},
-        {"title": "Shared rental income", "desc": "Revenue and costs distributed across all owners \u2014 transparently, by unit type."},
-        {"title": "Zero operational burden", "desc": "No guests to manage, no repairs to coordinate, no invoices to chase."}
+        {
+          "title": "Full legal ownership",
+          "desc": "Title deed in your name. Freehold property under Greek law."
+        },
+        {
+          "title": "Personal use rights",
+          "desc": "Book your unit as an owner anytime through our dedicated owner portal."
+        },
+        {
+          "title": "Shared rental income",
+          "desc": "Revenue and costs distributed across all owners — transparently, by unit type."
+        },
+        {
+          "title": "Zero operational burden",
+          "desc": "No guests to manage, no repairs to coordinate, no invoices to chase."
+        }
       ],
       "steps": [
-        {"num": "01", "title": "Choose Your Unit", "desc": "Select type, zone, and view. Reserve with a fully refundable deposit."},
-        {"num": "02", "title": "Sign & Pay by Milestones", "desc": "Payments tied to construction progress \u2014 not arbitrary deadlines."},
-        {"num": "03", "title": "Receive Keys", "desc": "Fully furnished, styled, and guest-ready. Not a single detail left to you."},
-        {"num": "04", "title": "Start Earning", "desc": "Management begins on day one. You receive income. We handle everything."}
+        {
+          "num": "01",
+          "title": "Choose Your Unit",
+          "desc": "Select type, zone, and view. Reserve with a fully refundable deposit."
+        },
+        {
+          "num": "02",
+          "title": "Sign & Pay by Milestones",
+          "desc": "Payments tied to construction progress — not arbitrary deadlines."
+        },
+        {
+          "num": "03",
+          "title": "Receive Keys",
+          "desc": "Fully furnished, styled, and guest-ready. Not a single detail left to you."
+        },
+        {
+          "num": "04",
+          "title": "Start Earning",
+          "desc": "Management begins on day one. You receive income. We handle everything."
+        }
       ]
     },
     "booking": {
       "heading": "Stay in a Serene property. Experience what investors own.",
-      "description": "Whether you\u2019re planning a summer escape in Halkidiki or a city break in Thessaloniki \u2014 our fully managed, hotel-standard villas and apartments are available to book directly.",
+      "description": "Whether you’re planning a summer escape in Halkidiki or a city break in Thessaloniki — our fully managed, hotel-standard villas and apartments are available to book directly.",
       "stayOptions": [
-        {"label": "Weekend Escape", "duration": "2\u20134 Nights", "desc": "Perfect for a quick coastal getaway. Arrive Friday, leave Monday \u2014 fully prepared, hotel-standard villa waiting for you.", "price": "from \u20ac650 / night"},
-        {"label": "Weekly Stay", "duration": "5\u201310 Nights", "desc": "The most popular option. A full week in Halkidiki with private pool, steps from Sahara Beach, and 24/7 Serene hospitality.", "price": "Weekly packages available"},
-        {"label": "Mid-Term \u00b7 Monthly", "duration": "30\u201390 Nights", "desc": "For digital nomads, extended families, or seasonal residents. Our Thessaloniki apartments offer exceptional value for longer stays.", "price": "Discounted monthly rates"}
+        {
+          "label": "Weekend Escape",
+          "duration": "2–4 Nights",
+          "desc": "Perfect for a quick coastal getaway. Arrive Friday, leave Monday — fully prepared, hotel-standard villa waiting for you.",
+          "price": "from €650 / night"
+        },
+        {
+          "label": "Weekly Stay",
+          "duration": "5–10 Nights",
+          "desc": "The most popular option. A full week in Halkidiki with private pool, steps from Sahara Beach, and 24/7 Serene hospitality.",
+          "price": "Weekly packages available"
+        },
+        {
+          "label": "Mid-Term · Monthly",
+          "duration": "30–90 Nights",
+          "desc": "For digital nomads, extended families, or seasonal residents. Our Thessaloniki apartments offer exceptional value for longer stays.",
+          "price": "Discounted monthly rates"
+        }
       ],
       "amenities": [
-        {"emoji": "\ud83c\udfca", "title": "Private Pool", "desc": "Exclusively yours for the entire stay"},
-        {"emoji": "\ud83d\udece", "title": "24/7 Hospitality Team", "desc": "On-call for anything you need"},
-        {"emoji": "\ud83c\udfe0", "title": "Fully Furnished & Equipped", "desc": "Hotel-standard linens, kitchen, A/C"},
-        {"emoji": "\ud83d\udccd", "title": "Prime Location", "desc": "100m from beach \u00b7 Next to Sahara Club"},
-        {"emoji": "\ud83d\ude97", "title": "Free Parking", "desc": "Private garage included"},
-        {"emoji": "\ud83e\uddf9", "title": "Housekeeping", "desc": "Mid-stay cleaning on weekly+ bookings"}
+        {
+          "emoji": "🏊",
+          "title": "Private Pool",
+          "desc": "Exclusively yours for the entire stay"
+        },
+        {
+          "emoji": "🛎",
+          "title": "24/7 Hospitality Team",
+          "desc": "On-call for anything you need"
+        },
+        {
+          "emoji": "🏠",
+          "title": "Fully Furnished & Equipped",
+          "desc": "Hotel-standard linens, kitchen, A/C"
+        },
+        {
+          "emoji": "📍",
+          "title": "Prime Location",
+          "desc": "100m from beach · Next to Sahara Club"
+        },
+        {
+          "emoji": "🚗",
+          "title": "Free Parking",
+          "desc": "Private garage included"
+        },
+        {
+          "emoji": "🧹",
+          "title": "Housekeeping",
+          "desc": "Mid-stay cleaning on weekly+ bookings"
+        }
       ]
     },
     "urgencyBar": {
-      "message": "Serene Dunes \u2014 Pre-Sale Closing Soon",
-      "availability": "14 of 25 units sold or reserved \u00b7 Pre-sale pricing ends Q3 2025",
+      "message": "Serene Dunes — Pre-Sale Closing Soon",
+      "availability": "14 of 25 units sold or reserved · Pre-sale pricing ends Q3 2025",
       "available": 11,
       "total": 25,
-      "cta": "See Available Units \u2192"
+      "cta": "See Available Units →"
     },
     "images": {
       "heroBg": "images/img-01.jpg",
@@ -77,136 +156,355 @@
       "name": "Serene Dunes",
       "location": "Halkidiki, Greece",
       "status": "Now Selling",
-      "tagline": "Halkidiki, Greece \u00b7 Now Selling",
+      "tagline": "Halkidiki, Greece · Now Selling",
       "heroImage": "images/img-02.jpg",
       "thumbImage": "images/img-02.jpg",
       "unitTypes": {
         "A": {
           "label": "Type A",
           "name": "SUPERIOR VILLA TYPE A",
-          "specs": "120 m\u00b2 \u00b7 3bed \u00b7 2 bath \u00b7 Private plunge pool \u00b7 OUTSUDE KITCHEN",
-          "price": "From \u20ac280,000",
+          "specs": "120 m² · 3bed · 2 bath · Private plunge pool · OUTSUDE KITCHEN",
+          "price": "From €280,000",
           "image": "images/img-02.jpg"
         },
         "B": {
           "label": "Type B",
           "name": "Garden Residence",
-          "specs": "90 m\u00b2 \u00b7 2 bed \u00b7 2 bath \u00b7 Private pool \u00b7 Garden terrace \u00b7 Sleeps 4",
-          "price": "From \u20ac420,000",
+          "specs": "90 m² · 2 bed · 2 bath · Private pool · Garden terrace · Sleeps 4",
+          "price": "From €420,000",
           "image": "images/img-09.jpg"
         },
         "C": {
           "label": "Type C",
           "name": "Dune Villa",
-          "specs": "140 m\u00b2 \u00b7 3 bed \u00b7 3 bath \u00b7 Infinity pool \u00b7 Panoramic view \u00b7 Sleeps 6",
-          "price": "From \u20ac680,000",
+          "specs": "140 m² · 3 bed · 3 bath · Infinity pool · Panoramic view · Sleeps 6",
+          "price": "From €680,000",
           "image": "images/img-09.jpg"
         }
       },
       "advantages": [
         {
-          "emoji": "\ud83d\udccd",
+          "emoji": "📍",
           "title": "Prime Location",
-          "description": "Kallikratia gateway \u00b7 steps from Sahara Beach Club"
+          "description": "Kallikratia gateway · steps from Sahara Beach Club"
         },
         {
-          "emoji": "\ud83c\udfe8",
+          "emoji": "🏨",
           "title": "Fully Managed",
-          "description": "~5% net yield \u00b7 hands-off \u00b7 managed from day one"
+          "description": "~5% net yield · hands-off · managed from day one"
         },
         {
-          "emoji": "\ud83c\udfd7\ufe0f",
+          "emoji": "🏗️",
           "title": "Developer-Direct",
-          "description": "No middlemen \u00b7 transparent pricing \u00b7 foundation to keys"
+          "description": "No middlemen · transparent pricing · foundation to keys"
         },
         {
-          "emoji": "\ud83c\udf0a",
+          "emoji": "🌊",
           "title": "Beach Access",
-          "description": "Adjacent to Sahara Beach Club \u00b7 Halkidiki\u2019s finest"
+          "description": "Adjacent to Sahara Beach Club · Halkidiki’s finest"
         }
       ],
       "locationSection": {
         "tag": "The Location",
         "title": "Kallikratia, Halkidiki",
-        "description": "Kallikratia sits at the gateway to Halkidiki \u2014 where the Thermaic Gulf meets the Aegean peninsula. Established, authentic, and 30 minutes from Thessaloniki \u2014 without the crowds of the tourist south."
+        "description": "Kallikratia sits at the gateway to Halkidiki — where the Thermaic Gulf meets the Aegean peninsula. Established, authentic, and 30 minutes from Thessaloniki — without the crowds of the tourist south."
       },
       "investmentSection": {
         "tag": "The Investment",
         "title": "Real Yield. Real Management.",
-        "description": "Greek real estate is appreciating at 12\u201318% YoY. Buy at pre-sale developer pricing, receive rental income from operation launch, and benefit from capital growth at handover \u2014 all without lifting a finger."
+        "description": "Greek real estate is appreciating at 12–18% YoY. Buy at pre-sale developer pricing, receive rental income from operation launch, and benefit from capital growth at handover — all without lifting a finger."
       },
       "units": [
-        {"zone": "Zone 3 \u2014 Premium Sea View", "name": "3A", "type": "A", "status": "sold"},
-        {"zone": "Zone 3 \u2014 Premium Sea View", "name": "3B", "type": "A", "status": "sold"},
-        {"zone": "Zone 3 \u2014 Premium Sea View", "name": "3C", "type": "B", "status": "available"},
-        {"zone": "Zone 3 \u2014 Premium Sea View", "name": "3D", "type": "B", "status": "available"},
-        {"zone": "Zone 3 \u2014 Premium Sea View", "name": "3E", "type": "C", "status": "sold"},
-        {"zone": "Zone 3 \u2014 Premium Sea View", "name": "3F", "type": "B", "status": "available"},
-        {"zone": "Zone 3 \u2014 Premium Sea View", "name": "3G", "type": "A", "status": "reserved"},
-        {"zone": "Zone 3 \u2014 Premium Sea View", "name": "3H", "type": "C", "status": "available"},
-        {"zone": "Zone 2 \u2014 Garden View", "name": "2A", "type": "B", "status": "available"},
-        {"zone": "Zone 2 \u2014 Garden View", "name": "2B", "type": "A", "status": "reserved"},
-        {"zone": "Zone 2 \u2014 Garden View", "name": "2C", "type": "C", "status": "sold"},
-        {"zone": "Zone 2 \u2014 Garden View", "name": "2D", "type": "B", "status": "available"},
-        {"zone": "Zone 2 \u2014 Garden View", "name": "2E", "type": "A", "status": "available"},
-        {"zone": "Zone 2 \u2014 Garden View", "name": "2F", "type": "C", "status": "reserved"},
-        {"zone": "Zone 2 \u2014 Garden View", "name": "2G", "type": "B", "status": "available"},
-        {"zone": "Zone 2 \u2014 Garden View", "name": "2H", "type": "A", "status": "sold"},
-        {"zone": "Zone 1 \u2014 Entry Level", "name": "1A", "type": "A", "status": "sold"},
-        {"zone": "Zone 1 \u2014 Entry Level", "name": "1B", "type": "B", "status": "sold"},
-        {"zone": "Zone 1 \u2014 Entry Level", "name": "1C", "type": "A", "status": "sold"},
-        {"zone": "Zone 1 \u2014 Entry Level", "name": "1D", "type": "C", "status": "available"},
-        {"zone": "Zone 1 \u2014 Entry Level", "name": "1E", "type": "B", "status": "sold"},
-        {"zone": "Zone 1 \u2014 Entry Level", "name": "1F", "type": "A", "status": "sold"},
-        {"zone": "Zone 1 \u2014 Entry Level", "name": "1G", "type": "C", "status": "available"},
-        {"zone": "Zone 1 \u2014 Entry Level", "name": "1H", "type": "B", "status": "sold"}
+        {
+          "zone": "Zone 3 — Premium Sea View",
+          "name": "3A",
+          "type": "A",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 3 — Premium Sea View",
+          "name": "3B",
+          "type": "A",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 3 — Premium Sea View",
+          "name": "3C",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 3 — Premium Sea View",
+          "name": "3D",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 3 — Premium Sea View",
+          "name": "3E",
+          "type": "C",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 3 — Premium Sea View",
+          "name": "3F",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 3 — Premium Sea View",
+          "name": "3G",
+          "type": "A",
+          "status": "reserved"
+        },
+        {
+          "zone": "Zone 3 — Premium Sea View",
+          "name": "3H",
+          "type": "C",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 2 — Garden View",
+          "name": "2A",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 2 — Garden View",
+          "name": "2B",
+          "type": "A",
+          "status": "reserved"
+        },
+        {
+          "zone": "Zone 2 — Garden View",
+          "name": "2C",
+          "type": "C",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 2 — Garden View",
+          "name": "2D",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 2 — Garden View",
+          "name": "2E",
+          "type": "A",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 2 — Garden View",
+          "name": "2F",
+          "type": "C",
+          "status": "reserved"
+        },
+        {
+          "zone": "Zone 2 — Garden View",
+          "name": "2G",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 2 — Garden View",
+          "name": "2H",
+          "type": "A",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 1 — Entry Level",
+          "name": "1A",
+          "type": "A",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 1 — Entry Level",
+          "name": "1B",
+          "type": "B",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 1 — Entry Level",
+          "name": "1C",
+          "type": "A",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 1 — Entry Level",
+          "name": "1D",
+          "type": "C",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 1 — Entry Level",
+          "name": "1E",
+          "type": "B",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 1 — Entry Level",
+          "name": "1F",
+          "type": "A",
+          "status": "sold"
+        },
+        {
+          "zone": "Zone 1 — Entry Level",
+          "name": "1G",
+          "type": "C",
+          "status": "available"
+        },
+        {
+          "zone": "Zone 1 — Entry Level",
+          "name": "1H",
+          "type": "B",
+          "status": "sold"
+        }
       ],
       "paymentPlan": {
         "description": "Structured around construction milestones, protecting your investment at every stage.",
         "milestones": [
-          {"phase": "Reservation", "percentage": "10%"},
-          {"phase": "Contract Signing", "percentage": "20%"},
-          {"phase": "Foundation Done", "percentage": "20%"},
-          {"phase": "Structure Done", "percentage": "20%"},
-          {"phase": "Keys Handover", "percentage": "30%"}
+          {
+            "phase": "Reservation",
+            "percentage": "10%"
+          },
+          {
+            "phase": "Contract Signing",
+            "percentage": "20%"
+          },
+          {
+            "phase": "Foundation Done",
+            "percentage": "20%"
+          },
+          {
+            "phase": "Structure Done",
+            "percentage": "20%"
+          },
+          {
+            "phase": "Keys Handover",
+            "percentage": "30%"
+          }
         ],
-        "note": "Bank financing available \u2014 up to 50% of purchase price through our preferred Greek banking partners. EU and non-EU residents eligible."
+        "note": "Bank financing available — up to 50% of purchase price through our preferred Greek banking partners. EU and non-EU residents eligible."
       },
       "timeline": {
-        "description": "Full transparency on every milestone \u2014 from groundbreak to handover.",
+        "description": "Full transparency on every milestone — from groundbreak to handover.",
         "milestones": [
-          {"date": "Q1 2024", "label": "Permits & Design", "status": "\u2705 Complete"},
-          {"date": "Q2 2024", "label": "Groundbreak", "status": "\u2705 Complete"},
-          {"date": "Q4 2024", "label": "Foundation Done", "status": "\u2705 Complete"},
-          {"date": "Q1 2025", "label": "Structure", "status": "\ud83d\udd28 In Progress"},
-          {"date": "Q3 2025", "label": "Interiors & Fit-Out", "status": "\u23f3 Upcoming"},
-          {"date": "Q1 2026", "label": "Keys Handover", "status": "\u23f3 Projected"}
+          {
+            "date": "Q1 2024",
+            "label": "Permits & Design",
+            "status": "✅ Complete"
+          },
+          {
+            "date": "Q2 2024",
+            "label": "Groundbreak",
+            "status": "✅ Complete"
+          },
+          {
+            "date": "Q4 2024",
+            "label": "Foundation Done",
+            "status": "✅ Complete"
+          },
+          {
+            "date": "Q1 2025",
+            "label": "Structure",
+            "status": "🔨 In Progress"
+          },
+          {
+            "date": "Q3 2025",
+            "label": "Interiors & Fit-Out",
+            "status": "⏳ Upcoming"
+          },
+          {
+            "date": "Q1 2026",
+            "label": "Keys Handover",
+            "status": "⏳ Projected"
+          }
         ]
       },
       "specifications": {
         "specs": [
-          {"label": "Structure", "value": "Reinforced concrete \u00b7 Seismic grade"},
-          {"label": "Fa\u00e7ade", "value": "Insulated render \u00b7 Timber louvre screens"},
-          {"label": "Flooring", "value": "60\u00d760 cm porcelain tile throughout"},
-          {"label": "Windows", "value": "Double-glazed aluminium frames \u00b7 Low-E glass"},
-          {"label": "Kitchen", "value": "Engineered stone worktops \u00b7 Integrated appliances"},
-          {"label": "Bathrooms", "value": "Italian porcelain \u00b7 Rain shower \u00b7 Heated towel rail"},
-          {"label": "HVAC", "value": "Inverter A/C + ceiling fan in each room"},
-          {"label": "Pool", "value": "Private plunge pool \u00b7 Saltwater system \u00b7 LED lighting"},
-          {"label": "Outdoor", "value": "Timber decking \u00b7 Lounge & dining furniture"},
-          {"label": "Smart Home", "value": "App-controlled locks \u00b7 Fibre broadband \u00b7 Smart TV"}
+          {
+            "label": "Structure",
+            "value": "Reinforced concrete · Seismic grade"
+          },
+          {
+            "label": "Façade",
+            "value": "Insulated render · Timber louvre screens"
+          },
+          {
+            "label": "Flooring",
+            "value": "60×60 cm porcelain tile throughout"
+          },
+          {
+            "label": "Windows",
+            "value": "Double-glazed aluminium frames · Low-E glass"
+          },
+          {
+            "label": "Kitchen",
+            "value": "Engineered stone worktops · Integrated appliances"
+          },
+          {
+            "label": "Bathrooms",
+            "value": "Italian porcelain · Rain shower · Heated towel rail"
+          },
+          {
+            "label": "HVAC",
+            "value": "Inverter A/C + ceiling fan in each room"
+          },
+          {
+            "label": "Pool",
+            "value": "Private plunge pool · Saltwater system · LED lighting"
+          },
+          {
+            "label": "Outdoor",
+            "value": "Timber decking · Lounge & dining furniture"
+          },
+          {
+            "label": "Smart Home",
+            "value": "App-controlled locks · Fibre broadband · Smart TV"
+          }
         ],
         "inclusions": [
-          {"text": "Fully furnished & equipped \u2014 move-in ready", "included": true},
-          {"text": "All white goods & kitchen appliances", "included": true},
-          {"text": "Private pool installation & landscaping", "included": true},
-          {"text": "Parking space", "included": true},
-          {"text": "Legal & notary fees (buyer\u2019s side)", "included": true},
-          {"text": "Property registration & title deed", "included": true},
-          {"text": "Serene property management onboarding", "included": true},
-          {"text": "12-month defects warranty", "included": true},
-          {"text": "Annual property tax (paid by owner, ~\u20ac200\u2013400/yr)", "included": false},
-          {"text": "Management fee (deducted from rental income)", "included": false}
+          {
+            "text": "Fully furnished & equipped — move-in ready",
+            "included": true
+          },
+          {
+            "text": "All white goods & kitchen appliances",
+            "included": true
+          },
+          {
+            "text": "Private pool installation & landscaping",
+            "included": true
+          },
+          {
+            "text": "Parking space",
+            "included": true
+          },
+          {
+            "text": "Legal & notary fees (buyer’s side)",
+            "included": true
+          },
+          {
+            "text": "Property registration & title deed",
+            "included": true
+          },
+          {
+            "text": "Serene property management onboarding",
+            "included": true
+          },
+          {
+            "text": "12-month defects warranty",
+            "included": true
+          },
+          {
+            "text": "Annual property tax (paid by owner, ~€200–400/yr)",
+            "included": false
+          },
+          {
+            "text": "Management fee (deducted from rental income)",
+            "included": false
+          }
         ]
       },
       "images": {
@@ -221,18 +519,50 @@
         "locationThess2": "images/img-14.jpg"
       },
       "locationDetail": {
-        "label": "Serene Dunes \u00b7 Nea Iraklia, Halkidiki",
+        "label": "Serene Dunes · Nea Iraklia, Halkidiki",
         "heading": "A location that cannot be replicated.",
-        "tagline": "Steps from Sahara Beach Club \u00b7 30 min from Thessaloniki",
+        "tagline": "Steps from Sahara Beach Club · 30 min from Thessaloniki",
         "distances": [
-          {"value": "<100m", "label": "Beach", "desc": "Walk out the door"},
-          {"value": "Adjacent", "label": "Sahara Beach Club", "desc": "Halkidiki\u2019s top beach resort"},
-          {"value": "30 min", "label": "Thessaloniki", "desc": "Culture, dining, nightlife"},
-          {"value": "25 min", "label": "Airport", "desc": "Macedonia International"},
-          {"value": "15 min", "label": "Waterpark", "desc": "Perfect for families"},
-          {"value": "5 min", "label": "Kallikratia Town", "desc": "Greek tavernas at night"},
-          {"value": "1 hr", "label": "The Fingers", "desc": "Sithonia & Kassandra"},
-          {"value": "\u221e", "label": "Thermaic Gulf Views", "desc": "A horizon you won\u2019t forget"}
+          {
+            "value": "<100m",
+            "label": "Beach",
+            "desc": "Walk out the door"
+          },
+          {
+            "value": "Adjacent",
+            "label": "Sahara Beach Club",
+            "desc": "Halkidiki’s top beach resort"
+          },
+          {
+            "value": "30 min",
+            "label": "Thessaloniki",
+            "desc": "Culture, dining, nightlife"
+          },
+          {
+            "value": "25 min",
+            "label": "Airport",
+            "desc": "Macedonia International"
+          },
+          {
+            "value": "15 min",
+            "label": "Waterpark",
+            "desc": "Perfect for families"
+          },
+          {
+            "value": "5 min",
+            "label": "Kallikratia Town",
+            "desc": "Greek tavernas at night"
+          },
+          {
+            "value": "1 hr",
+            "label": "The Fingers",
+            "desc": "Sithonia & Kassandra"
+          },
+          {
+            "value": "∞",
+            "label": "Thermaic Gulf Views",
+            "desc": "A horizon you won’t forget"
+          }
         ]
       }
     },
@@ -240,37 +570,53 @@
       "name": "Serene Olea",
       "location": "Halkidiki, Greece",
       "status": "Now Selling",
-      "tagline": "Halkidiki, Greece \u00b7 Now Selling",
+      "tagline": "Halkidiki, Greece · Now Selling",
       "heroImage": "images/img-02.jpg",
       "thumbImage": "images/img-02.jpg",
       "unitTypes": {
         "A": {
           "label": "Type A",
           "name": "Studio Suite",
-          "specs": "55 m\u00b2 \u00b7 1 bed \u00b7 1 bath",
+          "specs": "55 m² · 1 bed · 1 bath",
           "price": "TBD",
           "image": "images/img-02.jpg"
         },
         "B": {
           "label": "Type B",
           "name": "Garden Residence",
-          "specs": "90 m\u00b2 \u00b7 2 bed \u00b7 2 bath",
+          "specs": "90 m² · 2 bed · 2 bath",
           "price": "TBD",
           "image": "images/img-09.jpg"
         },
         "C": {
           "label": "Type C",
           "name": "Dune Villa",
-          "specs": "140 m\u00b2 \u00b7 3 bed \u00b7 3 bath",
+          "specs": "140 m² · 3 bed · 3 bath",
           "price": "TBD",
           "image": "images/img-09.jpg"
         }
       },
       "advantages": [
-        {"emoji": "\ud83d\udccd", "title": "Prime Location", "description": "TBD"},
-        {"emoji": "\ud83c\udfe8", "title": "Fully Managed", "description": "TBD"},
-        {"emoji": "\ud83c\udfd7\ufe0f", "title": "Developer-Direct", "description": "TBD"},
-        {"emoji": "\ud83c\udf0a", "title": "Beach Access", "description": "TBD"}
+        {
+          "emoji": "📍",
+          "title": "Prime Location",
+          "description": "TBD"
+        },
+        {
+          "emoji": "🏨",
+          "title": "Fully Managed",
+          "description": "TBD"
+        },
+        {
+          "emoji": "🏗️",
+          "title": "Developer-Direct",
+          "description": "TBD"
+        },
+        {
+          "emoji": "🌊",
+          "title": "Beach Access",
+          "description": "TBD"
+        }
       ],
       "locationSection": {
         "tag": "The Location",
@@ -286,11 +632,26 @@
       "paymentPlan": {
         "description": "TBD",
         "milestones": [
-          {"phase": "Reservation", "percentage": "10%"},
-          {"phase": "Contract Signing", "percentage": "20%"},
-          {"phase": "Foundation Done", "percentage": "20%"},
-          {"phase": "Structure Done", "percentage": "20%"},
-          {"phase": "Keys Handover", "percentage": "30%"}
+          {
+            "phase": "Reservation",
+            "percentage": "10%"
+          },
+          {
+            "phase": "Contract Signing",
+            "percentage": "20%"
+          },
+          {
+            "phase": "Foundation Done",
+            "percentage": "20%"
+          },
+          {
+            "phase": "Structure Done",
+            "percentage": "20%"
+          },
+          {
+            "phase": "Keys Handover",
+            "percentage": "30%"
+          }
         ],
         "note": "TBD"
       },
@@ -311,7 +672,7 @@
         "floorPlan1st": "images/img-11.jpg"
       },
       "locationDetail": {
-        "label": "Serene Olea \u00b7 Halkidiki",
+        "label": "Serene Olea · Halkidiki",
         "heading": "TBD",
         "tagline": "TBD",
         "distances": []
