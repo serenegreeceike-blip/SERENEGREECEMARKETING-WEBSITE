@@ -1,9 +1,9 @@
 {
   "hero": {
-    "eyebrow": "Greek Developer \u00b7 Premium Managed Residences \u00b7 Chalkidiki",
-    "heading": "Choose Greece.",
+    "eyebrow": "Greek Developer · Premium Managed Residences · Chalkidiki",
+    "heading": "Xhoose Greece.",
     "headingItalic": "We make it work for you.",
-    "description": "We develop, build, and fully manage premium residences across Greece\u2019s finest destinations \u2014 delivering a lifestyle asset and high-yield investment under one brand.",
+    "description": "We develop, build, and fully manage premium residences across Greece’s finest destinations — delivering a lifestyle asset and high-yield investment under one brand.",
     "cta1": "Explore Projects",
     "cta2": "The Serene Method"
   },
@@ -12,7 +12,7 @@
       "name": "Serene Dunes",
       "location": "Halkidiki, Greece",
       "status": "Now Selling",
-      "tagline": "Halkidiki, Greece \u00b7 Now Selling",
+      "tagline": "Halkidiki, Greece · Now Selling",
       "heroImage": "images/img-02.jpg",
       "thumbImage": "images/img-02.jpg"
     },
@@ -27,59 +27,75 @@
   "unitTypes": {
     "A": {
       "label": "Type A",
-      "name": "Studio Suite",
-      "specs": "55 m\u00b2 \u00b7 1 bed \u00b7 1 bath \u00b7 Private plunge pool \u00b7 Sea view terrace \u00b7 Sleeps 2",
-      "price": "From \u20ac280,000",
+      "name": "SUPERIOR VILLA TYPE A",
+      "specs": "120 m² · 3bed · 2 bath · Private plunge pool · OUTSUDE KITCHEN",
+      "price": "From €280,000",
       "image": "images/img-02.jpg"
     },
     "B": {
       "label": "Type B",
       "name": "Garden Residence",
-      "specs": "90 m\u00b2 \u00b7 2 bed \u00b7 2 bath \u00b7 Private pool \u00b7 Garden terrace \u00b7 Sleeps 4",
-      "price": "From \u20ac420,000",
+      "specs": "90 m² · 2 bed · 2 bath · Private pool · Garden terrace · Sleeps 4",
+      "price": "From €420,000",
       "image": "images/img-09.jpg"
     },
     "C": {
       "label": "Type C",
       "name": "Dune Villa",
-      "specs": "140 m\u00b2 \u00b7 3 bed \u00b7 3 bath \u00b7 Infinity pool \u00b7 Panoramic view \u00b7 Sleeps 6",
-      "price": "From \u20ac680,000",
+      "specs": "140 m² · 3 bed · 3 bath · Infinity pool · Panoramic view · Sleeps 6",
+      "price": "From €680,000",
       "image": "images/img-09.jpg"
     }
   },
   "advantages": [
-    { "emoji": "\ud83d\udccd", "title": "Prime Location", "description": "Kallikratia gateway \u00b7 steps from Sahara Beach Club" },
-    { "emoji": "\ud83c\udfe8", "title": "Fully Managed", "description": "~5% net yield \u00b7 hands-off \u00b7 managed from day one" },
-    { "emoji": "\ud83c\udfd7\ufe0f", "title": "Developer-Direct", "description": "No middlemen \u00b7 transparent pricing \u00b7 foundation to keys" },
-    { "emoji": "\ud83c\udf0a", "title": "Beach Access", "description": "Adjacent to Sahara Beach Club \u00b7 Halkidiki\u2019s finest" }
+    {
+      "emoji": "📍",
+      "title": "Prime Location",
+      "description": "Kallikratia gateway · steps from Sahara Beach Club"
+    },
+    {
+      "emoji": "🏨",
+      "title": "Fully Managed",
+      "description": "~5% net yield · hands-off · managed from day one"
+    },
+    {
+      "emoji": "🏗️",
+      "title": "Developer-Direct",
+      "description": "No middlemen · transparent pricing · foundation to keys"
+    },
+    {
+      "emoji": "🌊",
+      "title": "Beach Access",
+      "description": "Adjacent to Sahara Beach Club · Halkidiki’s finest"
+    }
   ],
   "location": {
     "tag": "The Location",
     "title": "Kallikratia, Halkidiki",
-    "description": "Kallikratia sits at the gateway to Halkidiki \u2014 where the Thermaic Gulf meets the Aegean peninsula. Established, authentic, and 30 minutes from Thessaloniki \u2014 without the crowds of the tourist south."
+    "description": "Kallikratia sits at the gateway to Halkidiki — where the Thermaic Gulf meets the Aegean peninsula. Established, authentic, and 30 minutes from Thessaloniki — without the crowds of the tourist south."
   },
   "investment": {
     "tag": "The Investment",
     "title": "Real Yield. Real Management.",
-    "description": "Greek real estate is appreciating at 12\u201318% YoY. Buy at pre-sale developer pricing, receive rental income from operation launch, and benefit from capital growth at handover \u2014 all without lifting a finger."
+    "description": "Greek real estate is appreciating at 12–18% YoY. Buy at pre-sale developer pricing, receive rental income from operation launch, and benefit from capital growth at handover — all without lifting a finger."
   },
   "urgencyBar": {
-    "message": "Serene Dunes \u2014 Pre-Sale Closing Soon",
-    "availability": "14 of 25 units sold or reserved \u00b7 Pre-sale pricing ends Q3 2025",
+    "message": "Serene Dunes — Pre-Sale Closing Soon",
+    "availability": "14 of 25 units sold or reserved · Pre-sale pricing ends Q3 2025",
     "available": 11,
     "total": 25,
-    "cta": "See Available Units \u2192"
+    "cta": "See Available Units →"
   },
   "contact": {
-    "heading": "Let\u2019s start",
+    "heading": "Let’s start",
     "headingItalic": "the conversation",
     "description": "Our investment team will respond within one business day with a tailored presentation.",
     "phone": "+30 210 000 0000",
-    "phoneHours": "7 days \u00b7 9am\u20138pm EET",
-    "office1": "Athens HQ \u00b7 Kolonaki",
+    "phoneHours": "7 days · 9am–8pm EET",
+    "office1": "Athens HQ · Kolonaki",
     "office2": "Chalkidiki Sales Office",
     "social1": "@serene.villas.halkidiki",
-    "social2": "@serenevillas \u00b7 Airbnb",
+    "social2": "@serenevillas · Airbnb",
     "whatsapp": "+302100000000"
   },
   "images": {
