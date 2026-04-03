@@ -6163,10 +6163,11 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 // ── CONTENT LOADER — loads editable content from content.json ──
 (function(){
-  fetch('content.json').then(r=>r.json()).then(c=>{
+  fetch('content.json?v='+Date.now()).then(r=>r.json()).then(c=>{
     function t(sel,val){ const el=document.querySelector(sel); if(el&&val) el.textContent=val; }
     function h(sel,val){ const el=document.querySelector(sel); if(el&&val) el.innerHTML=val; }
     function s(sel,attr,val){ const el=document.querySelector(sel); if(el&&val) el.setAttribute(attr,val); }
+    function bg(sel,url){ const el=document.querySelector(sel); if(el&&url) el.style.backgroundImage="url('"+url+"')"; }
 
     // Hero
     t('[data-cms="hero-eyebrow"]', c.hero?.eyebrow);
@@ -6244,7 +6245,14 @@ document.addEventListener('DOMContentLoaded', () => {
       t('[data-cms="contact-hours"]', c.contact.phoneHours);
     }
 
-  }).catch(function(){/* content.json not found — use hardcoded defaults */});
+    // CSS background images
+    if(c.images){
+      bg('.hero-bg', c.images.heroBg);
+      bg('.contact-left-bg', c.images.contactBg);
+    }
+
+    console.log('[CMS] Content loaded from content.json');
+  }).catch(function(e){ console.warn('[CMS] content.json not loaded:', e); });
 })();
 </script>
 
