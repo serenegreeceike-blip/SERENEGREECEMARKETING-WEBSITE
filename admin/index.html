@@ -4,11 +4,130 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Serene Greece - Content Manager</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-  </style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: 'github',
+          repo: 'serenegreeceike-blip/SERENEGREECEMARKETING-WEBSITE',
+          branch: 'main',
+          auth_type: 'pkce',
+          app_id: 'Ov23li1t270d6MjPQn3x'
+        },
+        media_folder: 'images',
+        public_folder: 'images',
+        collections: [{
+          name: 'site-content',
+          label: 'Site Content',
+          files: [{
+            name: 'content',
+            label: 'All Content',
+            file: 'content.json',
+            format: 'json',
+            fields: [
+              { label: 'Hero Section', name: 'hero', widget: 'object', fields: [
+                { label: 'Eyebrow Text', name: 'eyebrow', widget: 'string' },
+                { label: 'Heading', name: 'heading', widget: 'string' },
+                { label: 'Heading (italic)', name: 'headingItalic', widget: 'string' },
+                { label: 'Description', name: 'description', widget: 'text' },
+                { label: 'CTA Button 1', name: 'cta1', widget: 'string' },
+                { label: 'CTA Button 2', name: 'cta2', widget: 'string' }
+              ]},
+              { label: 'Projects', name: 'projects', widget: 'object', fields: [
+                { label: 'Serene Dunes', name: 'dunes', widget: 'object', fields: [
+                  { label: 'Name', name: 'name', widget: 'string' },
+                  { label: 'Location', name: 'location', widget: 'string' },
+                  { label: 'Status', name: 'status', widget: 'string' },
+                  { label: 'Tagline', name: 'tagline', widget: 'string' },
+                  { label: 'Hero Image', name: 'heroImage', widget: 'image' },
+                  { label: 'Thumbnail', name: 'thumbImage', widget: 'image' }
+                ]},
+                { label: 'Serene Olea', name: 'olea', widget: 'object', fields: [
+                  { label: 'Name', name: 'name', widget: 'string' },
+                  { label: 'Location', name: 'location', widget: 'string' },
+                  { label: 'Status', name: 'status', widget: 'string' },
+                  { label: 'Hero Image', name: 'heroImage', widget: 'image' },
+                  { label: 'Thumbnail', name: 'thumbImage', widget: 'image' }
+                ]}
+              ]},
+              { label: 'Unit Types', name: 'unitTypes', widget: 'object', fields: [
+                { label: 'Type A', name: 'A', widget: 'object', fields: [
+                  { label: 'Label', name: 'label', widget: 'string' },
+                  { label: 'Name', name: 'name', widget: 'string' },
+                  { label: 'Specs', name: 'specs', widget: 'string' },
+                  { label: 'Price', name: 'price', widget: 'string' },
+                  { label: 'Image', name: 'image', widget: 'image' }
+                ]},
+                { label: 'Type B', name: 'B', widget: 'object', fields: [
+                  { label: 'Label', name: 'label', widget: 'string' },
+                  { label: 'Name', name: 'name', widget: 'string' },
+                  { label: 'Specs', name: 'specs', widget: 'string' },
+                  { label: 'Price', name: 'price', widget: 'string' },
+                  { label: 'Image', name: 'image', widget: 'image' }
+                ]},
+                { label: 'Type C', name: 'C', widget: 'object', fields: [
+                  { label: 'Label', name: 'label', widget: 'string' },
+                  { label: 'Name', name: 'name', widget: 'string' },
+                  { label: 'Specs', name: 'specs', widget: 'string' },
+                  { label: 'Price', name: 'price', widget: 'string' },
+                  { label: 'Image', name: 'image', widget: 'image' }
+                ]}
+              ]},
+              { label: 'Advantages', name: 'advantages', widget: 'list', fields: [
+                { label: 'Emoji', name: 'emoji', widget: 'string' },
+                { label: 'Title', name: 'title', widget: 'string' },
+                { label: 'Description', name: 'description', widget: 'string' }
+              ]},
+              { label: 'Location Section', name: 'location', widget: 'object', fields: [
+                { label: 'Tag', name: 'tag', widget: 'string' },
+                { label: 'Title', name: 'title', widget: 'string' },
+                { label: 'Description', name: 'description', widget: 'text' }
+              ]},
+              { label: 'Investment Section', name: 'investment', widget: 'object', fields: [
+                { label: 'Tag', name: 'tag', widget: 'string' },
+                { label: 'Title', name: 'title', widget: 'string' },
+                { label: 'Description', name: 'description', widget: 'text' }
+              ]},
+              { label: 'Urgency Bar', name: 'urgencyBar', widget: 'object', fields: [
+                { label: 'Message', name: 'message', widget: 'string' },
+                { label: 'Availability Text', name: 'availability', widget: 'string' },
+                { label: 'Units Available', name: 'available', widget: 'number', value_type: 'int' },
+                { label: 'Total Units', name: 'total', widget: 'number', value_type: 'int' },
+                { label: 'CTA Button Text', name: 'cta', widget: 'string' }
+              ]},
+              { label: 'Contact', name: 'contact', widget: 'object', fields: [
+                { label: 'Heading', name: 'heading', widget: 'string' },
+                { label: 'Heading (italic)', name: 'headingItalic', widget: 'string' },
+                { label: 'Description', name: 'description', widget: 'text' },
+                { label: 'Phone', name: 'phone', widget: 'string' },
+                { label: 'Phone Hours', name: 'phoneHours', widget: 'string' },
+                { label: 'Office 1', name: 'office1', widget: 'string' },
+                { label: 'Office 2', name: 'office2', widget: 'string' },
+                { label: 'Social 1', name: 'social1', widget: 'string' },
+                { label: 'Social 2', name: 'social2', widget: 'string' },
+                { label: 'WhatsApp Number', name: 'whatsapp', widget: 'string' }
+              ]},
+              { label: 'Images', name: 'images', widget: 'object', fields: [
+                { label: 'Hero Background', name: 'heroBg', widget: 'image' },
+                { label: 'Contact Background', name: 'contactBg', widget: 'image' },
+                { label: 'Gallery - Main', name: 'galleryMain', widget: 'image' },
+                { label: 'Gallery - Top Right', name: 'galleryTopRight', widget: 'image' },
+                { label: 'Gallery - Mid Right', name: 'galleryMidRight', widget: 'image' },
+                { label: 'Gallery - Bottom Right', name: 'galleryBotRight', widget: 'image' },
+                { label: 'Floor Plan - Ground', name: 'floorPlanGround', widget: 'image' },
+                { label: 'Floor Plan - 1st Floor', name: 'floorPlan1st', widget: 'image' },
+                { label: 'Location - Halkidiki', name: 'locationHalkidiki', widget: 'image' },
+                { label: 'Location - Thessaloniki 1', name: 'locationThess1', widget: 'image' },
+                { label: 'Location - Thessaloniki 2', name: 'locationThess2', widget: 'image' }
+              ]}
+            ]
+          }]
+        }]
+      }
+    });
+  </script>
 </body>
 </html>
