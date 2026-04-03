@@ -37,6 +37,27 @@
 
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .field-row-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+
+  .field select { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: .9rem; font-family: inherit; background: #fff; }
+  .field select:focus { outline: none; border-color: #B8955A; box-shadow: 0 0 0 2px rgba(184,149,90,.15); }
+
+  .list-card { margin-bottom: 16px; padding: 12px; background: #faf9f7; border-radius: 6px; }
+  .list-card-title { font-weight: 600; margin-bottom: 8px; font-size: .8rem; }
+  .list-section-title { font-weight: 700; font-size: .85rem; margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #e8e4dd; color: #B8955A; text-transform: uppercase; letter-spacing: 1px; }
+  .list-section-title:first-child { margin-top: 0; }
+
+  .add-btn { display: inline-block; padding: 8px 16px; background: #B8955A; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: .8rem; margin-top: 8px; }
+  .add-btn:hover { background: #9a7a48; }
+  .remove-btn { display: inline-block; padding: 4px 10px; background: #e74c3c; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: .75rem; margin-top: 6px; }
+  .remove-btn:hover { background: #c0392b; }
+
+  .unit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .unit-grid { grid-template-columns: 1fr; } }
+  .unit-card { padding: 10px; background: #faf9f7; border-radius: 6px; border-left: 3px solid #B8955A; }
+  .unit-card.status-sold { border-left-color: #e74c3c; }
+  .unit-card.status-reserved { border-left-color: #f39c12; }
+  .unit-card .unit-id { font-weight: 700; font-size: .8rem; margin-bottom: 6px; }
 
   .status { padding: 10px 20px; background: #e8f5e9; color: #2e7d32; border-radius: 6px; margin-bottom: 16px; display: none; }
   .status.error { background: #ffebee; color: #c62828; }
@@ -264,6 +285,14 @@ function renderEditor() {
 
   // Advantages (list)
   renderAdvantages(ed);
+
+  // New list-based sections
+  renderUnits(ed);
+  renderPaymentPlan(ed);
+  renderTimeline(ed);
+  renderSpecifications(ed);
+  renderMethod(ed);
+  renderBooking(ed);
 }
 
 function renderAdvantages(ed) {
