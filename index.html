@@ -2385,8 +2385,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <img loading="lazy" src="images/img-02.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);">
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;background:linear-gradient(to right,rgba(12,10,6,.7) 40%,transparent);">
           <span style="font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:#B8955A;display:block;margin-bottom:12px;">The Serene Method</span>
-          <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);color:#F4EFE6;font-weight:300;margin:0;line-height:1.1;">Own. Stay. Earn.</h1>
-          <p style="font-size:.8rem;color:rgba(244,239,230,.55);margin:14px 0 0;max-width:460px;line-height:1.8;font-style:italic;">Most holiday properties either work for you or you enjoy them. Serene is built to do both — at the same time.</p>
+          <h1 data-cms="method-heading" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);color:#F4EFE6;font-weight:300;margin:0;line-height:1.1;">Own. Stay. Earn.</h1>
+          <p data-cms="method-desc" style="font-size:.8rem;color:rgba(244,239,230,.55);margin:14px 0 0;max-width:460px;line-height:1.8;font-style:italic;">Most holiday properties either work for you or you enjoy them. Serene is built to do both — at the same time.</p>
         </div>
       </div>
 
@@ -2395,11 +2395,11 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:860px;">
           <div>
             <p style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:rgba(184,149,90,.5);margin:0 0 10px;">The old way</p>
-            <p style="font-size:.78rem;color:rgba(244,239,230,.4);line-height:1.8;margin:0;">Buy a holiday property. Deal with multiple contractors, interior designers, management companies, rental agencies. Coordinate everything yourself. Hope it works out.</p>
+            <p data-cms="method-oldway" style="font-size:.78rem;color:rgba(244,239,230,.4);line-height:1.8;margin:0;">Buy a holiday property. Deal with multiple contractors, interior designers, management companies, rental agencies. Coordinate everything yourself. Hope it works out.</p>
           </div>
           <div style="border-left:1px solid rgba(184,149,90,.15);padding-left:32px;">
             <p style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 10px;">The Serene way</p>
-            <p style="font-size:.78rem;color:rgba(244,239,230,.7);line-height:1.8;margin:0;">One company. Developer, builder, interior designer, and manager — all under one roof. You choose your unit. We handle everything else, forever.</p>
+            <p data-cms="method-sereneway" style="font-size:.78rem;color:rgba(244,239,230,.7);line-height:1.8;margin:0;">One company. Developer, builder, interior designer, and manager — all under one roof. You choose your unit. We handle everything else, forever.</p>
           </div>
         </div>
       </div>
@@ -3262,8 +3262,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <!-- HERO -->
       <div style="background:#120E08;padding:36px 44px;border-bottom:1px solid rgba(184,149,90,.15);">
         <span style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;display:block;margin-bottom:10px;">Holiday Stays · Short & Mid-Term</span>
-        <h2 style="font-family:'Cormorant Garamond',serif;color:#F4EFE6;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;margin:0 0 12px;line-height:1.2;">Stay in a Serene property.<br>Experience what investors own.</h2>
-        <p style="font-size:.8rem;color:rgba(244,239,230,.5);line-height:1.8;max-width:560px;margin:0 0 24px;">Whether you're planning a summer escape in Halkidiki or a city break in Thessaloniki — our fully managed, hotel-standard villas and apartments are available to book directly.</p>
+        <h2 data-cms="booking-heading" style="font-family:'Cormorant Garamond',serif;color:#F4EFE6;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;margin:0 0 12px;line-height:1.2;">Stay in a Serene property.<br>Experience what investors own.</h2>
+        <p data-cms="booking-desc" style="font-size:.8rem;color:rgba(244,239,230,.5);line-height:1.8;max-width:560px;margin:0 0 24px;">Whether you're planning a summer escape in Halkidiki or a city break in Thessaloniki — our fully managed, hotel-standard villas and apartments are available to book directly.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a href="https://www.booking.com/hotel/gr/serene-villas-halkidiki-cfront-private-pool.html" target="_blank" style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;background:#B8955A;color:#120E08;padding:11px 22px;text-decoration:none;font-weight:600;">Book Halkidiki Villa →</a>
           <a href="https://www.booking.com/hotel/gr/serene-thessaloniki.html?aid=304142" target="_blank" style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(184,149,90,.4);color:#D4AF78;padding:11px 22px;text-decoration:none;">Book Thessaloniki Apt →</a>
@@ -6353,6 +6353,18 @@ function applyProjectContent(projKey) {
     var si = sw.images || {};
     bg('.hero-bg', si.heroBg);
     bg('.contact-left-bg', si.contactBg);
+
+    // Method page
+    var method = sw.method || {};
+    t('[data-cms="method-heading"]', method.heroHeading);
+    t('[data-cms="method-desc"]', method.heroDesc);
+    t('[data-cms="method-oldway"]', method.oldWay);
+    t('[data-cms="method-sereneway"]', method.sereneWay);
+
+    // Booking page
+    var bk = sw.booking || {};
+    t('[data-cms="booking-heading"]', bk.heading);
+    t('[data-cms="booking-desc"]', bk.description);
 
     console.log('[CMS] Content loaded from content.json (per-project structure)');
   }).catch(function(e){ console.warn('[CMS] content.json not loaded:', e); });
