@@ -2,7 +2,7 @@
   "sitewide": {
     "hero": {
       "eyebrow": "Greek Developer · Premium Managed Residences · Chalkidiki",
-      "heading": "Xhoose Greece.",
+      "heading": "Choose Greece.",
       "headingItalic": "We make it work for you.",
       "description": "We develop, build, and fully manage premium residences across Greece’s finest destinations — delivering a lifestyle asset and high-yield investment under one brand.",
       "cta1": "Explore Projects",
@@ -163,7 +163,7 @@
         "A": {
           "label": "Type A",
           "name": "SUPERIOR VILLA TYPE A",
-          "specs": "120 m² · 3bed · 2 bath · Private plunge pool · OUTSUDE KITCHEN",
+          "specs": "120 m² · 3bed · 2 bath · Private plunge pool · OUTSIDE KITCHEN",
           "price": "From €280,000",
           "image": "images/img-02.jpg"
         },

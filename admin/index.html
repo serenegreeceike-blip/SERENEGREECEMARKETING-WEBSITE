@@ -642,15 +642,15 @@ function renderSpecifications(ed) {
 
 /* ── 5. Method Page ── */
 function renderMethod(ed) {
-  if (!content.method) return;
+  if (!content.sitewide.method) return;
   var body = createSection(ed, 'Method Page');
 
   function rebuild() {
     body.innerHTML = '';
-    addField(body, 'Hero Heading', content.method.heroHeading, function(v) { content.method.heroHeading = v; });
-    addField(body, 'Hero Description', content.method.heroDesc, function(v) { content.method.heroDesc = v; }, 'textarea');
-    addField(body, 'Old Way', content.method.oldWay, function(v) { content.method.oldWay = v; }, 'textarea');
-    addField(body, 'Serene Way', content.method.sereneWay, function(v) { content.method.sereneWay = v; }, 'textarea');
+    addField(body, 'Hero Heading', content.sitewide.method.heroHeading, function(v) { content.sitewide.method.heroHeading = v; });
+    addField(body, 'Hero Description', content.sitewide.method.heroDesc, function(v) { content.sitewide.method.heroDesc = v; }, 'textarea');
+    addField(body, 'Old Way', content.sitewide.method.oldWay, function(v) { content.sitewide.method.oldWay = v; }, 'textarea');
+    addField(body, 'Serene Way', content.sitewide.method.sereneWay, function(v) { content.sitewide.method.sereneWay = v; }, 'textarea');
 
     /* --- Pillars --- */
     var pTitle = document.createElement('div');
@@ -658,25 +658,25 @@ function renderMethod(ed) {
     pTitle.textContent = 'Pillars';
     body.appendChild(pTitle);
 
-    var pillars = content.method.pillars || [];
+    var pillars = content.sitewide.method.pillars || [];
     pillars.forEach(function(p, i) {
       var card = document.createElement('div');
       card.className = 'list-card';
       card.innerHTML = '<div class="list-card-title">Pillar ' + (i + 1) + '</div>';
-      addField(card, 'Emoji', p.emoji, function(v) { content.method.pillars[i].emoji = v; });
-      addField(card, 'Title', p.title, function(v) { content.method.pillars[i].title = v; });
-      addField(card, 'Description', p.desc, function(v) { content.method.pillars[i].desc = v; }, 'textarea');
+      addField(card, 'Emoji', p.emoji, function(v) { content.sitewide.method.pillars[i].emoji = v; });
+      addField(card, 'Title', p.title, function(v) { content.sitewide.method.pillars[i].title = v; });
+      addField(card, 'Description', p.desc, function(v) { content.sitewide.method.pillars[i].desc = v; }, 'textarea');
       var rmBtn = document.createElement('button');
       rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
-      rmBtn.onclick = function() { content.method.pillars.splice(i, 1); rebuild(); };
+      rmBtn.onclick = function() { content.sitewide.method.pillars.splice(i, 1); rebuild(); };
       card.appendChild(rmBtn);
       body.appendChild(card);
     });
     var addPillarBtn = document.createElement('button');
     addPillarBtn.className = 'add-btn'; addPillarBtn.textContent = '+ Add Pillar';
     addPillarBtn.onclick = function() {
-      if (!content.method.pillars) content.method.pillars = [];
-      content.method.pillars.push({ emoji: '', title: '', desc: '' });
+      if (!content.sitewide.method.pillars) content.sitewide.method.pillars = [];
+      content.sitewide.method.pillars.push({ emoji: '', title: '', desc: '' });
       rebuild();
     };
     body.appendChild(addPillarBtn);
@@ -687,24 +687,24 @@ function renderMethod(ed) {
     bTitle.textContent = 'Benefits';
     body.appendChild(bTitle);
 
-    var benefits = content.method.benefits || [];
+    var benefits = content.sitewide.method.benefits || [];
     benefits.forEach(function(b, i) {
       var card = document.createElement('div');
       card.className = 'list-card';
       card.innerHTML = '<div class="list-card-title">Benefit ' + (i + 1) + '</div>';
-      addField(card, 'Title', b.title, function(v) { content.method.benefits[i].title = v; });
-      addField(card, 'Description', b.desc, function(v) { content.method.benefits[i].desc = v; }, 'textarea');
+      addField(card, 'Title', b.title, function(v) { content.sitewide.method.benefits[i].title = v; });
+      addField(card, 'Description', b.desc, function(v) { content.sitewide.method.benefits[i].desc = v; }, 'textarea');
       var rmBtn = document.createElement('button');
       rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
-      rmBtn.onclick = function() { content.method.benefits.splice(i, 1); rebuild(); };
+      rmBtn.onclick = function() { content.sitewide.method.benefits.splice(i, 1); rebuild(); };
       card.appendChild(rmBtn);
       body.appendChild(card);
     });
     var addBenBtn = document.createElement('button');
     addBenBtn.className = 'add-btn'; addBenBtn.textContent = '+ Add Benefit';
     addBenBtn.onclick = function() {
-      if (!content.method.benefits) content.method.benefits = [];
-      content.method.benefits.push({ title: '', desc: '' });
+      if (!content.sitewide.method.benefits) content.sitewide.method.benefits = [];
+      content.sitewide.method.benefits.push({ title: '', desc: '' });
       rebuild();
     };
     body.appendChild(addBenBtn);
@@ -715,25 +715,25 @@ function renderMethod(ed) {
     sTitle.textContent = 'Steps';
     body.appendChild(sTitle);
 
-    var steps = content.method.steps || [];
+    var steps = content.sitewide.method.steps || [];
     steps.forEach(function(s, i) {
       var card = document.createElement('div');
       card.className = 'list-card';
       card.innerHTML = '<div class="list-card-title">Step ' + (i + 1) + '</div>';
-      addField(card, 'Number', s.num, function(v) { content.method.steps[i].num = v; });
-      addField(card, 'Title', s.title, function(v) { content.method.steps[i].title = v; });
-      addField(card, 'Description', s.desc, function(v) { content.method.steps[i].desc = v; }, 'textarea');
+      addField(card, 'Number', s.num, function(v) { content.sitewide.method.steps[i].num = v; });
+      addField(card, 'Title', s.title, function(v) { content.sitewide.method.steps[i].title = v; });
+      addField(card, 'Description', s.desc, function(v) { content.sitewide.method.steps[i].desc = v; }, 'textarea');
       var rmBtn = document.createElement('button');
       rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
-      rmBtn.onclick = function() { content.method.steps.splice(i, 1); rebuild(); };
+      rmBtn.onclick = function() { content.sitewide.method.steps.splice(i, 1); rebuild(); };
       card.appendChild(rmBtn);
       body.appendChild(card);
     });
     var addStepBtn = document.createElement('button');
     addStepBtn.className = 'add-btn'; addStepBtn.textContent = '+ Add Step';
     addStepBtn.onclick = function() {
-      if (!content.method.steps) content.method.steps = [];
-      content.method.steps.push({ num: '', title: '', desc: '' });
+      if (!content.sitewide.method.steps) content.sitewide.method.steps = [];
+      content.sitewide.method.steps.push({ num: '', title: '', desc: '' });
       rebuild();
     };
     body.appendChild(addStepBtn);
@@ -743,13 +743,13 @@ function renderMethod(ed) {
 
 /* ── 6. Booking Page ── */
 function renderBooking(ed) {
-  if (!content.booking) return;
+  if (!content.sitewide.booking) return;
   var body = createSection(ed, 'Booking Page');
 
   function rebuild() {
     body.innerHTML = '';
-    addField(body, 'Heading', content.booking.heading, function(v) { content.booking.heading = v; });
-    addField(body, 'Description', content.booking.description, function(v) { content.booking.description = v; }, 'textarea');
+    addField(body, 'Heading', content.sitewide.booking.heading, function(v) { content.sitewide.booking.heading = v; });
+    addField(body, 'Description', content.sitewide.booking.description, function(v) { content.sitewide.booking.description = v; }, 'textarea');
 
     /* --- Stay Options --- */
     var soTitle = document.createElement('div');
@@ -757,26 +757,26 @@ function renderBooking(ed) {
     soTitle.textContent = 'Stay Options';
     body.appendChild(soTitle);
 
-    var stayOptions = content.booking.stayOptions || [];
+    var stayOptions = content.sitewide.booking.stayOptions || [];
     stayOptions.forEach(function(opt, i) {
       var card = document.createElement('div');
       card.className = 'list-card';
       card.innerHTML = '<div class="list-card-title">Stay Option ' + (i + 1) + '</div>';
-      addField(card, 'Label', opt.label, function(v) { content.booking.stayOptions[i].label = v; });
-      addField(card, 'Duration', opt.duration, function(v) { content.booking.stayOptions[i].duration = v; });
-      addField(card, 'Description', opt.desc, function(v) { content.booking.stayOptions[i].desc = v; }, 'textarea');
-      addField(card, 'Price', opt.price, function(v) { content.booking.stayOptions[i].price = v; });
+      addField(card, 'Label', opt.label, function(v) { content.sitewide.booking.stayOptions[i].label = v; });
+      addField(card, 'Duration', opt.duration, function(v) { content.sitewide.booking.stayOptions[i].duration = v; });
+      addField(card, 'Description', opt.desc, function(v) { content.sitewide.booking.stayOptions[i].desc = v; }, 'textarea');
+      addField(card, 'Price', opt.price, function(v) { content.sitewide.booking.stayOptions[i].price = v; });
       var rmBtn = document.createElement('button');
       rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
-      rmBtn.onclick = function() { content.booking.stayOptions.splice(i, 1); rebuild(); };
+      rmBtn.onclick = function() { content.sitewide.booking.stayOptions.splice(i, 1); rebuild(); };
       card.appendChild(rmBtn);
       body.appendChild(card);
     });
     var addOptBtn = document.createElement('button');
     addOptBtn.className = 'add-btn'; addOptBtn.textContent = '+ Add Stay Option';
     addOptBtn.onclick = function() {
-      if (!content.booking.stayOptions) content.booking.stayOptions = [];
-      content.booking.stayOptions.push({ label: '', duration: '', desc: '', price: '' });
+      if (!content.sitewide.booking.stayOptions) content.sitewide.booking.stayOptions = [];
+      content.sitewide.booking.stayOptions.push({ label: '', duration: '', desc: '', price: '' });
       rebuild();
     };
     body.appendChild(addOptBtn);
@@ -787,25 +787,25 @@ function renderBooking(ed) {
     amTitle.textContent = 'Amenities';
     body.appendChild(amTitle);
 
-    var amenities = content.booking.amenities || [];
+    var amenities = content.sitewide.booking.amenities || [];
     amenities.forEach(function(a, i) {
       var card = document.createElement('div');
       card.className = 'list-card';
       card.innerHTML = '<div class="list-card-title">Amenity ' + (i + 1) + '</div>';
-      addField(card, 'Emoji', a.emoji, function(v) { content.booking.amenities[i].emoji = v; });
-      addField(card, 'Title', a.title, function(v) { content.booking.amenities[i].title = v; });
-      addField(card, 'Description', a.desc, function(v) { content.booking.amenities[i].desc = v; }, 'textarea');
+      addField(card, 'Emoji', a.emoji, function(v) { content.sitewide.booking.amenities[i].emoji = v; });
+      addField(card, 'Title', a.title, function(v) { content.sitewide.booking.amenities[i].title = v; });
+      addField(card, 'Description', a.desc, function(v) { content.sitewide.booking.amenities[i].desc = v; }, 'textarea');
       var rmBtn = document.createElement('button');
       rmBtn.className = 'remove-btn'; rmBtn.textContent = 'Remove';
-      rmBtn.onclick = function() { content.booking.amenities.splice(i, 1); rebuild(); };
+      rmBtn.onclick = function() { content.sitewide.booking.amenities.splice(i, 1); rebuild(); };
       card.appendChild(rmBtn);
       body.appendChild(card);
     });
     var addAmBtn = document.createElement('button');
     addAmBtn.className = 'add-btn'; addAmBtn.textContent = '+ Add Amenity';
     addAmBtn.onclick = function() {
-      if (!content.booking.amenities) content.booking.amenities = [];
-      content.booking.amenities.push({ emoji: '', title: '', desc: '' });
+      if (!content.sitewide.booking.amenities) content.sitewide.booking.amenities = [];
+      content.sitewide.booking.amenities.push({ emoji: '', title: '', desc: '' });
       rebuild();
     };
     body.appendChild(addAmBtn);

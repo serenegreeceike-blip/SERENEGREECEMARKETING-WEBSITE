@@ -6165,7 +6165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (function(){
   fetch('content.json?v='+Date.now()).then(r=>r.json()).then(c=>{
     var sw = c.sitewide || c;
-    var dunes = c.projects?.dunes || c.projects?.dunes || {};
+    var dunes = c.projects?.dunes || {};
     var olea = c.projects?.olea || {};
 
     function t(sel,val){ var el=document.querySelector(sel); if(el&&val) el.textContent=val; }
