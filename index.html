@@ -3378,18 +3378,18 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <span class="tag" style="color:var(--gold-dk);">Enquiry Form</span>
       <h3 class="ht" style="font-size:1.7rem;color:var(--ink);margin-bottom:6px;">Tell us what<br><em>you're looking for</em></h3>
       <div class="divider"></div>
-      <form class="form-g" onsubmit="return false;">
+      <form class="form-g" onsubmit="return submitEnquiry(this);">
         <div class="form-row2">
-          <div class="fg"><label>First Name</label><input type="text" placeholder="John"></div>
-          <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+          <div class="fg"><label>First Name</label><input name="firstName" type="text" placeholder="John" required></div>
+          <div class="fg"><label>Last Name</label><input name="lastName" type="text" placeholder="Smith" required></div>
         </div>
         <div class="form-row2">
-          <div class="fg"><label>Email</label><input type="email" placeholder="john@example.com"></div>
-          <div class="fg"><label>WhatsApp</label><input type="tel" placeholder="+972 ..."></div>
+          <div class="fg"><label>Email</label><input name="email" type="email" placeholder="john@example.com" required></div>
+          <div class="fg"><label>WhatsApp</label><input name="whatsapp" type="tel" placeholder="+972 ..."></div>
         </div>
         <div class="fg">
           <label>I'm interested in</label>
-          <select>
+          <select name="interest">
             <option>Buying a managed residence</option>
             <option>Serene Dunes — specific unit</option>
             <option>Serene Olea — specific unit</option>
@@ -3400,14 +3400,14 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         </div>
         <div class="fg">
           <label>Budget Range (€)</label>
-          <select>
+          <select name="budget">
             <option>€250,000 – €500,000</option>
             <option>€500,000 – €1,000,000</option>
             <option>€1,000,000 – €2,000,000</option>
             <option>€2,000,000+</option>
           </select>
         </div>
-        <div class="fg"><label>Message</label><textarea placeholder="Tell us what you're looking for..."></textarea></div>
+        <div class="fg"><label>Message</label><textarea name="message" placeholder="Tell us what you're looking for..."></textarea></div>
         <button type="submit" class="btn-gold" style="width:100%;text-align:center;">Send Enquiry →</button>
       </form>
     </div>
@@ -3734,6 +3734,9 @@ function updateProjectPanel(id) {
   // Hero image
   const pdpImg = document.getElementById('pdp-img');
   if (pdpImg) pdpImg.src = d.img || pdpImg.src;
+
+  // Load project-specific content from content.json
+  applyProjectContent(id);
 
   const firstTab = document.querySelector('.proj-subtab');
   if (firstTab) switchSub('ov', firstTab);
@@ -6161,9 +6164,104 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script>
+// ── CONTACT FORM SUBMISSION ──
+function submitEnquiry(form) {
+  var btn = form.querySelector('button[type="submit"]');
+  var origText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  var data = new FormData(form);
+  var body = {};
+  data.forEach(function(v, k){ body[k] = v; });
+
+  // Send via email using FormSubmit (no signup needed)
+  fetch('https://formsubmit.co/ajax/serenegreeceike@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function(r){ return r.json(); })
+  .then(function(d){
+    btn.textContent = '✓ Sent Successfully!';
+    btn.style.background = '#2e7d32';
+    form.reset();
+    setTimeout(function(){ btn.textContent = origText; btn.style.background = ''; btn.disabled = false; }, 3000);
+  }).catch(function(e){
+    btn.textContent = '✗ Error — try again';
+    btn.style.background = '#c62828';
+    setTimeout(function(){ btn.textContent = origText; btn.style.background = ''; btn.disabled = false; }, 3000);
+  });
+  return false;
+}
+
 // ── CONTENT LOADER — loads editable content from content.json ──
+var _cmsData = null;
+function applyProjectContent(projKey) {
+  if (!_cmsData || !_cmsData.projects) return;
+  var proj = _cmsData.projects[projKey] || {};
+
+  function t(sel,val){ var el=document.querySelector(sel); if(el&&val) el.textContent=val; }
+  function s(sel,attr,val){ var el=document.querySelector(sel); if(el&&val) el.setAttribute(attr,val); }
+
+  // Project hero
+  t('#pdp-tag', proj.tagline);
+  t('#pdp-name', proj.name);
+
+  // Gallery images
+  var imgs = proj.images || {};
+  s('[data-cms-img="galleryMain"]','src',imgs.galleryMain);
+  s('[data-cms-img="galleryTopRight"]','src',imgs.galleryTopRight);
+  s('[data-cms-img="galleryMidRight"]','src',imgs.galleryMidRight);
+  s('[data-cms-img="galleryBotRight"]','src',imgs.galleryBotRight);
+  s('[data-cms-img="floorPlanGround"]','src',imgs.floorPlanGround);
+  s('[data-cms-img="floorPlan1st"]','src',imgs.floorPlan1st);
+  s('[data-cms-img="locationHalkidiki"]','src',imgs.locationHalkidiki);
+  s('#pdp-img','src',proj.heroImage);
+
+  // Unit types
+  var ut = proj.unitTypes;
+  if(ut && typeof AV_TYPES !== 'undefined'){
+    Object.keys(ut).forEach(function(k){
+      if(AV_TYPES[k]){
+        AV_TYPES[k].name  = ut[k].name;
+        AV_TYPES[k].specs = ut[k].specs;
+        AV_TYPES[k].price = ut[k].price;
+        AV_TYPES[k].img   = ut[k].image;
+      }
+    });
+    // Re-select current type to refresh display
+    var activeBtn = document.querySelector('.fp-av-typebtn.active');
+    if(activeBtn) activeBtn.click();
+  }
+
+  // Advantages
+  var advs = proj.advantages;
+  if(advs){
+    document.querySelectorAll('[data-cms="advantage"]').forEach(function(el,i){
+      if(!advs[i]) return;
+      var emoji = el.querySelector('[data-cms="adv-emoji"]');
+      var title = el.querySelector('[data-cms="adv-title"]');
+      var desc  = el.querySelector('[data-cms="adv-desc"]');
+      if(emoji) emoji.textContent = advs[i].emoji;
+      if(title) title.textContent = advs[i].title;
+      if(desc)  desc.textContent  = advs[i].description;
+    });
+  }
+
+  // Location & Investment
+  var loc = proj.locationSection || {};
+  var inv = proj.investmentSection || {};
+  t('[data-cms="loc-tag"]', loc.tag);
+  t('[data-cms="loc-title"]', loc.title);
+  t('[data-cms="loc-desc"]', loc.description);
+  t('[data-cms="inv-tag"]', inv.tag);
+  t('[data-cms="inv-title"]', inv.title);
+  t('[data-cms="inv-desc"]', inv.description);
+}
+
 (function(){
   fetch('content.json?v='+Date.now()).then(r=>r.json()).then(c=>{
+    _cmsData = c;
     var sw = c.sitewide || c;
     var dunes = c.projects?.dunes || {};
     var olea = c.projects?.olea || {};
