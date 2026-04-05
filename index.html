@@ -2177,6 +2177,60 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
   }
 }
 
+/* ── LEAD MAGNET POPUP ── */
+.lm-overlay {
+  display:none; position:fixed; inset:0; z-index:3000;
+  background:rgba(12,10,6,.7); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center;
+}
+.lm-overlay.open { display:flex; }
+.lm-popup {
+  background:#1a1612; border:1px solid rgba(184,149,90,.3);
+  max-width:480px; width:90%; padding:40px 32px; text-align:center;
+  position:relative; animation:lmSlide .3s ease;
+}
+@keyframes lmSlide { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+.lm-popup h3 {
+  font-family:'Cormorant Garamond',serif; font-size:1.5rem;
+  color:var(--gold-lt); font-weight:400; margin:0 0 8px;
+}
+.lm-popup p { font-size:.78rem; color:rgba(244,239,230,.5); line-height:1.7; margin:0 0 20px; }
+.lm-popup input {
+  width:100%; padding:12px 14px; background:rgba(244,239,230,.06);
+  border:1px solid rgba(184,149,90,.25); color:#F4EFE6;
+  font-size:.85rem; margin-bottom:10px; outline:none;
+}
+.lm-popup input:focus { border-color:var(--gold); }
+.lm-popup input::placeholder { color:rgba(244,239,230,.3); }
+.lm-popup .lm-btn {
+  width:100%; padding:14px; background:var(--gold); color:#1a1612;
+  border:none; font-size:.75rem; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; cursor:pointer; margin-bottom:12px;
+}
+.lm-popup .lm-btn:hover { background:#d4af78; }
+.lm-popup .lm-close {
+  position:absolute; top:12px; right:16px; background:none; border:none;
+  color:rgba(244,239,230,.4); font-size:1.2rem; cursor:pointer;
+}
+.lm-popup .lm-skip {
+  font-size:.7rem; color:rgba(244,239,230,.3); cursor:pointer;
+  background:none; border:none; text-decoration:underline;
+}
+.lm-features {
+  display:flex; gap:16px; justify-content:center; margin:16px 0 20px;
+  font-size:.65rem; color:rgba(244,239,230,.4); letter-spacing:1px;
+  text-transform:uppercase;
+}
+/* ── CALENDLY CTA ── */
+.cal-cta {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:12px 24px; background:transparent;
+  border:1px solid var(--gold); color:var(--gold);
+  font-size:.7rem; letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; cursor:pointer; transition:all .2s;
+}
+.cal-cta:hover { background:rgba(184,149,90,.1); }
+
 </style>
 
 </head>
@@ -2363,6 +2417,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <div class="home-btns">
           <button class="btn-gold" data-cms="hero-cta1" onclick="showProjects()">Explore Projects</button>
           <button class="btn-outline" data-cms="hero-cta2" style="border-color:rgba(184,149,90,.5);color:rgba(244,239,230,.7);background:none;" onclick="goTo('method',null)">The Serene Method</button>
+          <button class="btn-outline" style="border-color:rgba(184,149,90,.3);color:rgba(244,239,230,.5);background:none;" onclick="openLM()">📄 Investor Brochure</button>
         </div>
       </div>
     </div>
@@ -3365,7 +3420,11 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <span class="tag">Contact</span>
         <h2 class="ht" data-cms="contact-heading" style="color:#fff;font-size:clamp(1.6rem,2.5vw,2.4rem);">Let's start<br><em style="color:var(--gold-lt);">the conversation</em></h2>
         <div class="divider"></div>
-        <p data-cms="contact-desc" style="font-size:.85rem;line-height:1.85;color:rgba(244,239,230,.45);margin-bottom:0;">Our investment team will respond within one business day with a tailored presentation.</p>
+        <p data-cms="contact-desc" style="font-size:.85rem;line-height:1.85;color:rgba(244,239,230,.45);margin-bottom:16px;">Our investment team will respond within one business day with a tailored presentation.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
+          <a class="cal-cta" href="https://calendly.com/serenegreeceike" target="_blank">📅 Schedule a Video Call</a>
+          <button class="cal-cta" onclick="openLM()" style="border-color:rgba(184,149,90,.5);color:rgba(244,239,230,.7);">📄 Get Investor Brochure</button>
+        </div>
         <div class="ci-list">
           <div class="ci"><div class="ci-icon">📞</div><div><h5>Phone / WhatsApp</h5><p><span data-cms="contact-phone">+30 210 000 0000</span><br><span data-cms="contact-hours">7 days · 9am–8pm EET</span></p></div></div>
           <div class="ci"><div class="ci-icon">✉️</div><div><h5>Email</h5><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="82ebecf4e7f1f6c2f1e7f0e7ece7e5f0e7e7e1e7ace1edef">[email&#160;protected]</a></p></div></div>
@@ -5820,6 +5879,29 @@ function fpFloor(floor, btn) {
 <!-- ══════════════════════════════
      FLOATING WHATSAPP BUTTON
 ══════════════════════════════ -->
+<!-- ══ LEAD MAGNET POPUP ══ -->
+<div class="lm-overlay" id="lmPopup">
+  <div class="lm-popup">
+    <button class="lm-close" onclick="closeLM()">&times;</button>
+    <div style="font-size:2rem;margin-bottom:12px;">📄</div>
+    <h3>Free Investor Brochure</h3>
+    <p>Get our 20-page guide: Greek property market, expected yields, ownership process, and full project details — delivered to your inbox.</p>
+    <div class="lm-features">
+      <span>📊 Market Data</span>
+      <span>💰 ROI Analysis</span>
+      <span>🏛️ Legal Guide</span>
+    </div>
+    <form onsubmit="return submitLM(this)">
+      <input name="firstName" type="text" placeholder="First Name" required>
+      <input name="email" type="email" placeholder="Email Address" required>
+      <input name="whatsapp" type="tel" placeholder="WhatsApp (optional)">
+      <input type="hidden" name="_subject" value="Investor Brochure Request">
+      <button type="submit" class="lm-btn">Download Investor Brochure →</button>
+    </form>
+    <button class="lm-skip" onclick="closeLM()">Not now, maybe later</button>
+  </div>
+</div>
+
 <a id="wa-float" href="https://wa.me/302100000000?text=Hi%20Serene%20Greece%2C%20I'm%20interested%20in%20Serene%20Dunes.%20Can%20you%20send%20me%20the%20investor%20pack%3F" target="_blank" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -6164,6 +6246,54 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script>
+// ── LEAD MAGNET POPUP ──
+function openLM() {
+  document.getElementById('lmPopup').classList.add('open');
+}
+function closeLM() {
+  document.getElementById('lmPopup').classList.remove('open');
+  sessionStorage.setItem('lm_dismissed', '1');
+}
+function submitLM(form) {
+  var btn = form.querySelector('.lm-btn');
+  btn.textContent = 'Sending...';
+  var data = new FormData(form);
+  var body = {}; data.forEach(function(v,k){ body[k]=v; });
+  fetch('https://formsubmit.co/ajax/serenegreeceike@gmail.com', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify(body)
+  }).then(function(){
+    btn.textContent = '✓ Sent! Check your inbox.';
+    btn.style.background = '#2e7d32'; btn.style.color = '#fff';
+    setTimeout(closeLM, 2500);
+  }).catch(function(){
+    btn.textContent = '✗ Error — try again';
+    btn.style.background = '#c62828'; btn.style.color = '#fff';
+    setTimeout(function(){ btn.textContent = 'Download Investor Brochure →'; btn.style.background=''; btn.style.color=''; }, 3000);
+  });
+  return false;
+}
+
+// Exit intent — show popup when mouse leaves viewport (desktop only)
+(function(){
+  var shown = false;
+  document.addEventListener('mouseout', function(e){
+    if (shown || sessionStorage.getItem('lm_dismissed')) return;
+    if (e.clientY < 5 && e.relatedTarget == null) {
+      shown = true;
+      setTimeout(openLM, 300);
+    }
+  });
+  // Also show after 45 seconds if not dismissed
+  setTimeout(function(){
+    if (!shown && !sessionStorage.getItem('lm_dismissed')) {
+      shown = true;
+      openLM();
+    }
+  }, 45000);
+})();
+
 // ── CONTACT FORM SUBMISSION ──
 function submitEnquiry(form) {
   var btn = form.querySelector('button[type="submit"]');
