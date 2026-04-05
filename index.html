@@ -6445,9 +6445,10 @@ function applyProjectContent(projKey) {
   t('[data-cms="inv-desc"]', inv.description);
 
   // ── REBUILD PAYMENT PLAN from content.json ──
+  var ppTable = document.querySelector('#pp-table tbody');
+  if(ppTable) ppTable.innerHTML = '';
   var pp = proj.paymentPlan;
-  if(pp && pp.milestones) {
-    var ppTable = document.querySelector('#pp-table tbody');
+  if(pp && pp.milestones && pp.milestones.length > 0) {
     if(ppTable) {
       ppTable.innerHTML = '';
       pp.milestones.forEach(function(m){
@@ -6469,11 +6470,11 @@ function applyProjectContent(projKey) {
   }
 
   // ── REBUILD TIMELINE from content.json ──
+  var tlWrap = document.querySelector('#sub-tl .tl-wrap');
+  if(tlWrap) tlWrap.innerHTML = '';
   var tl = proj.timeline;
-  if(tl && tl.milestones) {
-    var tlWrap = document.querySelector('#sub-tl .tl-wrap');
+  if(tl && tl.milestones && tl.milestones.length > 0) {
     if(tlWrap) {
-      tlWrap.innerHTML = '';
       tl.milestones.forEach(function(m, i){
         var isDone = m.status && m.status.indexOf('Complete') >= 0;
         var isNow = m.status && (m.status.indexOf('Progress') >= 0 || m.status.indexOf('🔨') >= 0);
@@ -6492,20 +6493,19 @@ function applyProjectContent(projKey) {
         tlWrap.appendChild(phase);
       });
     }
-    // Update description
     var tlDesc = document.querySelector('#sub-tl > p:first-child');
     if(tlDesc && tl.description) tlDesc.textContent = tl.description;
   }
 
   // ── REBUILD UNITS from content.json ──
+  var avRight = document.querySelector('.fp-av-right');
+  if(avRight) {
+    var topbar = avRight.querySelector('.av-topbar');
+    avRight.innerHTML = '';
+    if(topbar) avRight.appendChild(topbar);
+  }
   var units = proj.units;
-  if(units && units.length > 0) {
-    var avRight = document.querySelector('.fp-av-right');
-    if(avRight) {
-      // Keep topbar, rebuild zones
-      var topbar = avRight.querySelector('.av-topbar');
-      avRight.innerHTML = '';
-      if(topbar) avRight.appendChild(topbar);
+  if(units && units.length > 0 && avRight) {
 
       // Group units by zone
       var zones = {};
@@ -6541,23 +6541,26 @@ function applyProjectContent(projKey) {
         block.appendChild(row);
         avRight.appendChild(block);
       });
-    }
   }
 
   // ── REBUILD SPECS from content.json ──
+  // Clear existing specs first
+  document.querySelectorAll('#sub-spec .spec-row').forEach(function(row){
+    var label = row.querySelector('.spec-label');
+    var value = row.querySelector('.spec-val');
+    if(label) label.textContent = '';
+    if(value) value.textContent = '';
+  });
   var specs = proj.specifications;
-  if(specs) {
-    // Specs table
-    if(specs.specs && specs.specs.length > 0) {
-      var specRows = document.querySelectorAll('#sub-spec .spec-row');
-      specRows.forEach(function(row, i){
-        if(!specs.specs[i]) return;
-        var label = row.querySelector('.spec-label');
-        var value = row.querySelector('.spec-value');
-        if(label) label.textContent = specs.specs[i].label;
-        if(value) value.textContent = specs.specs[i].value;
-      });
-    }
+  if(specs && specs.specs && specs.specs.length > 0) {
+    var specRows = document.querySelectorAll('#sub-spec .spec-row');
+    specRows.forEach(function(row, i){
+      if(!specs.specs[i]) return;
+      var label = row.querySelector('.spec-label');
+      var value = row.querySelector('.spec-val');
+      if(label) label.textContent = specs.specs[i].label;
+      if(value) value.textContent = specs.specs[i].value;
+    });
   }
 
   // ── REBUILD LOCATION DETAIL from content.json ──
@@ -6573,8 +6576,6 @@ function applyProjectContent(projKey) {
       if(locTag && ld.tagline) locTag.textContent = ld.tagline;
     }
   }
-}
-  t('[data-cms="inv-desc"]', inv.description);
 }
 
 (function(){
