@@ -8,7 +8,7 @@
     const d=document,s=d.createElement("script");s.type="module";
     s.src="https://w.behold.so/widget.js";d.head.append(s);
   })();
-</script><script type="module" src="https://w.behold.so/widget.js"></script>
+</script><script type="module" src="https://w.behold.so/widget.js"></script><script type="module" src="https://w.behold.so/widget.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ── */
@@ -2245,6 +2245,19 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     from { transform: translateY(100%); }
     to   { transform: translateY(0); }
   }
+</style><style>
+  body.site-edit-on [contenteditable="true"] {
+    cursor: text !important;
+    transition: outline .15s, background .15s;
+  }
+  body.site-edit-on [contenteditable="true"]:hover {
+    outline: 1px dashed rgba(184,149,90,.35) !important;
+    border-radius: 2px;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
 </style></head>
 <body class="">
 
@@ -2378,7 +2391,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       font-size:.6rem;letter-spacing:2px;text-transform:uppercase;
       cursor:pointer;transition:all .25s;
       display:flex;align-items:center;justify-content:center;gap:7px;
-    ">
+    " class="">
       <span>✏</span> Edit Site
     </button>
   </div>
@@ -2423,9 +2436,9 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     <div class="home-hero">
       <div class="home-hero-bg"></div>
       <div class="home-content">
-        <p class="home-eyebrow" data-cms="hero-eyebrow">Greek Developer · Premium Managed Residences · Chalkidiki</p>
-        <h1 class="home-h1" data-cms="hero-heading">Choose Greece. <em>We make it work for you.</em></h1>
-        <p class="home-desc" data-cms="hero-desc">We develop, build, and fully manage premium residences across Greece’s finest destinations — delivering a lifestyle asset and high-yield investment under one brand.</p>
+        <p class="home-eyebrow" data-cms="hero-eyebrow" contenteditable="false" data-orig-text="Greek Developer · Premium Managed Residences · Chalkidiki">Greek Developer · Premium Managed Residences · Chalkidiki</p>
+        <h1 class="home-h1" data-cms="hero-heading" contenteditable="false" data-orig-text="Choose Greece. We make it work for you.">Choose Greece. <em>We make it work for you.</em></h1>
+        <p class="home-desc" data-cms="hero-desc" contenteditable="false" data-orig-text="We develop, build, and fully manage premium residences across Greece’s finest destinations — delivering a lifestyle asset and high-yield investment under one brand.">We develop, build, and fully manage premium residences across Greece’s finest destinations — delivering a lifestyle asset and high-yield investment under one brand.</p>
         <div class="home-btns">
           <button class="btn-gold" data-cms="hero-cta1" onclick="showProjects()">Explore Projects</button>
           <button class="btn-outline" data-cms="hero-cta2" style="border-color:rgba(184,149,90,.5);color:rgba(244,239,230,.7);background:none;" onclick="goTo('method',null)">The Serene Method</button>
@@ -2452,8 +2465,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <img loading="lazy" src="images/img-02.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);">
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;background:linear-gradient(to right,rgba(12,10,6,.7) 40%,transparent);">
           <span style="font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:#B8955A;display:block;margin-bottom:12px;">The Serene Method</span>
-          <h1 data-cms="method-heading" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);color:#F4EFE6;font-weight:300;margin:0;line-height:1.1;">Own. Stay. Earn.</h1>
-          <p data-cms="method-desc" style="font-size:.8rem;color:rgba(244,239,230,.55);margin:14px 0 0;max-width:460px;line-height:1.8;font-style:italic;">Most holiday properties either work for you or you enjoy them. Serene is built to do both — at the same time.</p>
+          <h1 data-cms="method-heading" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);color:#F4EFE6;font-weight:300;margin:0;line-height:1.1;" contenteditable="false" data-orig-text="Own. Stay. Earn.">Own. Stay. Earn.</h1>
+          <p data-cms="method-desc" style="font-size:.8rem;color:rgba(244,239,230,.55);margin:14px 0 0;max-width:460px;line-height:1.8;font-style:italic;" contenteditable="false" data-orig-text="Most holiday properties either work for you or you enjoy them. Serene is built to do both — at the same time.">Most holiday properties either work for you or you enjoy them. Serene is built to do both — at the same time.</p>
         </div>
       </div>
 
@@ -2461,87 +2474,87 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <div style="background:#120E08;padding:32px 44px;border-bottom:1px solid rgba(184,149,90,.12);">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:860px;">
           <div>
-            <p style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:rgba(184,149,90,.5);margin:0 0 10px;">The old way</p>
-            <p data-cms="method-oldway" style="font-size:.78rem;color:rgba(244,239,230,.4);line-height:1.8;margin:0;">Buy a holiday property. Deal with multiple contractors, interior designers, management companies, rental agencies. Coordinate everything yourself. Hope it works out.</p>
+            <p style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:rgba(184,149,90,.5);margin:0 0 10px;" contenteditable="false" data-orig-text="The old way">The old way</p>
+            <p data-cms="method-oldway" style="font-size:.78rem;color:rgba(244,239,230,.4);line-height:1.8;margin:0;" contenteditable="false" data-orig-text="Buy a holiday property. Deal with multiple contractors, interior designers, management companies, rental agencies. Coordinate everything yourself. Hope it works out.">Buy a holiday property. Deal with multiple contractors, interior designers, management companies, rental agencies. Coordinate everything yourself. Hope it works out.</p>
           </div>
           <div style="border-left:1px solid rgba(184,149,90,.15);padding-left:32px;">
-            <p style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 10px;">The Serene way</p>
-            <p data-cms="method-sereneway" style="font-size:.78rem;color:rgba(244,239,230,.7);line-height:1.8;margin:0;">One company. Developer, builder, interior designer, and manager — all under one roof. You choose your unit. We handle everything else, forever.</p>
+            <p style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 10px;" contenteditable="false" data-orig-text="The Serene way">The Serene way</p>
+            <p data-cms="method-sereneway" style="font-size:.78rem;color:rgba(244,239,230,.7);line-height:1.8;margin:0;" contenteditable="false" data-orig-text="One company. Developer, builder, interior designer, and manager — all under one roof. You choose your unit. We handle everything else, forever.">One company. Developer, builder, interior designer, and manager — all under one roof. You choose your unit. We handle everything else, forever.</p>
           </div>
         </div>
       </div>
 
       <!-- ONE SOURCE -->
       <div style="padding:32px 44px;border-bottom:1px solid var(--panel2);background:var(--white);">
-        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 6px;">Why it matters</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);font-weight:400;margin:0 0 20px;">One source. Total accountability.</h2>
+        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 6px;" contenteditable="false" data-orig-text="Why it matters">Why it matters</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);font-weight:400;margin:0 0 20px;" contenteditable="false" data-orig-text="One source. Total accountability.">One source. Total accountability.</h2>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--panel2);">
           <div style="background:#fff;padding:20px 18px;">
-            <p style="font-size:1.4rem;margin:0 0 6px;">🏗️</p>
-            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 4px;">Developer &amp; Builder</p>
-            <p style="font-size:.63rem;color:var(--muted);line-height:1.6;margin:0;">We design, permit, and build the entire compound to one unified standard. No subcontractors passing the blame.</p>
+            <p style="font-size:1.4rem;margin:0 0 6px;" contenteditable="false" data-orig-text="🏗️">🏗️</p>
+            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 4px;" contenteditable="false" data-orig-text="Developer &amp; Builder">Developer &amp; Builder</p>
+            <p style="font-size:.63rem;color:var(--muted);line-height:1.6;margin:0;" contenteditable="false" data-orig-text="We design, permit, and build the entire compound to one unified standard. No subcontractors passing the blame.">We design, permit, and build the entire compound to one unified standard. No subcontractors passing the blame.</p>
           </div>
           <div style="background:#fff;padding:20px 18px;border-left:1px solid var(--panel2);border-right:1px solid var(--panel2);">
-            <p style="font-size:1.4rem;margin:0 0 6px;">🎨</p>
-            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 4px;">Interior &amp; Fit-Out</p>
-            <p style="font-size:.63rem;color:var(--muted);line-height:1.6;margin:0;">Designed by leading Greek architects and interior designers. Every unit finished and furnished to hotel specification — down to the last detail.</p>
+            <p style="font-size:1.4rem;margin:0 0 6px;" contenteditable="false" data-orig-text="🎨">🎨</p>
+            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 4px;" contenteditable="false" data-orig-text="Interior &amp; Fit-Out">Interior &amp; Fit-Out</p>
+            <p style="font-size:.63rem;color:var(--muted);line-height:1.6;margin:0;" contenteditable="false" data-orig-text="Designed by leading Greek architects and interior designers. Every unit finished and furnished to hotel specification — down to the last detail.">Designed by leading Greek architects and interior designers. Every unit finished and furnished to hotel specification — down to the last detail.</p>
           </div>
           <div style="background:#fff;padding:20px 18px;">
-            <p style="font-size:1.4rem;margin:0 0 6px;">🏨</p>
-            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 4px;">Hotel-Grade Management</p>
-            <p style="font-size:.63rem;color:var(--muted);line-height:1.6;margin:0;">Check-in, housekeeping, maintenance, guest services, rental marketing — managed by Serene, to Serene standards, permanently.</p>
+            <p style="font-size:1.4rem;margin:0 0 6px;" contenteditable="false" data-orig-text="🏨">🏨</p>
+            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 4px;" contenteditable="false" data-orig-text="Hotel-Grade Management">Hotel-Grade Management</p>
+            <p style="font-size:.63rem;color:var(--muted);line-height:1.6;margin:0;" contenteditable="false" data-orig-text="Check-in, housekeeping, maintenance, guest services, rental marketing — managed by Serene, to Serene standards, permanently.">Check-in, housekeeping, maintenance, guest services, rental marketing — managed by Serene, to Serene standards, permanently.</p>
           </div>
         </div>
       </div>
 
       <!-- WHAT YOU GET AS AN OWNER -->
       <div style="background:var(--panel);padding:32px 44px;border-bottom:1px solid var(--panel2);">
-        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 6px;">What you own</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);font-weight:400;margin:0 0 20px;">More than a property.<br>A stake in a brand.</h2>
+        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 6px;" contenteditable="false" data-orig-text="What you own">What you own</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);font-weight:400;margin:0 0 20px;" contenteditable="false" data-orig-text="More than a property.A stake in a brand.">More than a property.<br>A stake in a brand.</h2>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
           <div style="display:flex;align-items:flex-start;gap:12px;background:#fff;padding:16px 18px;">
             <span style="color:#B8955A;font-size:.9rem;flex-shrink:0;margin-top:1px;">✓</span>
-            <div><p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 2px;">Full legal ownership</p><p style="font-size:.62rem;color:var(--muted);margin:0;line-height:1.5;">Title deed in your name. Freehold property under Greek law.</p></div>
+            <div><p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 2px;" contenteditable="false" data-orig-text="Full legal ownership">Full legal ownership</p><p style="font-size:.62rem;color:var(--muted);margin:0;line-height:1.5;" contenteditable="false" data-orig-text="Title deed in your name. Freehold property under Greek law.">Title deed in your name. Freehold property under Greek law.</p></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;background:#fff;padding:16px 18px;">
             <span style="color:#B8955A;font-size:.9rem;flex-shrink:0;margin-top:1px;">✓</span>
-            <div><p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 2px;">Personal use rights</p><p style="font-size:.62rem;color:var(--muted);margin:0;line-height:1.5;">Book your unit as an owner anytime through our dedicated owner portal.</p></div>
+            <div><p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 2px;" contenteditable="false" data-orig-text="Personal use rights">Personal use rights</p><p style="font-size:.62rem;color:var(--muted);margin:0;line-height:1.5;" contenteditable="false" data-orig-text="Book your unit as an owner anytime through our dedicated owner portal.">Book your unit as an owner anytime through our dedicated owner portal.</p></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;background:#fff;padding:16px 18px;">
             <span style="color:#B8955A;font-size:.9rem;flex-shrink:0;margin-top:1px;">✓</span>
-            <div><p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 2px;">Shared rental income</p><p style="font-size:.62rem;color:var(--muted);margin:0;line-height:1.5;">Revenue and costs distributed across all owners — transparently, by unit type.</p></div>
+            <div><p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 2px;" contenteditable="false" data-orig-text="Shared rental income">Shared rental income</p><p style="font-size:.62rem;color:var(--muted);margin:0;line-height:1.5;" contenteditable="false" data-orig-text="Revenue and costs distributed across all owners — transparently, by unit type.">Revenue and costs distributed across all owners — transparently, by unit type.</p></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:12px;background:#fff;padding:16px 18px;">
             <span style="color:#B8955A;font-size:.9rem;flex-shrink:0;margin-top:1px;">✓</span>
-            <div><p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 2px;">Zero operational burden</p><p style="font-size:.62rem;color:var(--muted);margin:0;line-height:1.5;">No guests to manage, no repairs to coordinate, no invoices to chase.</p></div>
+            <div><p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:0 0 2px;" contenteditable="false" data-orig-text="Zero operational burden">Zero operational burden</p><p style="font-size:.62rem;color:var(--muted);margin:0;line-height:1.5;" contenteditable="false" data-orig-text="No guests to manage, no repairs to coordinate, no invoices to chase.">No guests to manage, no repairs to coordinate, no invoices to chase.</p></div>
           </div>
         </div>
       </div>
 
       <!-- 4 STEPS -->
       <div style="padding:32px 44px;border-bottom:1px solid var(--panel2);background:#fff;">
-        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 6px;">How it works</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);font-weight:400;margin:0 0 24px;">Four steps to ownership.</h2>
+        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 6px;" contenteditable="false" data-orig-text="How it works">How it works</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);font-weight:400;margin:0 0 24px;" contenteditable="false" data-orig-text="Four steps to ownership.">Four steps to ownership.</h2>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--panel2);">
           <div style="background:#fff;padding:20px 16px;position:relative;">
-            <p style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,149,90,.15);margin:0;line-height:1;font-weight:700;">01</p>
-            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:8px 0 4px;">Choose Your Unit</p>
-            <p style="font-size:.62rem;color:var(--muted);line-height:1.6;margin:0;">Select type, zone, and view. Reserve with a fully refundable deposit.</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,149,90,.15);margin:0;line-height:1;font-weight:700;" contenteditable="false" data-orig-text="01">01</p>
+            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:8px 0 4px;" contenteditable="false" data-orig-text="Choose Your Unit">Choose Your Unit</p>
+            <p style="font-size:.62rem;color:var(--muted);line-height:1.6;margin:0;" contenteditable="false" data-orig-text="Select type, zone, and view. Reserve with a fully refundable deposit.">Select type, zone, and view. Reserve with a fully refundable deposit.</p>
           </div>
           <div style="background:#fff;padding:20px 16px;border-left:1px solid var(--panel2);">
-            <p style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,149,90,.15);margin:0;line-height:1;font-weight:700;">02</p>
-            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:8px 0 4px;">Sign &amp; Pay by Milestones</p>
-            <p style="font-size:.62rem;color:var(--muted);line-height:1.6;margin:0;">Payments tied to construction progress — not arbitrary deadlines.</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,149,90,.15);margin:0;line-height:1;font-weight:700;" contenteditable="false" data-orig-text="02">02</p>
+            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:8px 0 4px;" contenteditable="false" data-orig-text="Sign &amp; Pay by Milestones">Sign &amp; Pay by Milestones</p>
+            <p style="font-size:.62rem;color:var(--muted);line-height:1.6;margin:0;" contenteditable="false" data-orig-text="Payments tied to construction progress — not arbitrary deadlines.">Payments tied to construction progress — not arbitrary deadlines.</p>
           </div>
           <div style="background:#fff;padding:20px 16px;border-left:1px solid var(--panel2);">
-            <p style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,149,90,.15);margin:0;line-height:1;font-weight:700;">03</p>
-            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:8px 0 4px;">Receive Keys</p>
-            <p style="font-size:.62rem;color:var(--muted);line-height:1.6;margin:0;">Fully furnished, styled, and guest-ready. Not a single detail left to you.</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,149,90,.15);margin:0;line-height:1;font-weight:700;" contenteditable="false" data-orig-text="03">03</p>
+            <p style="font-size:.7rem;font-weight:600;color:var(--ink);margin:8px 0 4px;" contenteditable="false" data-orig-text="Receive Keys">Receive Keys</p>
+            <p style="font-size:.62rem;color:var(--muted);line-height:1.6;margin:0;" contenteditable="false" data-orig-text="Fully furnished, styled, and guest-ready. Not a single detail left to you.">Fully furnished, styled, and guest-ready. Not a single detail left to you.</p>
           </div>
           <div style="background:#120E08;padding:20px 16px;border-left:1px solid rgba(184,149,90,.2);">
-            <p style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,149,90,.2);margin:0;line-height:1;font-weight:700;">04</p>
-            <p style="font-size:.7rem;font-weight:600;color:#F4EFE6;margin:8px 0 4px;">Start Earning</p>
-            <p style="font-size:.62rem;color:rgba(244,239,230,.45);line-height:1.6;margin:0;">Management begins on day one. You receive income. We handle everything.</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,149,90,.2);margin:0;line-height:1;font-weight:700;" contenteditable="false" data-orig-text="04">04</p>
+            <p style="font-size:.7rem;font-weight:600;color:#F4EFE6;margin:8px 0 4px;" contenteditable="false" data-orig-text="Start Earning">Start Earning</p>
+            <p style="font-size:.62rem;color:rgba(244,239,230,.45);line-height:1.6;margin:0;" contenteditable="false" data-orig-text="Management begins on day one. You receive income. We handle everything.">Management begins on day one. You receive income. We handle everything.</p>
           </div>
         </div>
       </div>
@@ -2550,39 +2563,39 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <div style="background:#fff;padding:32px 44px;border-bottom:1px solid var(--panel2);">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;">
           <div>
-            <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;">Your owner portal</p>
-            <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);font-weight:400;margin:0 0 14px;line-height:1.2;">You'll always know<br>exactly where you stand.</h2>
-            <p style="font-size:.72rem;color:var(--muted);line-height:1.8;margin:0 0 20px;">Every owner gets a personal dashboard — transfer dates, guest reviews, income reports. Backed by AI, synced with our accounting. No spreadsheets. No chasing. Just clarity.</p>
+            <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;" contenteditable="false" data-orig-text="Your owner portal">Your owner portal</p>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--ink);font-weight:400;margin:0 0 14px;line-height:1.2;" contenteditable="false" data-orig-text="You'll always knowexactly where you stand.">You'll always know<br>exactly where you stand.</h2>
+            <p style="font-size:.72rem;color:var(--muted);line-height:1.8;margin:0 0 20px;" contenteditable="false" data-orig-text="Every owner gets a personal dashboard — transfer dates, guest reviews, income reports. Backed by AI, synced with our accounting. No spreadsheets. No chasing. Just clarity.">Every owner gets a personal dashboard — transfer dates, guest reviews, income reports. Backed by AI, synced with our accounting. No spreadsheets. No chasing. Just clarity.</p>
             <div style="display:flex;flex-direction:column;gap:10px;">
               <div style="display:flex;align-items:center;gap:10px;">
                 <span style="width:28px;height:28px;border-radius:50%;background:rgba(184,149,90,.1);border:1px solid rgba(184,149,90,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;">📅</span>
-                <p style="font-size:.68rem;color:var(--ink);margin:0;"><strong>Transfer dates</strong> — know exactly when your income arrives</p>
+                <p style="font-size:.68rem;color:var(--ink);margin:0;" contenteditable="false" data-orig-text="Transfer dates — know exactly when your income arrives"><strong>Transfer dates</strong> — know exactly when your income arrives</p>
               </div>
               <div style="display:flex;align-items:center;gap:10px;">
                 <span style="width:28px;height:28px;border-radius:50%;background:rgba(184,149,90,.1);border:1px solid rgba(184,149,90,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;">⭐</span>
-                <p style="font-size:.68rem;color:var(--ink);margin:0;"><strong>Guest reviews</strong> — see what guests say about your property</p>
+                <p style="font-size:.68rem;color:var(--ink);margin:0;" contenteditable="false" data-orig-text="Guest reviews — see what guests say about your property"><strong>Guest reviews</strong> — see what guests say about your property</p>
               </div>
               <div style="display:flex;align-items:center;gap:10px;">
                 <span style="width:28px;height:28px;border-radius:50%;background:rgba(184,149,90,.1);border:1px solid rgba(184,149,90,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;">📊</span>
-                <p style="font-size:.68rem;color:var(--ink);margin:0;"><strong>Income reports</strong> — AI-powered, near-automatic, always up to date</p>
+                <p style="font-size:.68rem;color:var(--ink);margin:0;" contenteditable="false" data-orig-text="Income reports — AI-powered, near-automatic, always up to date"><strong>Income reports</strong> — AI-powered, near-automatic, always up to date</p>
               </div>
             </div>
           </div>
           <div style="background:#120E08;padding:28px;border:1px solid rgba(184,149,90,.12);">
-            <p style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:rgba(184,149,90,.5);margin:0 0 16px;">Owner Dashboard</p>
+            <p style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:rgba(184,149,90,.5);margin:0 0 16px;" contenteditable="false" data-orig-text="Owner Dashboard">Owner Dashboard</p>
             <div style="display:flex;flex-direction:column;gap:12px;">
               <div style="background:rgba(255,255,255,.04);border:1px solid rgba(184,149,90,.1);padding:12px 14px;border-radius:2px;">
-                <p style="font-size:.48rem;color:rgba(244,239,230,.3);text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;">Next Transfer</p>
-                <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#B8955A;margin:0;">April 15, 2025</p>
+                <p style="font-size:.48rem;color:rgba(244,239,230,.3);text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;" contenteditable="false" data-orig-text="Next Transfer">Next Transfer</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#B8955A;margin:0;" contenteditable="false" data-orig-text="April 15, 2025">April 15, 2025</p>
               </div>
               <div style="background:rgba(255,255,255,.04);border:1px solid rgba(184,149,90,.1);padding:12px 14px;border-radius:2px;">
-                <p style="font-size:.48rem;color:rgba(244,239,230,.3);text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;">Last Guest Review</p>
-                <p style="font-size:.65rem;color:rgba(244,239,230,.7);margin:0;line-height:1.5;font-style:italic;">"Exceptional stay — spotless, beautifully managed."</p>
-                <p style="font-size:.48rem;color:rgba(244,239,230,.3);margin:4px 0 0;">★★★★★ · Booking.com</p>
+                <p style="font-size:.48rem;color:rgba(244,239,230,.3);text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;" contenteditable="false" data-orig-text="Last Guest Review">Last Guest Review</p>
+                <p style="font-size:.65rem;color:rgba(244,239,230,.7);margin:0;line-height:1.5;font-style:italic;" contenteditable="false" data-orig-text="&quot;Exceptional stay — spotless, beautifully managed.&quot;">"Exceptional stay — spotless, beautifully managed."</p>
+                <p style="font-size:.48rem;color:rgba(244,239,230,.3);margin:4px 0 0;" contenteditable="false" data-orig-text="★★★★★ · Booking.com">★★★★★ · Booking.com</p>
               </div>
               <div style="background:rgba(255,255,255,.04);border:1px solid rgba(184,149,90,.1);padding:12px 14px;border-radius:2px;">
-                <p style="font-size:.48rem;color:rgba(244,239,230,.3);text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;">Season Income</p>
-                <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#B8955A;margin:0;">€14,200 <span style="font-size:.6rem;color:rgba(184,149,90,.5);">net · 2024</span></p>
+                <p style="font-size:.48rem;color:rgba(244,239,230,.3);text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;" contenteditable="false" data-orig-text="Season Income">Season Income</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#B8955A;margin:0;" contenteditable="false" data-orig-text="€14,200 net · 2024">€14,200 <span style="font-size:.6rem;color:rgba(184,149,90,.5);">net · 2024</span></p>
               </div>
             </div>
           </div>
@@ -2591,10 +2604,10 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
       <!-- BEYOND THE NUMBERS -->
       <div style="background:#120E08;padding:36px 44px;border-bottom:1px solid rgba(184,149,90,.12);">
-        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(184,149,90,.5);margin:0 0 10px;">Beyond the numbers</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#F4EFE6;font-weight:300;margin:0 0 14px;line-height:1.2;">This is also where your<br>family comes home.</h2>
-        <p style="font-size:.78rem;color:rgba(244,239,230,.5);line-height:1.9;max-width:540px;margin:0 0 20px;">Ten weeks of summer. Yours to earn, yours to enjoy — or both at once. That's the point.</p>
-        <p style="font-size:.78rem;color:rgba(244,239,230,.5);line-height:1.9;max-width:540px;margin:0 0 24px;">And when the season quiets — Easter in Greece, a winter weekend, Thessaloniki thirty minutes away — the compound is still yours. A different pace. Equally real.</p>
+        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(184,149,90,.5);margin:0 0 10px;" contenteditable="false" data-orig-text="Beyond the numbers">Beyond the numbers</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#F4EFE6;font-weight:300;margin:0 0 14px;line-height:1.2;" contenteditable="false" data-orig-text="This is also where yourfamily comes home.">This is also where your<br>family comes home.</h2>
+        <p style="font-size:.78rem;color:rgba(244,239,230,.5);line-height:1.9;max-width:540px;margin:0 0 20px;" contenteditable="false" data-orig-text="Ten weeks of summer. Yours to earn, yours to enjoy — or both at once. That's the point.">Ten weeks of summer. Yours to earn, yours to enjoy — or both at once. That's the point.</p>
+        <p style="font-size:.78rem;color:rgba(244,239,230,.5);line-height:1.9;max-width:540px;margin:0 0 24px;" contenteditable="false" data-orig-text="And when the season quiets — Easter in Greece, a winter weekend, Thessaloniki thirty minutes away — the compound is still yours. A different pace. Equally real.">And when the season quiets — Easter in Greece, a winter weekend, Thessaloniki thirty minutes away — the compound is still yours. A different pace. Equally real.</p>
         <button class="btn-gold" onclick="goTo('contact',null)" style="font-size:.6rem;padding:11px 28px;">Talk to Our Team →</button>
       </div>
 
@@ -2615,8 +2628,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
             <img loading="lazy" src="images/img-02.jpg" alt="Serene Dunes">
           </div>
           <div class="proj-card-body">
-            <span class="proj-card-name" data-cms="dunes-name">Serene Dunes</span>
-            <span class="proj-card-loc" data-cms="dunes-loc">Halkidiki, Greece</span>
+            <span class="proj-card-name" data-cms="dunes-name" contenteditable="false" data-orig-text="Serene Dunes">Serene Dunes</span>
+            <span class="proj-card-loc" data-cms="dunes-loc" contenteditable="false" data-orig-text="Halkidiki, Greece">Halkidiki, Greece</span>
             <span class="proj-card-badge">Now Selling</span>
           </div>
         </div>
@@ -2625,8 +2638,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
             <img loading="lazy" src="images/img-02.jpg" alt="Serene Olea">
           </div>
           <div class="proj-card-body">
-            <span class="proj-card-name" data-cms="olea-name">Serene Olea</span>
-            <span class="proj-card-loc" data-cms="olea-loc">Halkidiki, Greece</span>
+            <span class="proj-card-name" data-cms="olea-name" contenteditable="false" data-orig-text="Serene Olea">Serene Olea</span>
+            <span class="proj-card-loc" data-cms="olea-loc" contenteditable="false" data-orig-text="Halkidiki, Greece">Halkidiki, Greece</span>
             <span class="proj-card-badge">Now Selling</span>
           </div>
         </div>
@@ -2641,9 +2654,9 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <img id="pdp-img" src="images/img-02.jpg" alt="Serene Dunes">
         <div class="pdp-hero-content">
           <div class="pdp-hero-inner">
-            <span class="pdp-hero-tag-line" id="pdp-tag" data-cms="pdp-tagline">Halkidiki, Greece · Now Selling</span>
-            <span class="pdp-hero-name" id="pdp-name" data-cms="pdp-name">Serene Dunes</span>
-            <div class="pdp-hero-status" id="pdp-status">Now Selling</div>
+            <span class="pdp-hero-tag-line" id="pdp-tag" data-cms="pdp-tagline" contenteditable="false" data-orig-text="Halkidiki, Greece · Now Selling">Halkidiki, Greece · Now Selling</span>
+            <span class="pdp-hero-name" id="pdp-name" data-cms="pdp-name" contenteditable="false" data-orig-text="Serene Dunes">Serene Dunes</span>
+            <div class="pdp-hero-status" id="pdp-status" contenteditable="false" data-orig-text="Now Selling">Now Selling</div>
           </div>
         </div>
       </div>
@@ -2724,14 +2737,14 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
             <!-- ROW 4: LOCATION + INVESTMENT -->
             <tr>
               <td width="50%" style="padding:22px 24px;border-bottom:1px solid #EEE9DF;border-right:1px solid #EEE9DF;vertical-align:top;">
-                <p data-cms="loc-tag" style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;">The Location</p>
-                <h4 data-cms="loc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#120E08;margin:0 0 10px;font-weight:400;">Kallikratia, Halkidiki</h4>
-                <p data-cms="loc-desc" style="font-size:.7rem;color:rgba(18,14,8,.42);line-height:1.8;margin:0;">Kallikratia sits at the gateway to Halkidiki — where the Thermaic Gulf meets the Aegean peninsula. Established, authentic, and 30 minutes from Thessaloniki — without the crowds of the tourist south.</p>
+                <p data-cms="loc-tag" style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;" contenteditable="false" data-orig-text="The Location">The Location</p>
+                <h4 data-cms="loc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#120E08;margin:0 0 10px;font-weight:400;" contenteditable="false" data-orig-text="Kallikratia, Halkidiki">Kallikratia, Halkidiki</h4>
+                <p data-cms="loc-desc" style="font-size:.7rem;color:rgba(18,14,8,.42);line-height:1.8;margin:0;" contenteditable="false" data-orig-text="Kallikratia sits at the gateway to Halkidiki — where the Thermaic Gulf meets the Aegean peninsula. Established, authentic, and 30 minutes from Thessaloniki — without the crowds of the tourist south.">Kallikratia sits at the gateway to Halkidiki — where the Thermaic Gulf meets the Aegean peninsula. Established, authentic, and 30 minutes from Thessaloniki — without the crowds of the tourist south.</p>
               </td>
               <td width="50%" style="padding:22px 24px;border-bottom:1px solid #EEE9DF;vertical-align:top;">
-                <p data-cms="inv-tag" style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;">The Investment</p>
-                <h4 data-cms="inv-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#120E08;margin:0 0 10px;font-weight:400;">Real Yield. Real Management.</h4>
-                <p data-cms="inv-desc" style="font-size:.7rem;color:rgba(18,14,8,.42);line-height:1.8;margin:0;">Greek real estate is appreciating at 12–18% YoY. Buy at pre-sale developer pricing, receive rental income from operation launch, and benefit from capital growth at handover — all without lifting a finger.</p>
+                <p data-cms="inv-tag" style="font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;" contenteditable="false" data-orig-text="The Investment">The Investment</p>
+                <h4 data-cms="inv-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#120E08;margin:0 0 10px;font-weight:400;" contenteditable="false" data-orig-text="Real Yield. Real Management.">Real Yield. Real Management.</h4>
+                <p data-cms="inv-desc" style="font-size:.7rem;color:rgba(18,14,8,.42);line-height:1.8;margin:0;" contenteditable="false" data-orig-text="Greek real estate is appreciating at 12–18% YoY. Buy at pre-sale developer pricing, receive rental income from operation launch, and benefit from capital growth at handover — all without lifting a finger.">Greek real estate is appreciating at 12–18% YoY. Buy at pre-sale developer pricing, receive rental income from operation launch, and benefit from capital growth at handover — all without lifting a finger.</p>
               </td>
             </tr>
 
@@ -2802,7 +2815,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
             <!-- RIGHT: availability grid -->
             <div class="fp-av-right">
               <div class="av-topbar" style="margin-bottom:12px;">
-                <p class="av-hint" id="av-hint">Click unit to open floor plan &amp; enquire</p>
+                <p class="av-hint" id="av-hint" contenteditable="false" data-orig-text="Click unit to open floor plan &amp; enquire">Click unit to open floor plan &amp; enquire</p>
                 <div style="display:flex;gap:8px;align-items:center;">
                   <button class="av-edit-btn" id="avEditBtn" onclick="avToggleEdit()">✏ Edit</button>
                   <button class="av-save-btn" id="avSaveBtn" onclick="avSaveDownload()" style="display: inline-flex;">💾 Save Changes</button>
@@ -2815,7 +2828,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
               <div class="floor-block" id="av-floor-2">
                 <div class="av-floor-header">
-                  <h5 class="av-floor-title" contenteditable="false">Zone 1 — Entry Level</h5>
+                  <h5 class="av-floor-title" contenteditable="false" data-orig-text="Zone 1 — Entry Level">Zone 1 — Entry Level</h5>
                   <button class="av-floor-del-btn" onclick="avDeleteFloor(this)">🗑</button>
                 </div>
                 <div class="unit-row" id="av-row-2">
@@ -2827,7 +2840,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
                   <div class="unit-wrap" data-unit-name="1F"><div class="unit-pool-bar"></div><div class="unit so highlighted" data-unit-name="1F" data-type="A" onclick="avUnitClick(this,'1F')">1F<span class="unit-type-badge">A</span><button class="unit-type-sel" onclick="avCycleType(this)">A</button></div><button class="unit-x" onclick="avDelUnit(this)">×</button></div>
                   <div class="unit-wrap" data-unit-name="1G"><div class="unit-pool-bar"></div><div class="unit av dimmed" data-unit-name="1G" data-type="C" onclick="avUnitClick(this,'1G')">1G<span class="unit-type-badge">C</span><button class="unit-type-sel" onclick="avCycleType(this)">C</button></div><button class="unit-x" onclick="avDelUnit(this)">×</button></div>
                   <div class="unit-wrap" data-unit-name="1H"><div class="unit-pool-bar"></div><div class="unit so dimmed" data-unit-name="1H" data-type="B" onclick="avUnitClick(this,'1H')">1H<span class="unit-type-badge">B</span><button class="unit-type-sel" onclick="avCycleType(this)">B</button></div><button class="unit-x" onclick="avDelUnit(this)">×</button></div>
-                </div>
+                <div class="unit-wrap"><div class="unit av" data-type="A" onclick="avUnitClick(this,'2222')">2222</div><button class="unit-x" onclick="avDelUnit(this)">×</button><span class="unit-type-badge">Type A</span><button class="unit-type-sel" onclick="avCycleType(this)">Type A</button></div><div class="unit-wrap"><div class="unit av" data-type="A" onclick="avUnitClick(this,'222')">222</div><button class="unit-x" onclick="avDelUnit(this)">×</button><span class="unit-type-badge">Type A</span><button class="unit-type-sel" onclick="avCycleType(this)">Type A</button></div></div>
                 <div class="av-add-row">
                   <input class="av-add-inp" placeholder="Unit e.g. 1I" maxlength="6" onkeydown="if(event.key==='Enter')avAddUnit(this.closest('.floor-block'))">
                   <button class="av-add-btn" onclick="avAddUnit(this.closest('.floor-block'))">+ Add</button>
@@ -2849,34 +2862,34 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <!-- PAYMENT PLAN -->
         <div class="sub-panel" id="sub-pp">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-            <p style="font-size:.8rem;color:var(--muted);margin:0;">Structured around construction milestones, protecting your investment at every stage.</p>
+            <p style="font-size:.8rem;color:var(--muted);margin:0;" contenteditable="false" data-orig-text="Structured around construction milestones, protecting your investment at every stage.">Structured around construction milestones, protecting your investment at every stage.</p>
             <button id="pp-edit-btn" onclick="ppToggleEdit()" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--panel3);background:none;color:var(--muted);padding:6px 14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;">✏ Edit</button>
           </div>
 
           <div id="pp-view">
             <table class="pt-table" id="pp-table">
               <tbody><tr data-pct="10">
-                <td class="pt-phase pp-label" contenteditable="false">Reservation</td>
+                <td class="pt-phase pp-label" contenteditable="false" data-orig-text="Reservation">Reservation</td>
                 <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:10%"></div></div></td>
                 <td class="pt-pct pp-pct" contenteditable="false">10%</td>
               </tr>
               <tr data-pct="20">
-                <td class="pt-phase pp-label" contenteditable="false">Contract Signing</td>
+                <td class="pt-phase pp-label" contenteditable="false" data-orig-text="Contract Signing">Contract Signing</td>
                 <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:20%"></div></div></td>
                 <td class="pt-pct pp-pct" contenteditable="false">20%</td>
               </tr>
               <tr data-pct="20">
-                <td class="pt-phase pp-label" contenteditable="false">Foundation Done</td>
+                <td class="pt-phase pp-label" contenteditable="false" data-orig-text="Foundation Done">Foundation Done</td>
                 <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:20%"></div></div></td>
                 <td class="pt-pct pp-pct" contenteditable="false">20%</td>
               </tr>
               <tr data-pct="20">
-                <td class="pt-phase pp-label" contenteditable="false">Structure Done</td>
+                <td class="pt-phase pp-label" contenteditable="false" data-orig-text="Structure Done">Structure Done</td>
                 <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:20%"></div></div></td>
                 <td class="pt-pct pp-pct" contenteditable="false">20%</td>
               </tr>
               <tr data-pct="30">
-                <td class="pt-phase pp-label" contenteditable="false">Keys Handover</td>
+                <td class="pt-phase pp-label" contenteditable="false" data-orig-text="Keys Handover">Keys Handover</td>
                 <td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:30%"></div></div></td>
                 <td class="pt-pct pp-pct" contenteditable="false">30%</td>
               </tr>
@@ -2884,36 +2897,36 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
             <div id="pp-total" style="text-align:right;font-size:.7rem;color:var(--muted);margin-top:8px;">Total: <strong style="color:var(--ink);">100%</strong></div>
           </div>
 
-          <div class="note-box">🏦 <strong>Bank financing available — up to 50% of purchase price</strong> through our preferred Greek banking partners. EU and non-EU residents eligible. <a href="#" onclick="goTo('contact',null);return false;" style="color:var(--gold-dk);">Speak to our finance team →</a></div>
+          <div class="note-box" contenteditable="false" data-orig-text="🏦 Bank financing available — up to 50% of purchase price through our preferred Greek banking partners. EU and non-EU residents eligible. Speak to our finance team →">🏦 <strong>Bank financing available — up to 50% of purchase price</strong> through our preferred Greek banking partners. EU and non-EU residents eligible. <a href="#" onclick="goTo('contact',null);return false;" style="color:var(--gold-dk);">Speak to our finance team →</a></div>
         </div>
 
         <!-- TIMELINE -->
         <div class="sub-panel" id="sub-tl">
-          <p style="font-size:.8rem;color:var(--muted);margin-bottom:24px;">Full transparency on every milestone — from groundbreak to handover.</p>
+          <p style="font-size:.8rem;color:var(--muted);margin-bottom:24px;" contenteditable="false" data-orig-text="Full transparency on every milestone — from groundbreak to handover.">Full transparency on every milestone — from groundbreak to handover.</p>
           <div class="tl-wrap">
             <div class="tl-phase">
               <div class="tl-bar-row"><div class="tl-dot done"></div><div class="tl-line done"></div></div>
-              <div class="tl-info"><p class="tl-date">Q1 2024</p><p class="tl-label">Permits &amp; Design</p><p class="tl-status">✅ Complete</p></div>
+              <div class="tl-info"><p class="tl-date" contenteditable="false" data-orig-text="Q1 2024">Q1 2024</p><p class="tl-label" contenteditable="false" data-orig-text="Permits &amp; Design">Permits &amp; Design</p><p class="tl-status" contenteditable="false" data-orig-text="✅ Complete">✅ Complete</p></div>
             </div>
             <div class="tl-phase">
               <div class="tl-bar-row"><div class="tl-dot done"></div><div class="tl-line done"></div></div>
-              <div class="tl-info"><p class="tl-date">Q2 2024</p><p class="tl-label">Groundbreak</p><p class="tl-status">✅ Complete</p></div>
+              <div class="tl-info"><p class="tl-date" contenteditable="false" data-orig-text="Q2 2024">Q2 2024</p><p class="tl-label" contenteditable="false" data-orig-text="Groundbreak">Groundbreak</p><p class="tl-status" contenteditable="false" data-orig-text="✅ Complete">✅ Complete</p></div>
             </div>
             <div class="tl-phase">
               <div class="tl-bar-row"><div class="tl-dot done"></div><div class="tl-line done"></div></div>
-              <div class="tl-info"><p class="tl-date">Q4 2024</p><p class="tl-label">Foundation Done</p><p class="tl-status">✅ Complete</p></div>
+              <div class="tl-info"><p class="tl-date" contenteditable="false" data-orig-text="Q4 2024">Q4 2024</p><p class="tl-label" contenteditable="false" data-orig-text="Foundation Done">Foundation Done</p><p class="tl-status" contenteditable="false" data-orig-text="✅ Complete">✅ Complete</p></div>
             </div>
             <div class="tl-phase">
               <div class="tl-bar-row"><div class="tl-dot now"></div><div class="tl-line"></div></div>
-              <div class="tl-info"><p class="tl-date">Q1 2025</p><p class="tl-label">Structure</p><p class="tl-status" style="color:var(--gold-dk);">🔨 In Progress</p></div>
+              <div class="tl-info"><p class="tl-date" contenteditable="false" data-orig-text="Q1 2025">Q1 2025</p><p class="tl-label" contenteditable="false" data-orig-text="Structure">Structure</p><p class="tl-status" style="color:var(--gold-dk);" contenteditable="false" data-orig-text="🔨 In Progress">🔨 In Progress</p></div>
             </div>
             <div class="tl-phase">
               <div class="tl-bar-row"><div class="tl-dot"></div><div class="tl-line"></div></div>
-              <div class="tl-info"><p class="tl-date">Q3 2025</p><p class="tl-label">Interiors &amp; Fit-Out</p><p class="tl-status">⏳ Upcoming</p></div>
+              <div class="tl-info"><p class="tl-date" contenteditable="false" data-orig-text="Q3 2025">Q3 2025</p><p class="tl-label" contenteditable="false" data-orig-text="Interiors &amp; Fit-Out">Interiors &amp; Fit-Out</p><p class="tl-status" contenteditable="false" data-orig-text="⏳ Upcoming">⏳ Upcoming</p></div>
             </div>
             <div class="tl-phase">
               <div class="tl-bar-row"><div class="tl-dot"></div></div>
-              <div class="tl-info"><p class="tl-date">Q1 2026</p><p class="tl-label">Keys Handover</p><p class="tl-status">⏳ Projected</p></div>
+              <div class="tl-info"><p class="tl-date" contenteditable="false" data-orig-text="Q1 2026">Q1 2026</p><p class="tl-label" contenteditable="false" data-orig-text="Keys Handover">Keys Handover</p><p class="tl-status" contenteditable="false" data-orig-text="⏳ Projected">⏳ Projected</p></div>
             </div>
           </div>
           <div style="margin-top:28px;">
@@ -2925,9 +2938,9 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <!-- LOCATION -->
         <div class="sub-panel" id="sub-loc">
           <div style="padding:12px 0 24px;">
-            <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 6px;">Serene Dunes · Nea Iraklia, Halkidiki</p>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);margin:0 0 4px;font-weight:400;">A location that cannot be replicated.</h3>
-            <p style="font-size:.75rem;color:var(--muted);margin:0;">Steps from Sahara Beach Club · 30 min from Thessaloniki</p>
+            <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 6px;" contenteditable="false" data-orig-text="Serene Dunes · Nea Iraklia, Halkidiki">Serene Dunes · Nea Iraklia, Halkidiki</p>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ink);margin:0 0 4px;font-weight:400;" contenteditable="false" data-orig-text="A location that cannot be replicated.">A location that cannot be replicated.</h3>
+            <p style="font-size:.75rem;color:var(--muted);margin:0;" contenteditable="false" data-orig-text="Steps from Sahara Beach Club · 30 min from Thessaloniki">Steps from Sahara Beach Club · 30 min from Thessaloniki</p>
           </div>
 
           <!-- Distance grid -->
@@ -2989,7 +3002,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
               <div class="spec-block">
                 <div class="spec-block-header">
                   <span class="spec-block-num">01</span>
-                  <h4 class="spec-block-title">Apartment Specification</h4>
+                  <h4 class="spec-block-title" contenteditable="false" data-orig-text="Apartment Specification">Apartment Specification</h4>
                 </div>
                 <div class="spec-grid">
                   <div class="spec-row"><span class="spec-label">Structure</span><span class="spec-val">Reinforced concrete · Seismic grade</span></div>
@@ -3009,7 +3022,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
               <div class="spec-block">
                 <div class="spec-block-header">
                   <span class="spec-block-num">02</span>
-                  <h4 class="spec-block-title">What's Included in the Price</h4>
+                  <h4 class="spec-block-title" contenteditable="false" data-orig-text="What's Included in the Price">What's Included in the Price</h4>
                 </div>
                 <div class="incl-grid">
                   <div class="incl-item"><span class="incl-check">✓</span><span>Fully furnished &amp; equipped — move-in ready</span></div>
@@ -3050,8 +3063,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       ═══════════════════════════ -->
       <div style="background:#120E08;padding:36px 44px;border-bottom:1px solid rgba(184,149,90,.15);">
         <span style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;display:block;margin-bottom:10px;">As lived by our guests</span>
-        <h2 style="font-family:'Cormorant Garamond',serif;color:#F4EFE6;font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:300;margin:0 0 10px;line-height:1.2;">This is what it feels like<br>to stay at Serene.</h2>
-        <p style="font-size:.78rem;color:rgba(244,239,230,.45);line-height:1.8;max-width:500px;margin:0;font-style:italic;">"Wake up to the Aegean. Step onto your terrace. The pool is already warm."</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;color:#F4EFE6;font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:300;margin:0 0 10px;line-height:1.2;" contenteditable="false" data-orig-text="This is what it feels liketo stay at Serene.">This is what it feels like<br>to stay at Serene.</h2>
+        <p style="font-size:.78rem;color:rgba(244,239,230,.45);line-height:1.8;max-width:500px;margin:0;font-style:italic;" contenteditable="false" data-orig-text="&quot;Wake up to the Aegean. Step onto your terrace. The pool is already warm.&quot;">"Wake up to the Aegean. Step onto your terrace. The pool is already warm."</p>
       </div>
 
       <!-- ═══════════════════════════
@@ -3073,8 +3086,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           </div>
         </div>
         <div style="background:#fff;padding:24px 22px;display:flex;flex-direction:column;justify-content:center;gap:10px;">
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#120E08;margin:0;">Serene Villas Halkidiki</h3>
-          <p style="font-size:.72rem;color:#8B7355;line-height:1.7;margin:0;">Private villas with pools, steps from Sahara Beach Club. Three bedrooms, 85m², fully managed by our in-house hospitality team.</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#120E08;margin:0;" contenteditable="false" data-orig-text="Serene Villas Halkidiki">Serene Villas Halkidiki</h3>
+          <p style="font-size:.72rem;color:#8B7355;line-height:1.7;margin:0;" contenteditable="false" data-orig-text="Private villas with pools, steps from Sahara Beach Club. Three bedrooms, 85m², fully managed by our in-house hospitality team.">Private villas with pools, steps from Sahara Beach Club. Three bedrooms, 85m², fully managed by our in-house hospitality team.</p>
           <div style="display:flex;gap:5px;flex-wrap:wrap;">
             <span style="font-size:.46rem;letter-spacing:1px;text-transform:uppercase;border:1px solid #E5DFCF;color:#8B7355;padding:2px 7px;">3 Bedrooms</span>
             <span style="font-size:.46rem;letter-spacing:1px;text-transform:uppercase;border:1px solid #E5DFCF;color:#8B7355;padding:2px 7px;">Private Pool</span>
@@ -3087,12 +3100,12 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
       <!-- Halkidiki Booking Reviews -->
       <div style="background:#fff;margin:0 20px 0;padding:20px 22px;border:1px solid #E5DFCF;">
-        <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;">Booking.com Reviews</p>
+        <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;" contenteditable="false" data-orig-text="Booking.com Reviews">Booking.com Reviews</p>
         <div class="rv-carousel" id="rv-halk">
-          <div class="rv-slide active"><p class="review-text">"Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday."</p><p class="review-author">— Verified Guest · Booking.com</p></div>
-          <div class="rv-slide"><p class="review-text">"Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!"</p><p class="review-author">— Verified Guest · Booking.com · Deluxe Villa</p></div>
-          <div class="rv-slide"><p class="review-text">"Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location."</p><p class="review-author">— Verified Guest · Booking.com · Superior Villa</p></div>
-          <div class="rv-nav"><span class="rv-dot active" onclick="rvGo('rv-halk',0)"></span><span class="rv-dot" onclick="rvGo('rv-halk',1)"></span><span class="rv-dot" onclick="rvGo('rv-halk',2)"></span></div>
+          <div class="rv-slide"><p class="review-text" contenteditable="false" data-orig-text="&quot;Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday.&quot;">"Outstanding! Amazing location and the staff went above and beyond. Beautiful &amp; spacious villas with all you need for a family holiday."</p><p class="review-author" contenteditable="false" data-orig-text="— Verified Guest · Booking.com">— Verified Guest · Booking.com</p></div>
+          <div class="rv-slide"><p class="review-text" contenteditable="false" data-orig-text="&quot;Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!&quot;">"Nice, modern, stylish and perfectly located near the beach. Our large family had a wonderful time! The hosts and staff are helpful and communicative!"</p><p class="review-author" contenteditable="false" data-orig-text="— Verified Guest · Booking.com · Deluxe Villa">— Verified Guest · Booking.com · Deluxe Villa</p></div>
+          <div class="rv-slide active"><p class="review-text" contenteditable="false" data-orig-text="&quot;Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location.&quot;">"Even though we visited during the off-season, the villa was perfect. Spotlessly clean, modern and in a great location."</p><p class="review-author" contenteditable="false" data-orig-text="— Verified Guest · Booking.com · Superior Villa">— Verified Guest · Booking.com · Superior Villa</p></div>
+          <div class="rv-nav"><span class="rv-dot" onclick="rvGo('rv-halk',0)"></span><span class="rv-dot" onclick="rvGo('rv-halk',1)"></span><span class="rv-dot active" onclick="rvGo('rv-halk',2)"></span></div>
         </div>
       </div>
 
@@ -3107,38 +3120,38 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <div style="background:#fff;padding:14px;border:1px solid #E5DFCF;">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
               <div style="width:26px;height:26px;border-radius:50%;background:#B8955A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">E</div>
-              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;">Era Zeqiri</p><p style="font-size:.5rem;color:#8B7355;margin:0;">7 months ago</p></div>
+              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;" contenteditable="false" data-orig-text="Era Zeqiri">Era Zeqiri</p><p style="font-size:.5rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="7 months ago">7 months ago</p></div>
             </div>
-            <div style="position:relative;"><p id="rev-era" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"Thank you so much for making our stay at your villa such a wonderful experience. The place was clean, comfortable, and peaceful, exactly what we needed to relax and enjoy our time away. We were especially impressed by the warmth and welcome of your staff. Mr. Nikos and Mr. Demetrius were incredibly friendly and kind, always ready to help with a smile. The cleaning ladies welcomed us so warmly, their positivity and the little gesture of offering us candies made us feel right at home. It's clear that you and your team genuinely care about your guests. We truly enjoyed our time at the villa and made some lasting memories. We'll definitely recommend your villa to friends and family, and we hope to return for another visit soon."</p><button onclick="toggleRev('rev-era',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
+            <div style="position:relative;"><p id="rev-era" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;" contenteditable="false" data-orig-text="&quot;Thank you so much for making our stay at your villa such a wonderful experience. The place was clean, comfortable, and peaceful, exactly what we needed to relax and enjoy our time away. We were especially impressed by the warmth and welcome of your staff. Mr. Nikos and Mr. Demetrius were incredibly friendly and kind, always ready to help with a smile. The cleaning ladies welcomed us so warmly, their positivity and the little gesture of offering us candies made us feel right at home. It's clear that you and your team genuinely care about your guests. We truly enjoyed our time at the villa and made some lasting memories. We'll definitely recommend your villa to friends and family, and we hope to return for another visit soon.&quot;">"Thank you so much for making our stay at your villa such a wonderful experience. The place was clean, comfortable, and peaceful, exactly what we needed to relax and enjoy our time away. We were especially impressed by the warmth and welcome of your staff. Mr. Nikos and Mr. Demetrius were incredibly friendly and kind, always ready to help with a smile. The cleaning ladies welcomed us so warmly, their positivity and the little gesture of offering us candies made us feel right at home. It's clear that you and your team genuinely care about your guests. We truly enjoyed our time at the villa and made some lasting memories. We'll definitely recommend your villa to friends and family, and we hope to return for another visit soon."</p><button onclick="toggleRev('rev-era',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
           </div>
           <div style="background:#fff;padding:14px;border:1px solid #E5DFCF;">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
               <div style="width:26px;height:26px;border-radius:50%;background:#8B6914;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">V</div>
-              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;">Valeriq Slavova</p><p style="font-size:.5rem;color:#8B7355;margin:0;">7 months ago</p></div>
+              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;" contenteditable="false" data-orig-text="Valeriq Slavova">Valeriq Slavova</p><p style="font-size:.5rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="7 months ago">7 months ago</p></div>
             </div>
-            <div style="position:relative;"><p id="rev-val" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"I recommend the place 100 percent. It is located a few minutes walk from the beach. Clean, well-maintained and well-organized. It is equipped with everything you need for a stay. The host is a charming person, kind, smiling and helpful. We enjoyed our stay."</p><button onclick="toggleRev('rev-val',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
+            <div style="position:relative;"><p id="rev-val" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;" contenteditable="false" data-orig-text="&quot;I recommend the place 100 percent. It is located a few minutes walk from the beach. Clean, well-maintained and well-organized. It is equipped with everything you need for a stay. The host is a charming person, kind, smiling and helpful. We enjoyed our stay.&quot;">"I recommend the place 100 percent. It is located a few minutes walk from the beach. Clean, well-maintained and well-organized. It is equipped with everything you need for a stay. The host is a charming person, kind, smiling and helpful. We enjoyed our stay."</p><button onclick="toggleRev('rev-val',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
           </div>
           <div style="background:#fff;padding:14px;border:1px solid #E5DFCF;">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
               <div style="width:26px;height:26px;border-radius:50%;background:#2E7D32;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">M</div>
-              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;">Milica Todorovic</p><p style="font-size:.5rem;color:#8B7355;margin:0;">Local Guide · 8 months ago</p></div>
+              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;" contenteditable="false" data-orig-text="Milica Todorovic">Milica Todorovic</p><p style="font-size:.5rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="Local Guide · 8 months ago">Local Guide · 8 months ago</p></div>
             </div>
-            <div style="position:relative;"><p id="rev-mil" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"We had a wonderful stay! Huge thanks to Nikos for making our vacation incredibly smooth. Having someone available 24/7 made all the difference. The cleaning was top-notch, and the ladies did an amazing job throughout our visit. The villa was spotless and comfortable, and we made sure to leave it organized for easy cleaning. We'll definitely recommend this place to our friends and keep the contact for future trips. Thank you again!"</p><button onclick="toggleRev('rev-mil',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
+            <div style="position:relative;"><p id="rev-mil" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;" contenteditable="false" data-orig-text="&quot;We had a wonderful stay! Huge thanks to Nikos for making our vacation incredibly smooth. Having someone available 24/7 made all the difference. The cleaning was top-notch, and the ladies did an amazing job throughout our visit. The villa was spotless and comfortable, and we made sure to leave it organized for easy cleaning. We'll definitely recommend this place to our friends and keep the contact for future trips. Thank you again!&quot;">"We had a wonderful stay! Huge thanks to Nikos for making our vacation incredibly smooth. Having someone available 24/7 made all the difference. The cleaning was top-notch, and the ladies did an amazing job throughout our visit. The villa was spotless and comfortable, and we made sure to leave it organized for easy cleaning. We'll definitely recommend this place to our friends and keep the contact for future trips. Thank you again!"</p><button onclick="toggleRev('rev-mil',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
           </div>
           <div style="background:#fff;padding:14px;border:1px solid #E5DFCF;">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
               <div style="width:26px;height:26px;border-radius:50%;background:#1565C0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">JP</div>
-              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;">J P</p><p style="font-size:.5rem;color:#8B7355;margin:0;">6 months ago</p></div>
+              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;" contenteditable="false" data-orig-text="J P">J P</p><p style="font-size:.5rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="6 months ago">6 months ago</p></div>
             </div>
-            <div style="position:relative;"><p id="rev-jp" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"Perfect place, very clean and with very nice pool that kids loved. Nikos was the best host, he answered immediately to every our request and did his best to make our stay wonderful. We recommend this place to everyone!"</p><button onclick="toggleRev('rev-jp',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
+            <div style="position:relative;"><p id="rev-jp" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;" contenteditable="false" data-orig-text="&quot;Perfect place, very clean and with very nice pool that kids loved. Nikos was the best host, he answered immediately to every our request and did his best to make our stay wonderful. We recommend this place to everyone!&quot;">"Perfect place, very clean and with very nice pool that kids loved. Nikos was the best host, he answered immediately to every our request and did his best to make our stay wonderful. We recommend this place to everyone!"</p><button onclick="toggleRev('rev-jp',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
           </div>
           <div style="background:#120E08;padding:14px;border:1px solid rgba(184,149,90,.15);grid-column:1/-1;">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
               <div style="width:26px;height:26px;border-radius:50%;background:#B8955A;color:#120E08;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">S</div>
-              <div><p style="font-size:.65rem;color:#F4EFE6;font-weight:500;margin:0;">Stanislav Raykov</p><p style="font-size:.5rem;color:rgba(244,239,230,.4);margin:0;">9 months ago</p></div>
+              <div><p style="font-size:.65rem;color:#F4EFE6;font-weight:500;margin:0;" contenteditable="false" data-orig-text="Stanislav Raykov">Stanislav Raykov</p><p style="font-size:.5rem;color:rgba(244,239,230,.4);margin:0;" contenteditable="false" data-orig-text="9 months ago">9 months ago</p></div>
               <span style="margin-left:auto;font-size:.65rem;color:#f4b400;">★★★★★</span>
             </div>
-            <div style="position:relative;"><p id="rev-sta" style="font-family:'Cormorant Garamond',serif;font-size:.88rem;color:rgba(244,239,230,.7);line-height:1.75;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"We stayed at the villa with three families and had an absolutely amazing time! The house was spacious and comfortable for all of us, with enough rooms and areas for both privacy and shared fun. The kids loved the big pool and the yard, long dinners under the stars, and peaceful mornings with coffee on the terrace."</p><button onclick="toggleRev('rev-sta',this)" style="background:none;border:none;color:rgba(184,149,90,.7);font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
+            <div style="position:relative;"><p id="rev-sta" style="font-family:'Cormorant Garamond',serif;font-size:.88rem;color:rgba(244,239,230,.7);line-height:1.75;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;" contenteditable="false" data-orig-text="&quot;We stayed at the villa with three families and had an absolutely amazing time! The house was spacious and comfortable for all of us, with enough rooms and areas for both privacy and shared fun. The kids loved the big pool and the yard, long dinners under the stars, and peaceful mornings with coffee on the terrace.&quot;">"We stayed at the villa with three families and had an absolutely amazing time! The house was spacious and comfortable for all of us, with enough rooms and areas for both privacy and shared fun. The kids loved the big pool and the yard, long dinners under the stars, and peaceful mornings with coffee on the terrace."</p><button onclick="toggleRev('rev-sta',this)" style="background:none;border:none;color:rgba(184,149,90,.7);font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button></div>
           </div>
         </div>
       </div>
@@ -3146,7 +3159,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <!-- Halkidiki Instagram -->
       <div style="padding:0 20px 28px;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#120E08;margin:0;">@serene.villas.halkidiki</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#120E08;margin:0;" contenteditable="false" data-orig-text="@serene.villas.halkidiki">@serene.villas.halkidiki</p>
           <a href="https://www.instagram.com/serene.villas.halkidiki?igsh=MWd0dDc1bnAwYm4zOQ==" target="_blank" style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;border:1px solid #120E08;color:#120E08;padding:6px 12px;text-decoration:none;">Follow →</a>
         </div>
         <behold-widget feed-id="gzeNoSXTshmYcUwdb4KH"></behold-widget>
@@ -3163,8 +3176,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <!-- Thessaloniki Image + Intro -->
       <div style="display:grid;grid-template-columns:1fr 1fr;background:#E5DFCF;gap:1px;">
         <div style="background:#fff;padding:24px 22px;display:flex;flex-direction:column;justify-content:center;gap:10px;">
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#120E08;margin:0;">Serene Thessaloniki</h3>
-          <p style="font-size:.72rem;color:#8B7355;line-height:1.7;margin:0;">Brand new apartments in the heart of Greece's most vibrant city. Walking distance to the waterfront, the White Tower, and the finest restaurants in Macedonia.</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#120E08;margin:0;" contenteditable="false" data-orig-text="Serene Thessaloniki">Serene Thessaloniki</h3>
+          <p style="font-size:.72rem;color:#8B7355;line-height:1.7;margin:0;" contenteditable="false" data-orig-text="Brand new apartments in the heart of Greece's most vibrant city. Walking distance to the waterfront, the White Tower, and the finest restaurants in Macedonia.">Brand new apartments in the heart of Greece's most vibrant city. Walking distance to the waterfront, the White Tower, and the finest restaurants in Macedonia.</p>
           <div style="display:flex;align-items:center;gap:8px;">
             <div style="background:#003580;color:#fff;font-size:.7rem;font-weight:700;padding:3px 7px;border-radius:2px;">9.1</div>
             <span style="font-size:.58rem;color:#8B7355;">Wonderful · 38 reviews · Booking.com</span>
@@ -3187,12 +3200,12 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
       <!-- Thessaloniki Booking Reviews -->
       <div style="background:#fff;margin:0 20px 0;padding:20px 22px;border:1px solid #E5DFCF;border-top:none;">
-        <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;">Booking.com Reviews</p>
+        <p style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 12px;" contenteditable="false" data-orig-text="Booking.com Reviews">Booking.com Reviews</p>
         <div class="rv-carousel" id="rv-thess">
-          <div class="rv-slide active"><p class="review-text">"The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped."</p><p class="review-author">— George, Greece · Booking.com Verified ⭐ 9.1</p></div>
-          <div class="rv-slide"><p class="review-text">"The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again."</p><p class="review-author">— Verified Guest · Booking.com · New Year stay</p></div>
-          <div class="rv-slide"><p class="review-text">"Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center."</p><p class="review-author">— Verified Guest · Booking.com · Family stay</p></div>
-          <div class="rv-nav"><span class="rv-dot active" onclick="rvGo('rv-thess',0)"></span><span class="rv-dot" onclick="rvGo('rv-thess',1)"></span><span class="rv-dot" onclick="rvGo('rv-thess',2)"></span></div>
+          <div class="rv-slide"><p class="review-text" contenteditable="false" data-orig-text="&quot;The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped.&quot;">"The location was excellent — within walking distance of downtown, the metro station, and everything you might need. Very clean and well-equipped."</p><p class="review-author" contenteditable="false" data-orig-text="— George, Greece · Booking.com Verified ⭐ 9.1">— George, Greece · Booking.com Verified ⭐ 9.1</p></div>
+          <div class="rv-slide"><p class="review-text" contenteditable="false" data-orig-text="&quot;The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again.&quot;">"The apartment was spacious and brand new. Extremely clean, modern and very comfortable. Would definitely stay again."</p><p class="review-author" contenteditable="false" data-orig-text="— Verified Guest · Booking.com · New Year stay">— Verified Guest · Booking.com · New Year stay</p></div>
+          <div class="rv-slide active"><p class="review-text" contenteditable="false" data-orig-text="&quot;Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center.&quot;">"Very clean, well equipped — they even provided a baby cot when we asked. Great location near the port and city center."</p><p class="review-author" contenteditable="false" data-orig-text="— Verified Guest · Booking.com · Family stay">— Verified Guest · Booking.com · Family stay</p></div>
+          <div class="rv-nav"><span class="rv-dot" onclick="rvGo('rv-thess',0)"></span><span class="rv-dot" onclick="rvGo('rv-thess',1)"></span><span class="rv-dot active" onclick="rvGo('rv-thess',2)"></span></div>
         </div>
       </div>
 
@@ -3207,10 +3220,10 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <div style="background:#fff;padding:14px;border:1px solid #E5DFCF;">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
               <div style="width:26px;height:26px;border-radius:50%;background:#4285F4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">W</div>
-              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;">Walter H. Liberali</p><p style="font-size:.5rem;color:#8B7355;margin:0;">a month ago · 5/5</p></div>
+              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;" contenteditable="false" data-orig-text="Walter H. Liberali">Walter H. Liberali</p><p style="font-size:.5rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="a month ago · 5/5">a month ago · 5/5</p></div>
             </div>
             <div style="position:relative;">
-              <p id="rev-wal" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"A very complete, tidy, spacious, safe, and new apartment. The kitchen is fully equipped. The bed is very comfortable, and there is excellent natural and artificial lighting. The shower is spacious. There are three elevators to access the apartment. It's conveniently located near the charming Ignatia Avenue. A well-stocked supermarket is no more than 500 meters away. The management is very helpful and accommodating. I wholeheartedly recommend this place. I wouldn't hesitate for a second to return."</p>
+              <p id="rev-wal" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;" contenteditable="false" data-orig-text="&quot;A very complete, tidy, spacious, safe, and new apartment. The kitchen is fully equipped. The bed is very comfortable, and there is excellent natural and artificial lighting. The shower is spacious. There are three elevators to access the apartment. It's conveniently located near the charming Ignatia Avenue. A well-stocked supermarket is no more than 500 meters away. The management is very helpful and accommodating. I wholeheartedly recommend this place. I wouldn't hesitate for a second to return.&quot;">"A very complete, tidy, spacious, safe, and new apartment. The kitchen is fully equipped. The bed is very comfortable, and there is excellent natural and artificial lighting. The shower is spacious. There are three elevators to access the apartment. It's conveniently located near the charming Ignatia Avenue. A well-stocked supermarket is no more than 500 meters away. The management is very helpful and accommodating. I wholeheartedly recommend this place. I wouldn't hesitate for a second to return."</p>
               <button onclick="toggleRev('rev-wal',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button>
             </div>
           </div>
@@ -3218,10 +3231,10 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <div style="background:#fff;padding:14px;border:1px solid #E5DFCF;">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
               <div style="width:26px;height:26px;border-radius:50%;background:#34A853;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">N</div>
-              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;">Nena Trajkovska</p><p style="font-size:.5rem;color:#8B7355;margin:0;">a month ago · 5/5</p></div>
+              <div><p style="font-size:.65rem;color:#120E08;font-weight:500;margin:0;" contenteditable="false" data-orig-text="Nena Trajkovska">Nena Trajkovska</p><p style="font-size:.5rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="a month ago · 5/5">a month ago · 5/5</p></div>
             </div>
             <div style="position:relative;">
-              <p id="rev-nena" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"The stay was perfect, you have everything you can wish for in the apartment, the host was amazing, close to city centre, we will definitely come again!"</p>
+              <p id="rev-nena" style="font-size:.65rem;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;" contenteditable="false" data-orig-text="&quot;The stay was perfect, you have everything you can wish for in the apartment, the host was amazing, close to city centre, we will definitely come again!&quot;">"The stay was perfect, you have everything you can wish for in the apartment, the host was amazing, close to city centre, we will definitely come again!"</p>
               <button onclick="toggleRev('rev-nena',this)" style="background:none;border:none;color:#B8955A;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button>
             </div>
           </div>
@@ -3229,11 +3242,11 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <div style="background:#120E08;padding:14px;border:1px solid rgba(184,149,90,.15);grid-column:1/-1;">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
               <div style="width:26px;height:26px;border-radius:50%;background:#EA4335;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;">A</div>
-              <div><p style="font-size:.65rem;color:#F4EFE6;font-weight:500;margin:0;">Anja Karali</p><p style="font-size:.5rem;color:rgba(244,239,230,.4);margin:0;">a month ago · 5/5 · Couple · Vacation</p></div>
+              <div><p style="font-size:.65rem;color:#F4EFE6;font-weight:500;margin:0;" contenteditable="false" data-orig-text="Anja Karali">Anja Karali</p><p style="font-size:.5rem;color:rgba(244,239,230,.4);margin:0;" contenteditable="false" data-orig-text="a month ago · 5/5 · Couple · Vacation">a month ago · 5/5 · Couple · Vacation</p></div>
               <span style="margin-left:auto;font-size:.65rem;color:#f4b400;">★★★★★</span>
             </div>
             <div style="position:relative;">
-              <p id="rev-anja" style="font-family:'Cormorant Garamond',serif;font-size:.88rem;color:rgba(244,239,230,.7);line-height:1.75;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;">"Excellent rooms ✨ Everything was spotless, beautifully set up, and exceeded our expectations. The service was excellent, and we were genuinely very satisfied. Highly recommend!"</p>
+              <p id="rev-anja" style="font-family:'Cormorant Garamond',serif;font-size:.88rem;color:rgba(244,239,230,.7);line-height:1.75;margin:0;font-style:italic;max-height:3.5em;overflow:hidden;transition:max-height .4s ease;" contenteditable="false" data-orig-text="&quot;Excellent rooms ✨ Everything was spotless, beautifully set up, and exceeded our expectations. The service was excellent, and we were genuinely very satisfied. Highly recommend!&quot;">"Excellent rooms ✨ Everything was spotless, beautifully set up, and exceeded our expectations. The service was excellent, and we were genuinely very satisfied. Highly recommend!"</p>
               <button onclick="toggleRev('rev-anja',this)" style="background:none;border:none;color:rgba(184,149,90,.7);font-size:.5rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;padding:5px 0 0;font-family:'DM Sans',sans-serif;">Read more ↓</button>
             </div>
           </div>
@@ -3244,12 +3257,12 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <!-- Thessaloniki Instagram Placeholder -->
       <div style="padding:0 20px 28px;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#120E08;margin:0;">@serene.thessaloniki</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#120E08;margin:0;" contenteditable="false" data-orig-text="@serene.thessaloniki">@serene.thessaloniki</p>
           <a href="https://www.instagram.com/serene.thessaloniki" target="_blank" style="font-size:.48rem;letter-spacing:2px;text-transform:uppercase;border:1px solid #120E08;color:#120E08;padding:6px 12px;text-decoration:none;">Follow →</a>
         </div>
         <div style="background:#fff;border:1px dashed #E5DFCF;padding:28px;text-align:center;">
-          <p style="font-size:.55rem;color:#B8955A;letter-spacing:2px;text-transform:uppercase;margin:0 0 4px;">Coming Soon</p>
-          <p style="font-size:.68rem;color:#8B7355;margin:0;">Connect @serene.thessaloniki on Behold to display the live feed</p>
+          <p style="font-size:.55rem;color:#B8955A;letter-spacing:2px;text-transform:uppercase;margin:0 0 4px;" contenteditable="false" data-orig-text="Coming Soon">Coming Soon</p>
+          <p style="font-size:.68rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="Connect @serene.thessaloniki on Behold to display the live feed">Connect @serene.thessaloniki on Behold to display the live feed</p>
         </div>
       </div>
 
@@ -3257,8 +3270,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <div style="display:grid;grid-template-columns:180px 1fr;margin:0 20px 28px;background:#120E08;border:1px solid rgba(184,149,90,.15);height:180px;overflow:hidden;">
         <div style="padding:20px 18px;display:flex;flex-direction:column;justify-content:center;gap:6px;border-right:1px solid rgba(184,149,90,.12);">
           <span style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;">▶ Guest Video</span>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F4EFE6;margin:0;line-height:1.3;">See it through<br>their eyes</p>
-          <p style="font-size:.55rem;color:rgba(244,239,230,.4);margin:0;">Real guests · Halkidiki</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F4EFE6;margin:0;line-height:1.3;" contenteditable="false" data-orig-text="See it throughtheir eyes">See it through<br>their eyes</p>
+          <p style="font-size:.55rem;color:rgba(244,239,230,.4);margin:0;" contenteditable="false" data-orig-text="Real guests · Halkidiki">Real guests · Halkidiki</p>
         </div>
         <div style="position:relative;overflow:hidden;">
           <img src="https://img.youtube.com/vi/bALKpPbgzDU/hqdefault.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45);">
@@ -3291,8 +3304,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <!-- HERO -->
       <div style="background:#120E08;padding:36px 44px;border-bottom:1px solid rgba(184,149,90,.15);">
         <span style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;display:block;margin-bottom:10px;">Holiday Stays · Short &amp; Mid-Term</span>
-        <h2 data-cms="booking-heading" style="font-family:'Cormorant Garamond',serif;color:#F4EFE6;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;margin:0 0 12px;line-height:1.2;">Stay in a Serene property. Experience what investors own.</h2>
-        <p data-cms="booking-desc" style="font-size:.8rem;color:rgba(244,239,230,.5);line-height:1.8;max-width:560px;margin:0 0 24px;">Whether you’re planning a summer escape in Halkidiki or a city break in Thessaloniki — our fully managed, hotel-standard villas and apartments are available to book directly.</p>
+        <h2 data-cms="booking-heading" style="font-family:'Cormorant Garamond',serif;color:#F4EFE6;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;margin:0 0 12px;line-height:1.2;" contenteditable="false" data-orig-text="Stay in a Serene property. Experience what investors own.">Stay in a Serene property. Experience what investors own.</h2>
+        <p data-cms="booking-desc" style="font-size:.8rem;color:rgba(244,239,230,.5);line-height:1.8;max-width:560px;margin:0 0 24px;" contenteditable="false" data-orig-text="Whether you’re planning a summer escape in Halkidiki or a city break in Thessaloniki — our fully managed, hotel-standard villas and apartments are available to book directly.">Whether you’re planning a summer escape in Halkidiki or a city break in Thessaloniki — our fully managed, hotel-standard villas and apartments are available to book directly.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a href="https://www.booking.com/hotel/gr/serene-villas-halkidiki-cfront-private-pool.html" target="_blank" style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;background:#B8955A;color:#120E08;padding:11px 22px;text-decoration:none;font-weight:600;">Book Halkidiki Villa →</a>
           <a href="https://www.booking.com/hotel/gr/serene-thessaloniki.html?aid=304142" target="_blank" style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(184,149,90,.4);color:#D4AF78;padding:11px 22px;text-decoration:none;">Book Thessaloniki Apt →</a>
@@ -3301,63 +3314,63 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
       <!-- STAY OPTIONS -->
       <div style="padding:28px 32px;">
-        <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 20px;">Stay Options</p>
+        <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 20px;" contenteditable="false" data-orig-text="Stay Options">Stay Options</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E5DFCF;margin-bottom:28px;">
 
           <div style="background:#fff;padding:22px 20px;">
-            <p style="font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;">Weekend Escape</p>
-            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#120E08;margin:0 0 8px;">2–4 Nights</h4>
-            <p style="font-size:.7rem;color:#8B7355;line-height:1.7;margin:0 0 14px;">Perfect for a quick coastal getaway. Arrive Friday, leave Monday — fully prepared, hotel-standard villa waiting for you.</p>
-            <p style="font-size:.65rem;color:#120E08;font-weight:600;">from €650 <span style="font-weight:400;color:#8B7355;">/ night</span></p>
+            <p style="font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;" contenteditable="false" data-orig-text="Weekend Escape">Weekend Escape</p>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#120E08;margin:0 0 8px;" contenteditable="false" data-orig-text="2–4 Nights">2–4 Nights</h4>
+            <p style="font-size:.7rem;color:#8B7355;line-height:1.7;margin:0 0 14px;" contenteditable="false" data-orig-text="Perfect for a quick coastal getaway. Arrive Friday, leave Monday — fully prepared, hotel-standard villa waiting for you.">Perfect for a quick coastal getaway. Arrive Friday, leave Monday — fully prepared, hotel-standard villa waiting for you.</p>
+            <p style="font-size:.65rem;color:#120E08;font-weight:600;" contenteditable="false" data-orig-text="from €650 / night">from €650 <span style="font-weight:400;color:#8B7355;">/ night</span></p>
           </div>
 
           <div style="background:#fff;padding:22px 20px;">
-            <p style="font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;">Weekly Stay</p>
-            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#120E08;margin:0 0 8px;">5–10 Nights</h4>
-            <p style="font-size:.7rem;color:#8B7355;line-height:1.7;margin:0 0 14px;">The most popular option. A full week in Halkidiki with private pool, steps from Sahara Beach, and 24/7 Serene hospitality.</p>
-            <p style="font-size:.65rem;color:#120E08;font-weight:600;">Weekly packages available</p>
+            <p style="font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;" contenteditable="false" data-orig-text="Weekly Stay">Weekly Stay</p>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#120E08;margin:0 0 8px;" contenteditable="false" data-orig-text="5–10 Nights">5–10 Nights</h4>
+            <p style="font-size:.7rem;color:#8B7355;line-height:1.7;margin:0 0 14px;" contenteditable="false" data-orig-text="The most popular option. A full week in Halkidiki with private pool, steps from Sahara Beach, and 24/7 Serene hospitality.">The most popular option. A full week in Halkidiki with private pool, steps from Sahara Beach, and 24/7 Serene hospitality.</p>
+            <p style="font-size:.65rem;color:#120E08;font-weight:600;" contenteditable="false" data-orig-text="Weekly packages available">Weekly packages available</p>
           </div>
 
           <div style="background:#120E08;padding:22px 20px;">
-            <p style="font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;">Mid-Term · Monthly</p>
-            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#D4AF78;margin:0 0 8px;">30–90 Nights</h4>
-            <p style="font-size:.7rem;color:rgba(244,239,230,.45);line-height:1.7;margin:0 0 14px;">For digital nomads, extended families, or seasonal residents. Our Thessaloniki apartments offer exceptional value for longer stays.</p>
-            <p style="font-size:.65rem;color:#D4AF78;font-weight:600;">Discounted monthly rates</p>
+            <p style="font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:#B8955A;margin:0 0 8px;" contenteditable="false" data-orig-text="Mid-Term · Monthly">Mid-Term · Monthly</p>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#D4AF78;margin:0 0 8px;" contenteditable="false" data-orig-text="30–90 Nights">30–90 Nights</h4>
+            <p style="font-size:.7rem;color:rgba(244,239,230,.45);line-height:1.7;margin:0 0 14px;" contenteditable="false" data-orig-text="For digital nomads, extended families, or seasonal residents. Our Thessaloniki apartments offer exceptional value for longer stays.">For digital nomads, extended families, or seasonal residents. Our Thessaloniki apartments offer exceptional value for longer stays.</p>
+            <p style="font-size:.65rem;color:#D4AF78;font-weight:600;" contenteditable="false" data-orig-text="Discounted monthly rates">Discounted monthly rates</p>
           </div>
 
         </div>
 
         <!-- WHAT'S INCLUDED -->
-        <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 16px;">What's included in every stay</p>
+        <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 16px;" contenteditable="false" data-orig-text="What's included in every stay">What's included in every stay</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;">
           <div style="background:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;">
             <span style="font-size:1.3rem;">🏊</span>
-            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;">Private Pool</p><p style="font-size:.6rem;color:#8B7355;margin:0;">Exclusively yours for the entire stay</p></div>
+            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;" contenteditable="false" data-orig-text="Private Pool">Private Pool</p><p style="font-size:.6rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="Exclusively yours for the entire stay">Exclusively yours for the entire stay</p></div>
           </div>
           <div style="background:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;">
             <span style="font-size:1.3rem;">🛎</span>
-            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;">24/7 Hospitality Team</p><p style="font-size:.6rem;color:#8B7355;margin:0;">On-call for anything you need</p></div>
+            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;" contenteditable="false" data-orig-text="24/7 Hospitality Team">24/7 Hospitality Team</p><p style="font-size:.6rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="On-call for anything you need">On-call for anything you need</p></div>
           </div>
           <div style="background:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;">
             <span style="font-size:1.3rem;">🏠</span>
-            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;">Fully Furnished &amp; Equipped</p><p style="font-size:.6rem;color:#8B7355;margin:0;">Hotel-standard linens, kitchen, A/C</p></div>
+            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;" contenteditable="false" data-orig-text="Fully Furnished &amp; Equipped">Fully Furnished &amp; Equipped</p><p style="font-size:.6rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="Hotel-standard linens, kitchen, A/C">Hotel-standard linens, kitchen, A/C</p></div>
           </div>
           <div style="background:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;">
             <span style="font-size:1.3rem;">📍</span>
-            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;">Prime Location</p><p style="font-size:.6rem;color:#8B7355;margin:0;">100m from beach · Next to Sahara Club</p></div>
+            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;" contenteditable="false" data-orig-text="Prime Location">Prime Location</p><p style="font-size:.6rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="100m from beach · Next to Sahara Club">100m from beach · Next to Sahara Club</p></div>
           </div>
           <div style="background:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;">
             <span style="font-size:1.3rem;">🚗</span>
-            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;">Free Parking</p><p style="font-size:.6rem;color:#8B7355;margin:0;">Private garage included</p></div>
+            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;" contenteditable="false" data-orig-text="Free Parking">Free Parking</p><p style="font-size:.6rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="Private garage included">Private garage included</p></div>
           </div>
           <div style="background:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;">
             <span style="font-size:1.3rem;">🧹</span>
-            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;">Housekeeping</p><p style="font-size:.6rem;color:#8B7355;margin:0;">Mid-stay cleaning on weekly+ bookings</p></div>
+            <div><p style="font-size:.72rem;color:#120E08;font-weight:500;margin:0 0 2px;" contenteditable="false" data-orig-text="Housekeeping">Housekeeping</p><p style="font-size:.6rem;color:#8B7355;margin:0;" contenteditable="false" data-orig-text="Mid-stay cleaning on weekly+ bookings">Mid-stay cleaning on weekly+ bookings</p></div>
           </div>
         </div>
 
         <!-- BOOKING PLATFORMS -->
-        <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 16px;">Book through your preferred platform</p>
+        <p style="font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;margin:0 0 16px;" contenteditable="false" data-orig-text="Book through your preferred platform">Book through your preferred platform</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px;">
           <a href="https://www.booking.com/hotel/gr/serene-villas-halkidiki-cfront-private-pool.html" target="_blank" style="background:#003580;color:#fff;padding:16px 20px;text-decoration:none;display:flex;flex-direction:column;gap:4px;">
             <span style="font-size:.7rem;font-weight:700;letter-spacing:.5px;">Booking.com</span>
@@ -3376,8 +3389,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         <!-- CTA -->
         <div style="background:#120E08;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
           <div>
-            <h4 style="font-family:'Cormorant Garamond',serif;color:#F4EFE6;font-size:1.3rem;margin:0 0 6px;font-weight:400;">Not sure which option is right for you?</h4>
-            <p style="font-size:.7rem;color:rgba(244,239,230,.45);margin:0;">Our team responds within the hour — 7 days a week.</p>
+            <h4 style="font-family:'Cormorant Garamond',serif;color:#F4EFE6;font-size:1.3rem;margin:0 0 6px;font-weight:400;" contenteditable="false" data-orig-text="Not sure which option is right for you?">Not sure which option is right for you?</h4>
+            <p style="font-size:.7rem;color:rgba(244,239,230,.45);margin:0;" contenteditable="false" data-orig-text="Our team responds within the hour — 7 days a week.">Our team responds within the hour — 7 days a week.</p>
           </div>
           <button onclick="goTo('contact',null)" class="btn-gold" style="padding:12px 28px;font-size:.62rem;letter-spacing:1.5px;white-space:nowrap;">Talk to Our Team →</button>
         </div>
@@ -3392,24 +3405,24 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <div class="contact-left-bg" style="background-image: url(&quot;images/img-02.jpg&quot;);"></div>
       <div class="contact-left-content">
         <span class="tag">Contact</span>
-        <h2 class="ht" data-cms="contact-heading" style="color:#fff;font-size:clamp(1.6rem,2.5vw,2.4rem);">Let’s start <em style="color:var(--gold);">the conversation</em></h2>
+        <h2 class="ht" data-cms="contact-heading" style="color:#fff;font-size:clamp(1.6rem,2.5vw,2.4rem);" contenteditable="false" data-orig-text="Let’s start the conversation">Let’s start <em style="color:var(--gold);">the conversation</em></h2>
         <div class="divider"></div>
-        <p data-cms="contact-desc" style="font-size:.85rem;line-height:1.85;color:rgba(244,239,230,.45);margin-bottom:16px;">Our investment team will respond within one business day with a tailored presentation.</p>
+        <p data-cms="contact-desc" style="font-size:.85rem;line-height:1.85;color:rgba(244,239,230,.45);margin-bottom:16px;" contenteditable="false" data-orig-text="Our investment team will respond within one business day with a tailored presentation.">Our investment team will respond within one business day with a tailored presentation.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
           <a class="cal-cta" href="https://calendly.com/serenegreeceike" target="_blank">📅 Schedule a Video Call</a>
           <button class="cal-cta" onclick="openLM()" style="border-color:rgba(184,149,90,.5);color:rgba(244,239,230,.7);">📄 Get Investor Brochure</button>
         </div>
         <div class="ci-list">
-          <div class="ci"><div class="ci-icon">📞</div><div><h5>Phone / WhatsApp</h5><p><span data-cms="contact-phone">+30 210 000 0000</span><br><span data-cms="contact-hours">7 days · 9am–8pm EET</span></p></div></div>
-          <div class="ci"><div class="ci-icon">✉️</div><div><h5>Email</h5><p><a href="mailto:invest@serenegreece.com" class="__cf_email__" data-cfemail="82ebecf4e7f1f6c2f1e7f0e7ece7e5f0e7e7e1e7ace1edef">invest@serenegreece.com</a></p></div></div>
-          <div class="ci"><div class="ci-icon">📍</div><div><h5>Offices</h5><p>Athens HQ · Kolonaki<br>Chalkidiki Sales Office</p></div></div>
-          <div class="ci"><div class="ci-icon">📸</div><div><h5>Social</h5><p>@serene.villas.halkidiki<br>@serenevillas · Airbnb</p></div></div>
+          <div class="ci"><div class="ci-icon">📞</div><div><h5 contenteditable="false" data-orig-text="Phone / WhatsApp">Phone / WhatsApp</h5><p contenteditable="false" data-orig-text="+30 210 000 00007 days · 9am–8pm EET"><span data-cms="contact-phone">+30 210 000 0000</span><br><span data-cms="contact-hours">7 days · 9am–8pm EET</span></p></div></div>
+          <div class="ci"><div class="ci-icon">✉️</div><div><h5 contenteditable="false" data-orig-text="Email">Email</h5><p contenteditable="false" data-orig-text="invest@serenegreece.com"><a href="mailto:invest@serenegreece.com" class="__cf_email__" data-cfemail="82ebecf4e7f1f6c2f1e7f0e7ece7e5f0e7e7e1e7ace1edef">invest@serenegreece.com</a></p></div></div>
+          <div class="ci"><div class="ci-icon">📍</div><div><h5 contenteditable="false" data-orig-text="Offices">Offices</h5><p contenteditable="false" data-orig-text="Athens HQ · KolonakiChalkidiki Sales Office">Athens HQ · Kolonaki<br>Chalkidiki Sales Office</p></div></div>
+          <div class="ci"><div class="ci-icon">📸</div><div><h5 contenteditable="false" data-orig-text="Social">Social</h5><p contenteditable="false" data-orig-text="@serene.villas.halkidiki@serenevillas · Airbnb">@serene.villas.halkidiki<br>@serenevillas · Airbnb</p></div></div>
         </div>
       </div>
     </div>
     <div class="contact-right">
       <span class="tag" style="color:var(--gold-dk);">Enquiry Form</span>
-      <h3 class="ht" style="font-size:1.7rem;color:var(--ink);margin-bottom:6px;">Tell us what<br><em>you're looking for</em></h3>
+      <h3 class="ht" style="font-size:1.7rem;color:var(--ink);margin-bottom:6px;" contenteditable="false" data-orig-text="Tell us whatyou're looking for">Tell us what<br><em>you're looking for</em></h3>
       <div class="divider"></div>
       <form class="form-g" onsubmit="return submitEnquiry(this);">
         <div class="form-row2">
@@ -3456,7 +3469,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     <div style="background:var(--ink);padding:20px 28px;display:flex;align-items:center;gap:16px;">
       <div>
         <span class="tag" style="color:var(--gold-lt);margin-bottom:4px;">Unit Enquiry</span>
-        <h3 class="ht" style="font-size:1.4rem;color:#fff;font-weight:300;" id="unitTitle">Unit 3C</h3>
+        <h3 class="ht" style="font-size:1.4rem;color:#fff;font-weight:300;" id="unitTitle" contenteditable="false" data-orig-text="Unit 3C">Unit 3C</h3>
         <span id="unitStatusBadge" style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;"></span>
       </div>
       <div id="unitTypeTag" style="margin-left:auto;text-align:right;"></div>
@@ -3477,15 +3490,15 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     <!-- Form -->
     <!-- Form -->
     <div style="padding:22px 28px 26px;background:var(--white);">
-      <p style="color:var(--muted);font-size:.75rem;margin-bottom:16px;line-height:1.6;" id="unitModalDesc">Our sales team will contact you within 24 hours.</p>
+      <p style="color:var(--muted);font-size:.75rem;margin-bottom:16px;line-height:1.6;" id="unitModalDesc" contenteditable="false" data-orig-text="Our sales team will contact you within 24 hours.">Our sales team will contact you within 24 hours.</p>
 
       <!-- Available CTA -->
       <div id="unit-cta-available">
         <div style="background:rgba(184,149,90,.06);border:1px solid rgba(184,149,90,.2);padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;">
           <span style="font-size:1rem;">🏊</span>
           <div>
-            <p style="font-size:.62rem;font-weight:600;color:var(--ink);margin:0 0 1px;">Private plunge pool included</p>
-            <p style="font-size:.58rem;color:var(--muted);margin:0;">Fully fitted, heated, exclusive to your unit</p>
+            <p style="font-size:.62rem;font-weight:600;color:var(--ink);margin:0 0 1px;" contenteditable="false" data-orig-text="Private plunge pool included">Private plunge pool included</p>
+            <p style="font-size:.58rem;color:var(--muted);margin:0;" contenteditable="false" data-orig-text="Fully fitted, heated, exclusive to your unit">Fully fitted, heated, exclusive to your unit</p>
           </div>
         </div>
         <form style="display:flex;flex-direction:column;gap:10px;" onsubmit="closeUnit();return false;">
@@ -3495,15 +3508,15 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           </div>
           <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
           <button type="submit" class="btn-gold" style="margin-top:4px;width:100%;text-align:center;padding:12px;font-size:.62rem;letter-spacing:2px;">Reserve This Unit →</button>
-          <p style="font-size:.55rem;color:var(--muted);text-align:center;margin:0;">Fully refundable deposit · No commitment</p>
+          <p style="font-size:.55rem;color:var(--muted);text-align:center;margin:0;" contenteditable="false" data-orig-text="Fully refundable deposit · No commitment">Fully refundable deposit · No commitment</p>
         </form>
       </div>
 
       <!-- Sold CTA -->
       <div id="unit-cta-sold" style="display:none;">
         <div style="background:rgba(200,40,40,.05);border:1px solid rgba(200,40,40,.15);padding:14px 16px;margin-bottom:14px;">
-          <p style="font-size:.7rem;font-weight:600;color:#c04040;margin:0 0 4px;">This unit has been sold</p>
-          <p style="font-size:.65rem;color:var(--muted);margin:0;line-height:1.6;">Others have already chosen Serene. Similar units may still be available.</p>
+          <p style="font-size:.7rem;font-weight:600;color:#c04040;margin:0 0 4px;" contenteditable="false" data-orig-text="This unit has been sold">This unit has been sold</p>
+          <p style="font-size:.65rem;color:var(--muted);margin:0;line-height:1.6;" contenteditable="false" data-orig-text="Others have already chosen Serene. Similar units may still be available.">Others have already chosen Serene. Similar units may still be available.</p>
         </div>
         <button onclick="closeUnit();goTo('contact',null);" class="btn-gold" style="width:100%;text-align:center;padding:12px;font-size:.62rem;letter-spacing:2px;">Find Available Units →</button>
       </div>
@@ -3511,8 +3524,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <!-- Reserved CTA -->
       <div id="unit-cta-reserved" style="display:none;">
         <div style="background:rgba(220,160,0,.06);border:1px solid rgba(220,160,0,.2);padding:14px 16px;margin-bottom:14px;">
-          <p style="font-size:.7rem;font-weight:600;color:#8B6800;margin:0 0 4px;">This unit is reserved</p>
-          <p style="font-size:.65rem;color:var(--muted);margin:0;line-height:1.6;">Join the waiting list — if this reservation falls through, you'll be first to know.</p>
+          <p style="font-size:.7rem;font-weight:600;color:#8B6800;margin:0 0 4px;" contenteditable="false" data-orig-text="This unit is reserved">This unit is reserved</p>
+          <p style="font-size:.65rem;color:var(--muted);margin:0;line-height:1.6;" contenteditable="false" data-orig-text="Join the waiting list — if this reservation falls through, you'll be first to know.">Join the waiting list — if this reservation falls through, you'll be first to know.</p>
         </div>
         <button onclick="closeUnit();goTo('contact',null);" class="btn-gold" style="width:100%;text-align:center;padding:12px;font-size:.62rem;letter-spacing:2px;">Join Waiting List →</button>
       </div>
@@ -3525,7 +3538,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 <div class="lb-overlay" id="lightbox">
   <button class="lb-close" onclick="closeLightbox()">✕</button>
   <img loading="lazy" class="lb-img" id="lb-img" src="" alt="">
-  <p class="lb-caption" id="lb-caption"></p>
+  <p class="lb-caption" id="lb-caption" contenteditable="false" data-orig-text=""></p>
   <div class="lb-controls">
     <button class="lb-btn" onclick="lbNav(-1)">←</button>
     <span class="lb-counter" id="lb-counter">1 / 8</span>
@@ -4298,15 +4311,15 @@ document.addEventListener('keydown', e => {
 
 <!-- Panel HTML -->
 <div id="ep-overlay"></div>
-<div id="ep-panel">
+<div id="ep-panel" class="">
   <div class="ep-header">
     <span class="ep-title">✏ Edit Content</span>
     <button class="ep-close" onclick="epClose()">✕</button>
   </div>
 
   <div class="ep-tabs">
-    <button class="ep-tab active" onclick="epTab('home',this)">Home</button>
-    <button class="ep-tab" onclick="epTab('method',this)">Method</button>
+    <button class="ep-tab" onclick="epTab('home',this)">Home</button>
+    <button class="ep-tab active" onclick="epTab('method',this)">Method</button>
     <button class="ep-tab" onclick="epTab('projects',this)">Projects</button>
     <button class="ep-tab" onclick="epTab('rentals',this)">Experience</button>
     <button class="ep-tab" onclick="epTab('contact',this)">Contact</button>
@@ -4317,7 +4330,7 @@ document.addEventListener('keydown', e => {
   <div class="ep-body">
 
     <!-- HOME -->
-    <div class="ep-section active" id="eps-home">
+    <div class="ep-section" id="eps-home">
       <div class="ep-group">
         <div class="ep-group-title">Hero</div>
         <div class="ep-field"><label>Eyebrow Line</label>
@@ -4334,7 +4347,7 @@ document.addEventListener('keydown', e => {
     </div>
 
     <!-- METHOD -->
-    <div class="ep-section" id="eps-method">
+    <div class="ep-section active" id="eps-method">
       <div class="ep-group">
         <div class="ep-group-title">Yield Numbers</div>
         <div id="ep-yield-fields"></div>
@@ -4374,7 +4387,25 @@ document.addEventListener('keydown', e => {
       </div>
       <div class="ep-group">
         <div class="ep-group-title">Timeline</div>
-        <div id="ep-tl-fields"></div>
+        <div id="ep-tl-fields"><div class="ep-field"><label>Phase 1 Date</label>
+      <input type="text" value="Q1 2024" data-target=".tl-date" data-idx="0" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 1 Label</label>
+      <input type="text" value="Permits &amp; Design" data-target=".tl-label" data-idx="0" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 1 Status</label>
+      <input type="text" value="✅ Complete" data-target=".tl-status" data-idx="0" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 2 Date</label>
+      <input type="text" value="Q2 2024" data-target=".tl-date" data-idx="1" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 2 Label</label>
+      <input type="text" value="Groundbreak" data-target=".tl-label" data-idx="1" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 2 Status</label>
+      <input type="text" value="✅ Complete" data-target=".tl-status" data-idx="1" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 3 Date</label>
+      <input type="text" value="Q4 2024" data-target=".tl-date" data-idx="2" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 3 Label</label>
+      <input type="text" value="Foundation Done" data-target=".tl-label" data-idx="2" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 3 Status</label>
+      <input type="text" value="✅ Complete" data-target=".tl-status" data-idx="2" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 4 Date</label>
+      <input type="text" value="Q1 2025" data-target=".tl-date" data-idx="3" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 4 Label</label>
+      <input type="text" value="Structure" data-target=".tl-label" data-idx="3" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 4 Status</label>
+      <input type="text" value="🔨 In Progress" data-target=".tl-status" data-idx="3" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 5 Date</label>
+      <input type="text" value="Q3 2025" data-target=".tl-date" data-idx="4" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 5 Label</label>
+      <input type="text" value="Interiors &amp; Fit-Out" data-target=".tl-label" data-idx="4" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 5 Status</label>
+      <input type="text" value="⏳ Upcoming" data-target=".tl-status" data-idx="4" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 6 Date</label>
+      <input type="text" value="Q1 2026" data-target=".tl-date" data-idx="5" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 6 Label</label>
+      <input type="text" value="Keys Handover" data-target=".tl-label" data-idx="5" oninput="epSync(this)"></div><div class="ep-field"><label>Phase 6 Status</label>
+      <input type="text" value="⏳ Projected" data-target=".tl-status" data-idx="5" oninput="epSync(this)"></div></div>
       </div>
     </div>
 
@@ -4398,7 +4429,15 @@ document.addEventListener('keydown', e => {
     <div class="ep-section" id="eps-contact">
       <div class="ep-group">
         <div class="ep-group-title">Contact Info Items</div>
-        <div id="ep-ci-fields"></div>
+        <div id="ep-ci-fields"><div class="ep-field"><label>Item 1 Title</label>
+      <input type="text" value="Phone / WhatsApp" data-target=".ci h5" data-idx="0" oninput="epSync(this)"></div><div class="ep-field"><label>Item 1 Detail</label>
+      <textarea data-target=".ci p" data-idx="0" oninput="epSync(this)">+30 210 000 00007 days · 9am–8pm EET</textarea></div><div class="ep-field"><label>Item 2 Title</label>
+      <input type="text" value="Email" data-target=".ci h5" data-idx="1" oninput="epSync(this)"></div><div class="ep-field"><label>Item 2 Detail</label>
+      <textarea data-target=".ci p" data-idx="1" oninput="epSync(this)">invest@serenegreece.com</textarea></div><div class="ep-field"><label>Item 3 Title</label>
+      <input type="text" value="Offices" data-target=".ci h5" data-idx="2" oninput="epSync(this)"></div><div class="ep-field"><label>Item 3 Detail</label>
+      <textarea data-target=".ci p" data-idx="2" oninput="epSync(this)">Athens HQ · KolonakiChalkidiki Sales Office</textarea></div><div class="ep-field"><label>Item 4 Title</label>
+      <input type="text" value="Social" data-target=".ci h5" data-idx="3" oninput="epSync(this)"></div><div class="ep-field"><label>Item 4 Detail</label>
+      <textarea data-target=".ci p" data-idx="3" oninput="epSync(this)">@serene.villas.halkidiki@serenevillas · Airbnb</textarea></div></div>
       </div>
     </div>
 
@@ -4406,7 +4445,7 @@ document.addEventListener('keydown', e => {
     <div class="ep-section" id="eps-avail">
       <div class="ep-group">
         <div class="ep-group-title">🖼 Floor Plan Images — per Type</div>
-        <p style="font-size:.57rem;color:rgba(244,239,230,.3);margin-bottom:10px;">Paste URL for each type. Units show the matching image when clicked.</p>
+        <p style="font-size:.57rem;color:rgba(244,239,230,.3);margin-bottom:10px;" contenteditable="false" data-orig-text="Paste URL for each type. Units show the matching image when clicked.">Paste URL for each type. Units show the matching image when clicked.</p>
         <div id="ep-type-imgs">
           <div class="ep-img-field"><label>Type A — Studio Suite</label>
             <div class="ep-img-row">
@@ -4427,8 +4466,51 @@ document.addEventListener('keydown', e => {
       </div>
       <div class="ep-group">
         <div class="ep-group-title">Unit status &amp; types — click to edit</div>
-        <p style="font-size:.57rem;color:rgba(244,239,230,.3);margin-bottom:8px;">In <strong style="color:var(--gold);">✏ Edit Units</strong> mode: bottom label = change type · tap unit = cycle status · × = delete</p>
-        <div id="ep-avail-content"></div>
+        <p style="font-size:.57rem;color:rgba(244,239,230,.3);margin-bottom:8px;" contenteditable="false" data-orig-text="In ✏ Edit Units mode: bottom label = change type · tap unit = cycle status · × = delete">In <strong style="color:var(--gold);">✏ Edit Units</strong> mode: bottom label = change type · tap unit = cycle status · × = delete</p>
+        <div id="ep-avail-content">
+    <div class="ep-floor-block" id="ep-fb-0">
+      <div class="ep-floor-title-row">
+        <input class="ep-floor-title-inp" value="Zone 1 — Entry Level" data-fi="0" oninput="epFloorRename(this)" placeholder="Floor name…">
+        <button class="ep-floor-del" onclick="avDeleteFloor(this)" title="Delete floor">🗑</button>
+      </div>
+      <div class="ep-unit-row" id="ep-floor-row-0"><div class="ep-unit-wrap">
+        <div class="ep-unit so" data-fi="0" data-ui="0" onclick="epUnitCycle(this)">1AAA</div>
+        <button class="ep-unit-del" onclick="epDeleteUnit(0,0)" title="Remove">×</button>
+      </div><div class="ep-unit-wrap">
+        <div class="ep-unit so" data-fi="0" data-ui="1" onclick="epUnitCycle(this)">1BBB</div>
+        <button class="ep-unit-del" onclick="epDeleteUnit(0,1)" title="Remove">×</button>
+      </div><div class="ep-unit-wrap">
+        <div class="ep-unit so" data-fi="0" data-ui="2" onclick="epUnitCycle(this)">1CAA</div>
+        <button class="ep-unit-del" onclick="epDeleteUnit(0,2)" title="Remove">×</button>
+      </div><div class="ep-unit-wrap">
+        <div class="ep-unit av" data-fi="0" data-ui="3" onclick="epUnitCycle(this)">1DCC</div>
+        <button class="ep-unit-del" onclick="epDeleteUnit(0,3)" title="Remove">×</button>
+      </div><div class="ep-unit-wrap">
+        <div class="ep-unit so" data-fi="0" data-ui="4" onclick="epUnitCycle(this)">1EBB</div>
+        <button class="ep-unit-del" onclick="epDeleteUnit(0,4)" title="Remove">×</button>
+      </div><div class="ep-unit-wrap">
+        <div class="ep-unit so" data-fi="0" data-ui="5" onclick="epUnitCycle(this)">1FAA</div>
+        <button class="ep-unit-del" onclick="epDeleteUnit(0,5)" title="Remove">×</button>
+      </div><div class="ep-unit-wrap">
+        <div class="ep-unit av" data-fi="0" data-ui="6" onclick="epUnitCycle(this)">1GCC</div>
+        <button class="ep-unit-del" onclick="epDeleteUnit(0,6)" title="Remove">×</button>
+      </div><div class="ep-unit-wrap">
+        <div class="ep-unit so" data-fi="0" data-ui="7" onclick="epUnitCycle(this)">1HBB</div>
+        <button class="ep-unit-del" onclick="epDeleteUnit(0,7)" title="Remove">×</button>
+      </div>
+      </div>
+      <div class="ep-add-unit-row">
+        <input class="ep-add-unit-inp" id="ep-add-inp-0" placeholder="Unit name e.g. 3I" maxlength="6">
+        <button class="ep-add-unit-btn" onclick="epAddUnit(this.closest('.ep-floor-block'))">+ Add Unit</button>
+      </div>
+    </div>
+  <button class="ep-add-floor-btn" onclick="epAddFloor()">+ Add Floor</button>
+  <div class="ep-status-legend">
+    <div class="ep-leg"><div class="ep-leg-dot" style="background:#a07830"></div>Available</div>
+    <div class="ep-leg"><div class="ep-leg-dot" style="background:#8B6800"></div>Reserved</div>
+    <div class="ep-leg"><div class="ep-leg-dot" style="background:#b83232"></div>Sold</div>
+    <div class="ep-leg" style="color:rgba(244,239,230,.3);font-size:.5rem;">tap unit = cycle status · × = delete</div>
+  </div></div>
       </div>
     </div>
 
@@ -4436,7 +4518,22 @@ document.addEventListener('keydown', e => {
     <div class="ep-section" id="eps-images">
       <div class="ep-group">
         <div class="ep-group-title">Paste any image URL to update</div>
-        <div id="ep-img-fields"></div>
+        <div id="ep-img-fields"><div class="ep-img-field">
+        <label>Home Hero Background</label>
+        <div class="ep-img-row">
+          <div class="ep-img-preview bg-prev" id="epimg_qptq49j" style="background-image:url('');background-size:cover;background-position:center;"></div>
+          <input type="url" placeholder="Paste URL…" value="" oninput="epApplyBg(this,'epimg_qptq49j')">
+        </div></div><div class="ep-img-field">
+        <label>Project Hero Image</label>
+        <div class="ep-img-row">
+          <img loading="lazy" class="ep-img-preview" id="epimg_9tdfqhl" src="https://serenegreeceike-blip.github.io/SERENEGREECEMARKETING-WEBSITE/images/img-02.jpg">
+          <input type="url" placeholder="Paste URL…" value="https://serenegreeceike-blip.github.io/SERENEGREECEMARKETING-WEBSITE/images/img-02.jpg" oninput="epApplyImgEl(this,'epimg_9tdfqhl')">
+        </div></div><div class="ep-img-field">
+        <label>Contact Background</label>
+        <div class="ep-img-row">
+          <div class="ep-img-preview bg-prev" id="epimg_6twlbpw" style="background-image:url('images/img-02.jpg');background-size:cover;background-position:center;"></div>
+          <input type="url" placeholder="Paste URL…" value="images/img-02.jpg" oninput="epApplyBg(this,'epimg_6twlbpw')">
+        </div></div></div>
       </div>
     </div>
 
@@ -5828,8 +5925,8 @@ function fpFloor(floor, btn) {
   <div class="fp-lb-box">
     <div class="fp-lb-header">
       <div>
-        <p class="fp-lb-title" id="fp-lb-title">Type A · Studio Suite</p>
-        <p class="fp-lb-sub" id="fp-lb-sub">55 m² · 1 bed · 1 bath · From €280,000</p>
+        <p class="fp-lb-title" id="fp-lb-title" contenteditable="false" data-orig-text="Type A · Studio Suite">Type A · Studio Suite</p>
+        <p class="fp-lb-sub" id="fp-lb-sub" contenteditable="false" data-orig-text="55 m² · 1 bed · 1 bath · From €280,000">55 m² · 1 bed · 1 bath · From €280,000</p>
       </div>
       <div class="fp-lb-actions">
         <a id="fp-lb-download" href="#" download="Serene-Dunes-FloorPlan.jpg" class="fp-lb-btn fp-lb-dl">⬇ Download</a>
@@ -5840,7 +5937,7 @@ function fpFloor(floor, btn) {
       <img id="fp-lb-img" src="" alt="Floor Plan">
     </div>
     <div class="fp-lb-footer">
-      <p>Serene Dunes · Halkidiki, Greece · <a href="#" onclick="goTo('contact',null);fpCloseLightbox();return false;" style="color:var(--gold);">Request full brochure →</a></p>
+      <p contenteditable="false" data-orig-text="Serene Dunes · Halkidiki, Greece · Request full brochure →">Serene Dunes · Halkidiki, Greece · <a href="#" onclick="goTo('contact',null);fpCloseLightbox();return false;" style="color:var(--gold);">Request full brochure →</a></p>
     </div>
   </div>
 </div>
@@ -5851,18 +5948,18 @@ function fpFloor(floor, btn) {
 <!-- ══ LEAD MAGNET POPUP ══ -->
 <div class="lm-overlay" id="lmPopup">
   <div class="lm-popup">
-    <button class="lm-close" onclick="closeLM()">&times;</button>
+    <button class="lm-close" onclick="closeLM()">×</button>
     <div style="font-size:2rem;margin-bottom:12px;">📄</div>
-    <h3>Free Investor Brochure</h3>
-    <p>Get our 20-page guide: Greek property market, expected yields, ownership process, and full project details — delivered to your inbox.</p>
+    <h3 contenteditable="false" data-orig-text="Free Investor Brochure">Free Investor Brochure</h3>
+    <p contenteditable="false" data-orig-text="Get our 20-page guide: Greek property market, expected yields, ownership process, and full project details — delivered to your inbox.">Get our 20-page guide: Greek property market, expected yields, ownership process, and full project details — delivered to your inbox.</p>
     <div class="lm-features">
       <span>📊 Market Data</span>
       <span>💰 ROI Analysis</span>
       <span>🏛️ Legal Guide</span>
     </div>
     <form onsubmit="return submitLM(this)">
-      <input name="firstName" type="text" placeholder="First Name" required>
-      <input name="email" type="email" placeholder="Email Address" required>
+      <input name="firstName" type="text" placeholder="First Name" required="">
+      <input name="email" type="email" placeholder="Email Address" required="">
       <input name="whatsapp" type="tel" placeholder="WhatsApp (optional)">
       <input type="hidden" name="_subject" value="Investor Brochure Request">
       <button type="submit" class="lm-btn">Download Investor Brochure →</button>
@@ -5883,7 +5980,7 @@ function fpFloor(floor, btn) {
 <!-- ══════════════════════════════
      URGENCY BANNER
 ══════════════════════════════ -->
-<div id="urgency-bar">
+<div id="urgency-bar" style="display: none;">
   <div class="urg-inner">
     <div class="urg-left">
       <span class="urg-fire">🔥</span>
@@ -5910,12 +6007,12 @@ function fpFloor(floor, btn) {
 <div id="admin-panel" style="display:none;position:fixed;inset:0;background:rgba(12,10,6,.96);z-index:9999;overflow-y:auto;font-family:'DM Sans',sans-serif;">
   <!-- PASSWORD SCREEN -->
   <div id="admin-login" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:20px;">
-    <p style="font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin:0;">Serene Greece Properties</p>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;font-weight:300;margin:0;">Back Office</h2>
+    <p style="font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin:0;" contenteditable="false" data-orig-text="Serene Greece Properties">Serene Greece Properties</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;font-weight:300;margin:0;" contenteditable="false" data-orig-text="Back Office">Back Office</h2>
     <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;width:280px;">
       <input id="admin-pw-input" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')adminCheckPw()" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.25);color:#fff;padding:12px 16px;font-size:.8rem;font-family:'DM Sans',sans-serif;text-align:center;letter-spacing:2px;outline:none;">
       <button onclick="adminCheckPw()" style="background:var(--gold);color:#120E08;border:none;padding:12px;font-size:.6rem;font-weight:700;letter-spacing:2px;cursor:pointer;font-family:'DM Sans',sans-serif;">ENTER →</button>
-      <p id="admin-pw-error" style="color:#e87070;font-size:.6rem;text-align:center;margin:0;opacity:0;">Incorrect password</p>
+      <p id="admin-pw-error" style="color:#e87070;font-size:.6rem;text-align:center;margin:0;opacity:0;" contenteditable="false" data-orig-text="Incorrect password">Incorrect password</p>
     </div>
   </div>
 
@@ -5925,8 +6022,8 @@ function fpFloor(floor, btn) {
     <!-- Header -->
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;border-bottom:1px solid rgba(184,149,90,.2);padding-bottom:20px;">
       <div>
-        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 4px;">Serene Greece</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;font-weight:300;margin:0;">Back Office</h2>
+        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 4px;" contenteditable="false" data-orig-text="Serene Greece">Serene Greece</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;font-weight:300;margin:0;" contenteditable="false" data-orig-text="Back Office">Back Office</h2>
       </div>
       <div style="display:flex;gap:8px;">
         <button onclick="adminLogout()" style="background:none;border:1px solid rgba(244,239,230,.15);color:rgba(244,239,230,.4);padding:8px 14px;cursor:pointer;font-size:.55rem;letter-spacing:2px;">LOGOUT</button>
@@ -5936,13 +6033,13 @@ function fpFloor(floor, btn) {
 
     <!-- Unit Status -->
     <div style="margin-bottom:28px;">
-      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;">Unit Status</p>
+      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;" contenteditable="false" data-orig-text="Unit Status">Unit Status</p>
       <div id="admin-units" style="display:flex;flex-direction:column;gap:6px;"></div>
     </div>
 
     <!-- Prices -->
     <div style="margin-bottom:28px;border-top:1px solid rgba(184,149,90,.15);padding-top:20px;">
-      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;">Type Names &amp; Prices</p>
+      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;" contenteditable="false" data-orig-text="Type Names &amp; Prices">Type Names &amp; Prices</p>
       <div style="display:flex;flex-direction:column;gap:12px;">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
           <div>
@@ -5979,7 +6076,7 @@ function fpFloor(floor, btn) {
 
     <!-- Descriptions -->
     <div style="margin-bottom:28px;border-top:1px solid rgba(184,149,90,.15);padding-top:20px;">
-      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;">Unit Descriptions</p>
+      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;" contenteditable="false" data-orig-text="Unit Descriptions">Unit Descriptions</p>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div>
           <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;">Type A — Studio Suite</label>
@@ -5998,7 +6095,7 @@ function fpFloor(floor, btn) {
 
     <!-- Floor Plan Images -->
     <div style="margin-bottom:28px;border-top:1px solid rgba(184,149,90,.15);padding-top:20px;">
-      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;">Floor Plan Images (URL)</p>
+      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;" contenteditable="false" data-orig-text="Floor Plan Images (URL)">Floor Plan Images (URL)</p>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div>
           <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;">Ground Floor Plan URL</label>
@@ -6015,7 +6112,7 @@ function fpFloor(floor, btn) {
     <button onclick="adminSave()" style="width:100%;background:var(--gold);color:#120E08;border:none;padding:14px;font-size:.65rem;font-weight:700;letter-spacing:2px;cursor:pointer;font-family:'DM Sans',sans-serif;">
       ✓ SAVE ALL CHANGES
     </button>
-    <p id="admin-saved-msg" style="text-align:center;color:#6ecf85;font-size:.6rem;margin-top:10px;opacity:0;transition:opacity .3s;">✅ Saved successfully!</p>
+    <p id="admin-saved-msg" style="text-align:center;color:#6ecf85;font-size:.6rem;margin-top:10px;opacity:0;transition:opacity .3s;" contenteditable="false" data-orig-text="✅ Saved successfully!">✅ Saved successfully!</p>
 
   </div><!-- /admin-content -->
 </div><!-- /admin-panel -->
@@ -6601,4 +6698,10 @@ function applyProjectContent(projKey) {
 
 
 
-</body></html>
+
+<div id="site-edit-bar" style="position: fixed; bottom: 0px; left: 0px; right: 0px; background: rgb(26, 22, 16); border-top: 1px solid rgba(184, 149, 90, 0.2); padding: 10px 20px; display: none; align-items: center; justify-content: space-between; z-index: 2000; font-family: &quot;DM Sans&quot;, sans-serif;">
+      <span id="edit-tip" style="font-size:.55rem;color:rgba(244,239,230,.5);letter-spacing:1px;">✏ Click any text to edit</span>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <a id="save-dl-link" onclick="epPrepareDownload(this)" href="#" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:var(--gold);color:#120E08;border:none;padding:7px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;text-decoration:none;display:inline-block;">⬇ Save &amp; Download</a>
+        <button onclick="siteEditDeactivate();" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:none;color:rgba(244,239,230,.4);border:1px solid rgba(244,239,230,.15);padding:7px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">✕ Cancel</button>
+      </div></div></body></html>
