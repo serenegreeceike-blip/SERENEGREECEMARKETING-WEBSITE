@@ -6326,7 +6326,6 @@ function applyProjectContent(projKey) {
         AV_TYPES[k].img   = ut[k].image;
       }
     });
-    // Re-select current type to refresh display
     var activeBtn = document.querySelector('.fp-av-typebtn.active');
     if(activeBtn) activeBtn.click();
   }
@@ -6345,7 +6344,7 @@ function applyProjectContent(projKey) {
     });
   }
 
-  // Location & Investment
+  // Location & Investment (overview tab)
   var loc = proj.locationSection || {};
   var inv = proj.investmentSection || {};
   t('[data-cms="loc-tag"]', loc.tag);
@@ -6353,6 +6352,138 @@ function applyProjectContent(projKey) {
   t('[data-cms="loc-desc"]', loc.description);
   t('[data-cms="inv-tag"]', inv.tag);
   t('[data-cms="inv-title"]', inv.title);
+  t('[data-cms="inv-desc"]', inv.description);
+
+  // ── REBUILD PAYMENT PLAN from content.json ──
+  var pp = proj.paymentPlan;
+  if(pp && pp.milestones) {
+    var ppTable = document.querySelector('#pp-table tbody');
+    if(ppTable) {
+      ppTable.innerHTML = '';
+      pp.milestones.forEach(function(m){
+        var pct = parseInt(m.percentage) || 0;
+        var tr = document.createElement('tr');
+        tr.setAttribute('data-pct', pct);
+        tr.innerHTML = '<td class="pt-phase pp-label">' + m.phase + '</td>' +
+          '<td class="pt-bar-td"><div class="pt-bar-track"><div class="pt-bar-fill" style="width:' + pct + '%"></div></div></td>' +
+          '<td class="pt-pct pp-pct">' + m.percentage + '</td>';
+        ppTable.appendChild(tr);
+      });
+    }
+    // Update description
+    var ppDesc = document.querySelector('#sub-pp > div:first-child p');
+    if(ppDesc && pp.description) ppDesc.textContent = pp.description;
+    // Update note
+    var ppNote = document.querySelector('#sub-pp .note-box');
+    if(ppNote && pp.note) ppNote.innerHTML = '🏦 <strong>' + pp.note + '</strong> <a href="#" onclick="goTo(\'contact\',null);return false;" style="color:var(--gold-dk);">Speak to our finance team →</a>';
+  }
+
+  // ── REBUILD TIMELINE from content.json ──
+  var tl = proj.timeline;
+  if(tl && tl.milestones) {
+    var tlWrap = document.querySelector('#sub-tl .tl-wrap');
+    if(tlWrap) {
+      tlWrap.innerHTML = '';
+      tl.milestones.forEach(function(m, i){
+        var isDone = m.status && m.status.indexOf('Complete') >= 0;
+        var isNow = m.status && (m.status.indexOf('Progress') >= 0 || m.status.indexOf('🔨') >= 0);
+        var isLast = i === tl.milestones.length - 1;
+        var phase = document.createElement('div');
+        phase.className = 'tl-phase';
+        phase.innerHTML = '<div class="tl-bar-row">' +
+          '<div class="tl-dot' + (isDone ? ' done' : (isNow ? ' now' : '')) + '"></div>' +
+          (isLast ? '' : '<div class="tl-line' + (isDone ? ' done' : '') + '"></div>') +
+          '</div>' +
+          '<div class="tl-info">' +
+          '<p class="tl-date">' + m.date + '</p>' +
+          '<p class="tl-label">' + m.label + '</p>' +
+          '<p class="tl-status"' + (isNow ? ' style="color:var(--gold-dk);"' : '') + '>' + m.status + '</p>' +
+          '</div>';
+        tlWrap.appendChild(phase);
+      });
+    }
+    // Update description
+    var tlDesc = document.querySelector('#sub-tl > p:first-child');
+    if(tlDesc && tl.description) tlDesc.textContent = tl.description;
+  }
+
+  // ── REBUILD UNITS from content.json ──
+  var units = proj.units;
+  if(units && units.length > 0) {
+    var avRight = document.querySelector('.fp-av-right');
+    if(avRight) {
+      // Keep topbar, rebuild zones
+      var topbar = avRight.querySelector('.av-topbar');
+      avRight.innerHTML = '';
+      if(topbar) avRight.appendChild(topbar);
+
+      // Group units by zone
+      var zones = {};
+      units.forEach(function(u){
+        var z = u.zone || 'Units';
+        if(!zones[z]) zones[z] = [];
+        zones[z].push(u);
+      });
+
+      Object.keys(zones).forEach(function(zoneName){
+        var block = document.createElement('div');
+        block.className = 'floor-block';
+        var header = document.createElement('div');
+        header.className = 'av-floor-header';
+        header.innerHTML = '<h5 class="av-floor-title">' + zoneName + '</h5>';
+        block.appendChild(header);
+
+        var row = document.createElement('div');
+        row.className = 'unit-row';
+
+        zones[zoneName].forEach(function(u){
+          var statusClass = u.status === 'sold' ? 'so' : (u.status === 'reserved' ? 're' : 'av');
+          var wrap = document.createElement('div');
+          wrap.className = 'unit-wrap';
+          wrap.setAttribute('data-unit-name', u.name);
+          wrap.innerHTML = '<div class="unit-pool-bar"></div>' +
+            '<div class="unit ' + statusClass + '" data-unit-name="' + u.name + '" data-type="' + u.type + '" onclick="avUnitClick(this,\'' + u.name + '\')">' +
+            u.name + '<span class="unit-type-badge">' + u.type + '</span>' +
+            '</div>';
+          row.appendChild(wrap);
+        });
+
+        block.appendChild(row);
+        avRight.appendChild(block);
+      });
+    }
+  }
+
+  // ── REBUILD SPECS from content.json ──
+  var specs = proj.specifications;
+  if(specs) {
+    // Specs table
+    if(specs.specs && specs.specs.length > 0) {
+      var specRows = document.querySelectorAll('#sub-spec .spec-row');
+      specRows.forEach(function(row, i){
+        if(!specs.specs[i]) return;
+        var label = row.querySelector('.spec-label');
+        var value = row.querySelector('.spec-value');
+        if(label) label.textContent = specs.specs[i].label;
+        if(value) value.textContent = specs.specs[i].value;
+      });
+    }
+  }
+
+  // ── REBUILD LOCATION DETAIL from content.json ──
+  var ld = proj.locationDetail;
+  if(ld) {
+    var locPanel = document.querySelector('#sub-loc');
+    if(locPanel) {
+      var locLabel = locPanel.querySelector('p:first-child');
+      var locH3 = locPanel.querySelector('h3');
+      var locTag = locPanel.querySelectorAll('p')[1];
+      if(locLabel && ld.label) locLabel.textContent = ld.label;
+      if(locH3 && ld.heading) locH3.textContent = ld.heading;
+      if(locTag && ld.tagline) locTag.textContent = ld.tagline;
+    }
+  }
+}
   t('[data-cms="inv-desc"]', inv.description);
 }
 
