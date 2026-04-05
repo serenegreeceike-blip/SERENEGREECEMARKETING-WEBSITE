@@ -3752,31 +3752,24 @@ function selectProjectPanel(id, el) {
 function updateProjectPanel(id) {
   if (id === currentProject) return;
 
-  // Save current state
-  snapProject(currentProject);
   currentProject = id;
 
   const d = projData[id];
   if (!d) return;
 
-  if (d._snap) {
-    // Restore saved state for this project
-    restoreProject(id);
-  } else {
-    // First visit — set basic name/tag/status
-    const tag = document.getElementById('pdp-tag');
-    const name = document.getElementById('pdp-name');
-    const status = document.getElementById('pdp-status');
-    if (tag) tag.textContent = d.tag || '';
-    if (name) name.textContent = d.name || '';
-    if (status) status.textContent = d.status || '';
-  }
+  // Set basic name/tag/status
+  const tag = document.getElementById('pdp-tag');
+  const name = document.getElementById('pdp-name');
+  const status = document.getElementById('pdp-status');
+  if (tag) tag.textContent = d.tag || '';
+  if (name) name.textContent = d.name || '';
+  if (status) status.textContent = d.status || '';
 
   // Hero image
   const pdpImg = document.getElementById('pdp-img');
   if (pdpImg) pdpImg.src = d.img || pdpImg.src;
 
-  // Load project-specific content from content.json
+  // Load project-specific content from content.json (always rebuild)
   applyProjectContent(id);
 
   const firstTab = document.querySelector('.proj-subtab');
@@ -6690,6 +6683,9 @@ function applyProjectContent(projKey) {
     var bk = sw.booking || {};
     t('[data-cms="booking-heading"]', bk.heading);
     t('[data-cms="booking-desc"]', bk.description);
+
+    // Apply Dunes content on initial load (default project)
+    applyProjectContent('dunes');
 
     console.log('[CMS] Content loaded from content.json (per-project structure)');
   }).catch(function(e){ console.warn('[CMS] content.json not loaded:', e); });
