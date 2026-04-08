@@ -1001,7 +1001,7 @@ body.sb-collapsed .proj-cards-row {
 .unit:hover{opacity:.85;transform:translateY(-2px);}
 .unit.av{background:rgba(184,149,90,.1);color:var(--gold-dk);border-color:rgba(184,149,90,.4);}
 .unit.av:hover{background:rgba(184,149,90,.25);border-color:var(--gold);}
-.unit.so{background:rgba(200,40,40,.08);color:#c04040;border-color:rgba(200,40,40,.25);text-decoration:line-through;opacity:.6;}
+.unit.so{background:rgba(200,40,40,.18);color:#e03030;border-color:rgba(200,40,40,.5);text-decoration:line-through;opacity:.8;}
 .unit.so + .unit-pool-bar, .unit-wrap.sold .unit-pool-bar { filter:grayscale(1);opacity:.3; }
 .unit.re{background:rgba(220,160,0,.08);color:#8B6800;border-color:rgba(220,160,0,.3);}
 .unit-pool{font-size:.42rem;line-height:1;}
@@ -3890,64 +3890,37 @@ function avUnitClick(unitEl, name) {
     _avCycle(unitEl);
     return;
   }
-  // normal mode: open floor plan + enquiry modal
-  const type = unitEl.dataset.type || 'A';
-  const typeData = AV_TYPES[type] || AV_TYPES.A;
-  const status = unitEl.classList.contains('av') ? 'available'
+  // Open floor plan directly in lightbox
+  var type = unitEl.dataset.type || 'A';
+  var typeData = AV_TYPES[type] || AV_TYPES.A;
+  var status = unitEl.classList.contains('av') ? 'available'
                : unitEl.classList.contains('re') ? 'reserved' : 'sold';
-  const pName = document.getElementById('pdp-name')?.textContent || 'Serene';
-  const floorTitle = unitEl.closest('.floor-block')?.querySelector('.av-floor-title')?.textContent || '';
+  var pName = document.getElementById('pdp-name')?.textContent || 'Serene';
 
-  const titleEl = document.getElementById('unitTitle');
-  const floorLblEl = document.getElementById('unitFloorLabel');
-  const imgEl = document.getElementById('unitFloorPlanImg');
-  const typeTagEl = document.getElementById('unitTypeTag');
-  const badgeEl = document.getElementById('unitStatusBadge');
-  const descEl = document.getElementById('unitModalDesc');
-
-  if (titleEl) titleEl.textContent = 'Unit ' + name + ' — ' + pName;
-  if (floorLblEl) floorLblEl.textContent = floorTitle + ' · Type ' + type;
-  if (imgEl) {
-    // Show floor plan from content.json based on unit type
-    var fpImg = typeData.img;
-    if (_cmsData && _cmsData.projects) {
-      var proj = _cmsData.projects[currentProject] || {};
-      var fp = proj.images || {};
-      // Use ground floor plan as default, or type-specific plan if available
-      if (proj.unitTypes && proj.unitTypes[type] && proj.unitTypes[type].floorPlan) {
-        fpImg = proj.unitTypes[type].floorPlan;
-      } else if (fp.floorPlanGround) {
-        fpImg = fp.floorPlanGround;
-      }
+  // Find floor plan image
+  var fpImg = typeData.img;
+  if (_cmsData && _cmsData.projects) {
+    var proj = _cmsData.projects[currentProject] || {};
+    var fp = proj.images || {};
+    if (proj.unitTypes && proj.unitTypes[type] && proj.unitTypes[type].floorPlan) {
+      fpImg = proj.unitTypes[type].floorPlan;
+    } else if (fp.floorPlanGround) {
+      fpImg = fp.floorPlanGround;
     }
-    imgEl.src = fpImg;
-    imgEl.style.height = '280px';
-    imgEl.style.objectFit = 'contain';
-    imgEl.style.background = '#f8f5f0';
-    imgEl.style.cursor = 'zoom-in';
-    imgEl.onclick = function(){ fpOpenLightbox(); };
   }
 
-  if (typeTagEl) typeTagEl.innerHTML = '<span style="font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:rgba(184,149,90,.6);">Type ' + type + '</span><br>'
-    + '<span style="font-size:.9rem;color:#fff;font-family:\'Cormorant Garamond\',serif;">' + typeData.name + '</span><br>'
-    + '<span style="font-size:.65rem;color:rgba(255,255,255,.45);">' + typeData.price + '</span>';
-
-  const colors = { available:'var(--gold)', reserved:'#c8960a', sold:'#c04040' };
-  if (badgeEl) { badgeEl.textContent = status.toUpperCase(); badgeEl.style.color = colors[status] || 'var(--gold)'; }
-
-  if (descEl) descEl.textContent = status === 'sold'
-    ? 'This unit has been sold. Contact us about similar available units.'
-    : status === 'reserved'
-    ? 'This unit is reserved. Contact us to join the waiting list.'
-    : typeData.specs + '. Our team will respond within 24 hours.';
-
-  const modal = document.getElementById('unitModal');
-  if (modal) modal.classList.add('open');
-
-  // Show correct CTA panel
-  document.getElementById('unit-cta-available').style.display = status === 'available' ? 'block' : 'none';
-  document.getElementById('unit-cta-sold').style.display      = status === 'sold'      ? 'block' : 'none';
-  document.getElementById('unit-cta-reserved').style.display  = status === 'reserved'  ? 'block' : 'none';
+  // Open in lightbox
+  var lbImg = document.getElementById('lb-img');
+  var lbCap = document.getElementById('lb-caption');
+  var lbCnt = document.getElementById('lb-counter');
+  if (lbImg) {
+    lbImg.src = fpImg;
+    lbImg.style.objectFit = 'contain';
+    lbImg.style.background = '#f8f5f0';
+  }
+  if (lbCap) lbCap.textContent = 'Unit ' + name + ' · ' + typeData.name + ' · ' + typeData.price + (status === 'sold' ? ' · SOLD' : status === 'reserved' ? ' · RESERVED' : '');
+  if (lbCnt) lbCnt.textContent = pName + ' · Type ' + type;
+  document.getElementById('lightbox').classList.add('open');
 }
 
 function avCycleType(btn) {
