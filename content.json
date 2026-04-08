@@ -225,8 +225,8 @@
           "status": "sold"
         },
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3C",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "DUNES",
           "type": "B",
           "status": "available"
         },
@@ -265,96 +265,6 @@
           "name": "2A",
           "type": "B",
           "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2B",
-          "type": "A",
-          "status": "reserved"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2C",
-          "type": "C",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2D",
-          "type": "B",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2E",
-          "type": "A",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2F",
-          "type": "C",
-          "status": "reserved"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2G",
-          "type": "B",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2H",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1A",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1B",
-          "type": "B",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1C",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1D",
-          "type": "C",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1E",
-          "type": "B",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1F",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1G",
-          "type": "C",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1H",
-          "type": "B",
-          "status": "sold"
         }
       ],
       "paymentPlan": {
