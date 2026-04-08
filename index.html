@@ -3907,7 +3907,26 @@ function avUnitClick(unitEl, name) {
 
   if (titleEl) titleEl.textContent = 'Unit ' + name + ' — ' + pName;
   if (floorLblEl) floorLblEl.textContent = floorTitle + ' · Type ' + type;
-  if (imgEl) imgEl.src = typeData.img;
+  if (imgEl) {
+    // Show floor plan from content.json based on unit type
+    var fpImg = typeData.img;
+    if (_cmsData && _cmsData.projects) {
+      var proj = _cmsData.projects[currentProject] || {};
+      var fp = proj.images || {};
+      // Use ground floor plan as default, or type-specific plan if available
+      if (proj.unitTypes && proj.unitTypes[type] && proj.unitTypes[type].floorPlan) {
+        fpImg = proj.unitTypes[type].floorPlan;
+      } else if (fp.floorPlanGround) {
+        fpImg = fp.floorPlanGround;
+      }
+    }
+    imgEl.src = fpImg;
+    imgEl.style.height = '280px';
+    imgEl.style.objectFit = 'contain';
+    imgEl.style.background = '#f8f5f0';
+    imgEl.style.cursor = 'zoom-in';
+    imgEl.onclick = function(){ fpOpenLightbox(); };
+  }
 
   if (typeTagEl) typeTagEl.innerHTML = '<span style="font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:rgba(184,149,90,.6);">Type ' + type + '</span><br>'
     + '<span style="font-size:.9rem;color:#fff;font-family:\'Cormorant Garamond\',serif;">' + typeData.name + '</span><br>'
