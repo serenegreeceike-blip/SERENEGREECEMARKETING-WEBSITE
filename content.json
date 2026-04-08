@@ -162,7 +162,7 @@
       "unitTypes": {
         "A": {
           "label": "Type A",
-          "name": "SUPERIOR VILLA TYPE A",
+          "name": "SUPERIOR VILLA ",
           "specs": "120 m² · 3bed · 2 bath · Private plunge pool · OUTSIDE KITCHEN",
           "price": "From €480,000",
           "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/V04_01_Living_from_Outside_iyqswj.jpg",
@@ -170,7 +170,7 @@
         },
         "B": {
           "label": "Type B",
-          "name": "Garden Residence",
+          "name": "Dune Villa",
           "specs": "90 m² · 2 bed · 2 bath · Private pool · Garden terrace · Sleeps 4",
           "price": "From €420,000",
           "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/11_Side_V1_Pool_smrzui.jpg",
@@ -178,7 +178,7 @@
         },
         "C": {
           "label": "Type C",
-          "name": "Dune Villa",
+          "name": "Deluxe Villa",
           "specs": "140 m² · 3 bed · 3 bath · Infinity pool · Panoramic view · Sleeps 6",
           "price": "From €680,000",
           "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/01_Front_V14_13_12_kzwaum.jpg",
