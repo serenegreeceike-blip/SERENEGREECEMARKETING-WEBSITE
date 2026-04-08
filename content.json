@@ -165,21 +165,24 @@
           "name": "SUPERIOR VILLA TYPE A",
           "specs": "120 m² · 3bed · 2 bath · Private plunge pool · OUTSIDE KITCHEN",
           "price": "From €480,000",
-          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/V04_01_Living_from_Outside_iyqswj.jpg"
+          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/V04_01_Living_from_Outside_iyqswj.jpg",
+          "floorPlan": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/Serene_Villas_02_1_vmaiaf.pdf"
         },
         "B": {
           "label": "Type B",
           "name": "Garden Residence",
           "specs": "90 m² · 2 bed · 2 bath · Private pool · Garden terrace · Sleeps 4",
           "price": "From €420,000",
-          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/11_Side_V1_Pool_smrzui.jpg"
+          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/11_Side_V1_Pool_smrzui.jpg",
+          "floorPlan": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/1_1_1_j3yaup.pdf"
         },
         "C": {
           "label": "Type C",
           "name": "Dune Villa",
           "specs": "140 m² · 3 bed · 3 bath · Infinity pool · Panoramic view · Sleeps 6",
           "price": "From €680,000",
-          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/01_Front_V14_13_12_kzwaum.jpg"
+          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/01_Front_V14_13_12_kzwaum.jpg",
+          "floorPlan": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/2_1_1_p94n9y.pdf"
         }
       },
       "advantages": [
@@ -512,8 +515,8 @@
         "galleryTopRight": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/10_Side_V14_Table_x3rgwb.jpg",
         "galleryMidRight": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/11_Side_V1_Pool_smrzui.jpg",
         "galleryBotRight": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/V04_04_Living_View_p2mnzo.jpg",
-        "floorPlanGround": "images/img-11.jpg",
-        "floorPlan1st": "images/img-11.jpg",
+        "floorPlanGround": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/1_1_1_j3yaup.pdf",
+        "floorPlan1st": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/2_1_1_p94n9y.pdf",
         "locationHalkidiki": "images/img-14.jpg",
         "locationThess1": "images/img-14.jpg",
         "locationThess2": "images/img-14.jpg"
