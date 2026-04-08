@@ -153,7 +153,7 @@
   },
   "projects": {
     "dunes": {
-      "name": "Serene Dunes",
+      "name": "Serene Dunes ",
       "location": "Halkidiki, Greece",
       "status": "Now Selling",
       "tagline": "Halkidiki, Greece · Now Selling",
@@ -219,22 +219,22 @@
       },
       "units": [
         {
-          "zone": "SERENE DUNES VILLAS",
+          "zone": "SERENE DUNES VILLAS ",
           "name": "1- SUPERIOR",
           "type": "A",
           "status": "sold"
         },
         {
-          "zone": "SERENE DUNES VILLAS",
+          "zone": "SERENE DUNES VILLAS ",
           "name": "2-DUNES",
           "type": "B",
-          "status": "available"
+          "status": "sold"
         },
         {
           "zone": "SERENE DUNES VILLAS",
           "name": "3-DUNES",
           "type": "B",
-          "status": "available"
+          "status": "sold"
         },
         {
           "zone": "SERENE DUNES VILLAS",
@@ -252,7 +252,7 @@
           "zone": "SERENE DUNES VILLAS",
           "name": "6 - DUNES",
           "type": "B",
-          "status": "reserved"
+          "status": "sold"
         },
         {
           "zone": "SERENE DUNES VILLAS",
@@ -264,13 +264,13 @@
           "zone": "SERENE DUNES VILLAS",
           "name": "8 - DELUXE",
           "type": "C",
-          "status": "available"
+          "status": "sold"
         },
         {
           "zone": "SERENE DUNES VILLAS",
           "name": "9- DUNES",
           "type": "B",
-          "status": "available"
+          "status": "sold"
         },
         {
           "zone": "SERENE DUNES VILLAS",
