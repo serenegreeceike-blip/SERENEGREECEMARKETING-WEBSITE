@@ -220,50 +220,62 @@
       "units": [
         {
           "zone": "SERENE DUNES VILLAS",
-          "name": "SUPERIOR",
+          "name": "1- SUPERIOR",
           "type": "A",
           "status": "sold"
         },
         {
           "zone": "SERENE DUNES VILLAS",
-          "name": "DUNES",
+          "name": "2-DUNES",
           "type": "B",
           "status": "available"
         },
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3D",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "4-DUNES",
           "type": "B",
           "status": "available"
         },
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3E",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "4-DUNES",
+          "type": "B",
+          "status": "sold"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "5-DUNES",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "6 - DUNES",
+          "type": "B",
+          "status": "reserved"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "7- DELUXE",
           "type": "C",
           "status": "sold"
         },
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3F",
-          "type": "B",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3G",
-          "type": "A",
-          "status": "reserved"
-        },
-        {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3H",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "8 - DELUXE",
           "type": "C",
           "status": "available"
         },
         {
-          "zone": "Zone 2 — Garden View",
-          "name": "2A",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "9- DUNES",
           "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "",
+          "name": "",
+          "type": "A",
           "status": "available"
         }
       ],
