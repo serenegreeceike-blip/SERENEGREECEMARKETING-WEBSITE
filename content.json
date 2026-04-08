@@ -219,148 +219,88 @@
       },
       "units": [
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3A",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "1- SUPERIOR",
           "type": "A",
           "status": "sold"
         },
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3B",
-          "type": "A",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "2-DUNES",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "3-DUNES",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "4-DUNES",
+          "type": "B",
           "status": "sold"
         },
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3C",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "5-DUNES",
           "type": "B",
           "status": "available"
         },
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3D",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "6 - DUNES",
           "type": "B",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3E",
-          "type": "C",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3F",
-          "type": "B",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3G",
-          "type": "A",
           "status": "reserved"
         },
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3H",
-          "type": "C",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2A",
-          "type": "B",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2B",
-          "type": "A",
-          "status": "reserved"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2C",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "7- DELUXE",
           "type": "C",
           "status": "sold"
         },
         {
-          "zone": "Zone 2 — Garden View",
-          "name": "2D",
-          "type": "B",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2E",
-          "type": "A",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2F",
-          "type": "C",
-          "status": "reserved"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2G",
-          "type": "B",
-          "status": "available"
-        },
-        {
-          "zone": "Zone 2 — Garden View",
-          "name": "2H",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1A",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1B",
-          "type": "B",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1C",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1D",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "8 - DELUXE",
           "type": "C",
           "status": "available"
         },
         {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1E",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "9- DUNES",
           "type": "B",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1F",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1G",
-          "type": "C",
           "status": "available"
         },
         {
-          "zone": "Zone 1 — Entry Level",
-          "name": "1H",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "10- DUNES",
           "type": "B",
-          "status": "sold"
+          "status": "available"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "11- DUNES",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "12 - DUNES",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "13-DUNES",
+          "type": "B",
+          "status": "available"
+        },
+        {
+          "zone": "SERENE DUNES VILLAS",
+          "name": "14-SUPERIOR",
+          "type": "C",
+          "status": "available"
         }
       ],
       "paymentPlan": {
