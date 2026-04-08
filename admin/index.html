@@ -488,6 +488,11 @@ function renderUnits(ed, pKey) {
         units2[i].status = v;
         card.className = 'unit-card status-' + v;
       });
+      var rmBtn = document.createElement('button');
+      rmBtn.className = 'remove-btn';
+      rmBtn.textContent = 'Remove Unit';
+      rmBtn.onclick = function() { units2.splice(i, 1); rebuild(); };
+      card.appendChild(rmBtn);
       grid.appendChild(card);
     });
 
