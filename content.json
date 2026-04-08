@@ -147,8 +147,8 @@
       "cta": "See Available Units →"
     },
     "images": {
-      "heroBg": "images/img-01.jpg",
-      "contactBg": "images/img-02.jpg"
+      "heroBg": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1600/08_Back_V4_Diag_in36iq.jpg",
+      "contactBg": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/V04_07_Bathroom0_Front_gfj5ei.jpg"
     }
   },
   "projects": {
@@ -157,29 +157,29 @@
       "location": "Halkidiki, Greece",
       "status": "Now Selling",
       "tagline": "Halkidiki, Greece · Now Selling",
-      "heroImage": "images/img-02.jpg",
-      "thumbImage": "images/img-02.jpg",
+      "heroImage": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/01_Front_V14_13_12_kzwaum.jpg",
+      "thumbImage": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_200/01_Front_V14_13_12_kzwaum.jpg",
       "unitTypes": {
         "A": {
           "label": "Type A",
           "name": "SUPERIOR VILLA TYPE A",
           "specs": "120 m² · 3bed · 2 bath · Private plunge pool · OUTSIDE KITCHEN",
           "price": "From €480,000",
-          "image": "images/img-02.jpg"
+          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/V04_01_Living_from_Outside_iyqswj.jpg"
         },
         "B": {
           "label": "Type B",
           "name": "Garden Residence",
           "specs": "90 m² · 2 bed · 2 bath · Private pool · Garden terrace · Sleeps 4",
           "price": "From €420,000",
-          "image": "images/img-09.jpg"
+          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/11_Side_V1_Pool_smrzui.jpg"
         },
         "C": {
           "label": "Type C",
           "name": "Dune Villa",
           "specs": "140 m² · 3 bed · 3 bath · Infinity pool · Panoramic view · Sleeps 6",
           "price": "From €680,000",
-          "image": "images/img-09.jpg"
+          "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/01_Front_V14_13_12_kzwaum.jpg"
         }
       },
       "advantages": [
@@ -508,10 +508,10 @@
         ]
       },
       "images": {
-        "galleryMain": "images/img-02.jpg",
-        "galleryTopRight": "images/img-02.jpg",
-        "galleryMidRight": "images/img-09.jpg",
-        "galleryBotRight": "images/img-09.jpg",
+        "galleryMain": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/01_Front_V14_13_12_kzwaum.jpg",
+        "galleryTopRight": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/10_Side_V14_Table_x3rgwb.jpg",
+        "galleryMidRight": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/11_Side_V1_Pool_smrzui.jpg",
+        "galleryBotRight": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/V04_04_Living_View_p2mnzo.jpg",
         "floorPlanGround": "images/img-11.jpg",
         "floorPlan1st": "images/img-11.jpg",
         "locationHalkidiki": "images/img-14.jpg",
