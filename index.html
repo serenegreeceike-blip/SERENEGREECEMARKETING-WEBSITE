@@ -971,7 +971,7 @@ body.sb-collapsed .proj-cards-row {
   color:var(--muted);margin-bottom:10px;
   padding-bottom:6px;border-bottom:1px solid var(--panel3);
 }
-.unit-row{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;}
+.unit-row{display:flex;gap:5px;flex-wrap:wrap;padding-bottom:4px;}
 .unit-row::-webkit-scrollbar{height:3px;}
 .unit-row::-webkit-scrollbar-thumb{background:var(--panel3);}
 .unit-wrap{position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:0;}
@@ -6528,12 +6528,14 @@ function applyProjectContent(projKey) {
 
         zones[zoneName].forEach(function(u){
           var statusClass = u.status === 'sold' ? 'so' : (u.status === 'reserved' ? 're' : 'av');
+          // Show short name — extract number or use first 3 chars
+          var shortName = u.name.replace(/[^0-9]/g,'') || u.name.substring(0,3);
           var wrap = document.createElement('div');
           wrap.className = 'unit-wrap';
           wrap.setAttribute('data-unit-name', u.name);
           wrap.innerHTML = '<div class="unit-pool-bar"></div>' +
             '<div class="unit ' + statusClass + '" data-unit-name="' + u.name + '" data-type="' + u.type + '" onclick="avUnitClick(this,\'' + u.name + '\')">' +
-            u.name + '<span class="unit-type-badge">' + u.type + '</span>' +
+            shortName + '<span class="unit-type-badge">' + u.type + '</span>' +
             '</div>';
           row.appendChild(wrap);
         });
