@@ -219,14 +219,8 @@
       },
       "units": [
         {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3A",
-          "type": "A",
-          "status": "sold"
-        },
-        {
-          "zone": "Zone 3 — Premium Sea View",
-          "name": "3B",
+          "zone": "SERENE DUNES VILLAS",
+          "name": "SUPERIOR",
           "type": "A",
           "status": "sold"
         },
