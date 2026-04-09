@@ -333,32 +333,32 @@
         "description": "Full transparency on every milestone — from groundbreak to handover.",
         "milestones": [
           {
-            "date": "Q1 2024",
+            "date": "Q2 2026",
             "label": "Permits & Design",
             "status": "✅ Complete"
           },
           {
-            "date": "Q2 2024",
+            "date": "Q3 2026",
             "label": "Groundbreak",
             "status": "✅ Complete"
           },
           {
-            "date": "Q4 2024",
+            "date": "Q1 2027",
             "label": "Foundation Done",
             "status": "✅ Complete"
           },
           {
-            "date": "Q1 2025",
+            "date": "Q1 2028",
             "label": "Structure",
             "status": "🔨 In Progress"
           },
           {
-            "date": "Q3 2025",
+            "date": "Q3 2028",
             "label": "Interiors & Fit-Out",
             "status": "⏳ Upcoming"
           },
           {
-            "date": "Q1 2026",
+            "date": "Q1 2029",
             "label": "Keys Handover",
             "status": "⏳ Projected"
           }
