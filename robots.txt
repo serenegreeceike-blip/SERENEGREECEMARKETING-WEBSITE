@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://serenegreeceike-blip.github.io/SERENEGREECEMARKETING-WEBSITE/sitemap.xml

@@ -3,12 +3,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Serene Greece Properties</title>
+<meta name="description" content="Premium managed residences in Halkidiki, Greece. Developer-direct properties with full hotel management, rental income, and freehold ownership. Now selling — Serene Dunes & Serene Olea.">
+<meta name="keywords" content="Greece property, Halkidiki real estate, managed residence, investment property Greece, Serene Greece, Golden Visa Greece, buy villa Greece">
+<meta name="author" content="Serene Greece Properties">
+<meta property="og:title" content="Serene Greece Properties — Premium Managed Residences">
+<meta property="og:description" content="Own. Stay. Earn. Developer-direct properties with full hotel management in Halkidiki, Greece.">
+<meta property="og:image" content="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/01_Front_V14_13_12_kzwaum.jpg">
+<meta property="og:url" content="https://serenegreeceike-blip.github.io/SERENEGREECEMARKETING-WEBSITE/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Serene Greece Properties — Premium Managed Residences">
+<meta name="twitter:description" content="Own. Stay. Earn. Developer-direct properties with full hotel management in Halkidiki, Greece.">
+<meta name="twitter:image" content="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/01_Front_V14_13_12_kzwaum.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
 <script>
   (() => {
     const d=document,s=d.createElement("script");s.type="module";
     s.src="https://w.behold.so/widget.js";d.head.append(s);
   })();
-</script><script type="module" src="https://w.behold.so/widget.js"></script><script type="module" src="https://w.behold.so/widget.js"></script><script type="module" src="https://w.behold.so/widget.js"></script>
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&amp;display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ── */
@@ -2279,7 +2292,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 ═══════════════════════════════ -->
 <div id="mobile-header">
   <span class="mh-logo">SERENE</span>
-  <button class="mh-edit-btn" onclick="toggleEdit()">✏ Edit</button>
+  
 </div>
 
 <!-- ═══════════════════════════════
@@ -3475,7 +3488,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     </div>
     <!-- Floor plan image -->
     <div style="position:relative;background:var(--panel2);border-bottom:1px solid var(--panel3);">
-      <img loading="lazy" id="unitFloorPlanImg" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=560&amp;q=80" style="width:100%;height:180px;object-fit:cover;display:block;filter:brightness(.9);" alt="Floor plan">
+      <img loading="lazy" id="unitFloorPlanImg" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_560/01_Front_V14_13_12_kzwaum.jpg" style="width:100%;height:180px;object-fit:cover;display:block;filter:brightness(.9);" alt="Floor plan">
       <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,10,6,.5) 0%,transparent 60%);pointer-events:none;"></div>
       <div style="position:absolute;bottom:10px;left:14px;">
         <span id="unitFloorLabel" style="font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);"></span>
@@ -3682,7 +3695,7 @@ const projData = {
     _snap: null
   },
   olea: {
-    img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=80',
+    img: 'https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/01_Front_V14_13_12_kzwaum.jpg',
     tag: 'Halkidiki, Greece · Now Selling',
     name: 'Serene Olea',
     status: 'Now Selling',
@@ -3690,46 +3703,6 @@ const projData = {
   }
 };
 
-const SNAP_SELS = ['#pdp-tag','#pdp-name','#pdp-status',
-  '.pp-label','.pp-pct','.av-floor-title',
-  '.tl-date','.tl-label','.tl-status'];
-
-function snapProject(id) {
-  const snap = {};
-  SNAP_SELS.forEach(sel => {
-    snap[sel] = Array.from(document.querySelectorAll(sel)).map(el => el.innerHTML);
-  });
-  // Snap unit states
-  snap._units = Array.from(document.querySelectorAll('.unit')).map(u => ({
-    cls: u.className, type: u.dataset.type || 'A'
-  }));
-  // Snap payment plan bars
-  snap._bars = Array.from(document.querySelectorAll('.pt-bar-fill')).map(b => b.style.width);
-  projData[id]._snap = snap;
-}
-
-function restoreProject(id) {
-  const snap = projData[id]._snap;
-  if (!snap) return;
-  SNAP_SELS.forEach(sel => {
-    if (!snap[sel]) return;
-    document.querySelectorAll(sel).forEach((el, i) => {
-      if (snap[sel][i] !== undefined) el.innerHTML = snap[sel][i];
-    });
-  });
-  if (snap._units) {
-    document.querySelectorAll('.unit').forEach((u, i) => {
-      if (snap._units[i]) {
-        u.className = snap._units[i].cls;
-        u.dataset.type = snap._units[i].type;
-      }
-    });
-  }
-  if (snap._bars) {
-    document.querySelectorAll('.pt-bar-fill').forEach((b, i) => {
-      if (snap._bars[i] !== undefined) b.style.width = snap._bars[i];
-    });
-  }
 }
 
 function selectProject(id, navEl) {
@@ -3788,7 +3761,7 @@ function switchSub(id, el) {
 
 // Floor plan images per floor (editable)
 const avFloorImages = {
-  default: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=560&q=80',
+  default: 'https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_560/01_Front_V14_13_12_kzwaum.jpg',
 };
 let avEditMode = false;
 
@@ -4081,7 +4054,7 @@ function avAddFloor() {
 
 // ── LIGHTBOX ──
 const lbImages = [
-  { src:'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=80',             cap:'Exterior · Diagonal View' },
+  { src:'https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/01_Front_V14_13_12_kzwaum.jpg',             cap:'Exterior · Diagonal View' },
   { src:'01_Front_V14_13_12.jpg',          cap:'Exterior · Front Facade' },
   { src:'09_Side_V14.jpg',                 cap:'Exterior · Street View' },
   { src:'11_Side_V1_Pool.jpg',             cap:'Exterior · Pool & Garden' },
@@ -4433,17 +4406,17 @@ document.addEventListener('keydown', e => {
         <div id="ep-type-imgs">
           <div class="ep-img-field"><label>Type A — Studio Suite</label>
             <div class="ep-img-row">
-              <img loading="lazy" class="ep-img-preview" id="ep-ti-A" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&amp;q=60">
+              <img loading="lazy" class="ep-img-preview" id="ep-ti-A" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_100/V04_01_Living_from_Outside_iyqswj.jpg">
               <input type="url" placeholder="Paste URL…" oninput="epTypeImg('A',this.value,this)">
             </div></div>
           <div class="ep-img-field"><label>Type B — Garden Residence</label>
             <div class="ep-img-row">
-              <img loading="lazy" class="ep-img-preview" id="ep-ti-B" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=100&amp;q=60">
+              <img loading="lazy" class="ep-img-preview" id="ep-ti-B" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_100/11_Side_V1_Pool_smrzui.jpg">
               <input type="url" placeholder="Paste URL…" oninput="epTypeImg('B',this.value,this)">
             </div></div>
           <div class="ep-img-field"><label>Type C — Dune Villa</label>
             <div class="ep-img-row">
-              <img loading="lazy" class="ep-img-preview" id="ep-ti-C" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=100&amp;q=60">
+              <img loading="lazy" class="ep-img-preview" id="ep-ti-C" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_100/01_Front_V14_13_12_kzwaum.jpg">
               <input type="url" placeholder="Paste URL…" oninput="epTypeImg('C',this.value,this)">
             </div></div>
         </div>
@@ -5985,313 +5958,6 @@ function fpFloor(floor, btn) {
 </div>
 
 
-<!-- ═══════════════════════════════
-     ADMIN PANEL
-═══════════════════════════════ -->
-<div id="admin-panel" style="display:none;position:fixed;inset:0;background:rgba(12,10,6,.96);z-index:9999;overflow-y:auto;font-family:'DM Sans',sans-serif;">
-  <!-- PASSWORD SCREEN -->
-  <div id="admin-login" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:20px;">
-    <p style="font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin:0;" contenteditable="false" data-orig-text="Serene Greece Properties">Serene Greece Properties</p>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;font-weight:300;margin:0;" contenteditable="false" data-orig-text="Back Office">Back Office</h2>
-    <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;width:280px;">
-      <input id="admin-pw-input" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')adminCheckPw()" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.25);color:#fff;padding:12px 16px;font-size:.8rem;font-family:'DM Sans',sans-serif;text-align:center;letter-spacing:2px;outline:none;">
-      <button onclick="adminCheckPw()" style="background:var(--gold);color:#120E08;border:none;padding:12px;font-size:.6rem;font-weight:700;letter-spacing:2px;cursor:pointer;font-family:'DM Sans',sans-serif;">ENTER →</button>
-      <p id="admin-pw-error" style="color:#e87070;font-size:.6rem;text-align:center;margin:0;opacity:0;" contenteditable="false" data-orig-text="Incorrect password">Incorrect password</p>
-    </div>
-  </div>
-
-  <!-- MAIN CONTENT (hidden until login) -->
-  <div id="admin-content" style="display:none;max-width:680px;margin:0 auto;padding:32px 24px;">
-    
-    <!-- Header -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;border-bottom:1px solid rgba(184,149,90,.2);padding-bottom:20px;">
-      <div>
-        <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 4px;" contenteditable="false" data-orig-text="Serene Greece">Serene Greece</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;font-weight:300;margin:0;" contenteditable="false" data-orig-text="Back Office">Back Office</h2>
-      </div>
-      <div style="display:flex;gap:8px;">
-        <button onclick="adminLogout()" style="background:none;border:1px solid rgba(244,239,230,.15);color:rgba(244,239,230,.4);padding:8px 14px;cursor:pointer;font-size:.55rem;letter-spacing:2px;">LOGOUT</button>
-        <button onclick="adminClose()" style="background:none;border:1px solid rgba(184,149,90,.3);color:var(--gold);padding:8px 16px;cursor:pointer;font-size:.6rem;letter-spacing:2px;">✕ CLOSE</button>
-      </div>
-    </div>
-
-    <!-- Unit Status -->
-    <div style="margin-bottom:28px;">
-      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;" contenteditable="false" data-orig-text="Unit Status">Unit Status</p>
-      <div id="admin-units" style="display:flex;flex-direction:column;gap:6px;"></div>
-    </div>
-
-    <!-- Prices -->
-    <div style="margin-bottom:28px;border-top:1px solid rgba(184,149,90,.15);padding-top:20px;">
-      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;" contenteditable="false" data-orig-text="Type Names &amp; Prices">Type Names &amp; Prices</p>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div>
-            <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;letter-spacing:1px;">TYPE A — Name</label>
-            <input id="admin-name-A" type="text" placeholder="Studio Suite" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-          </div>
-          <div>
-            <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;letter-spacing:1px;">TYPE A — Price</label>
-            <input id="admin-price-A" type="text" placeholder="From €280,000" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div>
-            <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;letter-spacing:1px;">TYPE B — Name</label>
-            <input id="admin-name-B" type="text" placeholder="Garden Residence" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-          </div>
-          <div>
-            <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;letter-spacing:1px;">TYPE B — Price</label>
-            <input id="admin-price-B" type="text" placeholder="From €420,000" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div>
-            <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;letter-spacing:1px;">TYPE C — Name</label>
-            <input id="admin-name-C" type="text" placeholder="Dune Villa" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-          </div>
-          <div>
-            <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;letter-spacing:1px;">TYPE C — Price</label>
-            <input id="admin-price-C" type="text" placeholder="From €680,000" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Descriptions -->
-    <div style="margin-bottom:28px;border-top:1px solid rgba(184,149,90,.15);padding-top:20px;">
-      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;" contenteditable="false" data-orig-text="Unit Descriptions">Unit Descriptions</p>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div>
-          <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;">Type A — Studio Suite</label>
-          <input id="admin-desc-A" type="text" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-        </div>
-        <div>
-          <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;">Type B — Garden Residence</label>
-          <input id="admin-desc-B" type="text" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-        </div>
-        <div>
-          <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;">Type C — Dune Villa</label>
-          <input id="admin-desc-C" type="text" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-        </div>
-      </div>
-    </div>
-
-    <!-- Floor Plan Images -->
-    <div style="margin-bottom:28px;border-top:1px solid rgba(184,149,90,.15);padding-top:20px;">
-      <p style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 16px;" contenteditable="false" data-orig-text="Floor Plan Images (URL)">Floor Plan Images (URL)</p>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div>
-          <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;">Ground Floor Plan URL</label>
-          <input id="admin-plan-gf" type="url" placeholder="https://..." style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-        </div>
-        <div>
-          <label style="font-size:.55rem;color:rgba(244,239,230,.5);display:block;margin-bottom:6px;">1st Floor Plan URL</label>
-          <input id="admin-plan-1f" type="url" placeholder="https://..." style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(184,149,90,.2);color:#fff;padding:8px 10px;font-size:.7rem;font-family:'DM Sans',sans-serif;">
-        </div>
-      </div>
-    </div>
-
-    <!-- Save Button -->
-    <button onclick="adminSave()" style="width:100%;background:var(--gold);color:#120E08;border:none;padding:14px;font-size:.65rem;font-weight:700;letter-spacing:2px;cursor:pointer;font-family:'DM Sans',sans-serif;">
-      ✓ SAVE ALL CHANGES
-    </button>
-    <p id="admin-saved-msg" style="text-align:center;color:#6ecf85;font-size:.6rem;margin-top:10px;opacity:0;transition:opacity .3s;" contenteditable="false" data-orig-text="✅ Saved successfully!">✅ Saved successfully!</p>
-
-  </div><!-- /admin-content -->
-</div><!-- /admin-panel -->
-
-<script>
-// ══ ADMIN PANEL SYSTEM ══
-const ADMIN_KEY = 'serene_admin_data';
-
-const ADMIN_PW = 'serene2025';
-
-function adminOpen() {
-  document.getElementById('admin-panel').style.display = 'block';
-  // Check if already logged in this session
-  if (sessionStorage.getItem('admin_auth') === '1') {
-    showAdminContent();
-    adminLoad();
-  } else {
-    document.getElementById('admin-login').style.display = 'flex';
-    document.getElementById('admin-content').style.display = 'none';
-    setTimeout(() => document.getElementById('admin-pw-input')?.focus(), 100);
-  }
-}
-
-function adminCheckPw() {
-  const val = document.getElementById('admin-pw-input').value;
-  if (val === ADMIN_PW) {
-    sessionStorage.setItem('admin_auth', '1');
-    document.getElementById('admin-pw-input').value = '';
-    showAdminContent();
-    adminLoad();
-  } else {
-    const err = document.getElementById('admin-pw-error');
-    err.style.opacity = '1';
-    setTimeout(() => err.style.opacity = '0', 2000);
-    document.getElementById('admin-pw-input').value = '';
-    document.getElementById('admin-pw-input').focus();
-  }
-}
-
-function showAdminContent() {
-  document.getElementById('admin-login').style.display = 'none';
-  document.getElementById('admin-content').style.display = 'block';
-}
-
-function adminLogout() {
-  sessionStorage.removeItem('admin_auth');
-  document.getElementById('admin-panel').style.display = 'none';
-}
-
-function adminClose() {
-  document.getElementById('admin-panel').style.display = 'none';
-}
-
-// Secret keyboard shortcut: Ctrl+Shift+A to open admin
-document.addEventListener('keydown', e => {
-  if (e.ctrlKey && e.shiftKey && e.key === 'A') adminOpen();
-});
-
-function adminLoad() {
-  const data = JSON.parse(localStorage.getItem(ADMIN_KEY) || '{}');
-
-  // Load names, prices, descriptions
-  ['A','B','C'].forEach(t => {
-    const nm = document.getElementById('admin-name-'+t);
-    const pr = document.getElementById('admin-price-'+t);
-    const ds = document.getElementById('admin-desc-'+t);
-    if (nm) nm.value = data['name_'+t] || AV_TYPES[t]?.name || '';
-    if (pr) pr.value = data['price_'+t] || AV_TYPES[t]?.price || '';
-    if (ds) ds.value = data['desc_'+t] || AV_TYPES[t]?.specs || '';
-  });
-
-  // Load plan URLs
-  const gf = document.getElementById('admin-plan-gf');
-  const ff = document.getElementById('admin-plan-1f');
-  if (gf) gf.value = data['plan_gf'] || '';
-  if (ff) ff.value = data['plan_1f'] || '';
-
-  // Build unit list
-  const container = document.getElementById('admin-units');
-  if (!container) return;
-  container.innerHTML = '';
-
-  document.querySelectorAll('.unit').forEach(unit => {
-    const name = unit.dataset.unitName || unit.childNodes[0]?.textContent?.trim() || '';
-    if (!name) return;
-    const type = unit.dataset.type || 'A';
-    const curStatus = unit.classList.contains('av') ? 'available'
-                    : unit.classList.contains('re') ? 'reserved' : 'sold';
-    const savedStatus = data['unit_'+name] !== undefined ? data['unit_'+name] : curStatus;
-
-    const statusColor = {available:'#B8955A', reserved:'#ffd080', sold:'#e87070'};
-    const row = document.createElement('div');
-    row.style.cssText = 'display:grid;grid-template-columns:56px 80px 1fr;gap:10px;align-items:center;padding:8px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(184,149,90,.08);margin-bottom:4px;';
-    row.innerHTML = `
-      <span style="font-size:.8rem;font-weight:700;color:#D4AF78;letter-spacing:1px;">${name}</span>
-      <span style="font-size:.55rem;color:rgba(244,239,230,.35);letter-spacing:1px;">TYPE ${type}</span>
-      <select data-unit="${name}" onchange="adminPreviewUnit(this)" style="background:#252015;border:1px solid rgba(184,149,90,.25);color:#fff;padding:5px 8px;font-size:.65rem;font-family:'DM Sans',sans-serif;cursor:pointer;border-radius:2px;">
-        <option value="available" ${savedStatus==='available'?'selected':''} style="color:#B8955A;">● Available</option>
-        <option value="reserved" ${savedStatus==='reserved'?'selected':''} style="color:#ffd080;">● Reserved</option>
-        <option value="sold" ${savedStatus==='sold'?'selected':''} style="color:#e87070;">● Sold</option>
-      </select>`;
-    container.appendChild(row);
-  });
-}
-
-// Live preview unit status change
-function adminPreviewUnit(sel) {
-  const name = sel.dataset.unit;
-  const status = sel.value;
-  document.querySelectorAll('.unit').forEach(unit => {
-    const uName = unit.dataset.unitName || unit.childNodes[0]?.textContent?.trim() || '';
-    if (uName === name) {
-      unit.classList.remove('av','re','so');
-      unit.classList.add(status==='available'?'av':status==='reserved'?'re':'so');
-      const bar = unit.closest('.unit-wrap')?.querySelector('.unit-pool-bar');
-      if (bar) bar.style.opacity = status==='sold' ? '0.2' : '1';
-    }
-  });
-}
-
-function adminSave() {
-  const data = JSON.parse(localStorage.getItem(ADMIN_KEY) || '{}');
-
-  // Save names, prices, descriptions
-  ['A','B','C'].forEach(t => {
-    const nm = document.getElementById('admin-name-'+t);
-    const pr = document.getElementById('admin-price-'+t);
-    const ds = document.getElementById('admin-desc-'+t);
-    if (nm && nm.value) data['name_'+t] = nm.value;
-    if (pr && pr.value) data['price_'+t] = pr.value;
-    if (ds && ds.value) data['desc_'+t] = ds.value;
-  });
-
-  // Save unit statuses
-  document.querySelectorAll('#admin-units select').forEach(sel => {
-    if (sel.dataset.unit) data['unit_'+sel.dataset.unit] = sel.value;
-  });
-
-  // Save plan URLs
-  const gf = document.getElementById('admin-plan-gf');
-  const ff = document.getElementById('admin-plan-1f');
-  if (gf && gf.value) data['plan_gf'] = gf.value;
-  if (ff && ff.value) data['plan_1f'] = ff.value;
-
-  localStorage.setItem(ADMIN_KEY, JSON.stringify(data));
-  adminApply(data);
-
-  const msg = document.getElementById('admin-saved-msg');
-  if (msg) { msg.style.opacity='1'; setTimeout(()=>msg.style.opacity='0',2500); }
-}
-
-function adminApply(data) {
-  if (!data) data = JSON.parse(localStorage.getItem(ADMIN_KEY) || '{}');
-
-  // Apply unit statuses
-  document.querySelectorAll('.unit').forEach(unit => {
-    const name = unit.dataset.unitName || unit.childNodes[0]?.textContent?.trim() || '';
-    if (!name) return;
-    const status = data['unit_'+name];
-    if (!status) return;
-    unit.classList.remove('av','re','so');
-    unit.classList.add(status==='available'?'av':status==='reserved'?'re':'so');
-    const bar = unit.closest('.unit-wrap')?.querySelector('.unit-pool-bar');
-    if (bar) bar.style.opacity = status==='sold' ? '0.2' : '1';
-  });
-
-  // Apply type names, prices, descriptions
-  ['A','B','C'].forEach(t => {
-    if (data['name_'+t]) {
-      AV_TYPES[t].name = data['name_'+t];
-      document.querySelectorAll(`.fp-av-typebtn[data-type="${t}"] .fat-name`).forEach(el => el.textContent = data['name_'+t]);
-    }
-    if (data['price_'+t]) AV_TYPES[t].price = data['price_'+t];
-    if (data['desc_'+t]) AV_TYPES[t].specs = data['desc_'+t];
-  });
-
-  // Apply floor plans
-  if (data['plan_gf']) { const img=document.getElementById('fp-plan-gf'); if(img) img.src=data['plan_gf']; }
-  if (data['plan_1f']) { const img=document.getElementById('fp-plan-1f'); if(img) img.src=data['plan_1f']; }
-
-  // Update counts
-  const avCount = document.querySelectorAll('.unit.av').length;
-  const total = document.querySelectorAll('.unit').length;
-  ['av-count','urgency-count'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = avCount + ' available of ' + total;
-  });
-}
-
-// Auto-apply on page load
-document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem(ADMIN_KEY);
-  if (saved) adminApply(JSON.parse(saved));
-});
-</script>
 
 <script>
 // ── LEAD MAGNET POPUP ──
