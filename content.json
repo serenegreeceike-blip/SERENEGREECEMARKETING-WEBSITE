@@ -149,6 +149,38 @@
     "images": {
       "heroBg": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1600/merakos_04_beaches-halkidiki_1750x680_ygwreh.jpg",
       "contactBg": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/V04_07_Bathroom0_Front_gfj5ei.jpg"
+    },
+    "rentalVillas": {
+      "superior": {
+        "name": "Superior Villa",
+        "badge": "Superior",
+        "bedrooms": "3",
+        "bathrooms": "2",
+        "guests": "Up to 6",
+        "pool": "Private · 8×3m",
+        "outdoor": "Dining table · 6 seats",
+        "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_500/01_Front_V14_13_12_kzwaum.jpg"
+      },
+      "deluxe": {
+        "name": "Deluxe Villa",
+        "badge": "Deluxe",
+        "bedrooms": "2",
+        "bathrooms": "2",
+        "guests": "Up to 4",
+        "pool": "Private · 6×3m",
+        "outdoor": "Dining table · 4 seats",
+        "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_500/V04_01_Living_from_Outside_iyqswj.jpg"
+      },
+      "cfront": {
+        "name": "C-Front Villa",
+        "badge": "C-Front",
+        "bedrooms": "2",
+        "bathrooms": "1",
+        "guests": "Up to 4",
+        "pool": "Private · 5×3m",
+        "outdoor": "Dining table · 4 seats",
+        "image": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_500/11_Side_V1_Pool_smrzui.jpg"
+      }
     }
   },
   "projects": {
