@@ -8,319 +8,510 @@ backend:
 media_folder: "images"
 public_folder: "/images"
 
-# Sveltia CMS — visual content editor for content.json
-# Sections mirror the structure of the live website.
 collections:
   - name: "site"
     label: "Site Content"
-    label_singular: "Section"
     files:
 
-      # ─────────────────────────────────────────────
-      # 1. HERO (top of homepage)
-      # ─────────────────────────────────────────────
       - name: "all"
         label: "All Website Content"
         file: "content.json"
         format: "json"
         fields:
-          - { label: "— sitewide —", name: "sitewide", widget: "object", fields: [
-              { label: "Hero", name: "hero", widget: "object", fields: [
-                  { label: "Eyebrow text (small label)", name: "eyebrow", widget: "string" },
-                  { label: "Heading", name: "heading", widget: "string" },
-                  { label: "Heading (italic part)", name: "headingItalic", widget: "string" },
-                  { label: "Description", name: "description", widget: "text" },
-                  { label: "CTA Button 1", name: "cta1", widget: "string" },
-                  { label: "CTA Button 2", name: "cta2", widget: "string" }
-              ]},
-              { label: "Contact", name: "contact", widget: "object", collapsed: true, fields: [
-                  { label: "Heading", name: "heading", widget: "string" },
-                  { label: "Heading (italic)", name: "headingItalic", widget: "string" },
-                  { label: "Description", name: "description", widget: "text" },
-                  { label: "Phone", name: "phone", widget: "string" },
-                  { label: "Phone hours", name: "phoneHours", widget: "string" },
-                  { label: "Office 1", name: "office1", widget: "string" },
-                  { label: "Office 2", name: "office2", widget: "string" },
-                  { label: "Social 1", name: "social1", widget: "string" },
-                  { label: "Social 2", name: "social2", widget: "string" },
-                  { label: "WhatsApp number", name: "whatsapp", widget: "string" }
-              ]},
-              { label: "The Method", name: "method", widget: "object", collapsed: true, fields: [
-                  { label: "Hero heading", name: "heroHeading", widget: "string" },
-                  { label: "Hero description", name: "heroDesc", widget: "text" },
-                  { label: "Old way (problem)", name: "oldWay", widget: "text" },
-                  { label: "Serene way (solution)", name: "sereneWay", widget: "text" },
-                  { label: "Pillars (3 cards)", name: "pillars", widget: "list", summary: "{{fields.title}}", fields: [
-                      { label: "Emoji", name: "emoji", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "desc", widget: "text" }
-                  ]},
-                  { label: "Benefits (4 cards)", name: "benefits", widget: "list", summary: "{{fields.title}}", fields: [
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "desc", widget: "text" }
-                  ]},
-                  { label: "Process steps", name: "steps", widget: "list", summary: "{{fields.num}} {{fields.title}}", fields: [
-                      { label: "Number", name: "num", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "desc", widget: "text" }
-                  ]}
-              ]},
-              { label: "Booking Section", name: "booking", widget: "object", collapsed: true, fields: [
-                  { label: "Heading", name: "heading", widget: "string" },
-                  { label: "Description", name: "description", widget: "text" },
-                  { label: "Stay options", name: "stayOptions", widget: "list", summary: "{{fields.label}}", fields: [
-                      { label: "Label", name: "label", widget: "string" },
-                      { label: "Duration", name: "duration", widget: "string" },
-                      { label: "Description", name: "desc", widget: "text" },
-                      { label: "Price", name: "price", widget: "string" }
-                  ]},
-                  { label: "Amenities", name: "amenities", widget: "list", summary: "{{fields.title}}", fields: [
-                      { label: "Emoji", name: "emoji", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "desc", widget: "string" }
-                  ]}
-              ]},
-              { label: "Urgency Bar", name: "urgencyBar", widget: "object", collapsed: true, fields: [
-                  { label: "Message", name: "message", widget: "string" },
-                  { label: "Availability text", name: "availability", widget: "string" },
-                  { label: "Available units", name: "available", widget: "number", value_type: "int", min: 0 },
-                  { label: "Total units", name: "total", widget: "number", value_type: "int", min: 0 },
-                  { label: "CTA button", name: "cta", widget: "string" }
-              ]},
-              { label: "Background images", name: "images", widget: "object", collapsed: true, fields: [
-                  { label: "Hero background", name: "heroBg", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                  { label: "Contact background", name: "contactBg", widget: "image", choose_url: true, allow_multiple: false, required: false }
-              ]},
-              { label: "Rental Villas (3 cards on rentals page)", name: "rentalVillas", widget: "object", fields: [
-                  { label: "Superior Villa", name: "superior", widget: "object", collapsed: false, fields: [
-                      { label: "Photo", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false, hint: "Paste a Cloudinary delivery URL or upload" },
-                      { label: "Name", name: "name", widget: "string" },
-                      { label: "Badge", name: "badge", widget: "string" },
-                      { label: "Bedrooms", name: "bedrooms", widget: "string" },
-                      { label: "Bathrooms", name: "bathrooms", widget: "string" },
-                      { label: "Guests", name: "guests", widget: "string" },
-                      { label: "Pool", name: "pool", widget: "string" },
-                      { label: "Outdoor", name: "outdoor", widget: "string" }
-                  ]},
-                  { label: "Deluxe Villa", name: "deluxe", widget: "object", collapsed: true, fields: [
-                      { label: "Photo", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Name", name: "name", widget: "string" },
-                      { label: "Badge", name: "badge", widget: "string" },
-                      { label: "Bedrooms", name: "bedrooms", widget: "string" },
-                      { label: "Bathrooms", name: "bathrooms", widget: "string" },
-                      { label: "Guests", name: "guests", widget: "string" },
-                      { label: "Pool", name: "pool", widget: "string" },
-                      { label: "Outdoor", name: "outdoor", widget: "string" }
-                  ]},
-                  { label: "C-Front Villa", name: "cfront", widget: "object", collapsed: true, fields: [
-                      { label: "Photo", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Name", name: "name", widget: "string" },
-                      { label: "Badge", name: "badge", widget: "string" },
-                      { label: "Bedrooms", name: "bedrooms", widget: "string" },
-                      { label: "Bathrooms", name: "bathrooms", widget: "string" },
-                      { label: "Guests", name: "guests", widget: "string" },
-                      { label: "Pool", name: "pool", widget: "string" },
-                      { label: "Outdoor", name: "outdoor", widget: "string" }
-                  ]}
-              ]}
-          ]}
-          - { label: "— projects —", name: "projects", widget: "object", collapsed: true, fields: [
-              { label: "Serene Dunes", name: "dunes", widget: "object", collapsed: true, fields: [
-                  { label: "Name", name: "name", widget: "string" },
-                  { label: "Location", name: "location", widget: "string" },
-                  { label: "Status", name: "status", widget: "string" },
-                  { label: "Tagline", name: "tagline", widget: "string" },
-                  { label: "Hero image", name: "heroImage", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                  { label: "Thumbnail image", name: "thumbImage", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                  { label: "Unit Types", name: "unitTypes", widget: "object", collapsed: true, fields: [
-                      { label: "Type A", name: "A", widget: "object", fields: [
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Name", name: "name", widget: "string" },
-                          { label: "Specs", name: "specs", widget: "string" },
-                          { label: "Price", name: "price", widget: "string" },
-                          { label: "Image", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                          { label: "Floor plan (PDF)", name: "floorPlan", widget: "string", required: false }
-                      ]},
-                      { label: "Type B", name: "B", widget: "object", fields: [
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Name", name: "name", widget: "string" },
-                          { label: "Specs", name: "specs", widget: "string" },
-                          { label: "Price", name: "price", widget: "string" },
-                          { label: "Image", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                          { label: "Floor plan (PDF)", name: "floorPlan", widget: "string", required: false }
-                      ]},
-                      { label: "Type C", name: "C", widget: "object", fields: [
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Name", name: "name", widget: "string" },
-                          { label: "Specs", name: "specs", widget: "string" },
-                          { label: "Price", name: "price", widget: "string" },
-                          { label: "Image", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                          { label: "Floor plan (PDF)", name: "floorPlan", widget: "string", required: false }
-                      ]}
-                  ]},
-                  { label: "Advantages (4 cards)", name: "advantages", widget: "list", summary: "{{fields.title}}", fields: [
-                      { label: "Emoji", name: "emoji", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "description", widget: "text" }
-                  ]},
-                  { label: "Location section", name: "locationSection", widget: "object", fields: [
-                      { label: "Tag", name: "tag", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "description", widget: "text" }
-                  ]},
-                  { label: "Investment section", name: "investmentSection", widget: "object", fields: [
-                      { label: "Tag", name: "tag", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "description", widget: "text" }
-                  ]},
-                  { label: "Units (availability grid)", name: "units", widget: "list", summary: "{{fields.name}} ({{fields.status}})", fields: [
-                      { label: "Zone", name: "zone", widget: "string" },
-                      { label: "Name", name: "name", widget: "string" },
-                      { label: "Type", name: "type", widget: "select", options: ["A", "B", "C"] },
-                      { label: "Status", name: "status", widget: "select", options: ["available", "reserved", "sold"] }
-                  ]},
-                  { label: "Payment plan", name: "paymentPlan", widget: "object", collapsed: true, fields: [
-                      { label: "Description", name: "description", widget: "text" },
-                      { label: "Milestones", name: "milestones", widget: "list", summary: "{{fields.phase}} – {{fields.percentage}}", fields: [
-                          { label: "Phase", name: "phase", widget: "string" },
-                          { label: "Percentage", name: "percentage", widget: "string" }
-                      ]},
-                      { label: "Note", name: "note", widget: "text" }
-                  ]},
-                  { label: "Construction timeline", name: "timeline", widget: "object", collapsed: true, fields: [
-                      { label: "Description", name: "description", widget: "text" },
-                      { label: "Milestones", name: "milestones", widget: "list", summary: "{{fields.date}} – {{fields.label}}", fields: [
-                          { label: "Date", name: "date", widget: "string" },
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Status", name: "status", widget: "string" }
-                      ]}
-                  ]},
-                  { label: "Specifications", name: "specifications", widget: "object", collapsed: true, fields: [
-                      { label: "Spec rows", name: "specs", widget: "list", summary: "{{fields.label}}", fields: [
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Value", name: "value", widget: "string" }
-                      ]},
-                      { label: "Inclusions", name: "inclusions", widget: "list", summary: "{{fields.text}}", fields: [
-                          { label: "Text", name: "text", widget: "string" },
-                          { label: "Included", name: "included", widget: "boolean", default: true }
-                      ]}
-                  ]},
-                  { label: "Project images", name: "images", widget: "object", collapsed: true, fields: [
-                      { label: "Gallery — main", name: "galleryMain", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Gallery — top right", name: "galleryTopRight", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Gallery — mid right", name: "galleryMidRight", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Gallery — bottom right", name: "galleryBotRight", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Floor plan — ground floor", name: "floorPlanGround", widget: "string", required: false },
-                      { label: "Floor plan — 1st floor", name: "floorPlan1st", widget: "string", required: false },
-                      { label: "Location — Halkidiki", name: "locationHalkidiki", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Location — Thessaloniki 1", name: "locationThess1", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Location — Thessaloniki 2", name: "locationThess2", widget: "image", choose_url: true, allow_multiple: false, required: false }
-                  ]},
-                  { label: "Location detail", name: "locationDetail", widget: "object", collapsed: true, fields: [
-                      { label: "Label", name: "label", widget: "string" },
-                      { label: "Heading", name: "heading", widget: "string" },
-                      { label: "Tagline", name: "tagline", widget: "string" },
-                      { label: "Distances", name: "distances", widget: "list", summary: "{{fields.value}} – {{fields.label}}", fields: [
-                          { label: "Value", name: "value", widget: "string" },
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Description", name: "desc", widget: "string" }
-                      ]}
-                  ]}
-              ]},
-              { label: "Serene Olea", name: "olea", widget: "object", collapsed: true, fields: [
-                  { label: "Name", name: "name", widget: "string" },
-                  { label: "Location", name: "location", widget: "string" },
-                  { label: "Status", name: "status", widget: "string" },
-                  { label: "Tagline", name: "tagline", widget: "string" },
-                  { label: "Hero image", name: "heroImage", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                  { label: "Thumbnail image", name: "thumbImage", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                  { label: "Unit Types", name: "unitTypes", widget: "object", collapsed: true, fields: [
-                      { label: "Type A", name: "A", widget: "object", fields: [
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Name", name: "name", widget: "string" },
-                          { label: "Specs", name: "specs", widget: "string" },
-                          { label: "Price", name: "price", widget: "string" },
-                          { label: "Image", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false }
-                      ]},
-                      { label: "Type B", name: "B", widget: "object", fields: [
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Name", name: "name", widget: "string" },
-                          { label: "Specs", name: "specs", widget: "string" },
-                          { label: "Price", name: "price", widget: "string" },
-                          { label: "Image", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false }
-                      ]},
-                      { label: "Type C", name: "C", widget: "object", fields: [
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Name", name: "name", widget: "string" },
-                          { label: "Specs", name: "specs", widget: "string" },
-                          { label: "Price", name: "price", widget: "string" },
-                          { label: "Image", name: "image", widget: "image", choose_url: true, allow_multiple: false, required: false }
-                      ]}
-                  ]},
-                  { label: "Advantages", name: "advantages", widget: "list", summary: "{{fields.title}}", fields: [
-                      { label: "Emoji", name: "emoji", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "description", widget: "text" }
-                  ]},
-                  { label: "Location section", name: "locationSection", widget: "object", fields: [
-                      { label: "Tag", name: "tag", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "description", widget: "text" }
-                  ]},
-                  { label: "Investment section", name: "investmentSection", widget: "object", fields: [
-                      { label: "Tag", name: "tag", widget: "string" },
-                      { label: "Title", name: "title", widget: "string" },
-                      { label: "Description", name: "description", widget: "text" }
-                  ]},
-                  { label: "Units", name: "units", widget: "list", required: false, fields: [
-                      { label: "Zone", name: "zone", widget: "string" },
-                      { label: "Name", name: "name", widget: "string" },
-                      { label: "Type", name: "type", widget: "select", options: ["A", "B", "C"] },
-                      { label: "Status", name: "status", widget: "select", options: ["available", "reserved", "sold"] }
-                  ]},
-                  { label: "Payment plan", name: "paymentPlan", widget: "object", collapsed: true, fields: [
-                      { label: "Description", name: "description", widget: "text" },
-                      { label: "Milestones", name: "milestones", widget: "list", summary: "{{fields.phase}}", fields: [
-                          { label: "Phase", name: "phase", widget: "string" },
-                          { label: "Percentage", name: "percentage", widget: "string" }
-                      ]},
-                      { label: "Note", name: "note", widget: "text" }
-                  ]},
-                  { label: "Timeline", name: "timeline", widget: "object", collapsed: true, fields: [
-                      { label: "Description", name: "description", widget: "text" },
-                      { label: "Milestones", name: "milestones", widget: "list", required: false, fields: [
-                          { label: "Date", name: "date", widget: "string" },
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Status", name: "status", widget: "string" }
-                      ]}
-                  ]},
-                  { label: "Specifications", name: "specifications", widget: "object", collapsed: true, fields: [
-                      { label: "Specs", name: "specs", widget: "list", required: false, fields: [
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Value", name: "value", widget: "string" }
-                      ]},
-                      { label: "Inclusions", name: "inclusions", widget: "list", required: false, fields: [
-                          { label: "Text", name: "text", widget: "string" },
-                          { label: "Included", name: "included", widget: "boolean", default: true }
-                      ]}
-                  ]},
-                  { label: "Images", name: "images", widget: "object", collapsed: true, fields: [
-                      { label: "Gallery — main", name: "galleryMain", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Gallery — top right", name: "galleryTopRight", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Gallery — mid right", name: "galleryMidRight", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Gallery — bottom right", name: "galleryBotRight", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Floor plan — ground floor", name: "floorPlanGround", widget: "image", choose_url: true, allow_multiple: false, required: false },
-                      { label: "Floor plan — 1st floor", name: "floorPlan1st", widget: "image", choose_url: true, allow_multiple: false, required: false }
-                  ]},
-                  { label: "Location detail", name: "locationDetail", widget: "object", collapsed: true, fields: [
-                      { label: "Label", name: "label", widget: "string" },
-                      { label: "Heading", name: "heading", widget: "string" },
-                      { label: "Tagline", name: "tagline", widget: "string" },
-                      { label: "Distances", name: "distances", widget: "list", required: false, fields: [
-                          { label: "Value", name: "value", widget: "string" },
-                          { label: "Label", name: "label", widget: "string" },
-                          { label: "Description", name: "desc", widget: "string" }
-                      ]}
-                  ]}
-              ]}
-          ]}
+
+          - label: "Site-wide content"
+            name: "sitewide"
+            widget: "object"
+            fields:
+
+              - label: "Hero (homepage top)"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Eyebrow text", name: "eyebrow", widget: "string" }
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Heading (italic part)", name: "headingItalic", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "CTA Button 1", name: "cta1", widget: "string" }
+                  - { label: "CTA Button 2", name: "cta2", widget: "string" }
+
+              - label: "Contact"
+                name: "contact"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Heading (italic)", name: "headingItalic", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Phone", name: "phone", widget: "string" }
+                  - { label: "Phone hours", name: "phoneHours", widget: "string" }
+                  - { label: "Office 1", name: "office1", widget: "string" }
+                  - { label: "Office 2", name: "office2", widget: "string" }
+                  - { label: "Social 1", name: "social1", widget: "string" }
+                  - { label: "Social 2", name: "social2", widget: "string" }
+                  - { label: "WhatsApp number", name: "whatsapp", widget: "string" }
+
+              - label: "The Method"
+                name: "method"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Hero heading", name: "heroHeading", widget: "string" }
+                  - { label: "Hero description", name: "heroDesc", widget: "text" }
+                  - { label: "Old way (problem)", name: "oldWay", widget: "text" }
+                  - { label: "Serene way (solution)", name: "sereneWay", widget: "text" }
+                  - label: "Pillars (3 cards)"
+                    name: "pillars"
+                    widget: "list"
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: "Emoji", name: "emoji", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "desc", widget: "text" }
+                  - label: "Benefits (4 cards)"
+                    name: "benefits"
+                    widget: "list"
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "desc", widget: "text" }
+                  - label: "Process steps"
+                    name: "steps"
+                    widget: "list"
+                    summary: "{{fields.num}} {{fields.title}}"
+                    fields:
+                      - { label: "Number", name: "num", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "desc", widget: "text" }
+
+              - label: "Booking section"
+                name: "booking"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Stay options"
+                    name: "stayOptions"
+                    widget: "list"
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "Duration", name: "duration", widget: "string" }
+                      - { label: "Description", name: "desc", widget: "text" }
+                      - { label: "Price", name: "price", widget: "string" }
+                  - label: "Amenities"
+                    name: "amenities"
+                    widget: "list"
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: "Emoji", name: "emoji", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "desc", widget: "string" }
+
+              - label: "Urgency bar"
+                name: "urgencyBar"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Message", name: "message", widget: "string" }
+                  - { label: "Availability text", name: "availability", widget: "string" }
+                  - { label: "Available units", name: "available", widget: "number", value_type: "int", min: 0 }
+                  - { label: "Total units", name: "total", widget: "number", value_type: "int", min: 0 }
+                  - { label: "CTA button", name: "cta", widget: "string" }
+
+              - label: "Background images"
+                name: "images"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Hero background", name: "heroBg", widget: "image", choose_url: true, required: false }
+                  - { label: "Contact background", name: "contactBg", widget: "image", choose_url: true, required: false }
+
+              - label: "Rental Villas"
+                name: "rentalVillas"
+                widget: "object"
+                fields:
+
+                  - label: "Superior Villa"
+                    name: "superior"
+                    widget: "object"
+                    fields:
+                      - { label: "Photo", name: "image", widget: "image", choose_url: true, required: false }
+                      - { label: "Name", name: "name", widget: "string" }
+                      - { label: "Badge", name: "badge", widget: "string" }
+                      - { label: "Bedrooms", name: "bedrooms", widget: "string" }
+                      - { label: "Bathrooms", name: "bathrooms", widget: "string" }
+                      - { label: "Guests", name: "guests", widget: "string" }
+                      - { label: "Pool", name: "pool", widget: "string" }
+                      - { label: "Outdoor", name: "outdoor", widget: "string" }
+
+                  - label: "Deluxe Villa"
+                    name: "deluxe"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Photo", name: "image", widget: "image", choose_url: true, required: false }
+                      - { label: "Name", name: "name", widget: "string" }
+                      - { label: "Badge", name: "badge", widget: "string" }
+                      - { label: "Bedrooms", name: "bedrooms", widget: "string" }
+                      - { label: "Bathrooms", name: "bathrooms", widget: "string" }
+                      - { label: "Guests", name: "guests", widget: "string" }
+                      - { label: "Pool", name: "pool", widget: "string" }
+                      - { label: "Outdoor", name: "outdoor", widget: "string" }
+
+                  - label: "C-Front Villa"
+                    name: "cfront"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Photo", name: "image", widget: "image", choose_url: true, required: false }
+                      - { label: "Name", name: "name", widget: "string" }
+                      - { label: "Badge", name: "badge", widget: "string" }
+                      - { label: "Bedrooms", name: "bedrooms", widget: "string" }
+                      - { label: "Bathrooms", name: "bathrooms", widget: "string" }
+                      - { label: "Guests", name: "guests", widget: "string" }
+                      - { label: "Pool", name: "pool", widget: "string" }
+                      - { label: "Outdoor", name: "outdoor", widget: "string" }
+
+          - label: "Projects"
+            name: "projects"
+            widget: "object"
+            collapsed: true
+            fields:
+
+              - label: "Serene Dunes"
+                name: "dunes"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Location", name: "location", widget: "string" }
+                  - { label: "Status", name: "status", widget: "string" }
+                  - { label: "Tagline", name: "tagline", widget: "string" }
+                  - { label: "Hero image", name: "heroImage", widget: "image", choose_url: true, required: false }
+                  - { label: "Thumbnail image", name: "thumbImage", widget: "image", choose_url: true, required: false }
+
+                  - label: "Unit Types"
+                    name: "unitTypes"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - label: "Type A"
+                        name: "A"
+                        widget: "object"
+                        fields:
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Name", name: "name", widget: "string" }
+                          - { label: "Specs", name: "specs", widget: "string" }
+                          - { label: "Price", name: "price", widget: "string" }
+                          - { label: "Image", name: "image", widget: "image", choose_url: true, required: false }
+                          - { label: "Floor plan (PDF URL)", name: "floorPlan", widget: "string", required: false }
+                      - label: "Type B"
+                        name: "B"
+                        widget: "object"
+                        fields:
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Name", name: "name", widget: "string" }
+                          - { label: "Specs", name: "specs", widget: "string" }
+                          - { label: "Price", name: "price", widget: "string" }
+                          - { label: "Image", name: "image", widget: "image", choose_url: true, required: false }
+                          - { label: "Floor plan (PDF URL)", name: "floorPlan", widget: "string", required: false }
+                      - label: "Type C"
+                        name: "C"
+                        widget: "object"
+                        fields:
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Name", name: "name", widget: "string" }
+                          - { label: "Specs", name: "specs", widget: "string" }
+                          - { label: "Price", name: "price", widget: "string" }
+                          - { label: "Image", name: "image", widget: "image", choose_url: true, required: false }
+                          - { label: "Floor plan (PDF URL)", name: "floorPlan", widget: "string", required: false }
+
+                  - label: "Advantages (4 cards)"
+                    name: "advantages"
+                    widget: "list"
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: "Emoji", name: "emoji", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+
+                  - label: "Location section"
+                    name: "locationSection"
+                    widget: "object"
+                    fields:
+                      - { label: "Tag", name: "tag", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+
+                  - label: "Investment section"
+                    name: "investmentSection"
+                    widget: "object"
+                    fields:
+                      - { label: "Tag", name: "tag", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+
+                  - label: "Units (availability grid)"
+                    name: "units"
+                    widget: "list"
+                    summary: "{{fields.name}} ({{fields.status}})"
+                    fields:
+                      - { label: "Zone", name: "zone", widget: "string" }
+                      - { label: "Name", name: "name", widget: "string" }
+                      - label: "Type"
+                        name: "type"
+                        widget: "select"
+                        options: ["A", "B", "C"]
+                      - label: "Status"
+                        name: "status"
+                        widget: "select"
+                        options: ["available", "reserved", "sold"]
+
+                  - label: "Payment plan"
+                    name: "paymentPlan"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Description", name: "description", widget: "text" }
+                      - label: "Milestones"
+                        name: "milestones"
+                        widget: "list"
+                        summary: "{{fields.phase}} – {{fields.percentage}}"
+                        fields:
+                          - { label: "Phase", name: "phase", widget: "string" }
+                          - { label: "Percentage", name: "percentage", widget: "string" }
+                      - { label: "Note", name: "note", widget: "text" }
+
+                  - label: "Construction timeline"
+                    name: "timeline"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Description", name: "description", widget: "text" }
+                      - label: "Milestones"
+                        name: "milestones"
+                        widget: "list"
+                        summary: "{{fields.date}} – {{fields.label}}"
+                        fields:
+                          - { label: "Date", name: "date", widget: "string" }
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Status", name: "status", widget: "string" }
+
+                  - label: "Specifications"
+                    name: "specifications"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - label: "Spec rows"
+                        name: "specs"
+                        widget: "list"
+                        summary: "{{fields.label}}"
+                        fields:
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Value", name: "value", widget: "string" }
+                      - label: "Inclusions"
+                        name: "inclusions"
+                        widget: "list"
+                        summary: "{{fields.text}}"
+                        fields:
+                          - { label: "Text", name: "text", widget: "string" }
+                          - { label: "Included", name: "included", widget: "boolean", default: true }
+
+                  - label: "Project images"
+                    name: "images"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Gallery — main", name: "galleryMain", widget: "image", choose_url: true, required: false }
+                      - { label: "Gallery — top right", name: "galleryTopRight", widget: "image", choose_url: true, required: false }
+                      - { label: "Gallery — mid right", name: "galleryMidRight", widget: "image", choose_url: true, required: false }
+                      - { label: "Gallery — bottom right", name: "galleryBotRight", widget: "image", choose_url: true, required: false }
+                      - { label: "Floor plan — ground floor (PDF URL)", name: "floorPlanGround", widget: "string", required: false }
+                      - { label: "Floor plan — 1st floor (PDF URL)", name: "floorPlan1st", widget: "string", required: false }
+                      - { label: "Location — Halkidiki", name: "locationHalkidiki", widget: "image", choose_url: true, required: false }
+                      - { label: "Location — Thessaloniki 1", name: "locationThess1", widget: "image", choose_url: true, required: false }
+                      - { label: "Location — Thessaloniki 2", name: "locationThess2", widget: "image", choose_url: true, required: false }
+
+                  - label: "Location detail"
+                    name: "locationDetail"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "Heading", name: "heading", widget: "string" }
+                      - { label: "Tagline", name: "tagline", widget: "string" }
+                      - label: "Distances"
+                        name: "distances"
+                        widget: "list"
+                        summary: "{{fields.value}} – {{fields.label}}"
+                        fields:
+                          - { label: "Value", name: "value", widget: "string" }
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Description", name: "desc", widget: "string" }
+
+              - label: "Serene Olea"
+                name: "olea"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Location", name: "location", widget: "string" }
+                  - { label: "Status", name: "status", widget: "string" }
+                  - { label: "Tagline", name: "tagline", widget: "string" }
+                  - { label: "Hero image", name: "heroImage", widget: "image", choose_url: true, required: false }
+                  - { label: "Thumbnail image", name: "thumbImage", widget: "image", choose_url: true, required: false }
+
+                  - label: "Unit Types"
+                    name: "unitTypes"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - label: "Type A"
+                        name: "A"
+                        widget: "object"
+                        fields:
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Name", name: "name", widget: "string" }
+                          - { label: "Specs", name: "specs", widget: "string" }
+                          - { label: "Price", name: "price", widget: "string" }
+                          - { label: "Image", name: "image", widget: "image", choose_url: true, required: false }
+                      - label: "Type B"
+                        name: "B"
+                        widget: "object"
+                        fields:
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Name", name: "name", widget: "string" }
+                          - { label: "Specs", name: "specs", widget: "string" }
+                          - { label: "Price", name: "price", widget: "string" }
+                          - { label: "Image", name: "image", widget: "image", choose_url: true, required: false }
+                      - label: "Type C"
+                        name: "C"
+                        widget: "object"
+                        fields:
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Name", name: "name", widget: "string" }
+                          - { label: "Specs", name: "specs", widget: "string" }
+                          - { label: "Price", name: "price", widget: "string" }
+                          - { label: "Image", name: "image", widget: "image", choose_url: true, required: false }
+
+                  - label: "Advantages"
+                    name: "advantages"
+                    widget: "list"
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: "Emoji", name: "emoji", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+
+                  - label: "Location section"
+                    name: "locationSection"
+                    widget: "object"
+                    fields:
+                      - { label: "Tag", name: "tag", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+
+                  - label: "Investment section"
+                    name: "investmentSection"
+                    widget: "object"
+                    fields:
+                      - { label: "Tag", name: "tag", widget: "string" }
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+
+                  - label: "Units"
+                    name: "units"
+                    widget: "list"
+                    required: false
+                    fields:
+                      - { label: "Zone", name: "zone", widget: "string" }
+                      - { label: "Name", name: "name", widget: "string" }
+                      - label: "Type"
+                        name: "type"
+                        widget: "select"
+                        options: ["A", "B", "C"]
+                      - label: "Status"
+                        name: "status"
+                        widget: "select"
+                        options: ["available", "reserved", "sold"]
+
+                  - label: "Payment plan"
+                    name: "paymentPlan"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Description", name: "description", widget: "text" }
+                      - label: "Milestones"
+                        name: "milestones"
+                        widget: "list"
+                        summary: "{{fields.phase}}"
+                        fields:
+                          - { label: "Phase", name: "phase", widget: "string" }
+                          - { label: "Percentage", name: "percentage", widget: "string" }
+                      - { label: "Note", name: "note", widget: "text" }
+
+                  - label: "Timeline"
+                    name: "timeline"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Description", name: "description", widget: "text" }
+                      - label: "Milestones"
+                        name: "milestones"
+                        widget: "list"
+                        required: false
+                        fields:
+                          - { label: "Date", name: "date", widget: "string" }
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Status", name: "status", widget: "string" }
+
+                  - label: "Specifications"
+                    name: "specifications"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - label: "Specs"
+                        name: "specs"
+                        widget: "list"
+                        required: false
+                        fields:
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Value", name: "value", widget: "string" }
+                      - label: "Inclusions"
+                        name: "inclusions"
+                        widget: "list"
+                        required: false
+                        fields:
+                          - { label: "Text", name: "text", widget: "string" }
+                          - { label: "Included", name: "included", widget: "boolean", default: true }
+
+                  - label: "Images"
+                    name: "images"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Gallery — main", name: "galleryMain", widget: "image", choose_url: true, required: false }
+                      - { label: "Gallery — top right", name: "galleryTopRight", widget: "image", choose_url: true, required: false }
+                      - { label: "Gallery — mid right", name: "galleryMidRight", widget: "image", choose_url: true, required: false }
+                      - { label: "Gallery — bottom right", name: "galleryBotRight", widget: "image", choose_url: true, required: false }
+                      - { label: "Floor plan — ground", name: "floorPlanGround", widget: "image", choose_url: true, required: false }
+                      - { label: "Floor plan — 1st", name: "floorPlan1st", widget: "image", choose_url: true, required: false }
+
+                  - label: "Location detail"
+                    name: "locationDetail"
+                    widget: "object"
+                    collapsed: true
+                    fields:
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "Heading", name: "heading", widget: "string" }
+                      - { label: "Tagline", name: "tagline", widget: "string" }
+                      - label: "Distances"
+                        name: "distances"
+                        widget: "list"
+                        required: false
+                        fields:
+                          - { label: "Value", name: "value", widget: "string" }
+                          - { label: "Label", name: "label", widget: "string" }
+                          - { label: "Description", name: "desc", widget: "string" }
