@@ -2809,7 +2809,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
                 <div class="fp-av-spec-row"><span>Features</span><strong>OUTSIDE KITCHEN</strong></div>
                 <div class="fp-av-spec-row fp-av-price-row"><span>From</span><strong id="fp-av-price">From €280,000</strong></div>
               </div>
-              <div style="padding:0 0 16px;">
+              <div style="padding:0 0 16px;display:flex;flex-direction:column;gap:8px;">
+                <button class="btn-outline" style="width:100%;text-align:center;font-size:.65rem;border-color:rgba(184,149,90,.5);" onclick="fpOpenLightbox()">📐 View Floor Plan →</button>
                 <button class="btn-gold" style="width:100%;text-align:center;font-size:.65rem;" onclick="goTo('contact',null)">Enquire About This Type →</button>
               </div>
             </div>
@@ -3875,19 +3876,22 @@ const AV_TYPES = {
     name: 'Studio Suite',
     specs: '55 m² · 1 bed · 1 bath · Private plunge pool · Sea view terrace · Sleeps 2',
     price: 'From €280,000',
-    img: 'images/img-02.jpg'
+    img: 'images/img-02.jpg',
+    floorPlan: 'https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/Serene_Villas_02_1_vmaiaf.pdf'
   },
   B: {
     name: 'Garden Residence',
     specs: '90 m² · 2 bed · 2 bath · Private pool · Garden terrace · Sleeps 4',
     price: 'From €420,000',
-    img: 'images/img-09.jpg'
+    img: 'images/img-09.jpg',
+    floorPlan: 'https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/1_1_1_j3yaup.pdf'
   },
   C: {
     name: 'Dune Villa',
     specs: '140 m² · 3 bed · 3 bath · Infinity pool · Panoramic view · Sleeps 6',
     price: 'From €680,000',
-    img: 'images/img-09.jpg'
+    img: 'images/img-09.jpg',
+    floorPlan: 'https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/2_1_1_p94n9y.pdf'
   }
 };
 
@@ -3899,11 +3903,26 @@ function fpSelectType(type, btn) {
 
   const data = AV_TYPES[type] || AV_TYPES.A;
 
-  // update image + label
-  const img = document.getElementById('fp-av-img');
+  // update label
   const lbl = document.getElementById('fp-av-img-label');
-  if (img) img.src = data.img;
   if (lbl) lbl.textContent = 'Type ' + type + ' · ' + data.name;
+
+  // swap displayed floor plan to the type-specific one (fallback: project ground floor)
+  const planUrl = data.floorPlan || document.querySelector('[data-cms-img="floorPlanGround"]')?.getAttribute('src');
+  const planGf = document.getElementById('fp-plan-gf');
+  const plan1f = document.getElementById('fp-plan-1f');
+  const floorTabs = document.querySelector('#sub-fp .fp-av-img-wrap > div[style*="position:absolute"][style*="top:8px"]');
+  if (planGf && planUrl) {
+    planGf.src = planUrl;
+    planGf.style.display = 'block';
+  }
+  if (plan1f) plan1f.style.display = 'none';
+  // hide the project-wide GF / 1F switcher — per-type plans are single-image
+  if (floorTabs) floorTabs.style.display = 'none';
+
+  // also update the (hidden) source-of-truth used by the lightbox
+  const img = document.getElementById('fp-av-img');
+  if (img && planUrl) img.src = planUrl;
 
   // update specs
   const specs = data.specs.split('·').map(s => s.trim());
@@ -6149,10 +6168,11 @@ function applyProjectContent(projKey) {
   if(ut && typeof AV_TYPES !== 'undefined'){
     Object.keys(ut).forEach(function(k){
       if(AV_TYPES[k]){
-        AV_TYPES[k].name  = ut[k].name;
-        AV_TYPES[k].specs = ut[k].specs;
-        AV_TYPES[k].price = ut[k].price;
-        AV_TYPES[k].img   = ut[k].image;
+        AV_TYPES[k].name      = ut[k].name;
+        AV_TYPES[k].specs     = ut[k].specs;
+        AV_TYPES[k].price     = ut[k].price;
+        AV_TYPES[k].img       = ut[k].image;
+        if (ut[k].floorPlan) AV_TYPES[k].floorPlan = ut[k].floorPlan;
       }
     });
     var activeBtn = document.querySelector('.fp-av-typebtn.active');
