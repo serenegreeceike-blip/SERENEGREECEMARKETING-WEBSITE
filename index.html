@@ -140,7 +140,14 @@ body:not(.sb-collapsed) #sb-toggle{
   cursor:pointer;
   position:relative;
   transition:background .2s;
+  background:none;
+  border:none;
+  width:100%;
+  text-align:left;
+  font-family:inherit;
+  color:inherit;
 }
+.nav-item:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
 .nav-item:hover .nav-label{color:var(--cream);}
 .nav-item.active{background:rgba(184,149,90,.08);}
 .nav-item.active .nav-label{color:var(--gold);}
@@ -197,7 +204,14 @@ body:not(.sb-collapsed) #sb-toggle{
   padding:10px 32px 10px 56px;
   cursor:pointer;
   transition:background .15s;
+  background:none;
+  border:none;
+  width:100%;
+  text-align:left;
+  font-family:inherit;
+  color:inherit;
 }
+.nav-sub-item:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
 .nav-sub-item:hover{background:rgba(184,149,90,.06);}
 .nav-sub-item.active .ns-label{color:var(--gold);}
 .ns-dot{
@@ -2259,32 +2273,6 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     from { transform: translateY(100%); }
     to   { transform: translateY(0); }
   }
-</style><style>
-  body.site-edit-on [contenteditable="true"] {
-    cursor: text !important;
-    transition: outline .15s, background .15s;
-  }
-  body.site-edit-on [contenteditable="true"]:hover {
-    outline: 1px dashed rgba(184,149,90,.35) !important;
-    border-radius: 2px;
-  }
-  @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to   { transform: translateY(0); }
-  }
-</style><style>
-  body.site-edit-on [contenteditable="true"] {
-    cursor: text !important;
-    transition: outline .15s, background .15s;
-  }
-  body.site-edit-on [contenteditable="true"]:hover {
-    outline: 1px dashed rgba(184,149,90,.35) !important;
-    border-radius: 2px;
-  }
-  @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to   { transform: translateY(0); }
-  }
 </style></head>
 <body class="">
 
@@ -2335,72 +2323,72 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
   </div>
 
   <nav class="sb-nav">
-    <div class="nav-item" onclick="goTo('home',this)">
+    <button type="button" class="nav-item" onclick="goTo('home',this)" aria-label="Home">
       <div class="nav-inner">
         <div class="nav-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 6L8 1L14 6V14H10V10H6V14H2V6Z" stroke="currentColor" stroke-width="1.2" fill="none"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 6L8 1L14 6V14H10V10H6V14H2V6Z" stroke="currentColor" stroke-width="1.2" fill="none"></path></svg>
         </div>
         <span class="nav-label">Home</span>
       </div>
-    </div>
+    </button>
 
-    <div class="nav-item" onclick="goTo('method',this)">
+    <button type="button" class="nav-item" onclick="goTo('method',this)" aria-label="The Method">
       <div class="nav-inner">
         <div class="nav-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 4h14M1 8h10M1 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 4h14M1 8h10M1 12h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
         </div>
         <span class="nav-label">The Method</span>
       </div>
-    </div>
+    </button>
 
-    <div class="nav-item active" id="nav-projects" onclick="toggleProjects(this)">
+    <button type="button" class="nav-item active" id="nav-projects" onclick="toggleProjects(this)" aria-label="Projects" aria-expanded="true">
       <div class="nav-inner">
         <div class="nav-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.2"></rect><rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.2"></rect><rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.2"></rect><rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.2"></rect></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.2"></rect><rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.2"></rect><rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.2"></rect><rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.2"></rect></svg>
         </div>
         <span class="nav-label">Projects</span>
       </div>
-    </div>
+    </button>
     <div class="nav-sub open" id="projects-sub">
-      <div class="nav-sub-item active" onclick="selectProject('dunes',this)">
+      <button type="button" class="nav-sub-item active" onclick="selectProject('dunes',this)" aria-label="Serene Dunes">
         <div class="ns-dot"></div>
         <span class="ns-label">Serene Dunes</span>
         <span class="ns-badge">Selling</span>
-      </div>
-      <div class="nav-sub-item" onclick="selectProject('olea',this)">
+      </button>
+      <button type="button" class="nav-sub-item" onclick="selectProject('olea',this)" aria-label="Serene Olea">
         <div class="ns-dot"></div>
         <span class="ns-label">Serene Olea</span>
         <span class="ns-badge">Selling</span>
-      </div>
+      </button>
     </div>
 
-    <div class="nav-item" onclick="goTo('existing',this)">
+    <button type="button" class="nav-item" onclick="goTo('existing',this)" aria-label="The Serene Experience">
       <div class="nav-inner">
         <div class="nav-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 13V5L8 2L15 5V13" stroke="currentColor" stroke-width="1.2" fill="none"></path><path d="M5 13V9H11V13" stroke="currentColor" stroke-width="1.2" fill="none"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 13V5L8 2L15 5V13" stroke="currentColor" stroke-width="1.2" fill="none"></path><path d="M5 13V9H11V13" stroke="currentColor" stroke-width="1.2" fill="none"></path></svg>
         </div>
         <span class="nav-label">The Serene Experience</span>
       </div>
-    </div>
+    </button>
 
 
-    <div class="nav-item" onclick="goTo('book',this)">
+    <button type="button" class="nav-item" onclick="goTo('book',this)" aria-label="Book at Serene">
       <div class="nav-inner">
         <div class="nav-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="13" rx="1" stroke="currentColor" stroke-width="1.2"></rect><path d="M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="2" width="12" height="13" rx="1" stroke="currentColor" stroke-width="1.2"></rect><path d="M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.2"></path></svg>
         </div>
         <span class="nav-label">Book at Serene</span>
       </div>
-    </div>
+    </button>
 
-    <div class="nav-item" onclick="goTo('contact',this)">
+    <button type="button" class="nav-item" onclick="goTo('contact',this)" aria-label="Contact">
       <div class="nav-inner">
         <div class="nav-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"></rect><path d="M1 4L8 9L15 4" stroke="currentColor" stroke-width="1.2"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="3" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"></rect><path d="M1 4L8 9L15 4" stroke="currentColor" stroke-width="1.2"></path></svg>
         </div>
         <span class="nav-label">Contact</span>
       </div>
-    </div>
+    </button>
   </nav>
 
   <div class="sb-bottom">
@@ -2477,7 +2465,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
       <!-- HERO — Own. Stay. Earn. -->
       <div style="position:relative;height:280px;overflow:hidden;flex-shrink:0;">
-        <img loading="lazy" src="images/img-02.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);">
+        <img loading="lazy" src="images/img-02.jpg" alt="" style="width:100%;height:100%;object-fit:cover;filter:brightness(.45);">
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;background:linear-gradient(to right,rgba(12,10,6,.7) 40%,transparent);">
           <span style="font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:#B8955A;display:block;margin-bottom:12px;">The Serene Method</span>
           <h1 data-cms="method-heading" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);color:#F4EFE6;font-weight:300;margin:0;line-height:1.1;" contenteditable="false" data-orig-text="Own. Stay. Earn.">Own. Stay. Earn.</h1>
@@ -2699,7 +2687,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
                 <div style="display:grid;grid-template-columns:1.7fr 1fr;gap:2px;height:420px;position:relative;z-index:1;">
                   <!-- Main large image -->
                   <div class="gal-big" style="position:relative;overflow:hidden;cursor:pointer;" onclick="openLightbox(0)">
-                    <img data-cms-img="galleryMain" src="images/img-02.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <img data-cms-img="galleryMain" src="images/img-02.jpg" alt="Serene Dunes residence — main gallery view" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
                     <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 18px;background:linear-gradient(transparent,rgba(12,10,6,.65));">
                       <span style="font-size:.48rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.75);">Exterior · Serene Dunes</span>
                     </div>
@@ -2707,14 +2695,14 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
                   <!-- Right column: 3 images -->
                   <div style="display:grid;grid-template-rows:1.2fr 1fr 1fr;gap:2px;height:420px;">
                     <div class="gal-half" style="position:relative;overflow:hidden;cursor:pointer;" onclick="openLightbox(1)">
-                      <img data-cms-img="galleryTopRight" src="images/img-02.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                      <img data-cms-img="galleryTopRight" src="images/img-02.jpg" alt="Serene Dunes residence — exterior detail" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
                       <div style="position:absolute;inset:0;background:rgba(12,10,6,.1);"></div>
                     </div>
                     <div class="gal-half" style="overflow:hidden;cursor:pointer;" onclick="openLightbox(2)">
-                      <img data-cms-img="galleryMidRight" src="images/img-09.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                      <img data-cms-img="galleryMidRight" src="images/img-09.jpg" alt="Serene Dunes residence — interior view" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
                     <div class="gal-half" style="overflow:hidden;cursor:pointer;" onclick="openLightbox(3)">
-                      <img data-cms-img="galleryBotRight" src="images/img-09.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                      <img data-cms-img="galleryBotRight" src="images/img-09.jpg" alt="Serene Dunes residence — additional view" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
                   </div>
                 </div>
@@ -2810,7 +2798,6 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
                 <img id="fp-plan-gf" data-cms-img="floorPlanGround" src="images/img-11.jpg" style="width:100%;height:100%;object-fit:contain;background:#f8f5f0;position:absolute;inset:0;" alt="Ground Floor Plan">
                 <!-- 1st floor plan -->
                 <img id="fp-plan-1f" data-cms-img="floorPlan1st" src="images/img-11.jpg" style="width:100%;height:100%;object-fit:contain;background:#f8f5f0;position:absolute;inset:0;display:none;" alt="1st Floor Plan">
-                <div class="fp-av-img-label" id="fp-av-img-label">Type A · SUPERIOR VILLA TYPE A</div>
                 <div class="fp-av-img-label" id="fp-av-img-label">Type A · Studio Suite</div>
                 <div class="fp-zoom-hint">🔍 Tap to enlarge &amp; download</div>
               </div>
@@ -3091,7 +3078,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
       <!-- Halkidiki Image + Intro -->
       <div style="display:grid;grid-template-columns:1fr 1fr;background:#E5DFCF;gap:1px;">
         <div style="position:relative;height:240px;overflow:hidden;">
-          <img data-cms-img="locationHalkidiki" src="images/img-14.jpg" style="width:100%;height:100%;object-fit:cover;">
+          <img data-cms-img="locationHalkidiki" src="images/img-14.jpg" alt="Halkidiki, Greece — coastline location" style="width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(12,10,6,.5) 0%,transparent 60%);"></div>
           <div style="position:absolute;bottom:14px;left:14px;display:flex;align-items:center;gap:6px;">
             <span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#D4AF78;font-weight:600;">9.2</span>
@@ -3199,8 +3186,8 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         </div>
         <div style="position:relative;height:240px;overflow:hidden;">
           <div class="thess-carousel" id="thess-carousel" style="height:100%;">
-            <img class="tc-slide active" src="images/img-14.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <img class="tc-slide" src="images/img-14.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <img class="tc-slide active" src="images/img-14.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <img class="tc-slide" src="images/img-14.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
             <button class="tc-prev" onclick="thessSlide(-1)">‹</button>
             <button class="tc-next" onclick="thessSlide(1)">›</button>
             <div class="tc-dots"><span class="tc-dot active" onclick="thessGo(0)"></span><span class="tc-dot" onclick="thessGo(1)"></span></div>
@@ -3287,7 +3274,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <p style="font-size:.55rem;color:rgba(244,239,230,.4);margin:0;" contenteditable="false" data-orig-text="Real guests · Halkidiki">Real guests · Halkidiki</p>
         </div>
         <div style="position:relative;overflow:hidden;">
-          <img src="https://img.youtube.com/vi/bALKpPbgzDU/hqdefault.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45);">
+          <img src="https://img.youtube.com/vi/bALKpPbgzDU/hqdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45);">
           <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
             <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;">
               <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"></path></svg>
@@ -3318,7 +3305,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
 
       <!-- HERO IMAGE -->
       <div style="position:relative;height:380px;overflow:hidden;">
-        <img src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/11_Side_V1_Pool_smrzui.jpg" style="width:100%;height:100%;object-fit:cover;">
+        <img src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1400/11_Side_V1_Pool_smrzui.jpg" alt="Serene Dunes — pool side view" style="width:100%;height:100%;object-fit:cover;">
         <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,10,6,.1) 0%,rgba(12,10,6,.8) 100%);"></div>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:36px 44px;">
           <span style="font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:#D4AF78;display:block;margin-bottom:8px;">Luxury Villas · Private Pool · Beachfront</span>
@@ -3346,7 +3333,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <div>
             <!-- PHOTO -->
             <div style="height:100%;min-height:220px;overflow:hidden;">
-              <img src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_600/01_Front_V14_13_12_kzwaum.jpg" style="width:100%;height:100%;object-fit:cover;">
+              <img src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_600/01_Front_V14_13_12_kzwaum.jpg" alt="Serene Dunes — front facade" style="width:100%;height:100%;object-fit:cover;">
             </div>
           </div>
         </div>
@@ -3358,7 +3345,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <!-- SUPERIOR -->
           <div data-rv="superior" style="background:#fff;padding:0;overflow:hidden;">
             <div style="height:140px;overflow:hidden;">
-              <img data-rv-field="image" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/q_auto/f_auto/v1777106230/Sahara_Villas_131_ra9b2d.jpg" style="width:100%;height:100%;object-fit:cover;">
+              <img data-rv-field="image" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/q_auto/f_auto/v1777106230/Sahara_Villas_131_ra9b2d.jpg" alt="Sahara rental villa" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div style="padding:16px;">
               <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
@@ -3379,7 +3366,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <!-- DELUXE -->
           <div data-rv="deluxe" style="background:#fff;padding:0;overflow:hidden;">
             <div style="height:140px;overflow:hidden;">
-              <img data-rv-field="image" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_500/V04_01_Living_from_Outside_iyqswj.jpg" style="width:100%;height:100%;object-fit:cover;">
+              <img data-rv-field="image" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_500/V04_01_Living_from_Outside_iyqswj.jpg" alt="Serene rental villa — living area" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div style="padding:16px;">
               <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
@@ -3400,7 +3387,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
           <!-- CFRONT -->
           <div data-rv="cfront" style="background:#fff;padding:0;overflow:hidden;">
             <div style="height:140px;overflow:hidden;">
-              <img data-rv-field="image" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_500/11_Side_V1_Pool_smrzui.jpg" style="width:100%;height:100%;object-fit:cover;">
+              <img data-rv-field="image" src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_500/11_Side_V1_Pool_smrzui.jpg" alt="Serene rental villa — pool" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div style="padding:16px;">
               <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
@@ -3481,7 +3468,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
         ═══════════════════════════════════════ -->
         <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:24px;margin-bottom:32px;background:#fff;border:1px solid #E5DFCF;overflow:hidden;">
           <div style="overflow:hidden;">
-            <img src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_600/V04_01_Living_from_Outside_iyqswj.jpg" style="width:100%;height:100%;object-fit:cover;min-height:220px;">
+            <img src="https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_600/V04_01_Living_from_Outside_iyqswj.jpg" alt="Serene Dunes — living area exterior" style="width:100%;height:100%;object-fit:cover;min-height:220px;">
           </div>
           <div style="padding:24px 24px 24px 0;">
             <span style="font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:#B8955A;display:block;margin-bottom:6px;">🏙️ City Break · Thessaloniki</span>
@@ -4703,24 +4690,6 @@ function hideEditBar() {
   const bar = document.getElementById('site-edit-bar');
   if (bar) bar.style.display = 'none';
 }
-
-// CSS for edit mode
-const editStyle = document.createElement('style');
-editStyle.textContent = `
-  body.site-edit-on [contenteditable="true"] {
-    cursor: text !important;
-    transition: outline .15s, background .15s;
-  }
-  body.site-edit-on [contenteditable="true"]:hover {
-    outline: 1px dashed rgba(184,149,90,.35) !important;
-    border-radius: 2px;
-  }
-  @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to   { transform: translateY(0); }
-  }
-`;
-document.head.appendChild(editStyle);
 
 // ══════════════════════════════════════════════
 

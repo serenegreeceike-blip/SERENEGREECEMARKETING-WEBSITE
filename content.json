@@ -489,9 +489,7 @@
         "galleryBotRight": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_900/V04_04_Living_View_p2mnzo.jpg",
         "floorPlanGround": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/1_1_1_j3yaup.pdf",
         "floorPlan1st": "https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200,pg_1/SERENE_DUNES_PLANS/2_1_1_p94n9y.pdf",
-        "locationHalkidiki": "images/img-14.jpg",
-        "locationThess1": "images/img-14.jpg",
-        "locationThess2": "images/img-14.jpg"
+        "locationHalkidiki": "images/img-14.jpg"
       },
       "locationDetail": {
         "label": "Serene Dunes · Nea Iraklia, Halkidiki",
