@@ -3612,12 +3612,15 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
             <p style="font-size:.58rem;color:var(--muted);margin:0;" contenteditable="false" data-orig-text="Fully fitted, heated, exclusive to your unit">Fully fitted, heated, exclusive to your unit</p>
           </div>
         </div>
-        <form style="display:flex;flex-direction:column;gap:10px;" onsubmit="closeUnit();return false;">
+        <form style="display:flex;flex-direction:column;gap:10px;" onsubmit="return submitUnitEnquiry(this);">
+          <input type="hidden" name="_subject" value="Unit Reservation Enquiry">
+          <input type="hidden" name="unit" id="unitFormUnit" value="">
+          <input type="hidden" name="project" id="unitFormProject" value="">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-            <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name"></div>
-            <div class="fg"><label>WhatsApp</label><input type="tel" placeholder="+1 ..."></div>
+            <div class="fg"><label>Full Name</label><input type="text" name="name" placeholder="Your name" required></div>
+            <div class="fg"><label>WhatsApp</label><input type="tel" name="whatsapp" placeholder="+1 ..." required></div>
           </div>
-          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+          <div class="fg"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
           <button type="submit" class="btn-gold" style="margin-top:4px;width:100%;text-align:center;padding:12px;font-size:.62rem;letter-spacing:2px;">Reserve This Unit →</button>
           <p style="font-size:.55rem;color:var(--muted);text-align:center;margin:0;" contenteditable="false" data-orig-text="Fully refundable deposit · No commitment">Fully refundable deposit · No commitment</p>
         </form>
@@ -4082,6 +4085,10 @@ function openUnit(unitEl, name) {
 
   document.getElementById('unitTitle').textContent = 'Unit ' + name + ' — ' + pName;
   document.getElementById('unitFloorLabel').textContent = floorTitle;
+  const unitInp = document.getElementById('unitFormUnit');
+  const projInp = document.getElementById('unitFormProject');
+  if (unitInp) unitInp.value = name + (floorTitle ? ' (' + floorTitle + ')' : '');
+  if (projInp) projInp.value = pName;
 
   const badge = document.getElementById('unitStatusBadge');
   const colors = { available: 'var(--gold)', reserved: '#c8960a', sold: '#c04040' };
@@ -4150,16 +4157,6 @@ function avAddFloor() {
 
 
 // ── LIGHTBOX ──
-const lbImages = [
-  { src:'https://res.cloudinary.com/dzvrmwcmj/image/upload/f_auto,q_auto,w_1200/01_Front_V14_13_12_kzwaum.jpg',             cap:'Exterior · Diagonal View' },
-  { src:'01_Front_V14_13_12.jpg',          cap:'Exterior · Front Facade' },
-  { src:'09_Side_V14.jpg',                 cap:'Exterior · Street View' },
-  { src:'11_Side_V1_Pool.jpg',             cap:'Exterior · Pool & Garden' },
-  { src:'V04_01_Living_from_Outside.jpg',  cap:'Interior · Living Room' },
-  { src:'V04_02_Kitchen_Living_Front.jpg', cap:'Interior · Kitchen & Living' },
-  { src:'V04_07_Bathroom0_Front.jpg',      cap:'Interior · Master Bathroom' },
-  { src:'V04_18_Bathroom1.jpg',            cap:'Interior · Bathroom' },
-];
 let lbIdx = 0;
 
 function openLightbox(i) {
@@ -4183,14 +4180,10 @@ function lbNav(dir) {
   document.getElementById('lb-caption').textContent = caps[lbIdx] || '';
   document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + galImgs.length;
 }
-function renderLb() {
-  document.getElementById('lb-img').src = lbImages[lbIdx].src;
-  document.getElementById('lb-caption').textContent = lbImages[lbIdx].cap;
-  document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + lbImages.length;
-}
 document.addEventListener('DOMContentLoaded',()=>{ const lb=document.getElementById('lightbox'); if(lb) lb.addEventListener('click',function(e){if(e.target===this)closeLightbox();}); });
 document.addEventListener('keydown', e => {
-  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  const lb = document.getElementById('lightbox');
+  if(!lb || !lb.classList.contains('open')) return;
   if(e.key==='ArrowRight') lbNav(1);
   if(e.key==='ArrowLeft') lbNav(-1);
   if(e.key==='Escape') closeLightbox();
@@ -6105,6 +6098,40 @@ function submitLM(form) {
   }, 45000);
 })();
 
+// ── UNIT RESERVATION SUBMISSION ──
+function submitUnitEnquiry(form) {
+  var btn = form.querySelector('button[type="submit"]');
+  var origText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  var data = new FormData(form);
+  var body = {};
+  data.forEach(function(v, k){ body[k] = v; });
+
+  fetch('https://formsubmit.co/ajax/serenegreeceike@gmail.com', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function(r){ return r.json(); })
+  .then(function(){
+    btn.textContent = '✓ Reservation Sent!';
+    btn.style.background = '#2e7d32';
+    form.reset();
+    setTimeout(function(){
+      btn.textContent = origText;
+      btn.style.background = '';
+      btn.disabled = false;
+      closeUnit();
+    }, 2000);
+  }).catch(function(){
+    btn.textContent = '✗ Error — try again';
+    btn.style.background = '#c62828';
+    setTimeout(function(){ btn.textContent = origText; btn.style.background = ''; btn.disabled = false; }, 3000);
+  });
+  return false;
+}
+
 // ── CONTACT FORM SUBMISSION ──
 function submitEnquiry(form) {
   var btn = form.querySelector('button[type="submit"]');
@@ -6467,10 +6494,4 @@ function applyProjectContent(projKey) {
 
 
 
-<div id="site-edit-bar" style="position: fixed; bottom: 0px; left: 0px; right: 0px; background: rgb(26, 22, 16); border-top: 1px solid rgba(184, 149, 90, 0.2); padding: 10px 20px; display: none; align-items: center; justify-content: space-between; z-index: 2000; font-family: &quot;DM Sans&quot;, sans-serif;">
-      <span id="edit-tip" style="font-size:.55rem;color:rgba(244,239,230,.5);letter-spacing:1px;">✏ Click any text to edit</span>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <a id="save-dl-link" onclick="epPrepareDownload(this)" href="#" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:var(--gold);color:#120E08;border:none;padding:7px 16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;text-decoration:none;display:inline-block;">⬇ Save &amp; Download</a>
-        <button onclick="siteEditDeactivate();" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:none;color:rgba(244,239,230,.4);border:1px solid rgba(244,239,230,.15);padding:7px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">✕ Cancel</button>
-      </div></div>
 </body></html>
