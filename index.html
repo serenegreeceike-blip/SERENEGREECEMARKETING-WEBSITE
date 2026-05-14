@@ -1337,7 +1337,7 @@ body.sb-collapsed .proj-cards-row {
   50%       { transform: scale(1.4); opacity: .6; }
 }
 @media (max-width: 768px) {
-  #wa-float { bottom: 76px; right: 16px; padding: 12px; border-radius: 50%; }
+  #wa-float { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); right: 16px; padding: 12px; border-radius: 50%; }
   .wa-float-label { display: none; }
 }
 
@@ -1392,7 +1392,7 @@ body.sb-collapsed .proj-cards-row {
 }
 .urg-close:hover { color: var(--cream); }
 @media (max-width: 768px) {
-  #urgency-bar { padding: 10px 14px; bottom: 60px; }
+  #urgency-bar { padding: 10px 14px; bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
   .urg-units { display: none; }
   .urg-text span { display: none; }
 }
@@ -1680,28 +1680,45 @@ body.sb-collapsed .proj-cards-row {
 #mobile-nav {
   display: none;
   position: fixed; bottom: 0; left: 0; right: 0;
-  height: 60px; z-index: 800;
+  height: 60px; z-index: 950;
   background: var(--ink2);
   border-top: 1px solid rgba(184,149,90,.15);
   flex-direction: row;
   align-items: stretch;
+  overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  box-sizing: content-box;
 }
 .mn-btn {
-  flex: 1; display: flex; flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 3px;
   background: none; border: none; cursor: pointer;
-  padding: 6px 0;
+  padding: 6px 4px;
   transition: background .15s;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  overflow: hidden;
 }
 .mn-btn:active { background: rgba(184,149,90,.08); }
 .mn-btn.active .mn-icon svg { stroke: var(--gold); }
 .mn-btn.active .mn-label { color: var(--gold); }
-.mn-icon svg { stroke: rgba(244,239,230,.3); transition: stroke .2s; }
+.mn-icon svg { stroke: rgba(244,239,230,.3); transition: stroke .2s; pointer-events: none; }
 .mn-label {
-  font-size: .48rem; letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: .48rem; letter-spacing: 1px; text-transform: uppercase;
   color: rgba(244,239,230,.3); font-family: 'DM Sans', sans-serif;
   transition: color .2s;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+@media (max-width: 360px) {
+  .mn-label { font-size: .44rem; letter-spacing: .5px; }
 }
 
 /* ── MOBILE HEADER ── */
@@ -1736,7 +1753,8 @@ body.sb-collapsed .proj-cards-row {
 
   #main {
     position: fixed !important;
-    top: 52px !important; bottom: 60px !important;
+    top: 52px !important;
+    bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important;
     left: 0 !important; right: 0 !important;
     overflow: hidden;
   }
@@ -2299,7 +2317,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
      MOBILE BOTTOM NAV
 ═══════════════════════════════ -->
 <div id="mobile-nav">
-  <button class="mn-btn" id="mn-home" onclick="mnGo('home',this)">
+  <button class="mn-btn active" id="mn-home" onclick="mnGo('home',this)">
     <span class="mn-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 8L10 2L17 8V18H13V13H7V18H3V8Z" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
     <span class="mn-label">Home</span>
   </button>
@@ -2307,7 +2325,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     <span class="mn-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 5h16M2 10h12M2 15h14" stroke-width="1.3" stroke-linecap="round"></path></svg></span>
     <span class="mn-label">Method</span>
   </button>
-  <button class="mn-btn active" id="mn-projects" onclick="mnGo('projects',this)">
+  <button class="mn-btn" id="mn-projects" onclick="mnGo('projects',this)">
     <span class="mn-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1" stroke-width="1.3"></rect><rect x="11" y="2" width="7" height="7" rx="1" stroke-width="1.3"></rect><rect x="2" y="11" width="7" height="7" rx="1" stroke-width="1.3"></rect><rect x="11" y="11" width="7" height="7" rx="1" stroke-width="1.3"></rect></svg></span>
     <span class="mn-label">Projects</span>
   </button>
@@ -2446,7 +2464,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
   </div>
 
   <!-- ── HOME ── -->
-  <div class="page" id="pg-home">
+  <div class="page active" id="pg-home">
     <div class="home-hero">
       <div class="home-hero-bg"></div>
       <div class="home-content">
@@ -2628,7 +2646,7 @@ body.av-edit .av-floor-title{border-bottom-color:rgba(184,149,90,.3);}
     </div><!-- /page-scroll -->
   </div><!-- /pg-method -->
 
-  <div class="page active" id="pg-projects">
+  <div class="page" id="pg-projects">
 
     <!-- ── PROJECT SELECTOR ── -->
     <div class="proj-selector">
@@ -4681,7 +4699,7 @@ function showEditBar() {
         <button onclick="siteEditDeactivate();" style="font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;background:none;color:rgba(244,239,230,.4);border:1px solid rgba(244,239,230,.15);padding:7px 12px;cursor:pointer;font-family:'DM Sans',sans-serif;">✕ Cancel</button>
       </div>`;
     bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a1610;border-top:1px solid rgba(184,149,90,.2);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;z-index:2000;font-family:"DM Sans",sans-serif;';
-    if(window.innerWidth<=768){ bar.style.bottom='60px'; }
+    if(window.innerWidth<=768){ bar.style.bottom='calc(60px + env(safe-area-inset-bottom, 0px))'; }
     document.body.appendChild(bar);
   }
   bar.style.display = 'flex';
